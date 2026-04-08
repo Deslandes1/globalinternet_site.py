@@ -47,6 +47,7 @@ st.markdown("""
         margin: 1rem 0;
         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         transition: transform 0.3s;
+        height: 100%;
     }
     .card:hover {
         transform: translateY(-5px);
@@ -54,6 +55,12 @@ st.markdown("""
     .card h3 {
         color: #1e3c72;
         margin-top: 0;
+    }
+    .price {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #ff6b35;
+        margin: 0.5rem 0;
     }
     /* Button style */
     .stButton button {
@@ -160,24 +167,77 @@ for i, (title, desc) in enumerate(services):
         """, unsafe_allow_html=True)
 
 # -----------------------------
-# Portfolio – Showcase Recent Work
+# Projects / Accomplishments Section
 # -----------------------------
-st.markdown("## 🏆 Recent Project: Haiti Online Voting Software")
-st.markdown("""
-<div class="card">
-    <h3>Haiti Presidential Election System</h3>
-    <p>A complete, secure, multi‑language online voting platform built for the Haitian government / CEP.</p>
-    <ul>
-        <li>4 languages (Kreyòl, French, English, Spanish)</li>
-        <li>Real‑time live monitoring for election officials</li>
-        <li>CEP President dashboard – manage candidates, upload photos, download progress reports</li>
-        <li>Secret ballot with anonymized votes</li>
-        <li>Password‑protected access, changeable passwords via email verification</li>
-    </ul>
-    <p><strong>Price:</strong> $2,000 USD (one‑time fee, includes source code, setup, and support)</p>
-    <p><em>Available for immediate deployment. Contact us for a live demo.</em></p>
-</div>
-""", unsafe_allow_html=True)
+st.markdown("## 🏆 Our Projects & Accomplishments")
+st.markdown("*Completed software solutions delivered to clients – ready for you to purchase or customize.*")
+
+# List of projects (title, description, price, status, contact)
+projects = [
+    {
+        "title": "🇭🇹 Haiti Online Voting Software",
+        "description": "Complete presidential election system with multi‑language support (Kreyòl, French, English, Spanish), real‑time live monitoring, CEP President dashboard (manage candidates, upload photos, download progress reports), secret ballot, and changeable passwords. Used for national elections.",
+        "price": "$2,000 USD (one‑time fee)",
+        "status": "✅ Available now – includes source code, setup, and support.",
+        "contact": "Contact us for a live demo"
+    },
+    {
+        "title": "📊 Business Intelligence Dashboard",
+        "description": "Real‑time analytics dashboard for companies. Connect to any database (SQL, Excel, CSV) and visualize KPIs, sales trends, inventory, and custom reports. Fully interactive and customizable.",
+        "price": "$1,200 USD",
+        "status": "✅ Available now",
+        "contact": "Demo available on request"
+    },
+    {
+        "title": "🤖 AI Customer Support Chatbot",
+        "description": "Intelligent chatbot trained on your business data. Answer customer questions 24/7, reduce support workload. Integrates with websites, WhatsApp, or Telegram. Built with Python and modern NLP.",
+        "price": "$800 USD (basic) / $1,500 USD (advanced)",
+        "status": "✅ Available now",
+        "contact": "We can train on your specific content"
+    },
+    {
+        "title": "🏫 School Management System",
+        "description": "Complete platform for schools: student registration, grade management, attendance tracking, parent portal, report card generation, and fee collection. Multi‑user roles (admin, teachers, parents).",
+        "price": "$1,500 USD",
+        "status": "✅ Available now",
+        "contact": "Includes training and deployment"
+    },
+    {
+        "title": "📦 Inventory & POS System",
+        "description": "Web‑based inventory management with point‑of‑sale for small businesses. Barcode scanning, stock alerts, sales reports, supplier management. Works online and offline.",
+        "price": "$1,000 USD",
+        "status": "✅ Available now",
+        "contact": "Customizable for your business needs"
+    },
+    {
+        "title": "📈 Custom Web Scraper & Data Pipeline",
+        "description": "Automated data extraction from any website, cleaned and delivered as Excel/JSON/CSV. Schedule daily, weekly, or monthly runs. Perfect for market research, price monitoring, or lead generation.",
+        "price": "$500 – $2,000 (depends on complexity)",
+        "status": "✅ Available now",
+        "contact": "Tell us your data source and we'll quote"
+    }
+]
+
+# Display projects in rows of 2 or 3 columns
+for i in range(0, len(projects), 2):
+    cols = st.columns(2)
+    for j, col in enumerate(cols):
+        idx = i + j
+        if idx < len(projects):
+            proj = projects[idx]
+            with col:
+                st.markdown(f"""
+                <div class="card" style="height: auto;">
+                    <h3>{proj['title']}</h3>
+                    <p>{proj['description']}</p>
+                    <div class="price">{proj['price']}</div>
+                    <p><em>{proj['status']}</em></p>
+                    <p>📞 {proj['contact']}</p>
+                </div>
+                """, unsafe_allow_html=True)
+                # Optional button for each project (can lead to contact)
+                if st.button(f"Request Info – {proj['title']}", key=f"btn_{idx}"):
+                    st.info(f"Please email us at deslandes78@gmail.com or call (509)-47385663 to discuss '{proj['title']}'. Thank you!")
 
 # -----------------------------
 # Donation Section – Support via Moncash (Prisme Transfer)
@@ -197,7 +257,6 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# Simple button to show a thank you message
 if st.button("💸 I've sent my donation – notify me"):
     st.success("Thank you so much! We will confirm receipt within 24 hours. Your support means the world to us! 🇭🇹")
 
