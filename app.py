@@ -82,6 +82,14 @@ st.markdown("""
         justify-content: center;
         margin: 1rem 0;
     }
+    /* Donation box */
+    .donation-box {
+        background-color: #fff3e0;
+        padding: 1.5rem;
+        border-radius: 15px;
+        text-align: center;
+        margin: 2rem 0;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -172,25 +180,26 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # -----------------------------
-# Donation Section (Support the Website)
+# Donation Section – Support via Moncash (Prisme Transfer)
 # -----------------------------
 st.markdown("## 💖 Support GlobalInternet.py")
 st.markdown("""
-<div style="background-color: #fff3e0; padding: 1.5rem; border-radius: 15px; text-align: center; margin: 2rem 0;">
+<div class="donation-box">
     <h3>Help us grow and continue building innovative software for Haiti and the world.</h3>
     <p>Your donation supports hosting, development tools, and free resources for local developers.</p>
     <br>
-    <a href="https://www.paypal.com/donate?hosted_button_id=YOUR_BUTTON_ID" target="_blank">
-        <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" alt="Donate with PayPal">
-    </a>
-    <p style="margin-top: 1rem;"><small>Or contact us for direct bank transfer / Mobile Money (Haiti).</small></p>
+    <p><strong>🇭🇹 Easy & fast – Prisme transfer to Moncash (Digicel)</strong></p>
+    <p style="font-size:1.5rem; font-weight:bold;">📱 (509)-47385663</p>
+    <p><strong>Amount limit:</strong> Up to 100,000 HTG per transaction</p>
+    <p><em>Just use the "Prisme transfer" feature in your Moncash app to send your contribution.</em></p>
+    <br>
+    <p><strong>🔜 Coming soon:</strong> Bank‑to‑bank transfers in USD and HTG (international and local).</p>
 </div>
 """, unsafe_allow_html=True)
 
-# You can replace the PayPal link with your actual donation page.
-# For now, we display a button that shows a message.
-if st.button("💸 Donate via Mobile Money / Bank Transfer"):
-    st.info("Please contact us directly: (509)-47385663 or deslandes78@gmail.com to arrange your donation. Thank you!")
+# Simple button to show a thank you message
+if st.button("💸 I've sent my donation – notify me"):
+    st.success("Thank you so much! We will confirm receipt within 24 hours. Your support means the world to us! 🇭🇹")
 
 # -----------------------------
 # Contact & Call to Action
