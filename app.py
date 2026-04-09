@@ -12,7 +12,7 @@ st.set_page_config(
 )
 
 # -----------------------------
-# Custom CSS (unchanged)
+# Custom CSS
 # -----------------------------
 st.markdown("""
 <style>
@@ -106,6 +106,7 @@ lang_dict = {
         ],
         "projects_title": "🏆 Our Projects & Accomplishments",
         "projects_sub": "Completed software solutions delivered to clients – ready for you to purchase or customize.",
+        # Project entries
         "project_haiti": "🇭🇹 Haiti Online Voting Software",
         "project_haiti_desc": "Complete presidential election system with multi‑language support (Kreyòl, French, English, Spanish), real‑time live monitoring, CEP President dashboard (manage candidates, upload photos, download progress reports), secret ballot, and changeable passwords. Used for national elections.",
         "project_haiti_price": "$2,000 USD (one‑time fee)",
@@ -136,6 +137,11 @@ lang_dict = {
         "project_scraper_price": "$500 – $2,000 (depends on complexity)",
         "project_scraper_status": "✅ Available now",
         "project_scraper_contact": "Tell us your data source and we'll quote",
+        "project_chess": "♟️ Play Chess Against the Machine",
+        "project_chess_desc": "Educational chess game with AI opponent (3 difficulty levels). Every move is explained – learn tactics like forks, pins, and discovered checks. Includes demo mode, move dashboard, and full game report download.",
+        "project_chess_price": "$20 USD (one‑time fee)",
+        "project_chess_status": "✅ Available now – lifetime access, free updates",
+        "project_chess_contact": "Perfect for learning chess",
         "request_info": "Request Info",
         "donation_title": "💖 Support GlobalInternet.py",
         "donation_text": "Help us grow and continue building innovative software for Haiti and the world.",
@@ -217,6 +223,11 @@ lang_dict = {
         "project_scraper_price": "500 – 2 000 $ USD (selon complexité)",
         "project_scraper_status": "✅ Disponible",
         "project_scraper_contact": "Dites‑nous votre source de données, nous devisons",
+        "project_chess": "♟️ Jouez aux échecs contre la machine",
+        "project_chess_desc": "Jeu d'échecs éducatif avec IA (3 niveaux). Chaque coup est expliqué – apprenez les tactiques (fourchette, clouage, échec à la découverte). Mode démo, tableau de bord des coups, téléchargement du rapport complet.",
+        "project_chess_price": "20 $ USD (paiement unique)",
+        "project_chess_status": "✅ Disponible – accès à vie, mises à jour gratuites",
+        "project_chess_contact": "Parfait pour apprendre les échecs",
         "request_info": "Demander des infos",
         "donation_title": "💖 Soutenez GlobalInternet.py",
         "donation_text": "Aidez‑nous à grandir et à continuer à construire des logiciels innovants pour Haïti et le monde.",
@@ -298,6 +309,11 @@ lang_dict = {
         "project_scraper_price": "$500 – $2,000 USD (depende de la complejidad)",
         "project_scraper_status": "✅ Disponible",
         "project_scraper_contact": "Díganos su fuente de datos y le cotizamos",
+        "project_chess": "♟️ Juega al ajedrez contra la máquina",
+        "project_chess_desc": "Juego de ajedrez educativo con IA (3 niveles). Cada movimiento se explica – aprende tácticas como horquillas, clavadas y jaques descubiertos. Modo demo, panel de movimientos, descarga de informe completo.",
+        "project_chess_price": "$20 USD (pago único)",
+        "project_chess_status": "✅ Disponible – acceso de por vida, actualizaciones gratuitas",
+        "project_chess_contact": "Perfecto para aprender ajedrez",
         "request_info": "Solicitar información",
         "donation_title": "💖 Apoye a GlobalInternet.py",
         "donation_text": "Ayúdenos a crecer y seguir construyendo software innovador para Haití y el mundo.",
@@ -379,6 +395,11 @@ lang_dict = {
         "project_scraper_price": "500 – 2,000 $ USD (depann sou konpleksite)",
         "project_scraper_status": "✅ Disponib",
         "project_scraper_contact": "Di nou sous done ou, n ap ba ou pri",
+        "project_chess": "♟️ Jwe Echèk Kont Machin nan",
+        "project_chess_desc": "Jwèt echèk edikatif ak AI (3 nivo). Chak mouvman eksplike – aprann taktik tankou fouchèt, klou, echèk dekouvri. Gen mòd demo, tablodbò mouvman, ak rapò jwèt konplè.",
+        "project_chess_price": "20 $ USD (peman inik)",
+        "project_chess_status": "✅ Disponib – aksè tout lavi, mizajou gratis",
+        "project_chess_contact": "Pafè pou aprann echèk",
         "request_info": "Mande enfòmasyon",
         "donation_title": "💖 Sipòte GlobalInternet.py",
         "donation_text": "Ede nou grandi epi kontinye bati lojisyèl inovatif pou Ayiti ak lemonn.",
@@ -461,7 +482,7 @@ for i, (title, desc) in enumerate(services):
         """, unsafe_allow_html=True)
 
 # -----------------------------
-# Projects Section
+# Projects Section (with Chess Game added)
 # -----------------------------
 st.markdown(f"## {t['projects_title']}")
 st.markdown(f"*{t['projects_sub']}*")
@@ -514,9 +535,18 @@ projects = [
         "status": t['project_scraper_status'],
         "contact": t['project_scraper_contact'],
         "key": "scraper"
+    },
+    {
+        "title": t['project_chess'],
+        "desc": t['project_chess_desc'],
+        "price": t['project_chess_price'],
+        "status": t['project_chess_status'],
+        "contact": t['project_chess_contact'],
+        "key": "chess"
     }
 ]
 
+# Display projects in rows of 2 columns
 for i in range(0, len(projects), 2):
     cols = st.columns(2)
     for j, col in enumerate(cols):
