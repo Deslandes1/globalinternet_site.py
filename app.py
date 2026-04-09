@@ -106,7 +106,7 @@ lang_dict = {
         ],
         "projects_title": "🏆 Our Projects & Accomplishments",
         "projects_sub": "Completed software solutions delivered to clients – ready for you to purchase or customize.",
-        # Project entries
+        # Existing projects
         "project_haiti": "🇭🇹 Haiti Online Voting Software",
         "project_haiti_desc": "Complete presidential election system with multi‑language support (Kreyòl, French, English, Spanish), real‑time live monitoring, CEP President dashboard (manage candidates, upload photos, download progress reports), secret ballot, and changeable passwords. Used for national elections.",
         "project_haiti_price": "$2,000 USD (one‑time fee)",
@@ -142,6 +142,12 @@ lang_dict = {
         "project_chess_price": "$20 USD (one‑time fee)",
         "project_chess_status": "✅ Available now – lifetime access, free updates",
         "project_chess_contact": "Perfect for learning chess",
+        # New project: Weapon Detection AI
+        "project_weapon": "🔫 Weapon Detection AI",
+        "project_weapon_desc": "Real‑time concealed weapon detection via live camera. Uses YOLOv8 AI to detect knives, guns, and other weapons near persons. Includes demo mode, custom model upload, PDF detection reports, and multilingual support (English, French, Spanish).",
+        "project_weapon_price": "$299 USD (one‑time fee)",
+        "project_weapon_status": "✅ Available now – lifetime license, free updates",
+        "project_weapon_contact": "Perfect for schools, businesses, public safety",
         "request_info": "Request Info",
         "donation_title": "💖 Support GlobalInternet.py",
         "donation_text": "Help us grow and continue building innovative software for Haiti and the world.",
@@ -228,6 +234,12 @@ lang_dict = {
         "project_chess_price": "20 $ USD (paiement unique)",
         "project_chess_status": "✅ Disponible – accès à vie, mises à jour gratuites",
         "project_chess_contact": "Parfait pour apprendre les échecs",
+        # New project in French
+        "project_weapon": "🔫 IA de détection d'armes",
+        "project_weapon_desc": "Détection en temps réel d'armes dissimulées via caméra. Utilise YOLOv8 pour détecter couteaux, pistolets, etc. près des personnes. Mode démo, téléchargement de modèle personnalisé, rapports PDF, multilingue (anglais, français, espagnol).",
+        "project_weapon_price": "299 $ USD (paiement unique)",
+        "project_weapon_status": "✅ Disponible – licence à vie, mises à jour gratuites",
+        "project_weapon_contact": "Idéal pour écoles, entreprises, sécurité publique",
         "request_info": "Demander des infos",
         "donation_title": "💖 Soutenez GlobalInternet.py",
         "donation_text": "Aidez‑nous à grandir et à continuer à construire des logiciels innovants pour Haïti et le monde.",
@@ -314,6 +326,12 @@ lang_dict = {
         "project_chess_price": "$20 USD (pago único)",
         "project_chess_status": "✅ Disponible – acceso de por vida, actualizaciones gratuitas",
         "project_chess_contact": "Perfecto para aprender ajedrez",
+        # New project in Spanish
+        "project_weapon": "🔫 IA de detección de armas",
+        "project_weapon_desc": "Detección en tiempo real de armas ocultas mediante cámara. Usa YOLOv8 para detectar cuchillos, pistolas, etc. cerca de personas. Modo demo, carga de modelo personalizado, informes PDF, multilingüe (inglés, francés, español).",
+        "project_weapon_price": "$299 USD (pago único)",
+        "project_weapon_status": "✅ Disponible – licencia de por vida, actualizaciones gratuitas",
+        "project_weapon_contact": "Ideal para escuelas, empresas, seguridad pública",
         "request_info": "Solicitar información",
         "donation_title": "💖 Apoye a GlobalInternet.py",
         "donation_text": "Ayúdenos a crecer y seguir construyendo software innovador para Haití y el mundo.",
@@ -400,6 +418,12 @@ lang_dict = {
         "project_chess_price": "20 $ USD (peman inik)",
         "project_chess_status": "✅ Disponib – aksè tout lavi, mizajou gratis",
         "project_chess_contact": "Pafè pou aprann echèk",
+        # New project in Kreyòl
+        "project_weapon": "🔫 Deteksyon Zam ak AI",
+        "project_weapon_desc": "Deteksyon an tan reyèl zam kache atravè kamera. Sèvi ak YOLOv8 pou detekte kouto, zam afe, elatriye toupre moun. Gen mòd demo, chaje modèl pèsonalize, rapò PDF, plizyè lang (angle, fransè, panyòl).",
+        "project_weapon_price": "299 $ USD (peman inik)",
+        "project_weapon_status": "✅ Disponib – lisans tout lavi, mizajou gratis",
+        "project_weapon_contact": "Pafè pou lekòl, biznis, sekirite piblik",
         "request_info": "Mande enfòmasyon",
         "donation_title": "💖 Sipòte GlobalInternet.py",
         "donation_text": "Ede nou grandi epi kontinye bati lojisyèl inovatif pou Ayiti ak lemonn.",
@@ -482,7 +506,7 @@ for i, (title, desc) in enumerate(services):
         """, unsafe_allow_html=True)
 
 # -----------------------------
-# Projects Section (includes Haiti Voting Software and Chess Game)
+# Projects Section (includes Haiti Voting, Dashboard, Chatbot, School, POS, Scraper, Chess, Weapon Detection)
 # -----------------------------
 st.markdown(f"## {t['projects_title']}")
 st.markdown(f"*{t['projects_sub']}*")
@@ -543,6 +567,14 @@ projects = [
         "status": t['project_chess_status'],
         "contact": t['project_chess_contact'],
         "key": "chess"
+    },
+    {
+        "title": t['project_weapon'],
+        "desc": t['project_weapon_desc'],
+        "price": t['project_weapon_price'],
+        "status": t['project_weapon_status'],
+        "contact": t['project_weapon_contact'],
+        "key": "weapon"
     }
 ]
 
