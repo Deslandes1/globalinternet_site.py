@@ -219,13 +219,13 @@ lang_dict = {
         "project_scraper_price": "$500 – $2,000 (depends on complexity)",
         "project_scraper_status": "✅ Available now",
         "project_scraper_contact": "Tell us your data source and we'll quote",
-        # Project 7
+        # Project 7 – CHESS APP WITH LIVE DEMO LINK
         "project_chess": "♟️ Play Chess Against the Machine",
-        "project_chess_desc": "Educational chess game with AI opponent (3 difficulty levels). Every move is explained – learn tactics like forks, pins, and discovered checks. Includes demo mode, move dashboard, and full game report download.",
+        "project_chess_desc": "Educational chess game with AI opponent (3 difficulty levels). Every move is explained – learn tactics like forks, pins, and discovered checks. Includes demo mode, move dashboard, and full game report download. Multi‑language (English, French, Spanish, Kreyòl).",
         "project_chess_price": "$20 USD (one‑time fee)",
         "project_chess_status": "✅ Available now – lifetime access, free updates",
         "project_chess_contact": "Perfect for learning chess",
-        # Project 8 (formerly Weapon Detection, now replaced by Accountant with new URL)
+        # Project 8
         "project_accountant": "🧮 Accountant Excel Advanced AI",
         "project_accountant_desc": "Professional accounting and loan management suite. Track cash income/expenses, manage loans (borrowers, due dates, payments), dashboard with balance, export all reports to Excel and PDF. Multi‑language (English, French, Spanish). Password protected.",
         "project_accountant_price": "$199 USD (one‑time fee)",
@@ -237,7 +237,7 @@ lang_dict = {
         "project_archives_price": "$1,500 USD (one‑time fee)",
         "project_archives_status": "✅ Available now – includes source code, setup, and support",
         "project_archives_contact": "Ideal for government archives, ministries, and institutions",
-        # Project 10 (new: DSM-2026)
+        # Project 10
         "project_dsm": "🛡️ DSM-2026: SYSTEM SECURED",
         "project_dsm_desc": "Advanced stratosphere monitoring radar – tracks aircraft, satellites, and missiles in real time. Simulated radar display with threat detection, multi‑language support, and downloadable intelligence reports.",
         "project_dsm_price": "$299 USD (one‑time fee)",
@@ -363,7 +363,7 @@ lang_dict = {
         "project_scraper_status": "✅ Disponible",
         "project_scraper_contact": "Dites‑nous votre source de données, nous devisons",
         "project_chess": "♟️ Jouez aux échecs contre la machine",
-        "project_chess_desc": "Jeu d'échecs éducatif avec IA (3 niveaux). Chaque coup est expliqué – apprenez les tactiques (fourchette, clouage, échec à la découverte). Mode démo, tableau de bord des coups, téléchargement du rapport complet.",
+        "project_chess_desc": "Jeu d'échecs éducatif avec IA (3 niveaux). Chaque coup est expliqué – apprenez les tactiques (fourchette, clouage, échec à la découverte). Mode démo, tableau de bord des coups, téléchargement du rapport complet. Multilingue (anglais, français, espagnol, kreyòl).",
         "project_chess_price": "20 $ USD (paiement unique)",
         "project_chess_status": "✅ Disponible – accès à vie, mises à jour gratuites",
         "project_chess_contact": "Parfait pour apprendre les échecs",
@@ -502,7 +502,7 @@ lang_dict = {
         "project_scraper_status": "✅ Disponible",
         "project_scraper_contact": "Díganos su fuente de datos y le cotizamos",
         "project_chess": "♟️ Juega al ajedrez contra la máquina",
-        "project_chess_desc": "Juego de ajedrez educativo con IA (3 niveles). Cada movimiento se explica – aprende tácticas como horquillas, clavadas y jaques descubiertos. Modo demo, panel de movimientos, descarga de informe completo.",
+        "project_chess_desc": "Juego de ajedrez educativo con IA (3 niveles). Cada movimiento se explica – aprende tácticas como horquillas, clavadas y jaques descubiertos. Modo demo, panel de movimientos, descarga de informe completo. Multilingüe (inglés, francés, español, kreyòl).",
         "project_chess_price": "$20 USD (pago único)",
         "project_chess_status": "✅ Disponible – acceso de por vida, actualizaciones gratuitas",
         "project_chess_contact": "Perfecto para aprender ajedrez",
@@ -641,7 +641,7 @@ lang_dict = {
         "project_scraper_status": "✅ Disponib",
         "project_scraper_contact": "Di nou sous done ou, n ap ba ou pri",
         "project_chess": "♟️ Jwe Echèk Kont Machin nan",
-        "project_chess_desc": "Jwèt echèk edikatif ak AI (3 nivo). Chak mouvman eksplike – aprann taktik tankou fouchèt, klou, echèk dekouvri. Gen mòd demo, tablodbò mouvman, ak rapò jwèt konplè.",
+        "project_chess_desc": "Jwèt echèk edikatif ak AI (3 nivo). Chak mouvman eksplike – aprann taktik tankou fouchèt, klou, echèk dekouvri. Gen mòd demo, tablodbò mouvman, ak rapò jwèt konplè. Plizyè lang (angle, franse, panyòl, kreyòl).",
         "project_chess_price": "20 $ USD (peman inik)",
         "project_chess_status": "✅ Disponib – aksè tout lavi, mizajou gratis",
         "project_chess_contact": "Pafè pou aprann echèk",
@@ -762,7 +762,7 @@ for i, (title, desc) in enumerate(services):
         """, unsafe_allow_html=True)
 
 # -----------------------------
-# Projects Section (10 projects – removed Weapon, added DSM, updated Accountant URL)
+# Projects Section (10 projects – updated chess with live demo URL)
 # -----------------------------
 st.markdown(f"## {t['projects_title']}")
 st.markdown(f"*{t['projects_sub']}*")
@@ -835,7 +835,7 @@ projects = [
         "status": t['project_chess_status'],
         "contact": t['project_chess_contact'],
         "key": "chess",
-        "demo_url": None,
+        "demo_url": "https://playchessagainstthemachinemarch2026-hqnjksiy9jemcb4np5pzmp.streamlit.app/",   # <-- ADDED LIVE DEMO LINK
         "screenshot": "https://via.placeholder.com/800x400?text=Chess+Game"
     },
     {
