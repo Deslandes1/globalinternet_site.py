@@ -106,7 +106,7 @@ lang_dict = {
         ],
         "projects_title": "🏆 Our Projects & Accomplishments",
         "projects_sub": "Completed software solutions delivered to clients – ready for you to purchase or customize.",
-        # Existing projects
+        # Existing projects (1-9)
         "project_haiti": "🇭🇹 Haiti Online Voting Software",
         "project_haiti_desc": "Complete presidential election system with multi‑language support (Kreyòl, French, English, Spanish), real‑time live monitoring, CEP President dashboard (manage candidates, upload photos, download progress reports), secret ballot, and changeable passwords. Used for national elections.",
         "project_haiti_price": "$2,000 USD (one‑time fee)",
@@ -147,12 +147,17 @@ lang_dict = {
         "project_weapon_price": "$299 USD (one‑time fee)",
         "project_weapon_status": "✅ Available now – lifetime license, free updates",
         "project_weapon_contact": "Perfect for schools, businesses, public safety",
-        # New project: Accountant Excel Advanced AI
         "project_accountant": "🧮 Accountant Excel Advanced AI",
         "project_accountant_desc": "Professional accounting and loan management suite. Track cash income/expenses, manage loans (borrowers, due dates, payments), dashboard with balance, export all reports to Excel and PDF. Multi‑language (English, French, Spanish). Password protected.",
         "project_accountant_price": "$199 USD (one‑time fee)",
         "project_accountant_status": "✅ Available now – lifetime access, free updates",
         "project_accountant_contact": "Ideal for small businesses, associations, freelancers",
+        # New project 10: Haiti Archives Nationales Database
+        "project_archives": "📜 Haiti Archives Nationales Database",
+        "project_archives_desc": "Complete national archives database for Haitian citizens. Store NIF (Matricule Fiscale), CIN, Passport, Driver's License, voting history, sponsorships, and document uploads. Minister signature validation, annual password system, multilingual (English, French, Spanish, Kreyòl).",
+        "project_archives_price": "$1,500 USD (one‑time fee)",
+        "project_archives_status": "✅ Available now – includes source code, setup, and support",
+        "project_archives_contact": "Ideal for government archives, ministries, and institutions",
         "request_info": "Request Info",
         "donation_title": "💖 Support GlobalInternet.py",
         "donation_text": "Help us grow and continue building innovative software for Haiti and the world.",
@@ -244,12 +249,17 @@ lang_dict = {
         "project_weapon_price": "299 $ USD (paiement unique)",
         "project_weapon_status": "✅ Disponible – licence à vie, mises à jour gratuites",
         "project_weapon_contact": "Idéal pour écoles, entreprises, sécurité publique",
-        # New project in French
         "project_accountant": "🧮 Comptabilité Excel IA Avancée",
         "project_accountant_desc": "Suite professionnelle de comptabilité et gestion de prêts. Suivez vos entrées/sorties d'argent, gérez les prêts (emprunteurs, échéances, paiements), tableau de bord avec solde, exportez tous les rapports en Excel et PDF. Multilingue (anglais, français, espagnol).",
         "project_accountant_price": "199 $ USD (paiement unique)",
         "project_accountant_status": "✅ Disponible – accès à vie, mises à jour gratuites",
         "project_accountant_contact": "Idéal pour petites entreprises, associations, freelances",
+        # New project in French
+        "project_archives": "📜 Base de données des Archives Nationales d'Haïti",
+        "project_archives_desc": "Base de données complète pour les archives nationales haïtiennes. Stockez le NIF (Matricule Fiscale), la CIN, le passeport, le permis de conduire, l'historique de vote, les parrainages et les documents. Validation par signature ministérielle, système de mot de passe annuel, multilingue (anglais, français, espagnol, kreyòl).",
+        "project_archives_price": "1 500 $ USD (paiement unique)",
+        "project_archives_status": "✅ Disponible – comprend le code source, l'installation et le support",
+        "project_archives_contact": "Idéal pour les archives gouvernementales, ministères et institutions",
         "request_info": "Demander des infos",
         "donation_title": "💖 Soutenez GlobalInternet.py",
         "donation_text": "Aidez‑nous à grandir et à continuer à construire des logiciels innovants pour Haïti et le monde.",
@@ -341,12 +351,17 @@ lang_dict = {
         "project_weapon_price": "$299 USD (pago único)",
         "project_weapon_status": "✅ Disponible – licencia de por vida, actualizaciones gratuitas",
         "project_weapon_contact": "Ideal para escuelas, empresas, seguridad pública",
-        # New project in Spanish
         "project_accountant": "🧮 Contabilidad Excel IA Avanzada",
         "project_accountant_desc": "Suite profesional de contabilidad y gestión de préstamos. Registre ingresos/gastos, administre préstamos (prestatarios, fechas de vencimiento, pagos), panel con saldo, exporte todos los informes a Excel y PDF. Multilingüe (inglés, francés, español).",
         "project_accountant_price": "$199 USD (pago único)",
         "project_accountant_status": "✅ Disponible – acceso de por vida, actualizaciones gratuitas",
         "project_accountant_contact": "Ideal para pequeñas empresas, asociaciones, autónomos",
+        # New project in Spanish
+        "project_archives": "📜 Base de Datos de los Archivos Nacionales de Haití",
+        "project_archives_desc": "Base de datos completa para archivos nacionales haitianos. Almacene NIF (Matrícula Fiscal), CIN, pasaporte, licencia de conducir, historial de votación, patrocinios y documentos. Validación con firma ministerial, sistema de contraseña anual, multilingüe (inglés, francés, español, kreyòl).",
+        "project_archives_price": "$1,500 USD (pago único)",
+        "project_archives_status": "✅ Disponible – incluye código fuente, configuración y soporte",
+        "project_archives_contact": "Ideal para archivos gubernamentales, ministerios e instituciones",
         "request_info": "Solicitar información",
         "donation_title": "💖 Apoye a GlobalInternet.py",
         "donation_text": "Ayúdenos a crecer y seguir construyendo software innovador para Haití y el mundo.",
@@ -438,12 +453,17 @@ lang_dict = {
         "project_weapon_price": "299 $ USD (peman inik)",
         "project_weapon_status": "✅ Disponib – lisans tout lavi, mizajou gratis",
         "project_weapon_contact": "Pafè pou lekòl, biznis, sekirite piblik",
-        # New project in Kreyòl
         "project_accountant": "🧮 Kontablite Excel AI Avanse",
         "project_accountant_desc": "Swit pwofesyonèl kontablite ak jesyon prè. Swiv lajan k ap antre ak sòti, jere prè (moun ki prete, dat, peman), tablodbò ak balans, ekspòte tout rapò an Excel ak PDF. Plizyè lang (angle, fransè, panyòl).",
         "project_accountant_price": "199 $ USD (peman inik)",
         "project_accountant_status": "✅ Disponib – aksè tout lavi, mizajou gratis",
         "project_accountant_contact": "Ideyal pou ti biznis, asosyasyon, moun k ap travay pou kont yo",
+        # New project in Kreyòl
+        "project_archives": "📜 Baz Done Achiv Nasyonal Ayiti",
+        "project_archives_desc": "Baz done konplè pou achiv nasyonal Ayisyen. Sere NIF (Matrikil Fiskal), CIN, Paspò, Pèmi Kondwi, istwa vòt, patenarya ak dokiman. Validasyon ak siyati Minis la, sistèm modpas anyèl, plizyè lang (angle, fransè, panyòl, kreyòl).",
+        "project_archives_price": "1,500 $ USD (peman inik)",
+        "project_archives_status": "✅ Disponib – gen ladan kòd sous, enstalasyon ak sipò",
+        "project_archives_contact": "Ideyal pou achiv gouvènmantal, minis ak enstitisyon",
         "request_info": "Mande enfòmasyon",
         "donation_title": "💖 Sipòte GlobalInternet.py",
         "donation_text": "Ede nou grandi epi kontinye bati lojisyèl inovatif pou Ayiti ak lemonn.",
@@ -526,7 +546,7 @@ for i, (title, desc) in enumerate(services):
         """, unsafe_allow_html=True)
 
 # -----------------------------
-# Projects Section (9 projects)
+# Projects Section (10 projects)
 # -----------------------------
 st.markdown(f"## {t['projects_title']}")
 st.markdown(f"*{t['projects_sub']}*")
@@ -603,6 +623,14 @@ projects = [
         "status": t['project_accountant_status'],
         "contact": t['project_accountant_contact'],
         "key": "accountant"
+    },
+    {
+        "title": t['project_archives'],
+        "desc": t['project_archives_desc'],
+        "price": t['project_archives_price'],
+        "status": t['project_archives_status'],
+        "contact": t['project_archives_contact'],
+        "key": "archives"
     }
 ]
 
