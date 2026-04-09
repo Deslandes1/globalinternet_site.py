@@ -116,7 +116,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # -----------------------------
-# Translation Dictionary (Full: English, French, Spanish, Kreyòl)
+# Translation Dictionary (English, French, Spanish, Kreyòl)
 # -----------------------------
 lang_dict = {
     "en": {
@@ -183,59 +183,70 @@ lang_dict = {
         ],
         "projects_title": "🏆 Our Projects & Accomplishments",
         "projects_sub": "Completed software solutions delivered to clients – ready for you to purchase or customize.",
+        # Project 1
         "project_haiti": "🇭🇹 Haiti Online Voting Software",
         "project_haiti_desc": "Complete presidential election system with multi‑language support (Kreyòl, French, English, Spanish), real‑time live monitoring, CEP President dashboard (manage candidates, upload photos, download progress reports), secret ballot, and changeable passwords. Used for national elections.",
         "project_haiti_price": "$2,000 USD (one‑time fee)",
         "project_haiti_status": "✅ Available now – includes source code, setup, and support.",
         "project_haiti_contact": "Contact us for a live demo",
+        # Project 2
         "project_dashboard": "📊 Business Intelligence Dashboard",
         "project_dashboard_desc": "Real‑time analytics dashboard for companies. Connect to any database (SQL, Excel, CSV) and visualize KPIs, sales trends, inventory, and custom reports. Fully interactive and customizable.",
         "project_dashboard_price": "$1,200 USD",
         "project_dashboard_status": "✅ Available now",
         "project_dashboard_contact": "Demo available on request",
+        # Project 3
         "project_chatbot": "🤖 AI Customer Support Chatbot",
         "project_chatbot_desc": "Intelligent chatbot trained on your business data. Answer customer questions 24/7, reduce support workload. Integrates with websites, WhatsApp, or Telegram. Built with Python and modern NLP.",
         "project_chatbot_price": "$800 USD (basic) / $1,500 USD (advanced)",
         "project_chatbot_status": "✅ Available now",
         "project_chatbot_contact": "We can train on your specific content",
+        # Project 4
         "project_school": "🏫 School Management System",
         "project_school_desc": "Complete platform for schools: student registration, grade management, attendance tracking, parent portal, report card generation, and fee collection. Multi‑user roles (admin, teachers, parents).",
         "project_school_price": "$1,500 USD",
         "project_school_status": "✅ Available now",
         "project_school_contact": "Includes training and deployment",
+        # Project 5
         "project_pos": "📦 Inventory & POS System",
         "project_pos_desc": "Web‑based inventory management with point‑of‑sale for small businesses. Barcode scanning, stock alerts, sales reports, supplier management. Works online and offline.",
         "project_pos_price": "$1,000 USD",
         "project_pos_status": "✅ Available now",
         "project_pos_contact": "Customizable for your business needs",
+        # Project 6
         "project_scraper": "📈 Custom Web Scraper & Data Pipeline",
         "project_scraper_desc": "Automated data extraction from any website, cleaned and delivered as Excel/JSON/CSV. Schedule daily, weekly, or monthly runs. Perfect for market research, price monitoring, or lead generation.",
         "project_scraper_price": "$500 – $2,000 (depends on complexity)",
         "project_scraper_status": "✅ Available now",
         "project_scraper_contact": "Tell us your data source and we'll quote",
+        # Project 7
         "project_chess": "♟️ Play Chess Against the Machine",
         "project_chess_desc": "Educational chess game with AI opponent (3 difficulty levels). Every move is explained – learn tactics like forks, pins, and discovered checks. Includes demo mode, move dashboard, and full game report download.",
         "project_chess_price": "$20 USD (one‑time fee)",
         "project_chess_status": "✅ Available now – lifetime access, free updates",
         "project_chess_contact": "Perfect for learning chess",
-        "project_weapon": "🔫 Weapon Detection AI",
-        "project_weapon_desc": "Real‑time concealed weapon detection via live camera. Uses YOLOv8 AI to detect knives, guns, and other weapons near persons. Includes demo mode, custom model upload, PDF detection reports, and multilingual support (English, French, Spanish).",
-        "project_weapon_price": "$299 USD (one‑time fee)",
-        "project_weapon_status": "✅ Available now – lifetime license, free updates",
-        "project_weapon_contact": "Perfect for schools, businesses, public safety",
+        # Project 8 (formerly Weapon Detection, now replaced by Accountant with new URL)
         "project_accountant": "🧮 Accountant Excel Advanced AI",
         "project_accountant_desc": "Professional accounting and loan management suite. Track cash income/expenses, manage loans (borrowers, due dates, payments), dashboard with balance, export all reports to Excel and PDF. Multi‑language (English, French, Spanish). Password protected.",
         "project_accountant_price": "$199 USD (one‑time fee)",
         "project_accountant_status": "✅ Available now – lifetime access, free updates",
         "project_accountant_contact": "Ideal for small businesses, associations, freelancers",
+        # Project 9
         "project_archives": "📜 Haiti Archives Nationales Database",
         "project_archives_desc": "Complete national archives database for Haitian citizens. Store NIF (Matricule Fiscale), CIN, Passport, Driver's License, voting history, sponsorships, and document uploads. Minister signature validation, annual password system, multilingual (English, French, Spanish, Kreyòl).",
         "project_archives_price": "$1,500 USD (one‑time fee)",
         "project_archives_status": "✅ Available now – includes source code, setup, and support",
         "project_archives_contact": "Ideal for government archives, ministries, and institutions",
+        # Project 10 (new: DSM-2026)
+        "project_dsm": "🛡️ DSM-2026: SYSTEM SECURED",
+        "project_dsm_desc": "Advanced stratosphere monitoring radar – tracks aircraft, satellites, and missiles in real time. Simulated radar display with threat detection, multi‑language support, and downloadable intelligence reports.",
+        "project_dsm_price": "$299 USD (one‑time fee)",
+        "project_dsm_status": "✅ Available now – lifetime license, free updates",
+        "project_dsm_contact": "Perfect for surveillance and security demonstrations",
         "view_demo": "🎬 View Demo",
         "demo_screenshot": "Screenshot preview (replace with actual image)",
         "live_demo": "🔗 Live Demo",
+        "demo_password_hint": "🔐 Demo password: 20082010",
         "request_info": "Request Info",
         "donation_title": "💖 Support GlobalInternet.py",
         "donation_text": "Help us grow and continue building innovative software for Haiti and the world.",
@@ -356,11 +367,6 @@ lang_dict = {
         "project_chess_price": "20 $ USD (paiement unique)",
         "project_chess_status": "✅ Disponible – accès à vie, mises à jour gratuites",
         "project_chess_contact": "Parfait pour apprendre les échecs",
-        "project_weapon": "🔫 IA de détection d'armes",
-        "project_weapon_desc": "Détection en temps réel d'armes dissimulées via caméra. Utilise YOLOv8 pour détecter couteaux, pistolets, etc. près des personnes. Mode démo, téléchargement de modèle personnalisé, rapports PDF, multilingue (anglais, français, espagnol).",
-        "project_weapon_price": "299 $ USD (paiement unique)",
-        "project_weapon_status": "✅ Disponible – licence à vie, mises à jour gratuites",
-        "project_weapon_contact": "Idéal pour écoles, entreprises, sécurité publique",
         "project_accountant": "🧮 Comptabilité Excel IA Avancée",
         "project_accountant_desc": "Suite professionnelle de comptabilité et gestion de prêts. Suivez vos entrées/sorties d'argent, gérez les prêts (emprunteurs, échéances, paiements), tableau de bord avec solde, exportez tous les rapports en Excel et PDF. Multilingue (anglais, français, espagnol).",
         "project_accountant_price": "199 $ USD (paiement unique)",
@@ -371,9 +377,15 @@ lang_dict = {
         "project_archives_price": "1 500 $ USD (paiement unique)",
         "project_archives_status": "✅ Disponible – comprend le code source, l'installation et le support",
         "project_archives_contact": "Idéal pour les archives gouvernementales, ministères et institutions",
+        "project_dsm": "🛡️ DSM-2026: SYSTÈME SÉCURISÉ",
+        "project_dsm_desc": "Radar de surveillance stratosphérique avancé – suit les avions, satellites et missiles en temps réel. Affichage radar simulé avec détection de menace, multilingue et rapports d'intelligence téléchargeables.",
+        "project_dsm_price": "299 $ USD (paiement unique)",
+        "project_dsm_status": "✅ Disponible – licence à vie, mises à jour gratuites",
+        "project_dsm_contact": "Parfait pour les démonstrations de sécurité et de surveillance",
         "view_demo": "🎬 Voir la démo",
         "demo_screenshot": "Aperçu (remplacer par l'image réelle)",
         "live_demo": "🔗 Démo en direct",
+        "demo_password_hint": "🔐 Mot de passe de démo : 20082010",
         "request_info": "Demander des infos",
         "donation_title": "💖 Soutenez GlobalInternet.py",
         "donation_text": "Aidez‑nous à grandir et à continuer à construire des logiciels innovants pour Haïti et le monde.",
@@ -494,11 +506,6 @@ lang_dict = {
         "project_chess_price": "$20 USD (pago único)",
         "project_chess_status": "✅ Disponible – acceso de por vida, actualizaciones gratuitas",
         "project_chess_contact": "Perfecto para aprender ajedrez",
-        "project_weapon": "🔫 IA de detección de armas",
-        "project_weapon_desc": "Detección en tiempo real de armas ocultas mediante cámara. Usa YOLOv8 para detectar cuchillos, pistolas, etc. cerca de personas. Modo demo, carga de modelo personalizado, informes PDF, multilingüe (inglés, francés, español).",
-        "project_weapon_price": "$299 USD (pago único)",
-        "project_weapon_status": "✅ Disponible – licencia de por vida, actualizaciones gratuitas",
-        "project_weapon_contact": "Ideal para escuelas, empresas, seguridad pública",
         "project_accountant": "🧮 Contabilidad Excel IA Avanzada",
         "project_accountant_desc": "Suite profesional de contabilidad y gestión de préstamos. Registre ingresos/gastos, administre préstamos (prestatarios, fechas de vencimiento, pagos), panel con saldo, exporte todos los informes a Excel y PDF. Multilingüe (inglés, francés, español).",
         "project_accountant_price": "$199 USD (pago único)",
@@ -509,9 +516,15 @@ lang_dict = {
         "project_archives_price": "$1,500 USD (pago único)",
         "project_archives_status": "✅ Disponible – incluye código fuente, configuración y soporte",
         "project_archives_contact": "Ideal para archivos gubernamentales, ministerios e instituciones",
+        "project_dsm": "🛡️ DSM-2026: SISTEMA SEGURO",
+        "project_dsm_desc": "Radar de vigilancia estratosférica avanzado – rastrea aviones, satélites y misiles en tiempo real. Visualización de radar simulada con detección de amenazas, soporte multilingüe e informes de inteligencia descargables.",
+        "project_dsm_price": "$299 USD (pago único)",
+        "project_dsm_status": "✅ Disponible – licencia de por vida, actualizaciones gratuitas",
+        "project_dsm_contact": "Perfecto para demostraciones de seguridad y vigilancia",
         "view_demo": "🎬 Ver demo",
         "demo_screenshot": "Vista previa de la captura (reemplazar con imagen real)",
         "live_demo": "🔗 Demo en vivo",
+        "demo_password_hint": "🔐 Contraseña de demostración: 20082010",
         "request_info": "Solicitar información",
         "donation_title": "💖 Apoye a GlobalInternet.py",
         "donation_text": "Ayúdenos a crecer y seguir construyendo software innovador para Haití y el mundo.",
@@ -632,11 +645,6 @@ lang_dict = {
         "project_chess_price": "20 $ USD (peman inik)",
         "project_chess_status": "✅ Disponib – aksè tout lavi, mizajou gratis",
         "project_chess_contact": "Pafè pou aprann echèk",
-        "project_weapon": "🔫 Deteksyon Zam ak AI",
-        "project_weapon_desc": "Deteksyon an tan reyèl zam kache atravè kamera. Sèvi ak YOLOv8 pou detekte kouto, zam afe, elatriye toupre moun. Gen mòd demo, chaje modèl pèsonalize, rapò PDF, plizyè lang (angle, fransè, panyòl).",
-        "project_weapon_price": "299 $ USD (peman inik)",
-        "project_weapon_status": "✅ Disponib – lisans tout lavi, mizajou gratis",
-        "project_weapon_contact": "Pafè pou lekòl, biznis, sekirite piblik",
         "project_accountant": "🧮 Kontablite Excel AI Avanse",
         "project_accountant_desc": "Swit pwofesyonèl kontablite ak jesyon prè. Swiv lajan k ap antre ak sòti, jere prè (moun ki prete, dat, peman), tablodbò ak balans, ekspòte tout rapò an Excel ak PDF. Plizyè lang (angle, fransè, panyòl).",
         "project_accountant_price": "199 $ USD (peman inik)",
@@ -647,9 +655,15 @@ lang_dict = {
         "project_archives_price": "1,500 $ USD (peman inik)",
         "project_archives_status": "✅ Disponib – gen ladan kòd sous, enstalasyon ak sipò",
         "project_archives_contact": "Ideyal pou achiv gouvènmantal, minis ak enstitisyon",
+        "project_dsm": "🛡️ DSM-2026: SISTÈM SEKIRI",
+        "project_dsm_desc": "Radar siveyans stratosferik avanse – swiv avyon, satelit ak misil an tan reyèl. Afichaj radar simule ak deteksyon menas, plizyè lang, ak rapò entèlijans telechajab.",
+        "project_dsm_price": "299 $ USD (peman inik)",
+        "project_dsm_status": "✅ Disponib – lisans tout lavi, mizajou gratis",
+        "project_dsm_contact": "Pafè pou demonstrasyon sekirite ak siveyans",
         "view_demo": "🎬 Wè demonstrasyon",
         "demo_screenshot": "Aperçu ekran (ranplase ak imaj reyèl)",
         "live_demo": "🔗 Demonstrasyon an dirè",
+        "demo_password_hint": "🔐 Modpas demonstrasyon: 20082010",
         "request_info": "Mande enfòmasyon",
         "donation_title": "💖 Sipòte GlobalInternet.py",
         "donation_text": "Ede nou grandi epi kontinye bati lojisyèl inovatif pou Ayiti ak lemonn.",
@@ -748,7 +762,7 @@ for i, (title, desc) in enumerate(services):
         """, unsafe_allow_html=True)
 
 # -----------------------------
-# Projects Section (10 projects) with LIVE DEMO URLs for first two
+# Projects Section (10 projects – removed Weapon, added DSM, updated Accountant URL)
 # -----------------------------
 st.markdown(f"## {t['projects_title']}")
 st.markdown(f"*{t['projects_sub']}*")
@@ -825,23 +839,13 @@ projects = [
         "screenshot": "https://via.placeholder.com/800x400?text=Chess+Game"
     },
     {
-        "title": t['project_weapon'],
-        "desc": t['project_weapon_desc'],
-        "price": t['project_weapon_price'],
-        "status": t['project_weapon_status'],
-        "contact": t['project_weapon_contact'],
-        "key": "weapon",
-        "demo_url": "https://ghk5zhugzsx956esum3vth.streamlit.app/",
-        "screenshot": "https://via.placeholder.com/800x400?text=Weapon+Detection"
-    },
-    {
         "title": t['project_accountant'],
         "desc": t['project_accountant_desc'],
         "price": t['project_accountant_price'],
         "status": t['project_accountant_status'],
         "contact": t['project_accountant_contact'],
         "key": "accountant",
-        "demo_url": None,
+        "demo_url": "https://kpbhc3s8vhggkeo7yh9gzz.streamlit.app/",
         "screenshot": "https://via.placeholder.com/800x400?text=Accounting+Software"
     },
     {
@@ -853,9 +857,20 @@ projects = [
         "key": "archives",
         "demo_url": None,
         "screenshot": "https://via.placeholder.com/800x400?text=National+Archives"
+    },
+    {
+        "title": t['project_dsm'],
+        "desc": t['project_dsm_desc'],
+        "price": t['project_dsm_price'],
+        "status": t['project_dsm_status'],
+        "contact": t['project_dsm_contact'],
+        "key": "dsm",
+        "demo_url": "https://kbgydmzka2gmk4ubz3pzof.streamlit.app/",
+        "screenshot": "https://via.placeholder.com/800x400?text=DSM+Radar"
     }
 ]
 
+# Display projects in rows of 2
 for i in range(0, len(projects), 2):
     cols = st.columns(2)
     for j, col in enumerate(cols):
@@ -875,11 +890,12 @@ for i in range(0, len(projects), 2):
 
                 if proj.get("demo_url"):
                     st.markdown(f"<a href='{proj['demo_url']}' target='_blank'><button style='background-color:#28a745; color:white; border:none; border-radius:30px; padding:0.5rem 1rem; margin-bottom:0.5rem; width:100%; cursor:pointer;'>{t['live_demo']}</button></a>", unsafe_allow_html=True)
+                    st.caption(t['demo_password_hint'])  # Password reminder below button
                 else:
                     if st.button(f"{t['view_demo']}", key=f"demo_{proj['key']}_{lang}"):
                         with st.expander(f"📸 {proj['title']} – {t['demo_screenshot']}", expanded=True):
                             st.image(proj['screenshot'], use_column_width=True)
-                            st.caption("Replace this placeholder image with an actual screenshot of the app.")
+                            st.caption("Contact us for a live demo URL.")
 
                 if st.button(f"{t['request_info']}", key=f"btn_{proj['key']}_{lang}"):
                     st.info(f"Please contact us at deslandes78@gmail.com or call (509)-47385663 to discuss '{proj['title']}'. Thank you!")
