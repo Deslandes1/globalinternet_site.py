@@ -805,20 +805,19 @@ with col2:
     """, unsafe_allow_html=True)
 
 # -----------------------------
-# CV Section with Photo
+# CV Section with Photo (UPDATED FILENAME)
 # -----------------------------
 st.markdown(f"## {t['cv_title']}")
 
-# Two columns: left for photo, right for intro and summary
 col_photo, col_info = st.columns([1, 2])
 with col_photo:
-    # Try to load the owner's photo from the repository
-    photo_path = "gesner_photo.jpg"  # Change this to your actual photo filename
+    # THE PHOTO FILENAME IS NOW "Gesner Deslandes.JPG"
+    photo_path = "Gesner Deslandes.JPG"
     if os.path.exists(photo_path):
         img = Image.open(photo_path)
         st.image(img, caption="Gesner Deslandes", use_column_width=True, output_format="PNG")
     else:
-        st.info("📸 Owner's photo will appear here once uploaded to the repository as 'gesner_photo.jpg'")
+        st.info(f"Owner's photo will appear here once uploaded to the repository as '{photo_path}'")
 with col_info:
     st.markdown(f"### {t['cv_intro']}")
     st.markdown(t['cv_summary'])
