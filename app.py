@@ -105,6 +105,12 @@ st.markdown("""
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         margin-bottom: 1rem;
     }
+    .office-img {
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        margin: 1rem 0;
+        width: 100%;
+    }
     .stButton button {
         background-color: #ff6b35;
         color: white;
@@ -152,6 +158,7 @@ lang_dict = {
         
         Whether you need a company website, a custom software tool, or a full‑scale online platform – we build it, you own it.
         """,
+        "office_photo_caption": "Our team working at GlobalInternet.py office – a busy day creating software solutions.",
         "founder": "Founder & CEO",
         "founder_name": "Gesner Deslandes",
         "founder_title": "Engineer | AI Enthusiast | Python Expert",
@@ -319,6 +326,7 @@ lang_dict = {
         
         Que vous ayez besoin d'un site web, d'un outil logiciel personnalisé ou d'une plateforme en ligne complète – nous le construisons, vous le possédez.
         """,
+        "office_photo_caption": "Notre équipe travaille au bureau de GlobalInternet.py – une journée chargée à créer des solutions logicielles.",
         "founder": "Fondateur & PDG",
         "founder_name": "Gesner Deslandes",
         "founder_title": "Ingénieur | Passionné d'IA | Expert Python",
@@ -475,6 +483,7 @@ lang_dict = {
         
         Ya sea que necesite un sitio web, una herramienta de software personalizada o una plataforma en línea a gran escala – nosotros lo construimos, usted lo posee.
         """,
+        "office_photo_caption": "Nuestro equipo trabajando en la oficina de GlobalInternet.py – un día ocupado creando soluciones de software.",
         "founder": "Fundador y CEO",
         "founder_name": "Gesner Deslandes",
         "founder_title": "Ingeniero | Entusiasta de IA | Experto en Python",
@@ -631,6 +640,7 @@ lang_dict = {
         
         Kit ou bezwen yon sit wèb, yon zouti lojisyèl sou mezi, oswa yon platfòm sou entènèt gwo echèl – nou konstwi li, se pou ou.
         """,
+        "office_photo_caption": "Ekip nou ap travay nan biwo GlobalInternet.py – yon jounen okipe kreye solisyon lojisyèl.",
         "founder": "Fondatè ak CEO",
         "founder_name": "Gesner Deslandes",
         "founder_title": "Enjenyè | Amater AI | Ekspè Python",
@@ -815,6 +825,13 @@ with col2:
         <p>✉️ deslandes78@gmail.com</p>
     </div>
     """, unsafe_allow_html=True)
+
+# Add office photo after the about text (inside the same column or below)
+office_photo_path = "Busy Office Day.jpeg"
+if os.path.exists(office_photo_path):
+    st.image(office_photo_path, caption=t['office_photo_caption'], use_column_width=True, output_format="JPEG")
+else:
+    st.info(f"Office photo will appear here once uploaded as '{office_photo_path}'")
 
 # -----------------------------
 # CV Section with Photo
