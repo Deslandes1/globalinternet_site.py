@@ -135,6 +135,10 @@ st.markdown("""
         text-align: center;
         margin: 2rem 0;
     }
+    .blue-text {
+        color: #0000FF;
+        font-weight: bold;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -295,6 +299,9 @@ lang_dict = {
         "donation_phone": "📱 (509)-47385663",
         "donation_limit": "Amount limit: Up to 100,000 HTG per transaction",
         "donation_instruction": "Just use the 'Prisme transfer' feature in your Moncash app to send your contribution.",
+        "donation_sendwave_title": "🌍 International transfer via <span class='blue-text'>SendWave</span>",
+        "donation_sendwave_instruction": "Send money directly to our phone number using the SendWave app (available worldwide).",
+        "donation_sendwave_phone": "Recipient phone: (509) 4738-5663",
         "donation_bank_title": "🏦 Bank Transfer (UNIBANK US Account)",
         "donation_bank_account": "Account number: 105-2016-16594727",
         "donation_bank_note": "For international transfers, please use SWIFT code UNIBANKUS (or contact us for details).",
@@ -453,6 +460,9 @@ lang_dict = {
         "donation_phone": "📱 (509)-47385663",
         "donation_limit": "Limite de montant : jusqu'à 100 000 HTG par transaction",
         "donation_instruction": "Utilisez la fonction 'Prisme transfer' dans votre application Moncash pour envoyer votre contribution.",
+        "donation_sendwave_title": "🌍 Transfert international via <span class='blue-text'>SendWave</span>",
+        "donation_sendwave_instruction": "Envoyez de l'argent directement à notre numéro de téléphone via l'application SendWave (disponible dans le monde entier).",
+        "donation_sendwave_phone": "Téléphone du bénéficiaire : (509) 4738-5663",
         "donation_bank_title": "🏦 Virement bancaire (Compte UNIBANK US)",
         "donation_bank_account": "Numéro de compte : 105-2016-16594727",
         "donation_bank_note": "Pour les transferts internationaux, utilisez le code SWIFT UNIBANKUS (ou contactez-nous pour plus d'informations).",
@@ -611,6 +621,9 @@ lang_dict = {
         "donation_phone": "📱 (509)-47385663",
         "donation_limit": "Límite de monto: hasta 100,000 HTG por transacción",
         "donation_instruction": "Use la función 'Prisme transfer' en su aplicación Moncash para enviar su contribución.",
+        "donation_sendwave_title": "🌍 Transferencia internacional vía <span class='blue-text'>SendWave</span>",
+        "donation_sendwave_instruction": "Envíe dinero directamente a nuestro número de teléfono usando la aplicación SendWave (disponible en todo el mundo).",
+        "donation_sendwave_phone": "Teléfono del beneficiario: (509) 4738-5663",
         "donation_bank_title": "🏦 Transferencia bancaria (Cuenta UNIBANK US)",
         "donation_bank_account": "Número de cuenta: 105-2016-16594727",
         "donation_bank_note": "Para transferencias internacionales, utilice el código SWIFT UNIBANKUS (o contáctenos para más detalles).",
@@ -769,6 +782,9 @@ lang_dict = {
         "donation_phone": "📱 (509)-47385663",
         "donation_limit": "Limit kantite lajan : jiska 100,000 HTG pou chak tranzaksyon",
         "donation_instruction": "Sèvi ak fonksyon 'Prisme transfer' nan aplikasyon Moncash ou pou voye kontribisyon ou.",
+        "donation_sendwave_title": "🌍 Transfè entènasyonal via <span class='blue-text'>SendWave</span>",
+        "donation_sendwave_instruction": "Voye lajan dirèkteman nan nimewo telefòn nou an lè w itilize aplikasyon SendWave (disponib atravè lemonn).",
+        "donation_sendwave_phone": "Nimewo moun k ap resevwa: (509) 4738-5663",
         "donation_bank_title": "🏦 Vireman labank (Compte UNIBANK US)",
         "donation_bank_account": "Nimewo kont: 105-2016-16594727",
         "donation_bank_note": "Pou transfè entènasyonal, sèvi ak kòd SWIFT UNIBANKUS (oswa kontakte nou pou plis detay).",
@@ -886,7 +902,6 @@ st.divider()
 # -----------------------------
 st.markdown(f"## {t['services_title']}")
 services = t['services']
-# Display services in 3 columns (automatically wraps)
 cols = st.columns(3)
 for i, (title, desc) in enumerate(services):
     with cols[i % 3]:
@@ -1047,7 +1062,7 @@ for i in range(0, len(projects), 2):
                     st.info(f"Please contact us at deslandes78@gmail.com or call (509)-47385663 to discuss '{proj['title']}'. Thank you!")
 
 # -----------------------------
-# Donation Section (UPDATED with UNIBANK account)
+# Donation Section (UPDATED with SendWave)
 # -----------------------------
 st.markdown(f"## {t['donation_title']}")
 st.markdown(f"""
@@ -1059,6 +1074,10 @@ st.markdown(f"""
     <p style="font-size:1.5rem; font-weight:bold;">{t['donation_phone']}</p>
     <p><strong>{t['donation_limit']}</strong></p>
     <p><em>{t['donation_instruction']}</em></p>
+    <br>
+    <p><strong>{t['donation_sendwave_title']}</strong></p>
+    <p>{t['donation_sendwave_instruction']}</p>
+    <p style="font-size:1.2rem; font-weight:bold;">{t['donation_sendwave_phone']}</p>
     <br>
     <p><strong>{t['donation_bank_title']}</strong></p>
     <p style="font-size:1.2rem; font-weight:bold;">{t['donation_bank_account']}</p>
