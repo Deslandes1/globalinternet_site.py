@@ -212,7 +212,8 @@ lang_dict = {
             ("🗳️ Election & Voting Software", "Secure, multi‑language, live results – like our Haiti system."),
             ("📊 Business Dashboards", "Real‑time analytics and reporting tools."),
             ("🌐 Website & Web Apps", "Full‑stack solutions deployed online."),
-            ("📦 24‑Hour Delivery", "We work fast – get your software by email, ready to use.")
+            ("📦 24‑Hour Delivery", "We work fast – get your software by email, ready to use."),
+            ("📢 Advertising & Marketing", "Digital campaigns, social media management, AI‑driven targeting, performance reports. From $150 to $1,200 depending on scope.")
         ],
         "projects_title": "🏆 Our Projects & Accomplishments",
         "projects_sub": "Completed software solutions delivered to clients – ready for you to purchase or customize.",
@@ -380,7 +381,8 @@ lang_dict = {
             ("🗳️ Logiciel de vote", "Sécurisé, multilingue, résultats en direct – comme notre système Haïti."),
             ("📊 Tableaux de bord", "Analytique en temps réel et rapports."),
             ("🌐 Sites web et apps", "Solutions complètes déployées en ligne."),
-            ("📦 Livraison 24h", "Nous travaillons vite – recevez votre logiciel par e-mail, prêt à l'emploi.")
+            ("📦 Livraison 24h", "Nous travaillons vite – recevez votre logiciel par e-mail, prêt à l'emploi."),
+            ("📢 Publicité & Marketing", "Campagnes digitales, gestion des réseaux sociaux, ciblage IA, rapports de performance. De 150 à 1 200 USD selon l'étendue.")
         ],
         "projects_title": "🏆 Nos projets et réalisations",
         "projects_sub": "Solutions logicielles complètes livrées aux clients – prêtes à être achetées ou personnalisées.",
@@ -537,7 +539,8 @@ lang_dict = {
             ("🗳️ Software de votación", "Seguro, multilingüe, resultados en vivo – como nuestro sistema Haití."),
             ("📊 Paneles de negocio", "Analítica en tiempo real y herramientas de informes."),
             ("🌐 Sitios web y apps", "Soluciones full‑stack desplegadas en línea."),
-            ("📦 Entrega 24h", "Trabajamos rápido – reciba su software por correo, listo para usar.")
+            ("📦 Entrega 24h", "Trabajamos rápido – reciba su software por correo, listo para usar."),
+            ("📢 Publicidad & Marketing", "Campañas digitales, gestión de redes sociales, segmentación con IA, informes de rendimiento. Desde $150 hasta $1,200 según el alcance.")
         ],
         "projects_title": "🏆 Nuestros proyectos y logros",
         "projects_sub": "Soluciones de software completas entregadas a clientes – listas para comprar o personalizar.",
@@ -694,7 +697,8 @@ lang_dict = {
             ("🗳️ Lojisyèl vòt", "Sekirize, plizyè lang, rezilta an dirè – tankou sistèm Ayiti nou an."),
             ("📊 Tablodbò biznis", "Analiz an tan reyèl ak zouti rapò."),
             ("🌐 Sit wèb ak aplikasyon", "Solisyon full‑stack ki deplwaye sou entènèt."),
-            ("📦 Livrezon 24 èdtan", "Nou travay vit – resevwa lojisyèl ou pa imèl, pare pou itilize.")
+            ("📦 Livrezon 24 èdtan", "Nou travay vit – resevwa lojisyèl ou pa imèl, pare pou itilize."),
+            ("📢 Piblisite & Maketing", "Kampay dijital, jesyon rezo sosyal, vize AI, rapò pèfòmans. Soti $150 rive $1,200 selon pakè a.")
         ],
         "projects_title": "🏆 Pwojè ak reyalizasyon nou yo",
         "projects_sub": "Solisyon lojisyèl konplè ki te livré bay kliyan – pare pou achte oswa pèsonalize.",
@@ -882,6 +886,7 @@ st.divider()
 # -----------------------------
 st.markdown(f"## {t['services_title']}")
 services = t['services']
+# Display services in 3 columns (automatically wraps)
 cols = st.columns(3)
 for i, (title, desc) in enumerate(services):
     with cols[i % 3]:
