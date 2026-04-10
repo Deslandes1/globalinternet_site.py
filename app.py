@@ -287,6 +287,9 @@ lang_dict = {
         "donation_phone": "📱 (509)-47385663",
         "donation_limit": "Amount limit: Up to 100,000 HTG per transaction",
         "donation_instruction": "Just use the 'Prisme transfer' feature in your Moncash app to send your contribution.",
+        "donation_bank_title": "🏦 Bank Transfer (UNIBANK US Account)",
+        "donation_bank_account": "Account number: 105-2016-16594727",
+        "donation_bank_note": "For international transfers, please use SWIFT code UNIBANKUS (or contact us for details).",
         "donation_future": "🔜 Coming soon: Bank‑to‑bank transfers in USD and HTG (international and local).",
         "donation_button": "💸 I've sent my donation – notify me",
         "donation_thanks": "Thank you so much! We will confirm receipt within 24 hours. Your support means the world to us! 🇭🇹",
@@ -440,6 +443,9 @@ lang_dict = {
         "donation_phone": "📱 (509)-47385663",
         "donation_limit": "Limite de montant : jusqu'à 100 000 HTG par transaction",
         "donation_instruction": "Utilisez la fonction 'Prisme transfer' dans votre application Moncash pour envoyer votre contribution.",
+        "donation_bank_title": "🏦 Virement bancaire (Compte UNIBANK US)",
+        "donation_bank_account": "Numéro de compte : 105-2016-16594727",
+        "donation_bank_note": "Pour les transferts internationaux, utilisez le code SWIFT UNIBANKUS (ou contactez-nous pour plus d'informations).",
         "donation_future": "🔜 Bientôt : virements bancaires en USD et HTG (internationaux et locaux).",
         "donation_button": "💸 J'ai envoyé mon don – prévenez‑moi",
         "donation_thanks": "Merci infiniment ! Nous confirmerons la réception sous 24 heures. Votre soutien est inestimable ! 🇭🇹",
@@ -593,6 +599,9 @@ lang_dict = {
         "donation_phone": "📱 (509)-47385663",
         "donation_limit": "Límite de monto: hasta 100,000 HTG por transacción",
         "donation_instruction": "Use la función 'Prisme transfer' en su aplicación Moncash para enviar su contribución.",
+        "donation_bank_title": "🏦 Transferencia bancaria (Cuenta UNIBANK US)",
+        "donation_bank_account": "Número de cuenta: 105-2016-16594727",
+        "donation_bank_note": "Para transferencias internacionales, utilice el código SWIFT UNIBANKUS (o contáctenos para más detalles).",
         "donation_future": "🔜 Próximamente: transferencias bancarias en USD y HTG (internacionales y locales).",
         "donation_button": "💸 Ya envié mi donación – notifíquenme",
         "donation_thanks": "¡Muchas gracias! Confirmaremos la recepción en 24 horas. ¡Su apoyo es invaluable! 🇭🇹",
@@ -746,6 +755,9 @@ lang_dict = {
         "donation_phone": "📱 (509)-47385663",
         "donation_limit": "Limit kantite lajan : jiska 100,000 HTG pou chak tranzaksyon",
         "donation_instruction": "Sèvi ak fonksyon 'Prisme transfer' nan aplikasyon Moncash ou pou voye kontribisyon ou.",
+        "donation_bank_title": "🏦 Vireman labank (Compte UNIBANK US)",
+        "donation_bank_account": "Nimewo kont: 105-2016-16594727",
+        "donation_bank_note": "Pou transfè entènasyonal, sèvi ak kòd SWIFT UNIBANKUS (oswa kontakte nou pou plis detay).",
         "donation_future": "🔜 Byento : transfè labank an USD ak HTG (entènasyonal ak lokal).",
         "donation_button": "💸 Mwen voye don an – notifye m",
         "donation_thanks": "Mèsi anpil! N ap konfime resepsyon nan 24 èdtan. Sipò ou gen anpil valè pou nou! 🇭🇹",
@@ -805,13 +817,12 @@ with col2:
     """, unsafe_allow_html=True)
 
 # -----------------------------
-# CV Section with Photo (UPDATED FILENAME)
+# CV Section with Photo
 # -----------------------------
 st.markdown(f"## {t['cv_title']}")
 
 col_photo, col_info = st.columns([1, 2])
 with col_photo:
-    # THE PHOTO FILENAME IS NOW "Gesner Deslandes.JPG"
     photo_path = "Gesner Deslandes.JPG"
     if os.path.exists(photo_path):
         img = Image.open(photo_path)
@@ -1014,7 +1025,7 @@ for i in range(0, len(projects), 2):
                     st.info(f"Please contact us at deslandes78@gmail.com or call (509)-47385663 to discuss '{proj['title']}'. Thank you!")
 
 # -----------------------------
-# Donation Section
+# Donation Section (UPDATED with UNIBANK account)
 # -----------------------------
 st.markdown(f"## {t['donation_title']}")
 st.markdown(f"""
@@ -1026,6 +1037,10 @@ st.markdown(f"""
     <p style="font-size:1.5rem; font-weight:bold;">{t['donation_phone']}</p>
     <p><strong>{t['donation_limit']}</strong></p>
     <p><em>{t['donation_instruction']}</em></p>
+    <br>
+    <p><strong>{t['donation_bank_title']}</strong></p>
+    <p style="font-size:1.2rem; font-weight:bold;">{t['donation_bank_account']}</p>
+    <p><em>{t['donation_bank_note']}</em></p>
     <br>
     <p><strong>{t['donation_future']}</strong></p>
 </div>
