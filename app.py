@@ -87,6 +87,17 @@ st.markdown("""
         color: #ff6b35;
         margin: 0.5rem 0;
     }
+    .team-card {
+        background-color: #f8f9fa;
+        border-radius: 15px;
+        padding: 1rem;
+        text-align: center;
+        transition: transform 0.3s;
+        height: 100%;
+    }
+    .team-card:hover { transform: translateY(-5px); }
+    .team-card h4 { color: #1e3c72; margin-bottom: 0.2rem; }
+    .team-card p { color: #666; font-size: 0.9rem; margin-bottom: 0.5rem; }
     .stButton button {
         background-color: #ff6b35;
         color: white;
@@ -172,6 +183,15 @@ lang_dict = {
         - High School Graduate
         """,
         "cv_references": "📞 References available upon request.",
+        "team_title": "👥 Our Team",
+        "team_sub": "Meet the talented people behind GlobalInternet.py – hired April 2026.",
+        "team_members": [
+            {"name": "Gesner Deslandes", "role": "Founder & CEO", "since": "2021"},
+            {"name": "Gesner Junior Deslandes", "role": "Assistant to CEO", "since": "April 2026"},
+            {"name": "Roosevelt Deslandes", "role": "Python Programmer", "since": "April 2026"},
+            {"name": "Sebastien Stephane Deslandes", "role": "Python Programmer", "since": "April 2026"},
+            {"name": "Zendaya Christelle Deslandes", "role": "Secretary", "since": "April 2026"}
+        ],
         "services_title": "⚙️ Our Services",
         "services": [
             ("🐍 Custom Python Development", "Tailored scripts, automation, backend systems."),
@@ -243,7 +263,7 @@ lang_dict = {
         "project_dsm_price": "$299 USD (one‑time fee)",
         "project_dsm_status": "✅ Available now – lifetime license, free updates",
         "project_dsm_contact": "Perfect for surveillance and security demonstrations",
-        # Project 11 – BUSINESS INTELLIGENCE DASHBOARD (NEW)
+        # Project 11 – BI DASHBOARD
         "project_bi": "📊 Business Intelligence Dashboard",
         "project_bi_desc": "Real‑time analytics dashboard for companies. Connect SQL, Excel, CSV – visualize KPIs, sales trends, inventory, and regional performance. Fully interactive with date filters and downloadable CSV reports. Multi‑language (English, French, Spanish, Kreyòl).",
         "project_bi_price": "$1,200 USD (one‑time fee)",
@@ -327,6 +347,15 @@ lang_dict = {
         - Diplômé du secondaire
         """,
         "cv_references": "📞 Références disponibles sur demande.",
+        "team_title": "👥 Notre équipe",
+        "team_sub": "Rencontrez les talents derrière GlobalInternet.py – embauchés en avril 2026.",
+        "team_members": [
+            {"name": "Gesner Deslandes", "role": "Fondateur & PDG", "since": "2021"},
+            {"name": "Gesner Junior Deslandes", "role": "Assistant du PDG", "since": "Avril 2026"},
+            {"name": "Roosevelt Deslandes", "role": "Programmeur Python", "since": "Avril 2026"},
+            {"name": "Sebastien Stephane Deslandes", "role": "Programmeur Python", "since": "Avril 2026"},
+            {"name": "Zendaya Christelle Deslandes", "role": "Secrétaire", "since": "Avril 2026"}
+        ],
         "services_title": "⚙️ Nos services",
         "services": [
             ("🐍 Développement Python sur mesure", "Scripts personnalisés, automatisation, backends."),
@@ -388,7 +417,6 @@ lang_dict = {
         "project_dsm_price": "299 $ USD (paiement unique)",
         "project_dsm_status": "✅ Disponible – licence à vie, mises à jour gratuites",
         "project_dsm_contact": "Parfait pour les démonstrations de sécurité et de surveillance",
-        # Project 11 – BI Dashboard (French)
         "project_bi": "📊 Tableau de bord décisionnel",
         "project_bi_desc": "Tableau de bord analytique en temps réel pour entreprises. Connectez SQL, Excel, CSV – visualisez KPI, tendances des ventes, inventaire et performances régionales. Entièrement interactif avec filtres de dates et rapports CSV téléchargeables. Multilingue (anglais, français, espagnol, kreyòl).",
         "project_bi_price": "1 200 $ USD (paiement unique)",
@@ -472,6 +500,15 @@ lang_dict = {
         - Graduado de secundaria
         """,
         "cv_references": "📞 Referencias disponibles bajo solicitud.",
+        "team_title": "👥 Nuestro equipo",
+        "team_sub": "Conoce a los talentos detrás de GlobalInternet.py – contratados en abril de 2026.",
+        "team_members": [
+            {"name": "Gesner Deslandes", "role": "Fundador y CEO", "since": "2021"},
+            {"name": "Gesner Junior Deslandes", "role": "Asistente del CEO", "since": "Abril 2026"},
+            {"name": "Roosevelt Deslandes", "role": "Programador Python", "since": "Abril 2026"},
+            {"name": "Sebastien Stephane Deslandes", "role": "Programador Python", "since": "Abril 2026"},
+            {"name": "Zendaya Christelle Deslandes", "role": "Secretaria", "since": "Abril 2026"}
+        ],
         "services_title": "⚙️ Nuestros servicios",
         "services": [
             ("🐍 Desarrollo Python personalizado", "Scripts a medida, automatización, backends."),
@@ -533,7 +570,6 @@ lang_dict = {
         "project_dsm_price": "$299 USD (pago único)",
         "project_dsm_status": "✅ Disponible – licencia de por vida, actualizaciones gratuitas",
         "project_dsm_contact": "Perfecto para demostraciones de seguridad y vigilancia",
-        # Project 11 – BI Dashboard (Spanish)
         "project_bi": "📊 Panel de Inteligencia de Negocios",
         "project_bi_desc": "Panel de análisis en tiempo real para empresas. Conecte SQL, Excel, CSV – visualice KPI, tendencias de ventas, inventario y rendimiento regional. Totalmente interactivo con filtros de fecha e informes CSV descargables. Multilingüe (inglés, francés, español, kreyòl).",
         "project_bi_price": "$1,200 USD (pago único)",
@@ -617,6 +653,15 @@ lang_dict = {
         - Diplome lekòl segondè
         """,
         "cv_references": "📞 Referans disponib sou demand.",
+        "team_title": "👥 Ekip nou an",
+        "team_sub": "Rankontre talan ki dèyè GlobalInternet.py – anboche avril 2026.",
+        "team_members": [
+            {"name": "Gesner Deslandes", "role": "Fondatè ak CEO", "since": "2021"},
+            {"name": "Gesner Junior Deslandes", "role": "Asistan CEO", "since": "Avril 2026"},
+            {"name": "Roosevelt Deslandes", "role": "Pwogramè Python", "since": "Avril 2026"},
+            {"name": "Sebastien Stephane Deslandes", "role": "Pwogramè Python", "since": "Avril 2026"},
+            {"name": "Zendaya Christelle Deslandes", "role": "Sekretè", "since": "Avril 2026"}
+        ],
         "services_title": "⚙️ Sèvis nou yo",
         "services": [
             ("🐍 Devlopman Python sou mezi", "Script adapte, otomatizasyon, sistèm bak."),
@@ -678,7 +723,6 @@ lang_dict = {
         "project_dsm_price": "299 $ USD (peman inik)",
         "project_dsm_status": "✅ Disponib – lisans tout lavi, mizajou gratis",
         "project_dsm_contact": "Pafè pou demonstrasyon sekirite ak siveyans",
-        # Project 11 – BI Dashboard (Haitian Creole)
         "project_bi": "📊 Tablodbò Entelijan Biznis",
         "project_bi_desc": "Tablodbò analiz an tan reyèl pou konpayi yo. Konekte SQL, Excel, CSV – visualize KPI, tandans lavant, envantè ak pèfòmans rejyonal. Totalman entèaktif ak filtè dat ak rapò CSV telechajab. Plizyè lang (angle, franse, panyòl, kreyòl).",
         "project_bi_price": "1,200 $ USD (peman inik)",
@@ -771,6 +815,24 @@ st.caption(t['cv_references'])
 st.divider()
 
 # -----------------------------
+# Team Section (NEW)
+# -----------------------------
+st.markdown(f"## {t['team_title']}")
+st.markdown(f"*{t['team_sub']}*")
+team = t['team_members']
+cols = st.columns(len(team))
+for idx, member in enumerate(team):
+    with cols[idx]:
+        st.markdown(f"""
+        <div class="team-card">
+            <h4>{member['name']}</h4>
+            <p>{member['role']}</p>
+            <p><small>📅 {member['since']}</small></p>
+        </div>
+        """, unsafe_allow_html=True)
+st.divider()
+
+# -----------------------------
 # Services Section
 # -----------------------------
 st.markdown(f"## {t['services_title']}")
@@ -786,7 +848,7 @@ for i, (title, desc) in enumerate(services):
         """, unsafe_allow_html=True)
 
 # -----------------------------
-# Projects Section (11 projects – including new BI Dashboard)
+# Projects Section (11 projects – including BI Dashboard)
 # -----------------------------
 st.markdown(f"## {t['projects_title']}")
 st.markdown(f"*{t['projects_sub']}*")
