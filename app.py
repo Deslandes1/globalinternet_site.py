@@ -219,30 +219,36 @@ lang_dict = {
         "project_scraper_price": "$500 – $2,000 (depends on complexity)",
         "project_scraper_status": "✅ Available now",
         "project_scraper_contact": "Tell us your data source and we'll quote",
-        # Project 7 – CHESS APP WITH LIVE DEMO LINK
+        # Project 7 – CHESS APP
         "project_chess": "♟️ Play Chess Against the Machine",
         "project_chess_desc": "Educational chess game with AI opponent (3 difficulty levels). Every move is explained – learn tactics like forks, pins, and discovered checks. Includes demo mode, move dashboard, and full game report download. Multi‑language (English, French, Spanish, Kreyòl).",
         "project_chess_price": "$20 USD (one‑time fee)",
         "project_chess_status": "✅ Available now – lifetime access, free updates",
         "project_chess_contact": "Perfect for learning chess",
-        # Project 8
+        # Project 8 – ACCOUNTANT
         "project_accountant": "🧮 Accountant Excel Advanced AI",
         "project_accountant_desc": "Professional accounting and loan management suite. Track cash income/expenses, manage loans (borrowers, due dates, payments), dashboard with balance, export all reports to Excel and PDF. Multi‑language (English, French, Spanish). Password protected.",
         "project_accountant_price": "$199 USD (one‑time fee)",
         "project_accountant_status": "✅ Available now – lifetime access, free updates",
         "project_accountant_contact": "Ideal for small businesses, associations, freelancers",
-        # Project 9
+        # Project 9 – ARCHIVES
         "project_archives": "📜 Haiti Archives Nationales Database",
         "project_archives_desc": "Complete national archives database for Haitian citizens. Store NIF (Matricule Fiscale), CIN, Passport, Driver's License, voting history, sponsorships, and document uploads. Minister signature validation, annual password system, multilingual (English, French, Spanish, Kreyòl).",
         "project_archives_price": "$1,500 USD (one‑time fee)",
         "project_archives_status": "✅ Available now – includes source code, setup, and support",
         "project_archives_contact": "Ideal for government archives, ministries, and institutions",
-        # Project 10
+        # Project 10 – DSM
         "project_dsm": "🛡️ DSM-2026: SYSTEM SECURED",
         "project_dsm_desc": "Advanced stratosphere monitoring radar – tracks aircraft, satellites, and missiles in real time. Simulated radar display with threat detection, multi‑language support, and downloadable intelligence reports.",
         "project_dsm_price": "$299 USD (one‑time fee)",
         "project_dsm_status": "✅ Available now – lifetime license, free updates",
         "project_dsm_contact": "Perfect for surveillance and security demonstrations",
+        # Project 11 – BUSINESS INTELLIGENCE DASHBOARD (NEW)
+        "project_bi": "📊 Business Intelligence Dashboard",
+        "project_bi_desc": "Real‑time analytics dashboard for companies. Connect SQL, Excel, CSV – visualize KPIs, sales trends, inventory, and regional performance. Fully interactive with date filters and downloadable CSV reports. Multi‑language (English, French, Spanish, Kreyòl).",
+        "project_bi_price": "$1,200 USD (one‑time fee)",
+        "project_bi_status": "✅ Available now – lifetime access, free updates",
+        "project_bi_contact": "Perfect for businesses, managers, and analysts",
         "view_demo": "🎬 View Demo",
         "demo_screenshot": "Screenshot preview (replace with actual image)",
         "live_demo": "🔗 Live Demo",
@@ -382,6 +388,12 @@ lang_dict = {
         "project_dsm_price": "299 $ USD (paiement unique)",
         "project_dsm_status": "✅ Disponible – licence à vie, mises à jour gratuites",
         "project_dsm_contact": "Parfait pour les démonstrations de sécurité et de surveillance",
+        # Project 11 – BI Dashboard (French)
+        "project_bi": "📊 Tableau de bord décisionnel",
+        "project_bi_desc": "Tableau de bord analytique en temps réel pour entreprises. Connectez SQL, Excel, CSV – visualisez KPI, tendances des ventes, inventaire et performances régionales. Entièrement interactif avec filtres de dates et rapports CSV téléchargeables. Multilingue (anglais, français, espagnol, kreyòl).",
+        "project_bi_price": "1 200 $ USD (paiement unique)",
+        "project_bi_status": "✅ Disponible – accès à vie, mises à jour gratuites",
+        "project_bi_contact": "Parfait pour les entreprises, gestionnaires et analystes",
         "view_demo": "🎬 Voir la démo",
         "demo_screenshot": "Aperçu (remplacer par l'image réelle)",
         "live_demo": "🔗 Démo en direct",
@@ -521,6 +533,12 @@ lang_dict = {
         "project_dsm_price": "$299 USD (pago único)",
         "project_dsm_status": "✅ Disponible – licencia de por vida, actualizaciones gratuitas",
         "project_dsm_contact": "Perfecto para demostraciones de seguridad y vigilancia",
+        # Project 11 – BI Dashboard (Spanish)
+        "project_bi": "📊 Panel de Inteligencia de Negocios",
+        "project_bi_desc": "Panel de análisis en tiempo real para empresas. Conecte SQL, Excel, CSV – visualice KPI, tendencias de ventas, inventario y rendimiento regional. Totalmente interactivo con filtros de fecha e informes CSV descargables. Multilingüe (inglés, francés, español, kreyòl).",
+        "project_bi_price": "$1,200 USD (pago único)",
+        "project_bi_status": "✅ Disponible – acceso de por vida, actualizaciones gratuitas",
+        "project_bi_contact": "Perfecto para empresas, gerentes y analistas",
         "view_demo": "🎬 Ver demo",
         "demo_screenshot": "Vista previa de la captura (reemplazar con imagen real)",
         "live_demo": "🔗 Demo en vivo",
@@ -660,6 +678,12 @@ lang_dict = {
         "project_dsm_price": "299 $ USD (peman inik)",
         "project_dsm_status": "✅ Disponib – lisans tout lavi, mizajou gratis",
         "project_dsm_contact": "Pafè pou demonstrasyon sekirite ak siveyans",
+        # Project 11 – BI Dashboard (Haitian Creole)
+        "project_bi": "📊 Tablodbò Entelijan Biznis",
+        "project_bi_desc": "Tablodbò analiz an tan reyèl pou konpayi yo. Konekte SQL, Excel, CSV – visualize KPI, tandans lavant, envantè ak pèfòmans rejyonal. Totalman entèaktif ak filtè dat ak rapò CSV telechajab. Plizyè lang (angle, franse, panyòl, kreyòl).",
+        "project_bi_price": "1,200 $ USD (peman inik)",
+        "project_bi_status": "✅ Disponib – aksè tout lavi, mizajou gratis",
+        "project_bi_contact": "Pafè pou biznis, manadjè ak analis",
         "view_demo": "🎬 Wè demonstrasyon",
         "demo_screenshot": "Aperçu ekran (ranplase ak imaj reyèl)",
         "live_demo": "🔗 Demonstrasyon an dirè",
@@ -762,7 +786,7 @@ for i, (title, desc) in enumerate(services):
         """, unsafe_allow_html=True)
 
 # -----------------------------
-# Projects Section (10 projects – updated chess with live demo URL)
+# Projects Section (11 projects – including new BI Dashboard)
 # -----------------------------
 st.markdown(f"## {t['projects_title']}")
 st.markdown(f"*{t['projects_sub']}*")
@@ -835,7 +859,7 @@ projects = [
         "status": t['project_chess_status'],
         "contact": t['project_chess_contact'],
         "key": "chess",
-        "demo_url": "https://playchessagainstthemachinemarch2026-hqnjksiy9jemcb4np5pzmp.streamlit.app/",   # <-- ADDED LIVE DEMO LINK
+        "demo_url": "https://playchessagainstthemachinemarch2026-hqnjksiy9jemcb4np5pzmp.streamlit.app/",
         "screenshot": "https://via.placeholder.com/800x400?text=Chess+Game"
     },
     {
@@ -867,6 +891,16 @@ projects = [
         "key": "dsm",
         "demo_url": "https://kbgydmzka2gmk4ubz3pzof.streamlit.app/",
         "screenshot": "https://via.placeholder.com/800x400?text=DSM+Radar"
+    },
+    {
+        "title": t['project_bi'],
+        "desc": t['project_bi_desc'],
+        "price": t['project_bi_price'],
+        "status": t['project_bi_status'],
+        "contact": t['project_bi_contact'],
+        "key": "bi",
+        "demo_url": "https://9enktzu34sxzyvtsymghxd.streamlit.app/",
+        "screenshot": "https://via.placeholder.com/800x400?text=BI+Dashboard"
     }
 ]
 
@@ -890,7 +924,7 @@ for i in range(0, len(projects), 2):
 
                 if proj.get("demo_url"):
                     st.markdown(f"<a href='{proj['demo_url']}' target='_blank'><button style='background-color:#28a745; color:white; border:none; border-radius:30px; padding:0.5rem 1rem; margin-bottom:0.5rem; width:100%; cursor:pointer;'>{t['live_demo']}</button></a>", unsafe_allow_html=True)
-                    st.caption(t['demo_password_hint'])  # Password reminder below button
+                    st.caption(t['demo_password_hint'])
                 else:
                     if st.button(f"{t['view_demo']}", key=f"demo_{proj['key']}_{lang}"):
                         with st.expander(f"📸 {proj['title']} – {t['demo_screenshot']}", expanded=True):
