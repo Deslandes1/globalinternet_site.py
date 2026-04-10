@@ -5,6 +5,8 @@ import ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import requests
+from PIL import Image
+import os
 
 # -----------------------------
 # Page Configuration
@@ -98,6 +100,11 @@ st.markdown("""
     .team-card:hover { transform: translateY(-5px); }
     .team-card h4 { color: #1e3c72; margin-bottom: 0.2rem; }
     .team-card p { color: #666; font-size: 0.9rem; margin-bottom: 0.5rem; }
+    .profile-img {
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        margin-bottom: 1rem;
+    }
     .stButton button {
         background-color: #ff6b35;
         color: white;
@@ -115,7 +122,6 @@ st.markdown("""
         border-radius: 20px;
         margin-top: 3rem;
     }
-    .flag-container { display: flex; justify-content: center; margin: 1rem 0; }
     .donation-box {
         background-color: #fff3e0;
         padding: 1.5rem;
@@ -799,11 +805,23 @@ with col2:
     """, unsafe_allow_html=True)
 
 # -----------------------------
-# CV Section (Owner's full background)
+# CV Section with Photo
 # -----------------------------
 st.markdown(f"## {t['cv_title']}")
-st.markdown(f"### {t['cv_intro']}")
-st.markdown(t['cv_summary'])
+
+# Two columns: left for photo, right for intro and summary
+col_photo, col_info = st.columns([1, 2])
+with col_photo:
+    # Try to load the owner's photo from the repository
+    photo_path = "gesner_photo.jpg"  # Change this to your actual photo filename
+    if os.path.exists(photo_path):
+        img = Image.open(photo_path)
+        st.image(img, caption="Gesner Deslandes", use_column_width=True, output_format="PNG")
+    else:
+        st.info("📸 Owner's photo will appear here once uploaded to the repository as 'gesner_photo.jpg'")
+with col_info:
+    st.markdown(f"### {t['cv_intro']}")
+    st.markdown(t['cv_summary'])
 
 with st.expander(f"{t['cv_experience_title']} (click to view)"):
     st.markdown(t['cv_experience'])
@@ -815,7 +833,7 @@ st.caption(t['cv_references'])
 st.divider()
 
 # -----------------------------
-# Team Section (NEW)
+# Team Section
 # -----------------------------
 st.markdown(f"## {t['team_title']}")
 st.markdown(f"*{t['team_sub']}*")
