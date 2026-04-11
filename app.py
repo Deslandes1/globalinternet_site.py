@@ -287,6 +287,12 @@ lang_dict = {
         "project_bi_price": "$1,200 USD (one‑time fee)",
         "project_bi_status": "✅ Available now – lifetime access, free updates",
         "project_bi_contact": "Perfect for businesses, managers, and analysts",
+        # Project 12 – AI IMAGE CLASSIFIER (NEW)
+        "project_ai_classifier": "🧠 AI Image Classifier (MobileNetV2)",
+        "project_ai_classifier_desc": "Upload an image and the AI identifies it from 1000 categories (animals, vehicles, food, everyday objects). Uses TensorFlow MobileNetV2 pre‑trained on ImageNet. Multi‑language, password protected, demo ready.",
+        "project_ai_classifier_price": "$1,200 USD (one‑time fee)",
+        "project_ai_classifier_status": "✅ Available now – includes source code, setup, and support",
+        "project_ai_classifier_contact": "Perfect for AI demos, education, or product integration",
         "view_demo": "🎬 View Demo",
         "demo_screenshot": "Screenshot preview (replace with actual image)",
         "live_demo": "🔗 Live Demo",
@@ -448,6 +454,11 @@ lang_dict = {
         "project_bi_price": "1 200 $ USD (paiement unique)",
         "project_bi_status": "✅ Disponible – accès à vie, mises à jour gratuites",
         "project_bi_contact": "Parfait pour les entreprises, gestionnaires et analystes",
+        "project_ai_classifier": "🧠 Classificateur d'images IA (MobileNetV2)",
+        "project_ai_classifier_desc": "Téléchargez une image et l'IA l'identifie parmi 1000 catégories (animaux, véhicules, nourriture, objets du quotidien). Utilise TensorFlow MobileNetV2 pré‑entraîné sur ImageNet. Multilingue, protégé par mot de passe, démo prête.",
+        "project_ai_classifier_price": "1 200 $ USD (paiement unique)",
+        "project_ai_classifier_status": "✅ Disponible – comprend le code source, l'installation et le support",
+        "project_ai_classifier_contact": "Parfait pour les démos IA, l'éducation ou l'intégration produit",
         "view_demo": "🎬 Voir la démo",
         "demo_screenshot": "Aperçu (remplacer par l'image réelle)",
         "live_demo": "🔗 Démo en direct",
@@ -609,6 +620,11 @@ lang_dict = {
         "project_bi_price": "$1,200 USD (pago único)",
         "project_bi_status": "✅ Disponible – acceso de por vida, actualizaciones gratuitas",
         "project_bi_contact": "Perfecto para empresas, gerentes y analistas",
+        "project_ai_classifier": "🧠 Clasificador de imágenes IA (MobileNetV2)",
+        "project_ai_classifier_desc": "Sube una imagen y la IA la identifica entre 1000 categorías (animales, vehículos, comida, objetos cotidianos). Usa TensorFlow MobileNetV2 preentrenado en ImageNet. Multilingüe, protegido con contraseña, demo lista.",
+        "project_ai_classifier_price": "$1,200 USD (pago único)",
+        "project_ai_classifier_status": "✅ Disponible – incluye código fuente, configuración y soporte",
+        "project_ai_classifier_contact": "Perfecto para demostraciones de IA, educación o integración de productos",
         "view_demo": "🎬 Ver demo",
         "demo_screenshot": "Vista previa de la captura (reemplazar con imagen real)",
         "live_demo": "🔗 Demo en vivo",
@@ -770,6 +786,11 @@ lang_dict = {
         "project_bi_price": "1,200 $ USD (peman inik)",
         "project_bi_status": "✅ Disponib – aksè tout lavi, mizajou gratis",
         "project_bi_contact": "Pafè pou biznis, manadjè ak analis",
+        "project_ai_classifier": "🧠 Klase Imaj AI (MobileNetV2)",
+        "project_ai_classifier_desc": "Telechaje yon imaj epi AI idantifye li nan 1000 kategori (bèt, machin, manje, objè chak jou). Sèvi ak TensorFlow MobileNetV2 pre‑antrene sou ImageNet. Plizyè lang, pwoteje ak modpas, demo pare.",
+        "project_ai_classifier_price": "1,200 $ USD (peman inik)",
+        "project_ai_classifier_status": "✅ Disponib – gen ladan kòd sous, enstalasyon ak sipò",
+        "project_ai_classifier_contact": "Pafè pou demonstrasyon AI, edikasyon oswa entegrasyon pwodwi",
         "view_demo": "🎬 Wè demonstrasyon",
         "demo_screenshot": "Aperçu ekran (ranplase ak imaj reyèl)",
         "live_demo": "🔗 Demonstrasyon an dirè",
@@ -846,7 +867,7 @@ with col2:
     </div>
     """, unsafe_allow_html=True)
 
-# Add office photo after the about text (inside the same column or below)
+# Add office photo
 office_photo_path = "Busy Office Day.jpeg"
 if os.path.exists(office_photo_path):
     st.image(office_photo_path, caption=t['office_photo_caption'], use_column_width=True, output_format="JPEG")
@@ -854,7 +875,7 @@ else:
     st.info(f"Office photo will appear here once uploaded as '{office_photo_path}'")
 
 # -----------------------------
-# CV Section with Photo
+# CV Section
 # -----------------------------
 st.markdown(f"## {t['cv_title']}")
 
@@ -865,7 +886,7 @@ with col_photo:
         img = Image.open(photo_path)
         st.image(img, caption="Gesner Deslandes", use_column_width=True, output_format="PNG")
     else:
-        st.info(f"Owner's photo will appear here once uploaded to the repository as '{photo_path}'")
+        st.info(f"Owner's photo will appear here once uploaded as '{photo_path}'")
 with col_info:
     st.markdown(f"### {t['cv_intro']}")
     st.markdown(t['cv_summary'])
@@ -913,7 +934,7 @@ for i, (title, desc) in enumerate(services):
         """, unsafe_allow_html=True)
 
 # -----------------------------
-# Projects Section (11 projects – including BI Dashboard)
+# Projects Section (12 projects including the new AI Classifier)
 # -----------------------------
 st.markdown(f"## {t['projects_title']}")
 st.markdown(f"*{t['projects_sub']}*")
@@ -1028,6 +1049,16 @@ projects = [
         "key": "bi",
         "demo_url": "https://9enktzu34sxzyvtsymghxd.streamlit.app/",
         "screenshot": "https://via.placeholder.com/800x400?text=BI+Dashboard"
+    },
+    {
+        "title": t['project_ai_classifier'],
+        "desc": t['project_ai_classifier_desc'],
+        "price": t['project_ai_classifier_price'],
+        "status": t['project_ai_classifier_status'],
+        "contact": t['project_ai_classifier_contact'],
+        "key": "aiclassifier",
+        "demo_url": "https://f9n6ijhw7svgp69ebmtzdw.streamlit.app/",
+        "screenshot": "https://via.placeholder.com/800x400?text=AI+Image+Classifier"
     }
 ]
 
@@ -1062,7 +1093,7 @@ for i in range(0, len(projects), 2):
                     st.info(f"Please contact us at deslandes78@gmail.com or call (509)-47385663 to discuss '{proj['title']}'. Thank you!")
 
 # -----------------------------
-# Donation Section (UPDATED with SendWave)
+# Donation Section
 # -----------------------------
 st.markdown(f"## {t['donation_title']}")
 st.markdown(f"""
