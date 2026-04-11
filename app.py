@@ -163,6 +163,7 @@ lang_dict = {
         Whether you need a company website, a custom software tool, or a full‑scale online platform – we build it, you own it.
         """,
         "office_photo_caption": "Our team working at GlobalInternet.py office – a busy day creating software solutions.",
+        "humanoid_photo_caption": "Gesner Humanoid AI – our digital representative of innovation and software expertise.",
         "founder": "Founder & CEO",
         "founder_name": "Gesner Deslandes",
         "founder_title": "Engineer | AI Enthusiast | Python Expert",
@@ -287,7 +288,7 @@ lang_dict = {
         "project_bi_price": "$1,200 USD (one‑time fee)",
         "project_bi_status": "✅ Available now – lifetime access, free updates",
         "project_bi_contact": "Perfect for businesses, managers, and analysts",
-        # Project 12 – AI IMAGE CLASSIFIER (NEW)
+        # Project 12 – AI IMAGE CLASSIFIER
         "project_ai_classifier": "🧠 AI Image Classifier (MobileNetV2)",
         "project_ai_classifier_desc": "Upload an image and the AI identifies it from 1000 categories (animals, vehicles, food, everyday objects). Uses TensorFlow MobileNetV2 pre‑trained on ImageNet. Multi‑language, password protected, demo ready.",
         "project_ai_classifier_price": "$1,200 USD (one‑time fee)",
@@ -341,6 +342,7 @@ lang_dict = {
         Que vous ayez besoin d'un site web, d'un outil logiciel personnalisé ou d'une plateforme en ligne complète – nous le construisons, vous le possédez.
         """,
         "office_photo_caption": "Notre équipe travaille au bureau de GlobalInternet.py – une journée chargée à créer des solutions logicielles.",
+        "humanoid_photo_caption": "Gesner Humanoid AI – notre représentant numérique de l'innovation et de l'expertise logicielle.",
         "founder": "Fondateur & PDG",
         "founder_name": "Gesner Deslandes",
         "founder_title": "Ingénieur | Passionné d'IA | Expert Python",
@@ -507,6 +509,7 @@ lang_dict = {
         Ya sea que necesite un sitio web, una herramienta de software personalizada o una plataforma en línea a gran escala – nosotros lo construimos, usted lo posee.
         """,
         "office_photo_caption": "Nuestro equipo trabajando en la oficina de GlobalInternet.py – un día ocupado creando soluciones de software.",
+        "humanoid_photo_caption": "Gesner Humanoid AI – nuestro representante digital de innovación y experiencia en software.",
         "founder": "Fundador y CEO",
         "founder_name": "Gesner Deslandes",
         "founder_title": "Ingeniero | Entusiasta de IA | Experto en Python",
@@ -673,6 +676,7 @@ lang_dict = {
         Kit ou bezwen yon sit wèb, yon zouti lojisyèl sou mezi, oswa yon platfòm sou entènèt gwo echèl – nou konstwi li, se pou ou.
         """,
         "office_photo_caption": "Ekip nou ap travay nan biwo GlobalInternet.py – yon jounen okipe kreye solisyon lojisyèl.",
+        "humanoid_photo_caption": "Gesner Humanoid AI – reprezantan dijital nou an pou inovasyon ak ekspètiz lojisyèl.",
         "founder": "Fondatè ak CEO",
         "founder_name": "Gesner Deslandes",
         "founder_title": "Enjenyè | Amater AI | Ekspè Python",
@@ -873,6 +877,13 @@ if os.path.exists(office_photo_path):
     st.image(office_photo_path, caption=t['office_photo_caption'], use_column_width=True, output_format="JPEG")
 else:
     st.info(f"Office photo will appear here once uploaded as '{office_photo_path}'")
+
+# Add Gesner Humanoid AI photo (NEW)
+humanoid_photo_path = "Gesner Humanoid AI .png"
+if os.path.exists(humanoid_photo_path):
+    st.image(humanoid_photo_path, caption=t['humanoid_photo_caption'], use_column_width=True, output_format="PNG")
+else:
+    st.info(f"Gesner Humanoid AI photo will appear here once uploaded as '{humanoid_photo_path}'")
 
 # -----------------------------
 # CV Section
