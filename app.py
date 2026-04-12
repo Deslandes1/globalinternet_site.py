@@ -318,6 +318,12 @@ lang_dict = {
         "project_spark_price": "$1,200 USD (one‑time fee)",
         "project_spark_status": "✅ Available now – lifetime access, free updates",
         "project_spark_contact": "Perfect for data analysts and engineers",
+        # Project 17 – HAITIAN DRONE COMMANDER (NEW)
+        "project_drone": "🚁 Haitian Drone Commander",
+        "project_drone_desc": "Control the first Haitian‑made drone from your phone. Simulation mode, real drone support (MAVLink), arm, takeoff, land, fly to GPS coordinates, live telemetry, command history. Multi‑language, professional dashboard.",
+        "project_drone_price": "$2,000 USD (one‑time fee)",
+        "project_drone_status": "✅ Available now – includes source code, setup, and 1 year support",
+        "project_drone_contact": "Perfect for drone pilots, researchers, and enthusiasts",
         "view_demo": "🎬 View Demo",
         "demo_screenshot": "Screenshot preview (replace with actual image)",
         "live_demo": "🔗 Live Demo",
@@ -505,6 +511,11 @@ lang_dict = {
         "project_spark_price": "1 200 $ USD (paiement unique)",
         "project_spark_status": "✅ Disponible – accès à vie, mises à jour gratuites",
         "project_spark_contact": "Parfait pour les analystes de données et ingénieurs",
+        "project_drone": "🚁 Commandant de drone haïtien",
+        "project_drone_desc": "Contrôlez le premier drone fabriqué en Haïti depuis votre téléphone. Mode simulation, support drone réel (MAVLink), armer, décoller, atterrir, voler vers des coordonnées GPS, télémétrie en direct, historique des commandes. Multilingue, tableau de bord professionnel.",
+        "project_drone_price": "2 000 $ USD (paiement unique)",
+        "project_drone_status": "✅ Disponible – comprend le code source, l'installation et 1 an de support",
+        "project_drone_contact": "Parfait pour les pilotes de drone, chercheurs et passionnés",
         "view_demo": "🎬 Voir la démo",
         "demo_screenshot": "Aperçu (remplacer par l'image réelle)",
         "live_demo": "🔗 Démo en direct",
@@ -692,6 +703,11 @@ lang_dict = {
         "project_spark_price": "$1,200 USD (pago único)",
         "project_spark_status": "✅ Disponible – acceso de por vida, actualizaciones gratuitas",
         "project_spark_contact": "Perfecto para analistas de datos e ingenieros",
+        "project_drone": "🚁 Comandante de dron haitiano",
+        "project_drone_desc": "Controle el primer dron fabricado en Haití desde su teléfono. Modo simulación, soporte de dron real (MAVLink), armar, despegar, aterrizar, volar a coordenadas GPS, telemetría en vivo, historial de comandos. Multilingüe, panel profesional.",
+        "project_drone_price": "$2,000 USD (pago único)",
+        "project_drone_status": "✅ Disponible – incluye código fuente, configuración y 1 año de soporte",
+        "project_drone_contact": "Perfecto para pilotos de dron, investigadores y entusiastas",
         "view_demo": "🎬 Ver demo",
         "demo_screenshot": "Vista previa de la captura (reemplazar con imagen real)",
         "live_demo": "🔗 Demo en vivo",
@@ -879,6 +895,11 @@ lang_dict = {
         "project_spark_price": "1,200 $ USD (peman inik)",
         "project_spark_status": "✅ Disponib – aksè tout lavi, mizajou gratis",
         "project_spark_contact": "Pafè pou analis done ak enjenyè",
+        "project_drone": "🚁 Kòmandan Drone Ayisyen",
+        "project_drone_desc": "Kontwole premye drone ki fèt an Ayiti depi nan telefòn ou. Mòd simulation, sipò drone reyèl (MAVLink), ame, dekole, ateri, vole nan kowòdone GPS, telemetri an dirè, lis kòmand. Plizyè lang, tablodbò pwofesyonèl.",
+        "project_drone_price": "2,000 $ USD (peman inik)",
+        "project_drone_status": "✅ Disponib – gen ladan kòd sous, enstalasyon ak 1 an sipò",
+        "project_drone_contact": "Pafè pou pilòt drone, chèchè ak antouzyast",
         "view_demo": "🎬 Wè demonstrasyon",
         "demo_screenshot": "Aperçu ekran (ranplase ak imaj reyèl)",
         "live_demo": "🔗 Demonstrasyon an dirè",
@@ -1029,7 +1050,7 @@ for i, (title, desc) in enumerate(services):
         """, unsafe_allow_html=True)
 
 # -----------------------------
-# Projects Section (16 projects including all new ones)
+# Projects Section (17 projects including the new drone software)
 # -----------------------------
 st.markdown(f"## {t['projects_title']}")
 st.markdown(f"*{t['projects_sub']}*")
@@ -1162,7 +1183,7 @@ projects = [
         "status": t['project_task_manager_status'],
         "contact": t['project_task_manager_contact'],
         "key": "taskmanager",
-        "demo_url": "https://task-manager-dashboard-react-6mktxsbvhgy8qrhbwyjdzs.streamlit.app/",  # Replace with actual URL if different
+        "demo_url": "https://task-manager-dashboard-react-6mktxsbvhgy8qrhbwyjdzs.streamlit.app/",  # Replace with actual URL
         "screenshot": "https://via.placeholder.com/800x400?text=Task+Manager+Dashboard"
     },
     {
@@ -1194,6 +1215,16 @@ projects = [
         "key": "spark",
         "demo_url": "https://apache-spark-data-proceappr-4pui6brcjmaxfs6flnwapy.streamlit.app/",
         "screenshot": "https://via.placeholder.com/800x400?text=Apache+Spark+Data+Processor"
+    },
+    {
+        "title": t['project_drone'],
+        "desc": t['project_drone_desc'],
+        "price": t['project_drone_price'],
+        "status": t['project_drone_status'],
+        "contact": t['project_drone_contact'],
+        "key": "drone",
+        "demo_url": "https://drone-control-software-4lgtsedbmq4efzvpwxb8r7.streamlit.app/",
+        "screenshot": "https://via.placeholder.com/800x400?text=Haitian+Drone+Commander"
     }
 ]
 
