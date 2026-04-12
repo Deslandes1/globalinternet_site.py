@@ -282,7 +282,7 @@ lang_dict = {
         "project_dsm_price": "$299 USD (one‑time fee)",
         "project_dsm_status": "✅ Available now – lifetime license, free updates",
         "project_dsm_contact": "Perfect for surveillance and security demonstrations",
-        # Project 11 – BI DASHBOARD
+        # Project 11 – BI DASHBOARD (original)
         "project_bi": "📊 Business Intelligence Dashboard",
         "project_bi_desc": "Real‑time analytics dashboard for companies. Connect SQL, Excel, CSV – visualize KPIs, sales trends, inventory, and regional performance. Fully interactive with date filters and downloadable CSV reports. Multi‑language (English, French, Spanish, Kreyòl).",
         "project_bi_price": "$1,200 USD (one‑time fee)",
@@ -294,6 +294,30 @@ lang_dict = {
         "project_ai_classifier_price": "$1,200 USD (one‑time fee)",
         "project_ai_classifier_status": "✅ Available now – includes source code, setup, and support",
         "project_ai_classifier_contact": "Perfect for AI demos, education, or product integration",
+        # Project 13 – TASK MANAGER DASHBOARD (React‑inspired)
+        "project_task_manager": "🗂️ Task Manager Dashboard",
+        "project_task_manager_desc": "Manage tasks, track progress, and analyze productivity with real‑time charts and dark mode. Inspired by React’s component‑based UI. Multi‑language, persistent storage, analytics dashboard.",
+        "project_task_manager_price": "$1,200 USD (one‑time fee)",
+        "project_task_manager_status": "✅ Available now – lifetime access, free updates",
+        "project_task_manager_contact": "Perfect for teams and individuals",
+        # Project 14 – RAY PARALLEL TEXT PROCESSOR
+        "project_ray": "⚡ Ray Parallel Text Processor",
+        "project_ray_desc": "Process text in parallel across multiple CPU cores. Compare sequential vs. parallel execution speed. Inspired by UC Berkeley’s distributed computing framework Ray.",
+        "project_ray_price": "$1,200 USD (one‑time fee)",
+        "project_ray_status": "✅ Available now – lifetime access, free updates",
+        "project_ray_contact": "Great for learning distributed computing",
+        # Project 15 – CASSANDRA DATA DASHBOARD
+        "project_cassandra": "🗄️ Cassandra Data Dashboard",
+        "project_cassandra_desc": "Distributed NoSQL database demo. Add orders, search by customer, and explore real‑time analytics. Modeled after Apache Cassandra (Netflix, Instagram).",
+        "project_cassandra_price": "$1,200 USD (one‑time fee)",
+        "project_cassandra_status": "✅ Available now – lifetime access, free updates",
+        "project_cassandra_contact": "Perfect for understanding NoSQL databases",
+        # Project 16 – APACHE SPARK DATA PROCESSOR
+        "project_spark": "🌊 Apache Spark Data Processor",
+        "project_spark_desc": "Upload a CSV file and run SQL‑like aggregations (group by, sum, avg, count) using Spark. Real‑time results and charts. Inspired by the big‑data engine used by thousands of companies.",
+        "project_spark_price": "$1,200 USD (one‑time fee)",
+        "project_spark_status": "✅ Available now – lifetime access, free updates",
+        "project_spark_contact": "Perfect for data analysts and engineers",
         "view_demo": "🎬 View Demo",
         "demo_screenshot": "Screenshot preview (replace with actual image)",
         "live_demo": "🔗 Live Demo",
@@ -461,6 +485,26 @@ lang_dict = {
         "project_ai_classifier_price": "1 200 $ USD (paiement unique)",
         "project_ai_classifier_status": "✅ Disponible – comprend le code source, l'installation et le support",
         "project_ai_classifier_contact": "Parfait pour les démos IA, l'éducation ou l'intégration produit",
+        "project_task_manager": "🗂️ Tableau de bord des tâches",
+        "project_task_manager_desc": "Gérez vos tâches, suivez votre progression et analysez votre productivité avec des graphiques en temps réel et un mode sombre. Inspiré par l'interface composant/état de React. Multilingue, stockage persistant, tableau de bord analytique.",
+        "project_task_manager_price": "1 200 $ USD (paiement unique)",
+        "project_task_manager_status": "✅ Disponible – accès à vie, mises à jour gratuites",
+        "project_task_manager_contact": "Parfait pour les équipes et les particuliers",
+        "project_ray": "⚡ Processeur de texte parallèle Ray",
+        "project_ray_desc": "Traitez du texte en parallèle sur plusieurs cœurs CPU. Comparez la vitesse d'exécution séquentielle vs parallèle. Inspiré par le framework de calcul distribué Ray de UC Berkeley.",
+        "project_ray_price": "1 200 $ USD (paiement unique)",
+        "project_ray_status": "✅ Disponible – accès à vie, mises à jour gratuites",
+        "project_ray_contact": "Idéal pour apprendre le calcul distribué",
+        "project_cassandra": "🗄️ Tableau de bord Cassandra",
+        "project_cassandra_desc": "Démonstration de base de données NoSQL distribuée. Ajoutez des commandes, recherchez par client et explorez des analyses en temps réel. Modélisé d'après Apache Cassandra (Netflix, Instagram).",
+        "project_cassandra_price": "1 200 $ USD (paiement unique)",
+        "project_cassandra_status": "✅ Disponible – accès à vie, mises à jour gratuites",
+        "project_cassandra_contact": "Parfait pour comprendre les bases de données NoSQL",
+        "project_spark": "🌊 Processeur de données Apache Spark",
+        "project_spark_desc": "Téléchargez un fichier CSV et exécutez des agrégations de type SQL (group by, sum, avg, count) avec Spark. Résultats et graphiques en temps réel. Inspiré par le moteur big data utilisé par des milliers d'entreprises.",
+        "project_spark_price": "1 200 $ USD (paiement unique)",
+        "project_spark_status": "✅ Disponible – accès à vie, mises à jour gratuites",
+        "project_spark_contact": "Parfait pour les analystes de données et ingénieurs",
         "view_demo": "🎬 Voir la démo",
         "demo_screenshot": "Aperçu (remplacer par l'image réelle)",
         "live_demo": "🔗 Démo en direct",
@@ -628,6 +672,26 @@ lang_dict = {
         "project_ai_classifier_price": "$1,200 USD (pago único)",
         "project_ai_classifier_status": "✅ Disponible – incluye código fuente, configuración y soporte",
         "project_ai_classifier_contact": "Perfecto para demostraciones de IA, educación o integración de productos",
+        "project_task_manager": "🗂️ Panel de tareas",
+        "project_task_manager_desc": "Gestiona tareas, sigue el progreso y analiza la productividad con gráficos en tiempo real y modo oscuro. Inspirado en la interfaz de React. Multilingüe, almacenamiento persistente, panel de análisis.",
+        "project_task_manager_price": "$1,200 USD (pago único)",
+        "project_task_manager_status": "✅ Disponible – acceso de por vida, actualizaciones gratuitas",
+        "project_task_manager_contact": "Perfecto para equipos e individuos",
+        "project_ray": "⚡ Procesador de texto paralelo Ray",
+        "project_ray_desc": "Procesa texto en paralelo en múltiples núcleos de CPU. Compara la velocidad de ejecución secuencial vs paralela. Inspirado en el framework Ray de UC Berkeley.",
+        "project_ray_price": "$1,200 USD (pago único)",
+        "project_ray_status": "✅ Disponible – acceso de por vida, actualizaciones gratuitas",
+        "project_ray_contact": "Ideal para aprender computación distribuida",
+        "project_cassandra": "🗄️ Panel de datos Cassandra",
+        "project_cassandra_desc": "Demostración de base de datos NoSQL distribuida. Agrega pedidos, busca por cliente y explora análisis en tiempo real. Modelado según Apache Cassandra (Netflix, Instagram).",
+        "project_cassandra_price": "$1,200 USD (pago único)",
+        "project_cassandra_status": "✅ Disponible – acceso de por vida, actualizaciones gratuitas",
+        "project_cassandra_contact": "Perfecto para entender bases de datos NoSQL",
+        "project_spark": "🌊 Procesador de datos Apache Spark",
+        "project_spark_desc": "Sube un archivo CSV y ejecuta agregaciones tipo SQL (group by, sum, avg, count) con Spark. Resultados y gráficos en tiempo real. Inspirado en el motor big data usado por miles de empresas.",
+        "project_spark_price": "$1,200 USD (pago único)",
+        "project_spark_status": "✅ Disponible – acceso de por vida, actualizaciones gratuitas",
+        "project_spark_contact": "Perfecto para analistas de datos e ingenieros",
         "view_demo": "🎬 Ver demo",
         "demo_screenshot": "Vista previa de la captura (reemplazar con imagen real)",
         "live_demo": "🔗 Demo en vivo",
@@ -795,6 +859,26 @@ lang_dict = {
         "project_ai_classifier_price": "1,200 $ USD (peman inik)",
         "project_ai_classifier_status": "✅ Disponib – gen ladan kòd sous, enstalasyon ak sipò",
         "project_ai_classifier_contact": "Pafè pou demonstrasyon AI, edikasyon oswa entegrasyon pwodwi",
+        "project_task_manager": "🗂️ Tablodbò Jesyon Travay",
+        "project_task_manager_desc": "Jere travay, swiv pwogrè, analize pwodiktivite ak tablo an tan reyèl ak mòd nwa. Enspire pa koòdone ki baze sou eleman React. Plizyè lang, depo ki pèsistan, tablodbò analiz.",
+        "project_task_manager_price": "1,200 $ USD (peman inik)",
+        "project_task_manager_status": "✅ Disponib – aksè tout lavi, mizajou gratis",
+        "project_task_manager_contact": "Pafè pou ekip ak moun endividyèl",
+        "project_ray": "⚡ Pwosesè Tèks Paralèl Ray",
+        "project_ray_desc": "Trete tèks an paralèl sou plizyè kè CPU. Konpare vitès egzekisyon sekansyèl vs paralèl. Enspire pa framework distribisyon Ray UC Berkeley.",
+        "project_ray_price": "1,200 $ USD (peman inik)",
+        "project_ray_status": "✅ Disponib – aksè tout lavi, mizajou gratis",
+        "project_ray_contact": "Ideyal pou aprann distribisyon enfòmatik",
+        "project_cassandra": "🗄️ Tablodbò Done Cassandra",
+        "project_cassandra_desc": "Demostrasyon baz done NoSQL distribiye. Ajoute kòmand, chèche pa kliyan, eksplore analiz an tan reyèl. Modelize daprè Apache Cassandra (Netflix, Instagram).",
+        "project_cassandra_price": "1,200 $ USD (peman inik)",
+        "project_cassandra_status": "✅ Disponib – aksè tout lavi, mizajou gratis",
+        "project_cassandra_contact": "Pafè pou konprann baz done NoSQL",
+        "project_spark": "🌊 Pwosesè Done Apache Spark",
+        "project_spark_desc": "Telechaje yon fichye CSV epi kouri agregasyon tankou SQL (group by, sum, avg, count) ak Spark. Rezilta ak tablo an tan reyèl. Enspire pa motè big data yo itilize pa dè milye de konpayi.",
+        "project_spark_price": "1,200 $ USD (peman inik)",
+        "project_spark_status": "✅ Disponib – aksè tout lavi, mizajou gratis",
+        "project_spark_contact": "Pafè pou analis done ak enjenyè",
         "view_demo": "🎬 Wè demonstrasyon",
         "demo_screenshot": "Aperçu ekran (ranplase ak imaj reyèl)",
         "live_demo": "🔗 Demonstrasyon an dirè",
@@ -878,7 +962,7 @@ if os.path.exists(office_photo_path):
 else:
     st.info(f"Office photo will appear here once uploaded as '{office_photo_path}'")
 
-# Add Gesner Humanoid AI photo (NEW)
+# Add Gesner Humanoid AI photo
 humanoid_photo_path = "Gesner Humanoid AI .png"
 if os.path.exists(humanoid_photo_path):
     st.image(humanoid_photo_path, caption=t['humanoid_photo_caption'], use_column_width=True, output_format="PNG")
@@ -945,7 +1029,7 @@ for i, (title, desc) in enumerate(services):
         """, unsafe_allow_html=True)
 
 # -----------------------------
-# Projects Section (12 projects including the new AI Classifier)
+# Projects Section (16 projects including all new ones)
 # -----------------------------
 st.markdown(f"## {t['projects_title']}")
 st.markdown(f"*{t['projects_sub']}*")
@@ -1070,6 +1154,46 @@ projects = [
         "key": "aiclassifier",
         "demo_url": "https://f9n6ijhw7svgp69ebmtzdw.streamlit.app/",
         "screenshot": "https://via.placeholder.com/800x400?text=AI+Image+Classifier"
+    },
+    {
+        "title": t['project_task_manager'],
+        "desc": t['project_task_manager_desc'],
+        "price": t['project_task_manager_price'],
+        "status": t['project_task_manager_status'],
+        "contact": t['project_task_manager_contact'],
+        "key": "taskmanager",
+        "demo_url": "https://task-manager-dashboard-react-6mktxsbvhgy8qrhbwyjdzs.streamlit.app/",  # Replace with actual URL if different
+        "screenshot": "https://via.placeholder.com/800x400?text=Task+Manager+Dashboard"
+    },
+    {
+        "title": t['project_ray'],
+        "desc": t['project_ray_desc'],
+        "price": t['project_ray_price'],
+        "status": t['project_ray_status'],
+        "contact": t['project_ray_contact'],
+        "key": "ray",
+        "demo_url": "https://parallel-text-proceappr-guqq5nfzysxa9kkx9cg9lx.streamlit.app/",
+        "screenshot": "https://via.placeholder.com/800x400?text=Ray+Parallel+Processor"
+    },
+    {
+        "title": t['project_cassandra'],
+        "desc": t['project_cassandra_desc'],
+        "price": t['project_cassandra_price'],
+        "status": t['project_cassandra_status'],
+        "contact": t['project_cassandra_contact'],
+        "key": "cassandra",
+        "demo_url": "https://apache-cassandra-mcfkzydlc5qgx2wbcacxtu.streamlit.app/",
+        "screenshot": "https://via.placeholder.com/800x400?text=Cassandra+Data+Dashboard"
+    },
+    {
+        "title": t['project_spark'],
+        "desc": t['project_spark_desc'],
+        "price": t['project_spark_price'],
+        "status": t['project_spark_status'],
+        "contact": t['project_spark_contact'],
+        "key": "spark",
+        "demo_url": "https://apache-spark-data-proceappr-4pui6brcjmaxfs6flnwapy.streamlit.app/",
+        "screenshot": "https://via.placeholder.com/800x400?text=Apache+Spark+Data+Processor"
     }
 ]
 
