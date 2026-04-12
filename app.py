@@ -162,7 +162,7 @@ lang_dict = {
         
         Whether you need a company website, a custom software tool, or a full‑scale online platform – we build it, you own it.
         """,
-        "office_photo_caption": "Our team working at GlobalInternet.py office – a busy day creating software solutions.",
+        "office_photo_caption": "Gesner Deslandes talking avatar – introducing GlobalInternet.py",
         "humanoid_photo_caption": "Gesner Humanoid AI – our digital representative of innovation and software expertise.",
         "founder": "Founder & CEO",
         "founder_name": "Gesner Deslandes",
@@ -294,7 +294,7 @@ lang_dict = {
         "project_ai_classifier_price": "$1,200 USD (one‑time fee)",
         "project_ai_classifier_status": "✅ Available now – includes source code, setup, and support",
         "project_ai_classifier_contact": "Perfect for AI demos, education, or product integration",
-        # Project 13 – TASK MANAGER DASHBOARD (React‑inspired)
+        # Project 13 – TASK MANAGER DASHBOARD
         "project_task_manager": "🗂️ Task Manager Dashboard",
         "project_task_manager_desc": "Manage tasks, track progress, and analyze productivity with real‑time charts and dark mode. Inspired by React’s component‑based UI. Multi‑language, persistent storage, analytics dashboard.",
         "project_task_manager_price": "$1,200 USD (one‑time fee)",
@@ -318,7 +318,7 @@ lang_dict = {
         "project_spark_price": "$1,200 USD (one‑time fee)",
         "project_spark_status": "✅ Available now – lifetime access, free updates",
         "project_spark_contact": "Perfect for data analysts and engineers",
-        # Project 17 – HAITIAN DRONE COMMANDER (NEW)
+        # Project 17 – HAITIAN DRONE COMMANDER
         "project_drone": "🚁 Haitian Drone Commander",
         "project_drone_desc": "Control the first Haitian‑made drone from your phone. Simulation mode, real drone support (MAVLink), arm, takeoff, land, fly to GPS coordinates, live telemetry, command history. Multi‑language, professional dashboard.",
         "project_drone_price": "$2,000 USD (one‑time fee)",
@@ -371,7 +371,7 @@ lang_dict = {
         
         Que vous ayez besoin d'un site web, d'un outil logiciel personnalisé ou d'une plateforme en ligne complète – nous le construisons, vous le possédez.
         """,
-        "office_photo_caption": "Notre équipe travaille au bureau de GlobalInternet.py – une journée chargée à créer des solutions logicielles.",
+        "office_photo_caption": "Avatar parlant de Gesner Deslandes – présentation de GlobalInternet.py",
         "humanoid_photo_caption": "Gesner Humanoid AI – notre représentant numérique de l'innovation et de l'expertise logicielle.",
         "founder": "Fondateur & PDG",
         "founder_name": "Gesner Deslandes",
@@ -563,7 +563,7 @@ lang_dict = {
         
         Ya sea que necesite un sitio web, una herramienta de software personalizada o una plataforma en línea a gran escala – nosotros lo construimos, usted lo posee.
         """,
-        "office_photo_caption": "Nuestro equipo trabajando en la oficina de GlobalInternet.py – un día ocupado creando soluciones de software.",
+        "office_photo_caption": "Avatar parlante de Gesner Deslandes – presentando GlobalInternet.py",
         "humanoid_photo_caption": "Gesner Humanoid AI – nuestro representante digital de innovación y experiencia en software.",
         "founder": "Fundador y CEO",
         "founder_name": "Gesner Deslandes",
@@ -755,7 +755,7 @@ lang_dict = {
         
         Kit ou bezwen yon sit wèb, yon zouti lojisyèl sou mezi, oswa yon platfòm sou entènèt gwo echèl – nou konstwi li, se pou ou.
         """,
-        "office_photo_caption": "Ekip nou ap travay nan biwo GlobalInternet.py – yon jounen okipe kreye solisyon lojisyèl.",
+        "office_photo_caption": "Avatar pale Gesner Deslandes – prezantasyon GlobalInternet.py",
         "humanoid_photo_caption": "Gesner Humanoid AI – reprezantan dijital nou an pou inovasyon ak ekspètiz lojisyèl.",
         "founder": "Fondatè ak CEO",
         "founder_name": "Gesner Deslandes",
@@ -976,19 +976,12 @@ with col2:
     </div>
     """, unsafe_allow_html=True)
 
-# Add office photo
-office_photo_path = "Busy Office Day.jpeg"
-if os.path.exists(office_photo_path):
-    st.image(office_photo_path, caption=t['office_photo_caption'], use_column_width=True, output_format="JPEG")
-else:
-    st.info(f"Office photo will appear here once uploaded as '{office_photo_path}'")
-
-# Add Gesner Humanoid AI photo
-humanoid_photo_path = "Gesner Humanoid AI .png"
-if os.path.exists(humanoid_photo_path):
-    st.image(humanoid_photo_path, caption=t['humanoid_photo_caption'], use_column_width=True, output_format="PNG")
-else:
-    st.info(f"Gesner Humanoid AI photo will appear here once uploaded as '{humanoid_photo_path}'")
+# -----------------------------
+# Replace the office photo with the talking avatar video
+# -----------------------------
+video_url = "https://github.com/Deslandes1/Gesner-Deslandes-Avatar/blob/main/avatar_video.mp4.mp4?raw=true"
+st.video(video_url, format="video/mp4", start_time=0)
+st.caption(t['office_photo_caption'])
 
 # -----------------------------
 # CV Section
@@ -1050,7 +1043,7 @@ for i, (title, desc) in enumerate(services):
         """, unsafe_allow_html=True)
 
 # -----------------------------
-# Projects Section (17 projects including the new drone software)
+# Projects Section (17 projects)
 # -----------------------------
 st.markdown(f"## {t['projects_title']}")
 st.markdown(f"*{t['projects_sub']}*")
@@ -1183,7 +1176,7 @@ projects = [
         "status": t['project_task_manager_status'],
         "contact": t['project_task_manager_contact'],
         "key": "taskmanager",
-        "demo_url": "https://task-manager-dashboard-react-6mktxsbvhgy8qrhbwyjdzs.streamlit.app/",  # Replace with actual URL
+        "demo_url": "https://task-manager-dashboard-react-6mktxsbvhgy8qrhbwyjdzs.streamlit.app/",
         "screenshot": "https://via.placeholder.com/800x400?text=Task+Manager+Dashboard"
     },
     {
