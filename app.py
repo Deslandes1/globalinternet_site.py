@@ -266,7 +266,7 @@ lang_dict = {
         "project_chess_contact": "Perfect for learning chess",
         # Project 8 – ACCOUNTANT
         "project_accountant": "🧮 Accountant Excel Advanced AI",
-        "project_accountant_desc": "Professional accounting and loan management suite. Track cash income/expenses, manage loans (borrowers, due dates, payments), dashboard with balance, export all reports to Excel and PDF. Multi‑language (English, French, Spanish). Password protected.",
+        "project_accountant_desc": "Professional accounting and loan management suite. Track cash income/expenses, manage loans (borrowers, due dates, payments), dashboard with balance, export all reports to Excel and PDF. Multi‑language (English, French, Spanish).",
         "project_accountant_price": "$199 USD (one‑time fee)",
         "project_accountant_status": "✅ Available now – lifetime access, free updates",
         "project_accountant_contact": "Ideal for small businesses, associations, freelancers",
@@ -324,6 +324,24 @@ lang_dict = {
         "project_drone_price": "$2,000 USD (one‑time fee)",
         "project_drone_status": "✅ Available now – includes source code, setup, and 1 year support",
         "project_drone_contact": "Perfect for drone pilots, researchers, and enthusiasts",
+        # NEW PROJECT 18 – ENGLISH LEARNING APP
+        "project_english": "🇬🇧 Let's Learn English with Gesner",
+        "project_english_desc": "Interactive English language learning app. Covers vocabulary, grammar, pronunciation, and conversation practice. Multi‑language interface, progress tracking, quizzes, and certificates. Perfect for beginners to intermediate learners.",
+        "project_english_price": "$20 USD (one‑time fee)",
+        "project_english_status": "✅ Available now – free demo access",
+        "project_english_contact": "Try the live demo below",
+        # NEW PROJECT 19 – SPANISH LEARNING APP
+        "project_spanish": "🇪🇸 Let's Learn Spanish with Gesner",
+        "project_spanish_desc": "Complete Spanish language learning platform. Lessons on vocabulary, verb conjugations, listening comprehension, and cultural notes. Includes interactive exercises, speech recognition, and progress dashboard.",
+        "project_spanish_price": "$20 USD (one‑time fee)",
+        "project_spanish_status": "✅ Available now – free demo access",
+        "project_spanish_contact": "Try the live demo below",
+        # NEW PROJECT 20 – PORTUGUESE LEARNING APP
+        "project_portuguese": "🇵🇹 Let's Learn Portuguese with Gesner",
+        "project_portuguese_desc": "Brazilian and European Portuguese learning app. Covers essential phrases, grammar, verb tenses, and real‑life dialogues. Includes flashcards, pronunciation guide, and achievement badges. Multi‑language support.",
+        "project_portuguese_price": "$20 USD (one‑time fee)",
+        "project_portuguese_status": "✅ Available now – free demo access",
+        "project_portuguese_contact": "Try the live demo below",
         "view_demo": "🎬 View Demo",
         "demo_screenshot": "Screenshot preview (replace with actual image)",
         "live_demo": "🔗 Live Demo",
@@ -516,6 +534,24 @@ lang_dict = {
         "project_drone_price": "2 000 $ USD (paiement unique)",
         "project_drone_status": "✅ Disponible – comprend le code source, l'installation et 1 an de support",
         "project_drone_contact": "Parfait pour les pilotes de drone, chercheurs et passionnés",
+        # NEW PROJECT 18 – ENGLISH LEARNING APP
+        "project_english": "🇬🇧 Apprenons l'anglais avec Gesner",
+        "project_english_desc": "Application interactive d'apprentissage de l'anglais. Couvre le vocabulaire, la grammaire, la prononciation et la pratique de la conversation. Interface multilingue, suivi des progrès, quiz et certificats. Parfait pour les débutants aux niveaux intermédiaires.",
+        "project_english_price": "20 $ USD (paiement unique)",
+        "project_english_status": "✅ Disponible – accès démo gratuit",
+        "project_english_contact": "Essayez la démo en direct ci-dessous",
+        # NEW PROJECT 19 – SPANISH LEARNING APP
+        "project_spanish": "🇪🇸 Apprenons l'espagnol avec Gesner",
+        "project_spanish_desc": "Plateforme complète d'apprentissage de l'espagnol. Leçons sur le vocabulaire, les conjugaisons, la compréhension orale et les notes culturelles. Inclut des exercices interactifs, reconnaissance vocale et tableau de bord de progression.",
+        "project_spanish_price": "20 $ USD (paiement unique)",
+        "project_spanish_status": "✅ Disponible – accès démo gratuit",
+        "project_spanish_contact": "Essayez la démo en direct ci-dessous",
+        # NEW PROJECT 20 – PORTUGUESE LEARNING APP
+        "project_portuguese": "🇵🇹 Apprenons le portugais avec Gesner",
+        "project_portuguese_desc": "Application d'apprentissage du portugais brésilien et européen. Couvre les phrases essentielles, la grammaire, les temps verbaux et les dialogues réels. Inclut des flashcards, guide de prononciation et badges de réussite. Multilingue.",
+        "project_portuguese_price": "20 $ USD (paiement unique)",
+        "project_portuguese_status": "✅ Disponible – accès démo gratuit",
+        "project_portuguese_contact": "Essayez la démo en direct ci-dessous",
         "view_demo": "🎬 Voir la démo",
         "demo_screenshot": "Aperçu (remplacer par l'image réelle)",
         "live_demo": "🔗 Démo en direct",
@@ -708,6 +744,24 @@ lang_dict = {
         "project_drone_price": "$2,000 USD (pago único)",
         "project_drone_status": "✅ Disponible – incluye código fuente, configuración y 1 año de soporte",
         "project_drone_contact": "Perfecto para pilotos de dron, investigadores y entusiastas",
+        # NEW PROJECT 18 – ENGLISH LEARNING APP
+        "project_english": "🇬🇧 Aprendamos inglés con Gesner",
+        "project_english_desc": "Aplicación interactiva para aprender inglés. Cubre vocabulario, gramática, pronunciación y práctica de conversación. Interfaz multilingüe, seguimiento de progreso, cuestionarios y certificados. Perfecta para principiantes y niveles intermedios.",
+        "project_english_price": "$20 USD (pago único)",
+        "project_english_status": "✅ Disponible – acceso a demo gratuito",
+        "project_english_contact": "Prueba la demo en vivo abajo",
+        # NEW PROJECT 19 – SPANISH LEARNING APP
+        "project_spanish": "🇪🇸 Aprendamos español con Gesner",
+        "project_spanish_desc": "Plataforma completa para aprender español. Lecciones de vocabulario, conjugaciones verbales, comprensión auditiva y notas culturales. Incluye ejercicios interactivos, reconocimiento de voz y panel de progreso.",
+        "project_spanish_price": "$20 USD (pago único)",
+        "project_spanish_status": "✅ Disponible – acceso a demo gratuito",
+        "project_spanish_contact": "Prueba la demo en vivo abajo",
+        # NEW PROJECT 20 – PORTUGUESE LEARNING APP
+        "project_portuguese": "🇵🇹 Aprendamos portugués con Gesner",
+        "project_portuguese_desc": "Aplicación para aprender portugués brasileño y europeo. Cubre frases esenciales, gramática, tiempos verbales y diálogos reales. Incluye tarjetas de memoria, guía de pronunciación e insignias de logro. Multilingüe.",
+        "project_portuguese_price": "$20 USD (pago único)",
+        "project_portuguese_status": "✅ Disponible – acceso a demo gratuito",
+        "project_portuguese_contact": "Prueba la demo en vivo abajo",
         "view_demo": "🎬 Ver demo",
         "demo_screenshot": "Vista previa de la captura (reemplazar con imagen real)",
         "live_demo": "🔗 Demo en vivo",
@@ -756,7 +810,7 @@ lang_dict = {
         Kit ou bezwen yon sit wèb, yon zouti lojisyèl sou mezi, oswa yon platfòm sou entènèt gwo echèl – nou konstwi li, se pou ou.
         """,
         "office_photo_caption": "Avatar pale Gesner Deslandes – prezantasyon GlobalInternet.py",
-        "humanoid_photo_caption": "Gesner Humanoid AI – reprezantan dijital nou an pou inovasyon ak ekspètiz lojisyèl.",
+        "humanoid_photo_caption": "Gesner Humanoid AI – reprezantan dijital nou an pou inovasyon ak ekspèrtiz lojisyèl.",
         "founder": "Fondatè ak CEO",
         "founder_name": "Gesner Deslandes",
         "founder_title": "Enjenyè | Amater AI | Ekspè Python",
@@ -900,6 +954,24 @@ lang_dict = {
         "project_drone_price": "2,000 $ USD (peman inik)",
         "project_drone_status": "✅ Disponib – gen ladan kòd sous, enstalasyon ak 1 an sipò",
         "project_drone_contact": "Pafè pou pilòt drone, chèchè ak antouzyast",
+        # NEW PROJECT 18 – ENGLISH LEARNING APP
+        "project_english": "🇬🇧 Ann aprann angle ak Gesner",
+        "project_english_desc": "Aplikasyon entèaktif pou aprann angle. Kouvi vokabilè, gramè, pwononsyasyon, ak pratik konvèsasyon. Koòdone miltileng, swivi pwogrè, kesyonè, ak sètifika. Pafè pou debitan rive nivo entèmedyè.",
+        "project_english_price": "20 $ USD (peman inik)",
+        "project_english_status": "✅ Disponib – aksè demo gratis",
+        "project_english_contact": "Eseye demonstrasyon an dirè anba a",
+        # NEW PROJECT 19 – SPANISH LEARNING APP
+        "project_spanish": "🇪🇸 Ann aprann panyòl ak Gesner",
+        "project_spanish_desc": "Platfòm konplè pou aprann panyòl. Leson sou vokabilè, konjigezon vèb, konpreyansyon oditif, ak nòt kiltirèl. Gen ladan egzèsis entèaktif, rekonesans vwa, ak tablodbò pwogrè.",
+        "project_spanish_price": "20 $ USD (peman inik)",
+        "project_spanish_status": "✅ Disponib – aksè demo gratis",
+        "project_spanish_contact": "Eseye demonstrasyon an dirè anba a",
+        # NEW PROJECT 20 – PORTUGUESE LEARNING APP
+        "project_portuguese": "🇵🇹 Ann aprann pòtigè ak Gesner",
+        "project_portuguese_desc": "Aplikasyon aprann pòtigè brezilyen ak Ewòp. Kouvi fraz esansyèl, gramè, tan vèb, ak dyalòg reyèl. Gen ladan kat memwa, gid pwononsyasyon, ak badj siksè. Miltileng.",
+        "project_portuguese_price": "20 $ USD (peman inik)",
+        "project_portuguese_status": "✅ Disponib – aksè demo gratis",
+        "project_portuguese_contact": "Eseye demonstrasyon an dirè anba a",
         "view_demo": "🎬 Wè demonstrasyon",
         "demo_screenshot": "Aperçu ekran (ranplase ak imaj reyèl)",
         "live_demo": "🔗 Demonstrasyon an dirè",
@@ -1043,7 +1115,7 @@ for i, (title, desc) in enumerate(services):
         """, unsafe_allow_html=True)
 
 # -----------------------------
-# Projects Section (17 projects)
+# Projects Section (20 projects)
 # -----------------------------
 st.markdown(f"## {t['projects_title']}")
 st.markdown(f"*{t['projects_sub']}*")
@@ -1218,6 +1290,39 @@ projects = [
         "key": "drone",
         "demo_url": "https://drone-control-software-4lgtsedbmq4efzvpwxb8r7.streamlit.app/",
         "screenshot": "https://via.placeholder.com/800x400?text=Haitian+Drone+Commander"
+    },
+    # NEW PROJECT 18 – ENGLISH LEARNING APP
+    {
+        "title": t['project_english'],
+        "desc": t['project_english_desc'],
+        "price": t['project_english_price'],
+        "status": t['project_english_status'],
+        "contact": t['project_english_contact'],
+        "key": "english",
+        "demo_url": "https://let-s-learn-english-with-gesner-fasbf2hvwsfpkzz9s9oc4f.streamlit.app/",
+        "screenshot": "https://via.placeholder.com/800x400?text=Learn+English+with+Gesner"
+    },
+    # NEW PROJECT 19 – SPANISH LEARNING APP
+    {
+        "title": t['project_spanish'],
+        "desc": t['project_spanish_desc'],
+        "price": t['project_spanish_price'],
+        "status": t['project_spanish_status'],
+        "contact": t['project_spanish_contact'],
+        "key": "spanish",
+        "demo_url": "https://let-s-learn-spanish-with-gesner-twe8na7wraihczvq2lhfkl.streamlit.app/",
+        "screenshot": "https://via.placeholder.com/800x400?text=Learn+Spanish+with+Gesner"
+    },
+    # NEW PROJECT 20 – PORTUGUESE LEARNING APP
+    {
+        "title": t['project_portuguese'],
+        "desc": t['project_portuguese_desc'],
+        "price": t['project_portuguese_price'],
+        "status": t['project_portuguese_status'],
+        "contact": t['project_portuguese_contact'],
+        "key": "portuguese",
+        "demo_url": "https://let-s-learn-portuguese-with-gesner-hqz5b8w8ebgvcrhbtuuxe5.streamlit.app/",
+        "screenshot": "https://via.placeholder.com/800x400?text=Learn+Portuguese+with+Gesner"
     }
 ]
 
