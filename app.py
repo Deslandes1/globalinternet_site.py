@@ -1056,18 +1056,15 @@ st.video(video_url, format="video/mp4", start_time=0)
 st.caption(t['office_photo_caption'])
 
 # -----------------------------
-# CV Section
+# CV Section (Updated with owner video)
 # -----------------------------
 st.markdown(f"## {t['cv_title']}")
 
 col_photo, col_info = st.columns([1, 2])
 with col_photo:
-    photo_path = "Gesner Deslandes.JPG"
-    if os.path.exists(photo_path):
-        img = Image.open(photo_path)
-        st.image(img, caption="Gesner Deslandes", use_column_width=True, output_format="PNG")
-    else:
-        st.info(f"Owner's photo will appear here once uploaded as '{photo_path}'")
+    owner_video_url = "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/Gesner%20Deslandes%20The%20Owner.mp4"
+    st.video(owner_video_url)
+    st.caption("Gesner Deslandes - Owner & Founder")
 with col_info:
     st.markdown(f"### {t['cv_intro']}")
     st.markdown(t['cv_summary'])
