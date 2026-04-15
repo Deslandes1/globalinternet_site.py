@@ -139,6 +139,13 @@ st.markdown("""
         color: #0000FF;
         font-weight: bold;
     }
+    /* Big globe symbol */
+    .big-globe {
+        font-size: 120px;
+        display: block;
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -1017,13 +1024,11 @@ lang = st.sidebar.selectbox(
 t = lang_dict[lang]
 
 # -----------------------------
-# Hero Section
+# Hero Section (with big globe symbol, no flag)
 # -----------------------------
-col1, col2, col3 = st.columns([1, 2, 1])
-with col2:
-    st.image("https://flagcdn.com/w320/ht.png", width=100)
 st.markdown(f"""
 <div class="hero">
+    <span class="big-globe">🌐</span>
     <h1>{t['hero_title']}</h1>
     <p>{t['hero_sub']}</p>
     <p style="font-size:1rem;">{t['hero_desc']}</p>
@@ -1056,15 +1061,18 @@ st.video(video_url, format="video/mp4", start_time=0)
 st.caption(t['office_photo_caption'])
 
 # -----------------------------
-# CV Section (Updated with owner video)
+# CV Section
 # -----------------------------
 st.markdown(f"## {t['cv_title']}")
 
 col_photo, col_info = st.columns([1, 2])
 with col_photo:
-    owner_video_url = "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/Gesner%20Deslandes%20The%20Owner.mp4"
-    st.video(owner_video_url)
-    st.caption("Gesner Deslandes - Owner & Founder")
+    photo_path = "Gesner Deslandes.JPG"
+    if os.path.exists(photo_path):
+        img = Image.open(photo_path)
+        st.image(img, caption="Gesner Deslandes", use_column_width=True, output_format="PNG")
+    else:
+        st.info(f"Owner's photo will appear here once uploaded as '{photo_path}'")
 with col_info:
     st.markdown(f"### {t['cv_intro']}")
     st.markdown(t['cv_summary'])
