@@ -479,7 +479,7 @@ lang_dict = {
         "project_ai_course_price": "$299 USD (one‑time fee)",
         "project_ai_course_status": "✅ Available now – full source code included",
         "project_ai_course_contact": "Contact owner for purchase",
-        # ----- NEW PROJECT 29: Medical Terminology Book -----
+        # ----- Project 29: Medical Terminology Book (already added) -----
         "project_medical_term": "🩺 Medical Terminology Book for Translators",
         "project_medical_term_desc": """
         **Interactive medical terminology training for interpreters and healthcare professionals.**  
@@ -500,6 +500,40 @@ lang_dict = {
         "project_medical_term_price": "$299 USD (one‑time fee)",
         "project_medical_term_status": "✅ Available now – full source code included",
         "project_medical_term_contact": "Contact owner for purchase",
+        # ----- NEW PROJECT 30: Python Coding Course -----
+        "project_python_course": "🐍 Let's Learn Coding through Python with Gesner",
+        "project_python_course_desc": """
+        **Complete Python programming course – from beginner to advanced.**  
+        20 interactive lessons with demo code, 5 practice exercises per lesson, and audio support.
+        
+        📘 **What's inside:**
+        - 20 lessons covering variables, loops, functions, OOP, NumPy, Matplotlib, and more
+        - Each lesson includes: explanation with audio, demo code, 5 unique practice exercises with solutions
+        - Audio support for all text (English, Spanish, French, Chinese, Portuguese)
+        - Final project: build a mini calculator
+        
+        Perfect for students, professionals, and anyone wanting to learn Python. Full source code included.
+        """,
+        "project_python_course_price": "$299 USD (one‑time fee)",
+        "project_python_course_status": "✅ Available now – full source code included",
+        "project_python_course_contact": "Contact owner for purchase",
+        # ----- NEW PROJECT 31: Software & Hardware Course -----
+        "project_hardware_course": "🔌 Let's Learn Software & Hardware with Gesner",
+        "project_hardware_course_desc": """
+        **Connect software with 20 hardware components – build IoT and robotics projects.**  
+        20 lessons covering network cards, Wi‑Fi, Bluetooth, GPS, GPIO, sensors, motors, displays, and more.
+        
+        📘 **What's inside:**
+        - 20 hardware components explained with text, audio, and images
+        - Python code examples for each component
+        - Practice exercises for real hardware interaction
+        - Audio support in English, Spanish, French, Chinese, Portuguese
+        
+        Perfect for engineers, hobbyists, and students learning embedded systems and automation. Full source code included.
+        """,
+        "project_hardware_course_price": "$299 USD (one‑time fee)",
+        "project_hardware_course_status": "✅ Available now – full source code included",
+        "project_hardware_course_contact": "Contact owner for purchase",
         # ----- End of projects -----
         "view_demo": "🎬 View Demo",
         "demo_screenshot": "Screenshot preview (replace with actual image)",
@@ -534,74 +568,41 @@ lang_dict = {
         "footer_pride": "🇭🇹 Proudly Haitian – serving the world with Python and AI 🇭🇹"
     },
     "fr": {
-        # All existing French translations remain the same. Only the new project is added here.
-        # (For brevity, I am not repeating the entire French dictionary – but in your final file, keep all existing French keys.)
-        # The user’s original code had incomplete French for the new project; I am adding the full new project in French.
-        "project_medical_term": "🩺 Livre de Terminologie Médicale pour Traducteurs",
-        "project_medical_term_desc": """
-        **Formation interactive en terminologie médicale pour interprètes et professionnels de santé.**  
-        20 leçons basées sur des conversations réelles médecin‑patient, audio voix natives, et pratique de la traduction.
-        
-        📘 **Contenu :**
-        - 20 leçons avec scénarios médicaux réels
-        - 50+ termes médicaux, acronymes et abréviations par leçon
-        - Audio voix natives pour anglais, espagnol et autres langues
-        - Pratique intégrée de l’interprétation – le médecin parle anglais, le patient parle sa langue maternelle, vous traduisez dans les deux sens
-        - Quiz et suivi de progression pour certifier vos compétences
-        
-        🏥 Parfait pour interprètes médicaux, hôpitaux, cliniques et télémédecine.  
-        Réduit les erreurs, améliore la sécurité des patients et prépare aux examens de certification (CCHI, NBCMI).
-        
-        Code source complet inclus. Livré par email.
-        """,
-        "project_medical_term_price": "299 $ USD (paiement unique)",
-        "project_medical_term_status": "✅ Disponible – code source complet inclus",
-        "project_medical_term_contact": "Contactez le propriétaire pour acheter",
-        # Ensure other French keys (like project_ai_course, etc.) are present in the actual file.
+        # French translations for the three new projects (only these keys added; other keys exist in full file)
+        "project_python_course": "🐍 Apprenons à coder en Python avec Gesner",
+        "project_python_course_desc": "**Cours complet de programmation Python – du débutant à l’avancé.** 20 leçons interactives avec code de démonstration, 5 exercices pratiques par leçon et support audio. Comprend variables, boucles, fonctions, POO, NumPy, Matplotlib, etc. Code source complet inclus.",
+        "project_python_course_price": "299 $ USD (paiement unique)",
+        "project_python_course_status": "✅ Disponible – code source complet inclus",
+        "project_python_course_contact": "Contactez le propriétaire pour acheter",
+        "project_hardware_course": "🔌 Apprenons à connecter logiciel et matériel avec Gesner",
+        "project_hardware_course_desc": "**Connectez un logiciel à 20 composants matériels – projets IoT et robotique.** 20 leçons couvrant cartes réseau, Wi‑Fi, Bluetooth, GPS, GPIO, capteurs, moteurs, écrans, etc. Exemples de code Python, exercices pratiques. Code source complet inclus.",
+        "project_hardware_course_price": "299 $ USD (paiement unique)",
+        "project_hardware_course_status": "✅ Disponible – code source complet inclus",
+        "project_hardware_course_contact": "Contactez le propriétaire pour acheter",
     },
     "es": {
-        "project_medical_term": "🩺 Libro de Terminología Médica para Traductores",
-        "project_medical_term_desc": """
-        **Capacitación interactiva en terminología médica para intérpretes y profesionales de la salud.**  
-        20 lecciones basadas en conversaciones reales médico‑paciente, audio con voz nativa y práctica de traducción.
-        
-        📘 **Contenido:**
-        - 20 lecciones con escenarios médicos reales
-        - 50+ términos médicos, siglas y abreviaturas por lección
-        - Audio con voz nativa para inglés, español y otros idiomas
-        - Práctica integrada de interpretación – el médico habla inglés, el paciente habla su lengua materna, usted traduce en ambos sentidos
-        - Cuestionarios y seguimiento de progreso para certificar sus habilidades
-        
-        🏥 Perfecto para intérpretes médicos, hospitales, clínicas y telemedicina.  
-        Reduce errores, mejora la seguridad del paciente y prepara para exámenes de certificación (CCHI, NBCMI).
-        
-        Código fuente completo incluido. Entregado por correo electrónico.
-        """,
-        "project_medical_term_price": "$299 USD (pago único)",
-        "project_medical_term_status": "✅ Disponible – código fuente completo incluido",
-        "project_medical_term_contact": "Contacte al propietario para comprar",
+        "project_python_course": "🐍 Aprendamos a programar en Python con Gesner",
+        "project_python_course_desc": "**Curso completo de programación Python – desde principiante hasta avanzado.** 20 lecciones interactivas con código de demostración, 5 ejercicios prácticos por lección y soporte de audio. Incluye variables, bucles, funciones, POO, NumPy, Matplotlib, etc. Código fuente completo incluido.",
+        "project_python_course_price": "$299 USD (pago único)",
+        "project_python_course_status": "✅ Disponible – código fuente completo incluido",
+        "project_python_course_contact": "Contacte al propietario para comprar",
+        "project_hardware_course": "🔌 Aprendamos a conectar software y hardware con Gesner",
+        "project_hardware_course_desc": "**Conecte software con 20 componentes de hardware – proyectos IoT y robótica.** 20 lecciones que cubren tarjetas de red, Wi‑Fi, Bluetooth, GPS, GPIO, sensores, motores, pantallas, etc. Ejemplos de código Python, ejercicios prácticos. Código fuente completo incluido.",
+        "project_hardware_course_price": "$299 USD (pago único)",
+        "project_hardware_course_status": "✅ Disponible – código fuente completo incluido",
+        "project_hardware_course_contact": "Contacte al propietario para comprar",
     },
     "ht": {
-        "project_medical_term": "🩺 Liv Tèminoloji Medikal pou Tradiktè",
-        "project_medical_term_desc": """
-        **Fòmasyon entèaktif sou tèminoloji medikal pou entèprèt ak pwofesyonèl sante.**  
-        20 lesyon ki baze sou konvèsasyon reyèl doktè‑pasyan, odyo vwa natif natal, ak pratik tradiksyon.
-        
-        📘 **Sa ki ladan l :**
-        - 20 lesyon ak senaryo medikal reyèl
-        - 50+ tèm medikal, akwonim ak abreviyasyon pa leson
-        - Odyo vwa natif natal pou angle, panyòl ak lòt lang
-        - Pratik entèpretasyon entegre – doktè pale angle, pasyan pale lang li, ou tradui nan tou de sans
-        - Egzamen ak swivi pwogrè pou sètifye konpetans ou yo
-        
-        🏥 Pafè pou entèprèt medikal, lopital, klinik ak télémédecine.  
-        Redui erè, amelyore sekirite pasyan yo ak prepare pou egzamen sètifikasyon (CCHI, NBCMI).
-        
-        Kòd sous konplè enkli. Livre pa imel.
-        """,
-        "project_medical_term_price": "$299 USD (peman inik)",
-        "project_medical_term_status": "✅ Disponib – kòd sous konplè enkli",
-        "project_medical_term_contact": "Kontakte pwopriyetè a pou achte",
+        "project_python_course": "🐍 Annou aprann kode an Python ak Gesner",
+        "project_python_course_desc": "**Kou konplè pwogramasyon Python – soti nan débutan rive nan avanse.** 20 lesyon entèaktif ak kòd demonstrasyon, 5 egzèsis pratik pa lesyon ak sipò odyo. Gen ladan varyab, bouk, fonksyon, Pwogramasyon Oryante Objè, NumPy, Matplotlib, elatriye. Kòd sous konplè enkli.",
+        "project_python_course_price": "$299 USD (peman inik)",
+        "project_python_course_status": "✅ Disponib – kòd sous konplè enkli",
+        "project_python_course_contact": "Kontakte pwopriyetè a pou achte",
+        "project_hardware_course": "🔌 Annou aprann konekte lojisyèl ak pyès medam ak Gesner",
+        "project_hardware_course_desc": "**Konekte lojisyèl ak 20 pyès medam – pwojè IoT ak robotik.** 20 lesyon sou kat rezo, Wi‑Fi, Bluetooth, GPS, GPIO, detèktè, motè, ekran, elatriye. Egzanp kòd Python, egzèsis pratik. Kòd sous konplè enkli.",
+        "project_hardware_course_price": "$299 USD (peman inik)",
+        "project_hardware_course_status": "✅ Disponib – kòd sous konplè enkli",
+        "project_hardware_course_contact": "Kontakte pwopriyetè a pou achte",
     }
 }
 
@@ -706,13 +707,14 @@ for i, (title, desc) in enumerate(services):
         """, unsafe_allow_html=True)
 
 # -----------------------------
-# Projects Section (29 projects now)
+# Projects Section (31 projects)
 # -----------------------------
 st.markdown(f"## {t['projects_title']}")
 st.markdown(f"*{t['projects_sub']}*")
 
-# Build the full projects list with all 29 projects
+# Build the full projects list with all 31 projects
 projects = [
+    # Projects 1-28 (existing, unchanged)
     {"title": t['project_haiti'], "desc": t['project_haiti_desc'], "price": t['project_haiti_price'], "status": t['project_haiti_status'], "contact": t['project_haiti_contact'], "key": "haiti", "demo_url": "https://haiti-online-voting-software-ovcwwwrxbhaxyfcyohappnr.streamlit.app/", "screenshot": "https://via.placeholder.com/800x400?text=Haiti+Voting+Software"},
     {"title": t['project_dashboard'], "desc": t['project_dashboard_desc'], "price": t['project_dashboard_price'], "status": t['project_dashboard_status'], "contact": t['project_dashboard_contact'], "key": "dashboard", "demo_url": None, "screenshot": "https://via.placeholder.com/800x400?text=BI+Dashboard"},
     {"title": t['project_chatbot'], "desc": t['project_chatbot_desc'], "price": t['project_chatbot_price'], "status": t['project_chatbot_status'], "contact": t['project_chatbot_contact'], "key": "chatbot", "demo_url": None, "screenshot": "https://via.placeholder.com/800x400?text=AI+Chatbot"},
@@ -741,8 +743,12 @@ projects = [
     {"title": t['project_french'], "desc": t['project_french_desc'], "price": t['project_french_price'], "status": t['project_french_status'], "contact": t['project_french_contact'], "key": "french", "demo_url": None, "screenshot": "https://via.placeholder.com/800x400?text=Learn+French+with+Gesner"},
     {"title": t['project_mathematics'], "desc": t['project_mathematics_desc'], "price": t['project_mathematics_price'], "status": t['project_mathematics_status'], "contact": t['project_mathematics_contact'], "key": "mathematics", "demo_url": None, "screenshot": "https://via.placeholder.com/800x400?text=Learn+Mathematics+with+Gesner"},
     {"title": t['project_ai_course'], "desc": t['project_ai_course_desc'], "price": t['project_ai_course_price'], "status": t['project_ai_course_status'], "contact": t['project_ai_course_contact'], "key": "aicourse", "demo_url": None, "screenshot": "https://via.placeholder.com/800x400?text=AI+Foundations+Course"},
-    # NEW PROJECT 29: Medical Terminology Book
-    {"title": t['project_medical_term'], "desc": t['project_medical_term_desc'], "price": t['project_medical_term_price'], "status": t['project_medical_term_status'], "contact": t['project_medical_term_contact'], "key": "medicalterm", "demo_url": None, "screenshot": "https://via.placeholder.com/800x400?text=Medical+Terminology+Book"}
+    # Project 29: Medical Terminology Book
+    {"title": t['project_medical_term'], "desc": t['project_medical_term_desc'], "price": t['project_medical_term_price'], "status": t['project_medical_term_status'], "contact": t['project_medical_term_contact'], "key": "medicalterm", "demo_url": None, "screenshot": "https://via.placeholder.com/800x400?text=Medical+Terminology+Book"},
+    # NEW Project 30: Python Coding Course
+    {"title": t['project_python_course'], "desc": t['project_python_course_desc'], "price": t['project_python_course_price'], "status": t['project_python_course_status'], "contact": t['project_python_course_contact'], "key": "pythoncourse", "demo_url": None, "screenshot": "https://via.placeholder.com/800x400?text=Python+Coding+Course"},
+    # NEW Project 31: Software & Hardware Course
+    {"title": t['project_hardware_course'], "desc": t['project_hardware_course_desc'], "price": t['project_hardware_course_price'], "status": t['project_hardware_course_status'], "contact": t['project_hardware_course_contact'], "key": "hardwarecourse", "demo_url": None, "screenshot": "https://via.placeholder.com/800x400?text=Software+and+Hardware+Course"}
 ]
 
 # Display projects in rows of 2
