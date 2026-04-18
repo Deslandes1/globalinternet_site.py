@@ -5,7 +5,6 @@ import ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import requests
-from PIL import Image
 import os
 
 # -----------------------------
@@ -131,7 +130,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # -----------------------------
-# Translation Dictionary (English, French, Spanish, Kreyòl)
+# Translation Dictionary (COMPLETE for all 4 languages)
 # -----------------------------
 lang_dict = {
     "en": {
@@ -479,7 +478,7 @@ lang_dict = {
         "project_ai_course_price": "$299 USD (one‑time fee)",
         "project_ai_course_status": "✅ Available now – full source code included",
         "project_ai_course_contact": "Contact owner for purchase",
-        # ----- Project 29: Medical Terminology Book (already added) -----
+        # ----- Project 29 -----
         "project_medical_term": "🩺 Medical Terminology Book for Translators",
         "project_medical_term_desc": """
         **Interactive medical terminology training for interpreters and healthcare professionals.**  
@@ -500,7 +499,7 @@ lang_dict = {
         "project_medical_term_price": "$299 USD (one‑time fee)",
         "project_medical_term_status": "✅ Available now – full source code included",
         "project_medical_term_contact": "Contact owner for purchase",
-        # ----- NEW PROJECT 30: Python Coding Course -----
+        # ----- Project 30 -----
         "project_python_course": "🐍 Let's Learn Coding through Python with Gesner",
         "project_python_course_desc": """
         **Complete Python programming course – from beginner to advanced.**  
@@ -517,7 +516,7 @@ lang_dict = {
         "project_python_course_price": "$299 USD (one‑time fee)",
         "project_python_course_status": "✅ Available now – full source code included",
         "project_python_course_contact": "Contact owner for purchase",
-        # ----- NEW PROJECT 31: Software & Hardware Course -----
+        # ----- Project 31 -----
         "project_hardware_course": "🔌 Let's Learn Software & Hardware with Gesner",
         "project_hardware_course_desc": """
         **Connect software with 20 hardware components – build IoT and robotics projects.**  
@@ -568,41 +567,793 @@ lang_dict = {
         "footer_pride": "🇭🇹 Proudly Haitian – serving the world with Python and AI 🇭🇹"
     },
     "fr": {
-        # French translations for the three new projects (only these keys added; other keys exist in full file)
+        "hero_title": "GlobalInternet.py",
+        "hero_sub": "Construisez avec Python. Livrez rapidement. Innovez avec l'IA.",
+        "hero_desc": "D'Haïti au monde – des logiciels sur mesure qui fonctionnent en ligne.",
+        "about_title": "👨‍💻 À propos de l'entreprise",
+        "about_text": """
+        **GlobalInternet.py** a été fondé par **Gesner Deslandes** – propriétaire, fondateur et ingénieur principal.  
+        Nous construisons des **logiciels basés sur Python** à la demande pour des clients du monde entier. Comme la Silicon Valley, mais avec une touche haïtienne et des résultats exceptionnels.
+        
+        - 🧠 **Solutions alimentées par l'IA** – chatbots, analyse de données, automatisation  
+        - 🗳️ **Systèmes électoraux complets** – sécurisés, multilingues, en temps réel  
+        - 🌐 **Applications web** – tableaux de bord, outils internes, plateformes en ligne  
+        - 📦 **Livraison complète** – nous vous envoyons le code complet par email et vous guidons lors de l'installation
+        
+        Que vous ayez besoin d'un site web d'entreprise, d'un outil logiciel personnalisé ou d'une plateforme en ligne à grande échelle – nous le construisons, vous le possédez.
+        """,
+        "office_photo_caption": "Avatar parlant de Gesner Deslandes – présentation de GlobalInternet.py",
+        "humanoid_photo_caption": "Gesner Humanoid AI – notre représentant numérique de l'innovation et de l'expertise logicielle.",
+        "founder": "Fondateur et PDG",
+        "founder_name": "Gesner Deslandes",
+        "founder_title": "Ingénieur | Passionné d'IA | Expert Python",
+        "cv_title": "📄 À propos du propriétaire – Gesner Deslandes",
+        "cv_intro": "Constructeur de logiciels Python | Développeur web | Coordinateur technologique",
+        "cv_summary": """
+        Leader et gestionnaire exceptionnellement motivé, engagé envers l'excellence et la précision.  
+        **Compétences clés :** Leadership, Interprétation (anglais, français, créole haïtien), Orientation mécanique, Gestion, Microsoft Office.
+        """,
+        "cv_experience_title": "💼 Expérience professionnelle",
+        "cv_experience": """
+        **Coordinateur technologique** – Orphelinat Be Like Brit (2021–présent)  
+        Configuration des réunions Zoom, maintenance des ordinateurs portables/tablettes, support technique quotidien, assurance d'opérations numériques fluides.
+
+        **PDG et services d'interprétation** – Tourisme personnalisé pour groupes d'ONG, équipes de mission et particuliers.
+
+        **Gestionnaire de parc / répartiteur** – J/P Haitian Relief Organization  
+        Gestion de plus de 20 véhicules, journaux de bord, calendriers de maintenance avec Excel.
+
+        **Interprète médical** – International Child Care  
+        Interprétation médicale précise anglais–français–créole.
+
+        **Chef d'équipe et interprète** – Can‑Do NGO  
+        Direction de projets de reconstruction.
+
+        **Professeur d'anglais** – Be Like Brit (préscolaire à NS4)
+
+        **Traducteur de documents** – United Kingdom Glossary & United States Work‑Rise Company
+        """,
+        "cv_education_title": "🎓 Éducation et formation",
+        "cv_education": """
+        - École de formation professionnelle – Anglais américain  
+        - Institut Diesel d'Haïti – Mécanicien diesel  
+        - Certification en bureautique (octobre 2000)  
+        - Diplômé du secondaire
+        """,
+        "cv_references": "📞 Références disponibles sur demande.",
+        "team_title": "👥 Notre équipe",
+        "team_sub": "Rencontrez les talents derrière GlobalInternet.py – embauchés en avril 2026.",
+        "team_members": [
+            {"name": "Gesner Deslandes", "role": "Fondateur et PDG", "since": "2021"},
+            {"name": "Gesner Junior Deslandes", "role": "Assistant du PDG", "since": "Avril 2026"},
+            {"name": "Roosevelt Deslandes", "role": "Programmeur Python", "since": "Avril 2026"},
+            {"name": "Sebastien Stephane Deslandes", "role": "Programmeur Python", "since": "Avril 2026"},
+            {"name": "Zendaya Christelle Deslandes", "role": "Secrétaire", "since": "Avril 2026"}
+        ],
+        "services_title": "⚙️ Nos services",
+        "services": [
+            ("🐍 Développement Python personnalisé", "Scripts sur mesure, automatisation, systèmes backend."),
+            ("🤖 IA et apprentissage automatique", "Chatbots, modèles prédictifs, analyses de données."),
+            ("🗳️ Logiciel électoral", "Sécurisé, multilingue, résultats en direct – comme notre système Haïti."),
+            ("📊 Tableaux de bord d'entreprise", "Analytique en temps réel et outils de reporting."),
+            ("🌐 Sites web et applications web", "Solutions full‑stack déployées en ligne."),
+            ("📦 Livraison en 24 heures", "Nous travaillons rapidement – recevez votre logiciel par email, prêt à l'emploi."),
+            ("📢 Publicité et marketing", "Campagnes numériques, gestion des réseaux sociaux, ciblage IA, rapports de performance. De 150 $ à 1 200 $ selon la portée.")
+        ],
+        "projects_title": "🏆 Nos projets et réalisations",
+        "projects_sub": "Solutions logicielles complètes livrées aux clients – prêtes à être achetées ou personnalisées.",
+        "project_haiti": "🇭🇹 Logiciel de vote en ligne Haïti",
+        "project_haiti_desc": "Système électoral présidentiel complet avec support multilingue (créole, français, anglais, espagnol), suivi en direct, tableau de bord du président du CEP (gestion des candidats, téléchargement de photos, rapports de progression), scrutin secret et mots de passe modifiables. Utilisé pour les élections nationales.",
+        "project_haiti_price": "2 000 $ USD (paiement unique)",
+        "project_haiti_status": "✅ Disponible – code source, installation et support inclus",
+        "project_haiti_contact": "Contactez le propriétaire pour acheter",
+        "project_dashboard": "📊 Tableau de bord d'intelligence d'affaires",
+        "project_dashboard_desc": "Tableau de bord d'analytique en temps réel pour entreprises. Connectez‑vous à toute base de données (SQL, Excel, CSV) et visualisez KPI, tendances des ventes, inventaire et rapports personnalisés. Entièrement interactif et personnalisable.",
+        "project_dashboard_price": "1 200 $ USD",
+        "project_dashboard_status": "✅ Disponible",
+        "project_dashboard_contact": "Contactez le propriétaire pour acheter",
+        "project_chatbot": "🤖 Chatbot de support client IA",
+        "project_chatbot_desc": "Chatbot intelligent entraîné sur vos données d'entreprise. Répondez aux questions des clients 24/7, réduisez la charge de support. Intègre les sites web, WhatsApp ou Telegram. Construit avec Python et NLP moderne.",
+        "project_chatbot_price": "800 $ USD (basique) / 1 500 $ USD (avancé)",
+        "project_chatbot_status": "✅ Disponible",
+        "project_chatbot_contact": "Contactez le propriétaire pour acheter",
+        "project_school": "🏫 Système de gestion scolaire",
+        "project_school_desc": "Plateforme complète pour écoles : inscription des étudiants, gestion des notes, suivi des présences, portail parents, génération de bulletins et collecte des frais. Rôles multi‑utilisateurs (admin, enseignants, parents).",
+        "project_school_price": "1 500 $ USD",
+        "project_school_status": "✅ Disponible",
+        "project_school_contact": "Contactez le propriétaire pour acheter",
+        "project_pos": "📦 Système d'inventaire et point de vente",
+        "project_pos_desc": "Gestion d'inventaire web avec point de vente pour petites entreprises. Lecture de codes‑barres, alertes de stock, rapports de vente, gestion des fournisseurs. Fonctionne en ligne et hors ligne.",
+        "project_pos_price": "1 000 $ USD",
+        "project_pos_status": "✅ Disponible",
+        "project_pos_contact": "Contactez le propriétaire pour acheter",
+        "project_scraper": "📈 Extracteur web personnalisé et pipeline de données",
+        "project_scraper_desc": "Extraction automatisée de données de n'importe quel site web, nettoyée et livrée en Excel/JSON/CSV. Planification quotidienne, hebdomadaire ou mensuelle. Parfait pour la veille marché, surveillance des prix ou génération de leads.",
+        "project_scraper_price": "500 – 2 000 $ USD (selon complexité)",
+        "project_scraper_status": "✅ Disponible",
+        "project_scraper_contact": "Contactez le propriétaire pour acheter",
+        "project_chess": "♟️ Jouez aux échecs contre la machine",
+        "project_chess_desc": "Jeu d'échecs éducatif avec adversaire IA (3 niveaux de difficulté). Chaque mouvement est expliqué – apprenez les tactiques comme les fourchettes, les clouages et les échecs à la découverte. Inclut mode démo, tableau de bord des mouvements et téléchargement du rapport complet. Multilingue (anglais, français, espagnol, créole).",
+        "project_chess_price": "20 $ USD (paiement unique)",
+        "project_chess_status": "✅ Disponible – accès à vie, mises à jour gratuites",
+        "project_chess_contact": "Contactez le propriétaire pour acheter",
+        "project_accountant": "🧮 Comptable Excel avancé IA",
+        "project_accountant_desc": "Suite comptable et de gestion de prêts professionnelle. Suivi des revenus/dépenses, gestion des prêts (emprunteurs, dates d'échéance, paiements), tableau de bord avec solde, exportation de tous les rapports vers Excel et PDF. Multilingue (anglais, français, espagnol).",
+        "project_accountant_price": "199 $ USD (paiement unique)",
+        "project_accountant_status": "✅ Disponible – accès à vie, mises à jour gratuites",
+        "project_accountant_contact": "Contactez le propriétaire pour acheter",
+        "project_archives": "📜 Base de données des Archives Nationales d'Haïti",
+        "project_archives_desc": "Base de données complète des archives nationales pour les citoyens haïtiens. Stocke NIF (Matricule Fiscale), CIN, Passeport, Permis de conduire, historique de vote, parrainages et téléchargements de documents. Validation de signature ministérielle, système de mot de passe annuel, multilingue (anglais, français, espagnol, créole).",
+        "project_archives_price": "1 500 $ USD (paiement unique)",
+        "project_archives_status": "✅ Disponible – code source, installation et support inclus",
+        "project_archives_contact": "Contactez le propriétaire pour acheter",
+        "project_dsm": "🛡️ DSM-2026: SYSTÈME SÉCURISÉ",
+        "project_dsm_desc": "Radar de surveillance de la stratosphère avancé – suit les avions, satellites et missiles en temps réel. Affichage radar simulé avec détection de menace, support multilingue et rapports de renseignement téléchargeables.",
+        "project_dsm_price": "299 $ USD (paiement unique)",
+        "project_dsm_status": "✅ Disponible – licence à vie, mises à jour gratuites",
+        "project_dsm_contact": "Contactez le propriétaire pour acheter",
+        "project_bi": "📊 Tableau de bord d'intelligence d'affaires",
+        "project_bi_desc": "Tableau de bord d'analytique en temps réel pour entreprises. Connectez SQL, Excel, CSV – visualisez KPI, tendances des ventes, inventaire et performances régionales. Entièrement interactif avec filtres de dates et rapports CSV téléchargeables. Multilingue (anglais, français, espagnol, créole).",
+        "project_bi_price": "1 200 $ USD (paiement unique)",
+        "project_bi_status": "✅ Disponible – accès à vie, mises à jour gratuites",
+        "project_bi_contact": "Contactez le propriétaire pour acheter",
+        "project_ai_classifier": "🧠 Classificateur d'images IA (MobileNetV2)",
+        "project_ai_classifier_desc": "Téléchargez une image et l'IA l'identifie parmi 1000 catégories (animaux, véhicules, nourriture, objets du quotidien). Utilise TensorFlow MobileNetV2 pré‑entraîné sur ImageNet. Multilingue, protégé par mot de passe, démo prête.",
+        "project_ai_classifier_price": "1 200 $ USD (paiement unique)",
+        "project_ai_classifier_status": "✅ Disponible – code source, installation et support inclus",
+        "project_ai_classifier_contact": "Contactez le propriétaire pour acheter",
+        "project_task_manager": "🗂️ Tableau de bord de gestion des tâches",
+        "project_task_manager_desc": "Gérez les tâches, suivez les progrès et analysez la productivité avec des graphiques en temps réel et le mode sombre. Inspiré de l'interface basée sur les composants de React. Multilingue, stockage persistant, tableau de bord analytique.",
+        "project_task_manager_price": "1 200 $ USD (paiement unique)",
+        "project_task_manager_status": "✅ Disponible – accès à vie, mises à jour gratuites",
+        "project_task_manager_contact": "Contactez le propriétaire pour acheter",
+        "project_ray": "⚡ Processeur de texte parallèle Ray",
+        "project_ray_desc": "Traitez du texte en parallèle sur plusieurs cœurs CPU. Comparez la vitesse d'exécution séquentielle vs parallèle. Inspiré du framework de calcul distribué Ray de l'UC Berkeley.",
+        "project_ray_price": "1 200 $ USD (paiement unique)",
+        "project_ray_status": "✅ Disponible – accès à vie, mises à jour gratuites",
+        "project_ray_contact": "Contactez le propriétaire pour acheter",
+        "project_cassandra": "🗄️ Tableau de bord de données Cassandra",
+        "project_cassandra_desc": "Démonstration de base de données NoSQL distribuée. Ajoutez des commandes, recherchez par client et explorez l'analytique en temps réel. Modélisé d'après Apache Cassandra (Netflix, Instagram).",
+        "project_cassandra_price": "1 200 $ USD (paiement unique)",
+        "project_cassandra_status": "✅ Disponible – accès à vie, mises à jour gratuites",
+        "project_cassandra_contact": "Contactez le propriétaire pour acheter",
+        "project_spark": "🌊 Processeur de données Apache Spark",
+        "project_spark_desc": "Téléchargez un fichier CSV et exécutez des agrégations de type SQL (group by, sum, avg, count) en utilisant Spark. Résultats et graphiques en temps réel. Inspiré du moteur big data utilisé par des milliers d'entreprises.",
+        "project_spark_price": "1 200 $ USD (paiement unique)",
+        "project_spark_status": "✅ Disponible – accès à vie, mises à jour gratuites",
+        "project_spark_contact": "Contactez le propriétaire pour acheter",
+        "project_drone": "🚁 Commandant de drone haïtien",
+        "project_drone_desc": "Contrôlez le premier drone fabriqué en Haïti depuis votre téléphone. Mode simulation, support réel du drone (MAVLink), armement, décollage, atterrissage, vol vers coordonnées GPS, télémétrie en direct, historique des commandes. Multilingue, tableau de bord professionnel.",
+        "project_drone_price": "2 000 $ USD (paiement unique)",
+        "project_drone_status": "✅ Disponible – code source, installation et 1 an de support inclus",
+        "project_drone_contact": "Contactez le propriétaire pour acheter",
+        "project_english": "🇬🇧 Apprenons l'anglais avec Gesner",
+        "project_english_desc": "Application interactive d'apprentissage de l'anglais. Couvre le vocabulaire, la grammaire, la prononciation et la pratique de la conversation. Interface multilingue, suivi des progrès, quiz et certificats. Parfait pour les débutants et les apprenants intermédiaires.",
+        "project_english_price": "299 $ USD (paiement unique)",
+        "project_english_status": "✅ Disponible – code source, installation et support inclus",
+        "project_english_contact": "Contactez le propriétaire pour acheter",
+        "project_spanish": "🇪🇸 Apprenons l'espagnol avec Gesner",
+        "project_spanish_desc": "Plateforme complète d'apprentissage de l'espagnol. Leçons sur le vocabulaire, les conjugaisons, la compréhension orale et les notes culturelles. Inclut des exercices interactifs, la reconnaissance vocale et un tableau de bord de progression.",
+        "project_spanish_price": "299 $ USD (paiement unique)",
+        "project_spanish_status": "✅ Disponible – code source, installation et support inclus",
+        "project_spanish_contact": "Contactez le propriétaire pour acheter",
+        "project_portuguese": "🇵🇹 Apprenons le portugais avec Gesner",
+        "project_portuguese_desc": "Application d'apprentissage du portugais brésilien et européen. Couvre les phrases essentielles, la grammaire, les temps verbaux et les dialogues de la vie réelle. Inclut des flashcards, un guide de prononciation et des badges de réussite. Support multilingue.",
+        "project_portuguese_price": "299 $ USD (paiement unique)",
+        "project_portuguese_status": "✅ Disponible – code source, installation et support inclus",
+        "project_portuguese_contact": "Contactez le propriétaire pour acheter",
+        "project_ai_career": "🚀 Coach de carrière IA – Optimiseur de CV",
+        "project_ai_career_desc": "**Optimisez votre CV et réussissez vos entretiens avec l'IA.** Téléchargez votre CV et une description de poste – notre IA analyse les deux et fournit : des mots-clés à ajouter, des améliorations de compétences, des suggestions de formatage et des questions d'entretien prédites. Parfait pour les chercheurs d'emploi, étudiants et professionnels. Code source complet inclus.",
+        "project_ai_career_price": "149 $ USD (paiement unique)",
+        "project_ai_career_status": "✅ Disponible – code source complet inclus",
+        "project_ai_career_contact": "Contactez le propriétaire pour acheter",
+        "project_ai_medical": "🧪 Assistant IA en littérature médicale et scientifique",
+        "project_ai_medical_desc": "**Posez n'importe quelle question médicale ou scientifique – obtenez des réponses basées sur des recherches réelles.** Notre IA recherche dans PubMed, la plus grande base de données de littérature médicale, extrait les résumés pertinents et génère des réponses factuelles avec citations et liens directs. Code source complet inclus.",
+        "project_ai_medical_price": "149 $ USD (paiement unique)",
+        "project_ai_medical_status": "✅ Disponible – code source complet inclus",
+        "project_ai_medical_contact": "Contactez le propriétaire pour acheter",
+        "project_music_studio": "🎧 Music Studio Pro – Suite complète de production musicale",
+        "project_music_studio_desc": "**Logiciel professionnel de production musicale** – enregistrez, mixez et créez des beats. Inclut enregistrement vocal, effets studio (EQ, compresseur, réverbération, correction de hauteur), beatmaker multi‑pistes, boucles continues, enregistrement vocal sur pistes, correcteur automatique. Code source complet inclus.",
+        "project_music_studio_price": "299 $ USD (paiement unique)",
+        "project_music_studio_status": "✅ Disponible – code source complet inclus",
+        "project_music_studio_contact": "Contactez le propriétaire pour acheter",
+        "project_ai_media": "🎭 Studio média IA – Éditeur photo et vidéo parlant",
+        "project_ai_media_desc": "**Créez des vidéos professionnelles à partir de photos, audio ou clips vidéo.** Quatre modes puissants : photo + parole, photo + audio téléchargé, photo + musique de fond, vidéo + musique de fond. Code source complet inclus.",
+        "project_ai_media_price": "149 $ USD (paiement unique)",
+        "project_ai_media_status": "✅ Disponible – code source complet inclus",
+        "project_ai_media_contact": "Contactez le propriétaire pour acheter",
+        "project_chinese": "🇨🇳 Apprenons le chinois avec Gesner – Livre 1",
+        "project_chinese_desc": "**Cours complet de mandarin pour débutants.** 20 leçons interactives sur les conversations quotidiennes, le vocabulaire, la grammaire, la prononciation et les quiz. Code source complet inclus.",
+        "project_chinese_price": "299 $ USD (paiement unique)",
+        "project_chinese_status": "✅ Disponible – code source complet inclus",
+        "project_chinese_contact": "Contactez le propriétaire pour acheter",
+        "project_french": "🇫🇷 Apprenons le français avec Gesner – Livre 1",
+        "project_french_desc": "**Cours complet de français pour débutants.** 20 leçons interactives sur les conversations quotidiennes, le vocabulaire, la grammaire, la prononciation et les quiz. Code source complet inclus.",
+        "project_french_price": "299 $ USD (paiement unique)",
+        "project_french_status": "✅ Disponible – code source complet inclus",
+        "project_french_contact": "Contactez le propriétaire pour acheter",
+        "project_mathematics": "📐 Apprenons les mathématiques avec Gesner – Livre 1",
+        "project_mathematics_desc": "**Cours complet de mathématiques pour débutants.** 20 leçons couvrant l'arithmétique de base, la géométrie, les fractions, les décimales, les pourcentages, les problèmes de mots, etc. Code source complet inclus.",
+        "project_mathematics_price": "299 $ USD (paiement unique)",
+        "project_mathematics_status": "✅ Disponible – code source complet inclus",
+        "project_mathematics_contact": "Contactez le propriétaire pour acheter",
+        "project_ai_course": "🤖 Cours Fondamentaux de l'IA et certification",
+        "project_ai_course_desc": "**Cours de maîtrise de l'IA en 28 jours – du débutant à l'expert certifié.** Apprenez ChatGPT, Gemini, MidJourney, Runway, ElevenLabs, Make.com, et plus. Code source complet inclus.",
+        "project_ai_course_price": "299 $ USD (paiement unique)",
+        "project_ai_course_status": "✅ Disponible – code source complet inclus",
+        "project_ai_course_contact": "Contactez le propriétaire pour acheter",
+        "project_medical_term": "🩺 Livre de terminologie médicale pour traducteurs",
+        "project_medical_term_desc": "**Formation interactive en terminologie médicale pour interprètes et professionnels de santé.** 20 leçons basées sur des conversations réelles médecin‑patient, audio voix natives, et pratique de la traduction. Code source complet inclus.",
+        "project_medical_term_price": "299 $ USD (paiement unique)",
+        "project_medical_term_status": "✅ Disponible – code source complet inclus",
+        "project_medical_term_contact": "Contactez le propriétaire pour acheter",
         "project_python_course": "🐍 Apprenons à coder en Python avec Gesner",
-        "project_python_course_desc": "**Cours complet de programmation Python – du débutant à l’avancé.** 20 leçons interactives avec code de démonstration, 5 exercices pratiques par leçon et support audio. Comprend variables, boucles, fonctions, POO, NumPy, Matplotlib, etc. Code source complet inclus.",
+        "project_python_course_desc": "**Cours complet de programmation Python – du débutant à l'avancé.** 20 leçons interactives avec code de démonstration, 5 exercices pratiques par leçon et support audio. Code source complet inclus.",
         "project_python_course_price": "299 $ USD (paiement unique)",
         "project_python_course_status": "✅ Disponible – code source complet inclus",
         "project_python_course_contact": "Contactez le propriétaire pour acheter",
         "project_hardware_course": "🔌 Apprenons à connecter logiciel et matériel avec Gesner",
-        "project_hardware_course_desc": "**Connectez un logiciel à 20 composants matériels – projets IoT et robotique.** 20 leçons couvrant cartes réseau, Wi‑Fi, Bluetooth, GPS, GPIO, capteurs, moteurs, écrans, etc. Exemples de code Python, exercices pratiques. Code source complet inclus.",
+        "project_hardware_course_desc": "**Connectez un logiciel à 20 composants matériels – projets IoT et robotique.** 20 leçons couvrant cartes réseau, Wi‑Fi, Bluetooth, GPS, GPIO, capteurs, moteurs, écrans, etc. Code source complet inclus.",
         "project_hardware_course_price": "299 $ USD (paiement unique)",
         "project_hardware_course_status": "✅ Disponible – code source complet inclus",
         "project_hardware_course_contact": "Contactez le propriétaire pour acheter",
+        "view_demo": "🎬 Voir la démo",
+        "demo_screenshot": "Aperçu de la capture d'écran (remplacez par l'image réelle)",
+        "live_demo": "🔗 Démo en direct",
+        "demo_password_hint": "🔐 Mot de passe démo : 20082010",
+        "request_info": "Demander des informations",
+        "buy_now": "💵 Acheter maintenant",
+        "donation_title": "💖 Soutenez GlobalInternet.py",
+        "donation_text": "Aidez-nous à grandir et à continuer de développer des logiciels innovants pour Haïti et le monde.",
+        "donation_sub": "Votre don soutient l'hébergement, les outils de développement et les ressources gratuites pour les développeurs locaux.",
+        "donation_method": "🇭🇹 Facile et rapide – Transfert Prisme vers Moncash (Digicel)",
+        "donation_phone": "📱 (509)-47385663",
+        "donation_limit": "Limite de montant : jusqu'à 100 000 HTG par transaction",
+        "donation_instruction": "Utilisez simplement la fonction 'Transfert Prisme' dans votre application Moncash pour envoyer votre contribution à Gesner Deslandes.",
+        "donation_sendwave_title": "🌍 Transfert international via <span class='blue-text'>SendWave</span>",
+        "donation_sendwave_instruction": "Envoyez de l'argent directement à notre numéro de téléphone en utilisant l'application SendWave (disponible dans le monde entier).",
+        "donation_sendwave_phone": "Téléphone du bénéficiaire : (509) 4738-5663 (Gesner Deslandes)",
+        "donation_bank_title": "🏦 Virement bancaire (Compte UNIBANK US)",
+        "donation_bank_account": "Numéro de compte : 105-2016-16594727",
+        "donation_bank_note": "Pour les transferts internationaux, veuillez utiliser le code SWIFT UNIBANKUS (ou contactez‑nous pour plus de détails).",
+        "donation_future": "🔜 À venir : virements bancaires en USD et HTG (internationaux et locaux).",
+        "donation_button": "💸 J'ai envoyé mon don – prévenez‑moi",
+        "donation_thanks": "Merci infiniment ! Nous confirmerons la réception dans les 24 heures. Votre don via Prisme Transfer, Sendwave ou Moncash (Digicel) va directement à Gesner Deslandes au (509)-47385663. Votre soutien signifie tout pour nous ! 🇭🇹",
+        "contact_title": "📞 Construisons quelque chose de grand",
+        "contact_ready": "Prêt à démarrer votre projet ?",
+        "contact_phone": "📞 Téléphone / WhatsApp : (509)-47385663",
+        "contact_email": "✉️ Email : deslandes78@gmail.com",
+        "contact_delivery": "Nous livrons des logiciels complets par email – rapides, fiables et adaptés à vous.",
+        "contact_tagline": "GlobalInternet.py – Votre partenaire Python, d'Haïti au monde.",
+        "footer_rights": "Tous droits réservés.",
+        "footer_founded": "Fondé par Gesner Deslandes | Construit avec Streamlit | Hébergé sur GitHub + Streamlit Cloud",
+        "footer_pride": "🇭🇹 Fier d'être Haïtien – servant le monde avec Python et l'IA 🇭🇹"
     },
     "es": {
+        "hero_title": "GlobalInternet.py",
+        "hero_sub": "Construye con Python. Entrega con velocidad. Innova con IA.",
+        "hero_desc": "De Haití al mundo – software personalizado que funciona en línea.",
+        "about_title": "👨‍💻 Sobre la empresa",
+        "about_text": """
+        **GlobalInternet.py** fue fundada por **Gesner Deslandes** – propietario, fundador e ingeniero principal.  
+        Construimos **software basado en Python** bajo demanda para clientes de todo el mundo. Como Silicon Valley, pero con un toque haitiano y resultados sobresalientes.
+        
+        - 🧠 **Soluciones impulsadas por IA** – chatbots, análisis de datos, automatización  
+        - 🗳️ **Sistemas electorales completos** – seguros, multilingües, en tiempo real  
+        - 🌐 **Aplicaciones web** – paneles, herramientas internas, plataformas en línea  
+        - 📦 **Entrega completa** – le enviamos el código completo por correo electrónico y lo guiamos en la instalación
+        
+        Ya sea que necesite un sitio web corporativo, una herramienta de software personalizada o una plataforma en línea a gran escala – nosotros la construimos, usted la posee.
+        """,
+        "office_photo_caption": "Avatar parlante de Gesner Deslandes – presentando GlobalInternet.py",
+        "humanoid_photo_caption": "Gesner Humanoid AI – nuestro representante digital de innovación y experiencia en software.",
+        "founder": "Fundador y CEO",
+        "founder_name": "Gesner Deslandes",
+        "founder_title": "Ingeniero | Entusiasta de IA | Experto en Python",
+        "cv_title": "📄 Sobre el propietario – Gesner Deslandes",
+        "cv_intro": "Constructor de software Python | Desarrollador web | Coordinador de tecnología",
+        "cv_summary": """
+        Líder y gerente excepcionalmente motivado, comprometido con la excelencia y la precisión.  
+        **Competencias principales:** Liderazgo, Interpretación (inglés, francés, criollo haitiano), Orientación mecánica, Gestión, Microsoft Office.
+        """,
+        "cv_experience_title": "💼 Experiencia profesional",
+        "cv_experience": """
+        **Coordinador de tecnología** – Orfanato Be Like Brit (2021–presente)  
+        Configuración de reuniones Zoom, mantenimiento de portátiles/tabletas, soporte técnico diario, asegurar operaciones digitales fluidas.
+
+        **CEO y servicios de interpretación** – Turismo personalizado para grupos de ONG, equipos misioneros e individuos.
+
+        **Gerente de flota / Despachador** – J/P Haitian Relief Organization  
+        Gestión de más de 20 vehículos, registros de conductores, calendarios de mantenimiento usando Excel.
+
+        **Intérprete médico** – International Child Care  
+        Interpretación médica precisa inglés–francés–criollo.
+
+        **Líder de equipo e intérprete** – Can‑Do NGO  
+        Liderazgo de proyectos de reconstrucción.
+
+        **Profesor de inglés** – Be Like Brit (preescolar a NS4)
+
+        **Traductor de documentos** – United Kingdom Glossary & United States Work‑Rise Company
+        """,
+        "cv_education_title": "🎓 Educación y formación",
+        "cv_education": """
+        - Escuela de formación vocacional – Inglés americano  
+        - Instituto Diesel de Haití – Mecánico diesel  
+        - Certificación en ofimática (octubre de 2000)  
+        - Graduado de secundaria
+        """,
+        "cv_references": "📞 Referencias disponibles bajo petición.",
+        "team_title": "👥 Nuestro equipo",
+        "team_sub": "Conozca a los talentos detrás de GlobalInternet.py – contratados en abril de 2026.",
+        "team_members": [
+            {"name": "Gesner Deslandes", "role": "Fundador y CEO", "since": "2021"},
+            {"name": "Gesner Junior Deslandes", "role": "Asistente del CEO", "since": "Abril 2026"},
+            {"name": "Roosevelt Deslandes", "role": "Programador Python", "since": "Abril 2026"},
+            {"name": "Sebastien Stephane Deslandes", "role": "Programador Python", "since": "Abril 2026"},
+            {"name": "Zendaya Christelle Deslandes", "role": "Secretaria", "since": "Abril 2026"}
+        ],
+        "services_title": "⚙️ Nuestros servicios",
+        "services": [
+            ("🐍 Desarrollo Python personalizado", "Scripts a medida, automatización, sistemas backend."),
+            ("🤖 IA y aprendizaje automático", "Chatbots, modelos predictivos, análisis de datos."),
+            ("🗳️ Software electoral", "Seguro, multilingüe, resultados en vivo – como nuestro sistema Haití."),
+            ("📊 Paneles de inteligencia empresarial", "Analítica en tiempo real y herramientas de informes."),
+            ("🌐 Sitios web y aplicaciones web", "Soluciones full‑stack desplegadas en línea."),
+            ("📦 Entrega en 24 horas", "Trabajamos rápido – reciba su software por correo electrónico, listo para usar."),
+            ("📢 Publicidad y marketing", "Campañas digitales, gestión de redes sociales, segmentación con IA, informes de rendimiento. Desde $150 hasta $1,200 dependiendo del alcance.")
+        ],
+        "projects_title": "🏆 Nuestros proyectos y logros",
+        "projects_sub": "Soluciones de software completas entregadas a los clientes – listas para comprar o personalizar.",
+        "project_haiti": "🇭🇹 Software de votación en línea Haití",
+        "project_haiti_desc": "Sistema electoral presidencial completo con soporte multilingüe (criollo, francés, inglés, español), monitoreo en vivo, panel del presidente del CEP (gestión de candidatos, carga de fotos, informes de progreso), voto secreto y contraseñas modificables. Utilizado para elecciones nacionales.",
+        "project_haiti_price": "$2,000 USD (pago único)",
+        "project_haiti_status": "✅ Disponible – incluye código fuente, instalación y soporte.",
+        "project_haiti_contact": "Contacte al propietario para comprar",
+        "project_dashboard": "📊 Panel de inteligencia empresarial",
+        "project_dashboard_desc": "Panel de análisis en tiempo real para empresas. Conéctese a cualquier base de datos (SQL, Excel, CSV) y visualice KPI, tendencias de ventas, inventario e informes personalizados. Totalmente interactivo y personalizable.",
+        "project_dashboard_price": "$1,200 USD",
+        "project_dashboard_status": "✅ Disponible",
+        "project_dashboard_contact": "Contacte al propietario para comprar",
+        "project_chatbot": "🤖 Chatbot de soporte al cliente con IA",
+        "project_chatbot_desc": "Chatbot inteligente entrenado con sus datos comerciales. Responda preguntas de clientes 24/7, reduzca la carga de soporte. Se integra con sitios web, WhatsApp o Telegram. Construido con Python y NLP moderno.",
+        "project_chatbot_price": "$800 USD (básico) / $1,500 USD (avanzado)",
+        "project_chatbot_status": "✅ Disponible",
+        "project_chatbot_contact": "Contacte al propietario para comprar",
+        "project_school": "🏫 Sistema de gestión escolar",
+        "project_school_desc": "Plataforma completa para escuelas: registro de estudiantes, gestión de calificaciones, seguimiento de asistencia, portal para padres, generación de boletas y cobro de tarifas. Roles multi‑usuario (admin, profesores, padres).",
+        "project_school_price": "$1,500 USD",
+        "project_school_status": "✅ Disponible",
+        "project_school_contact": "Contacte al propietario para comprar",
+        "project_pos": "📦 Sistema de inventario y punto de venta",
+        "project_pos_desc": "Gestión de inventario web con punto de venta para pequeñas empresas. Escaneo de códigos de barras, alertas de stock, informes de ventas, gestión de proveedores. Funciona en línea y sin conexión.",
+        "project_pos_price": "$1,000 USD",
+        "project_pos_status": "✅ Disponible",
+        "project_pos_contact": "Contacte al propietario para comprar",
+        "project_scraper": "📈 Extractor web personalizado y tubería de datos",
+        "project_scraper_desc": "Extracción automatizada de datos de cualquier sitio web, limpia y entregada como Excel/JSON/CSV. Programe ejecuciones diarias, semanales o mensuales. Perfecto para investigación de mercado, monitoreo de precios o generación de leads.",
+        "project_scraper_price": "$500 – $2,000 (depende de la complejidad)",
+        "project_scraper_status": "✅ Disponible",
+        "project_scraper_contact": "Contacte al propietario para comprar",
+        "project_chess": "♟️ Juega al ajedrez contra la máquina",
+        "project_chess_desc": "Juego de ajedrez educativo con oponente IA (3 niveles de dificultad). Cada movimiento se explica – aprenda tácticas como horquillas, clavadas y jaques descubiertos. Incluye modo demo, panel de movimientos y descarga del informe completo. Multilingüe (inglés, francés, español, criollo).",
+        "project_chess_price": "$20 USD (pago único)",
+        "project_chess_status": "✅ Disponible – acceso de por vida, actualizaciones gratuitas",
+        "project_chess_contact": "Contacte al propietario para comprar",
+        "project_accountant": "🧮 Contador Excel avanzado con IA",
+        "project_accountant_desc": "Suite profesional de contabilidad y gestión de préstamos. Seguimiento de ingresos/gastos, gestión de préstamos (prestatarios, fechas de vencimiento, pagos), panel con saldo, exportación de todos los informes a Excel y PDF. Multilingüe (inglés, francés, español).",
+        "project_accountant_price": "$199 USD (pago único)",
+        "project_accountant_status": "✅ Disponible – acceso de por vida, actualizaciones gratuitas",
+        "project_accountant_contact": "Contacte al propietario para comprar",
+        "project_archives": "📜 Base de datos de Archivos Nacionales de Haití",
+        "project_archives_desc": "Base de datos completa de archivos nacionales para ciudadanos haitianos. Almacena NIF (Matrícula Fiscal), CIN, Pasaporte, Licencia de Conducir, historial de votación, patrocinios y cargas de documentos. Validación de firma ministerial, sistema de contraseña anual, multilingüe (inglés, francés, español, criollo).",
+        "project_archives_price": "$1,500 USD (pago único)",
+        "project_archives_status": "✅ Disponible – incluye código fuente, instalación y soporte",
+        "project_archives_contact": "Contacte al propietario para comprar",
+        "project_dsm": "🛡️ DSM-2026: SISTEMA SEGURADO",
+        "project_dsm_desc": "Radar avanzado de monitoreo de estratosfera – rastrea aviones, satélites y misiles en tiempo real. Pantalla de radar simulada con detección de amenazas, soporte multilingüe e informes de inteligencia descargables.",
+        "project_dsm_price": "$299 USD (pago único)",
+        "project_dsm_status": "✅ Disponible – licencia de por vida, actualizaciones gratuitas",
+        "project_dsm_contact": "Contacte al propietario para comprar",
+        "project_bi": "📊 Panel de inteligencia empresarial",
+        "project_bi_desc": "Panel de análisis en tiempo real para empresas. Conecte SQL, Excel, CSV – visualice KPI, tendencias de ventas, inventario y rendimiento regional. Totalmente interactivo con filtros de fecha e informes CSV descargables. Multilingüe (inglés, francés, español, criollo).",
+        "project_bi_price": "$1,200 USD (pago único)",
+        "project_bi_status": "✅ Disponible – acceso de por vida, actualizaciones gratuitas",
+        "project_bi_contact": "Contacte al propietario para comprar",
+        "project_ai_classifier": "🧠 Clasificador de imágenes con IA (MobileNetV2)",
+        "project_ai_classifier_desc": "Sube una imagen y la IA la identifica entre 1000 categorías (animales, vehículos, comida, objetos cotidianos). Utiliza TensorFlow MobileNetV2 preentrenado en ImageNet. Multilingüe, protegido por contraseña, demo lista.",
+        "project_ai_classifier_price": "$1,200 USD (pago único)",
+        "project_ai_classifier_status": "✅ Disponible – incluye código fuente, instalación y soporte",
+        "project_ai_classifier_contact": "Contacte al propietario para comprar",
+        "project_task_manager": "🗂️ Panel de gestión de tareas",
+        "project_task_manager_desc": "Gestiona tareas, rastrea el progreso y analiza la productividad con gráficos en tiempo real y modo oscuro. Inspirado en la interfaz basada en componentes de React. Multilingüe, almacenamiento persistente, panel analítico.",
+        "project_task_manager_price": "$1,200 USD (pago único)",
+        "project_task_manager_status": "✅ Disponible – acceso de por vida, actualizaciones gratuitas",
+        "project_task_manager_contact": "Contacte al propietario para comprar",
+        "project_ray": "⚡ Procesador de texto paralelo Ray",
+        "project_ray_desc": "Procesa texto en paralelo en múltiples núcleos de CPU. Compara la velocidad de ejecución secuencial vs paralela. Inspirado en el framework de computación distribuida Ray de UC Berkeley.",
+        "project_ray_price": "$1,200 USD (pago único)",
+        "project_ray_status": "✅ Disponible – acceso de por vida, actualizaciones gratuitas",
+        "project_ray_contact": "Contacte al propietario para comprar",
+        "project_cassandra": "🗄️ Panel de datos Cassandra",
+        "project_cassandra_desc": "Demostración de base de datos NoSQL distribuida. Agrega pedidos, busca por cliente y explora análisis en tiempo real. Modelado según Apache Cassandra (Netflix, Instagram).",
+        "project_cassandra_price": "$1,200 USD (pago único)",
+        "project_cassandra_status": "✅ Disponible – acceso de por vida, actualizaciones gratuitas",
+        "project_cassandra_contact": "Contacte al propietario para comprar",
+        "project_spark": "🌊 Procesador de datos Apache Spark",
+        "project_spark_desc": "Sube un archivo CSV y ejecuta agregaciones tipo SQL (group by, sum, avg, count) usando Spark. Resultados y gráficos en tiempo real. Inspirado en el motor de big data utilizado por miles de empresas.",
+        "project_spark_price": "$1,200 USD (pago único)",
+        "project_spark_status": "✅ Disponible – acceso de por vida, actualizaciones gratuitas",
+        "project_spark_contact": "Contacte al propietario para comprar",
+        "project_drone": "🚁 Comandante de dron haitiano",
+        "project_drone_desc": "Controla el primer dron fabricado en Haití desde tu teléfono. Modo simulación, soporte real de dron (MAVLink), armar, despegar, aterrizar, volar a coordenadas GPS, telemetría en vivo, historial de comandos. Multilingüe, panel profesional.",
+        "project_drone_price": "$2,000 USD (pago único)",
+        "project_drone_status": "✅ Disponible – incluye código fuente, instalación y 1 año de soporte",
+        "project_drone_contact": "Contacte al propietario para comprar",
+        "project_english": "🇬🇧 Aprendamos inglés con Gesner",
+        "project_english_desc": "Aplicación interactiva de aprendizaje de inglés. Cubre vocabulario, gramática, pronunciación y práctica de conversación. Interfaz multilingüe, seguimiento de progreso, cuestionarios y certificados. Perfecto para principiantes y estudiantes intermedios.",
+        "project_english_price": "$299 USD (pago único)",
+        "project_english_status": "✅ Disponible – incluye código fuente, instalación y soporte",
+        "project_english_contact": "Contacte al propietario para comprar",
+        "project_spanish": "🇪🇸 Aprendamos español con Gesner",
+        "project_spanish_desc": "Plataforma completa de aprendizaje de español. Lecciones sobre vocabulario, conjugaciones verbales, comprensión auditiva y notas culturales. Incluye ejercicios interactivos, reconocimiento de voz y panel de progreso.",
+        "project_spanish_price": "$299 USD (pago único)",
+        "project_spanish_status": "✅ Disponible – incluye código fuente, instalación y soporte",
+        "project_spanish_contact": "Contacte al propietario para comprar",
+        "project_portuguese": "🇵🇹 Aprendamos portugués con Gesner",
+        "project_portuguese_desc": "Aplicación de aprendizaje de portugués brasileño y europeo. Cubre frases esenciales, gramática, tiempos verbales y diálogos de la vida real. Incluye tarjetas didácticas, guía de pronunciación e insignias de logro. Soporte multilingüe.",
+        "project_portuguese_price": "$299 USD (pago único)",
+        "project_portuguese_status": "✅ Disponible – incluye código fuente, instalación y soporte",
+        "project_portuguese_contact": "Contacte al propietario para comprar",
+        "project_ai_career": "🚀 Entrenador de carrera con IA – Optimizador de CV",
+        "project_ai_career_desc": "**Optimiza tu CV y triunfa en entrevistas con IA.** Sube tu CV y una descripción de trabajo – nuestra IA analiza ambos y proporciona: palabras clave a añadir, mejoras de habilidades, sugerencias de formato y preguntas de entrevista predichas. Perfecto para buscadores de empleo, estudiantes y profesionales. Código fuente completo incluido.",
+        "project_ai_career_price": "$149 USD (pago único)",
+        "project_ai_career_status": "✅ Disponible – código fuente completo incluido",
+        "project_ai_career_contact": "Contacte al propietario para comprar",
+        "project_ai_medical": "🧪 Asistente de literatura médica y científica con IA",
+        "project_ai_medical_desc": "**Haz cualquier pregunta médica o científica – obtén respuestas respaldadas por investigaciones reales.** Nuestra IA busca en PubMed, la base de datos más grande de literatura médica, recupera resúmenes relevantes y genera respuestas basadas en evidencia con citas y enlaces directos. Código fuente completo incluido.",
+        "project_ai_medical_price": "$149 USD (pago único)",
+        "project_ai_medical_status": "✅ Disponible – código fuente completo incluido",
+        "project_ai_medical_contact": "Contacte al propietario para comprar",
+        "project_music_studio": "🎧 Music Studio Pro – Suite completa de producción musical",
+        "project_music_studio_desc": "**Software profesional de producción musical** – graba, mezcla y crea ritmos. Incluye grabación de voz, efectos de estudio (EQ, compresor, reverberación, corrección de tono), creador de ritmos multipista, bucles continuos, grabación de voz sobre pistas, corrector automático. Código fuente completo incluido.",
+        "project_music_studio_price": "$299 USD (pago único)",
+        "project_music_studio_status": "✅ Disponible – código fuente completo incluido",
+        "project_music_studio_contact": "Contacte al propietario para comprar",
+        "project_ai_media": "🎭 Estudio multimedia con IA – Editor de fotos y videos parlantes",
+        "project_ai_media_desc": "**Crea videos profesionales a partir de fotos, audio o clips de video.** Cuatro modos potentes: foto + voz, foto + audio subido, foto + música de fondo, video + música de fondo. Código fuente completo incluido.",
+        "project_ai_media_price": "$149 USD (pago único)",
+        "project_ai_media_status": "✅ Disponible – código fuente completo incluido",
+        "project_ai_media_contact": "Contacte al propietario para comprar",
+        "project_chinese": "🇨🇳 Aprendamos chino con Gesner – Libro 1",
+        "project_chinese_desc": "**Curso completo de mandarín para principiantes.** 20 lecciones interactivas sobre conversaciones diarias, vocabulario, gramática, pronunciación y cuestionarios. Código fuente completo incluido.",
+        "project_chinese_price": "$299 USD (pago único)",
+        "project_chinese_status": "✅ Disponible – código fuente completo incluido",
+        "project_chinese_contact": "Contacte al propietario para comprar",
+        "project_french": "🇫🇷 Aprendamos francés con Gesner – Libro 1",
+        "project_french_desc": "**Curso completo de francés para principiantes.** 20 lecciones interactivas sobre conversaciones diarias, vocabulario, gramática, pronunciación y cuestionarios. Código fuente completo incluido.",
+        "project_french_price": "$299 USD (pago único)",
+        "project_french_status": "✅ Disponible – código fuente completo incluido",
+        "project_french_contact": "Contacte al propietario para comprar",
+        "project_mathematics": "📐 Aprendamos matemáticas con Gesner – Libro 1",
+        "project_mathematics_desc": "**Curso completo de matemáticas para principiantes.** 20 lecciones que cubren aritmética básica, geometría, fracciones, decimales, porcentajes, problemas verbales y más. Código fuente completo incluido.",
+        "project_mathematics_price": "$299 USD (pago único)",
+        "project_mathematics_status": "✅ Disponible – código fuente completo incluido",
+        "project_mathematics_contact": "Contacte al propietario para comprar",
+        "project_ai_course": "🤖 Curso Fundamentos de IA y certificación",
+        "project_ai_course_desc": "**Curso de maestría en IA de 28 días – de principiante a experto certificado.** Aprende ChatGPT, Gemini, MidJourney, Runway, ElevenLabs, Make.com, y más. Código fuente completo incluido.",
+        "project_ai_course_price": "$299 USD (pago único)",
+        "project_ai_course_status": "✅ Disponible – código fuente completo incluido",
+        "project_ai_course_contact": "Contacte al propietario para comprar",
+        "project_medical_term": "🩺 Libro de terminología médica para traductores",
+        "project_medical_term_desc": "**Capacitación interactiva en terminología médica para intérpretes y profesionales de la salud.** 20 lecciones basadas en conversaciones reales médico‑paciente, audio con voz nativa y práctica de traducción. Código fuente completo incluido.",
+        "project_medical_term_price": "$299 USD (pago único)",
+        "project_medical_term_status": "✅ Disponible – código fuente completo incluido",
+        "project_medical_term_contact": "Contacte al propietario para comprar",
         "project_python_course": "🐍 Aprendamos a programar en Python con Gesner",
-        "project_python_course_desc": "**Curso completo de programación Python – desde principiante hasta avanzado.** 20 lecciones interactivas con código de demostración, 5 ejercicios prácticos por lección y soporte de audio. Incluye variables, bucles, funciones, POO, NumPy, Matplotlib, etc. Código fuente completo incluido.",
+        "project_python_course_desc": "**Curso completo de programación Python – desde principiante hasta avanzado.** 20 lecciones interactivas con código de demostración, 5 ejercicios prácticos por lección y soporte de audio. Código fuente completo incluido.",
         "project_python_course_price": "$299 USD (pago único)",
         "project_python_course_status": "✅ Disponible – código fuente completo incluido",
         "project_python_course_contact": "Contacte al propietario para comprar",
         "project_hardware_course": "🔌 Aprendamos a conectar software y hardware con Gesner",
-        "project_hardware_course_desc": "**Conecte software con 20 componentes de hardware – proyectos IoT y robótica.** 20 lecciones que cubren tarjetas de red, Wi‑Fi, Bluetooth, GPS, GPIO, sensores, motores, pantallas, etc. Ejemplos de código Python, ejercicios prácticos. Código fuente completo incluido.",
+        "project_hardware_course_desc": "**Conecte software con 20 componentes de hardware – proyectos IoT y robótica.** 20 lecciones que cubren tarjetas de red, Wi‑Fi, Bluetooth, GPS, GPIO, sensores, motores, pantallas, etc. Código fuente completo incluido.",
         "project_hardware_course_price": "$299 USD (pago único)",
         "project_hardware_course_status": "✅ Disponible – código fuente completo incluido",
         "project_hardware_course_contact": "Contacte al propietario para comprar",
+        "view_demo": "🎬 Ver demostración",
+        "demo_screenshot": "Vista previa de captura de pantalla (reemplazar con imagen real)",
+        "live_demo": "🔗 Demostración en vivo",
+        "demo_password_hint": "🔐 Contraseña de demostración: 20082010",
+        "request_info": "Solicitar información",
+        "buy_now": "💵 Comprar ahora",
+        "donation_title": "💖 Apoya GlobalInternet.py",
+        "donation_text": "Ayúdanos a crecer y a seguir desarrollando software innovador para Haití y el mundo.",
+        "donation_sub": "Tu donación apoya el alojamiento, las herramientas de desarrollo y los recursos gratuitos para desarrolladores locales.",
+        "donation_method": "🇭🇹 Fácil y rápido – Transferencia Prisme a Moncash (Digicel)",
+        "donation_phone": "📱 (509)-47385663",
+        "donation_limit": "Límite de monto: hasta 100,000 HTG por transacción",
+        "donation_instruction": "Simplemente use la función 'Transferencia Prisme' en su aplicación Moncash para enviar su contribución a Gesner Deslandes.",
+        "donation_sendwave_title": "🌍 Transferencia internacional vía <span class='blue-text'>SendWave</span>",
+        "donation_sendwave_instruction": "Envíe dinero directamente a nuestro número de teléfono usando la aplicación SendWave (disponible en todo el mundo).",
+        "donation_sendwave_phone": "Teléfono del destinatario: (509) 4738-5663 (Gesner Deslandes)",
+        "donation_bank_title": "🏦 Transferencia bancaria (Cuenta UNIBANK US)",
+        "donation_bank_account": "Número de cuenta: 105-2016-16594727",
+        "donation_bank_note": "Para transferencias internacionales, utilice el código SWIFT UNIBANKUS (o contáctenos para más detalles).",
+        "donation_future": "🔜 Próximamente: transferencias bancarias en USD y HTG (internacionales y locales).",
+        "donation_button": "💸 He enviado mi donación – notifíqueme",
+        "donation_thanks": "¡Muchas gracias! Confirmaremos la recepción en 24 horas. Su donación a través de Prisme Transfer, Sendwave o Moncash (Digicel) va directamente a Gesner Deslandes al (509)-47385663. ¡Su apoyo significa todo para nosotros! 🇭🇹",
+        "contact_title": "📞 Construyamos algo grandioso",
+        "contact_ready": "¿Listo para comenzar su proyecto?",
+        "contact_phone": "📞 Teléfono / WhatsApp: (509)-47385663",
+        "contact_email": "✉️ Correo electrónico: deslandes78@gmail.com",
+        "contact_delivery": "Entregamos paquetes de software completos por correo electrónico – rápidos, confiables y adaptados a usted.",
+        "contact_tagline": "GlobalInternet.py – Su socio Python, desde Haití hacia el mundo.",
+        "footer_rights": "Todos los derechos reservados.",
+        "footer_founded": "Fundado por Gesner Deslandes | Construido con Streamlit | Alojado en GitHub + Streamlit Cloud",
+        "footer_pride": "🇭🇹 Orgullosamente haitiano – sirviendo al mundo con Python e IA 🇭🇹"
     },
     "ht": {
+        "hero_title": "GlobalInternet.py",
+        "hero_sub": "Konstwi avèk Python. Livre vit. Innove avèk AI.",
+        "hero_desc": "Soti Ayiti rive nan lemonn – lojisyèl sou miz ki mache sou entènèt.",
+        "about_title": "👨‍💻 Konsènan Konpayi an",
+        "about_text": """
+        **GlobalInternet.py** te fonde pa **Gesner Deslandes** – pwopriyetè, fondatè, ak enjenyè anch.  
+        Nou konstwi **lojisyèl ki baze sou Python** sou demann pou kliyan atravè lemonn. Tankou Silisyòm, men ak yon manyen Ayisyen ak rezilta eksepsyonèl.
+        
+        - 🧠 **Solisyon ki mache ak AI** – chatbots, analiz done, otomatizasyon  
+        - 🗳️ **Sistèm elektoral konplè** – sekirize, miltilang, an tan reyèl  
+        - 🌐 **Aplikasyon entènèt** – tablodbò, zouti entèn, platfòm sou entènèt  
+        - 📦 **Livre konplè** – nou voye kòd konplè a ba ou pa imel epi nou gide ou nan enstalasyon an
+        
+        Kit ou bezwen yon sit entènèt konpayi, yon zouti lojisyèl pèsonalize, oswa yon platfòm sou entènèt gwo echèl – nou konstwi li, se pou ou.
+        """,
+        "office_photo_caption": "Avatar k ap pale Gesner Deslandes – prezante GlobalInternet.py",
+        "humanoid_photo_caption": "Gesner Humanoid AI – reprezantan dijital nou an nan inovasyon ak ekspètiz lojisyèl.",
+        "founder": "Fondatè ak CEO",
+        "founder_name": "Gesner Deslandes",
+        "founder_title": "Enjenyè | Amater AI | Ekspè Python",
+        "cv_title": "📄 Konsènan pwopriyetè a – Gesner Deslandes",
+        "cv_intro": "Konstriktè lojisyèl Python | Devlòpè entènèt | Koòdonatè teknoloji",
+        "cv_summary": """
+        Lidè ak administratè ki gen anpil motivasyon, angaje nan ekselans ak presizyon.  
+        **Konpetans prensipal:** Lidèchip, Entèpretasyon (angle, franse, kreyòl ayisyen), Oryantasyon mekanik, Jesyon, Microsoft Office.
+        """,
+        "cv_experience_title": "💼 Eksperyans pwofesyonèl",
+        "cv_experience": """
+        **Koòdonatè teknoloji** – Orfelina Be Like Brit (2021–prezan)  
+        Mete sou pye reyinyon Zoom, antretyen laptops/tablet, sipò teknik chak jou, asire operasyon dijital lis.
+
+        **CEO ak sèvis entèpretasyon** – Touris pèsonalize pou gwoup ONG, ekip misyon, ak moun.
+
+        **Manadjè flòt / Dispatcher** – J/P Haitian Relief Organization  
+        Jere plis pase 20 veyikil, jounal kondiktè, orè antretyen lè l sèvi avèk Excel.
+
+        **Entèprèt medikal** – International Child Care  
+        Entèpretasyon medikal egzak angle–franse–kreyòl.
+
+        **Lidè ekip ak entèprèt** – Can‑Do NGO  
+        Dirije pwojè rekonstriksyon.
+
+        **Pwofesè angle** – Be Like Brit (prèskolè rive NS4)
+
+        **Tradiktè dokiman** – United Kingdom Glossary & United States Work‑Rise Company
+        """,
+        "cv_education_title": "🎓 Edikasyon ak fòmasyon",
+        "cv_education": """
+        - Lekòl fòmasyon pwofesyonèl – Angle Ameriken  
+        - Enstiti dyezèl Ayiti – Mekanisyen dyezèl  
+        - Sètifikasyon enfòmatik (Oktòb 2000)  
+        - Diplome lekòl segondè
+        """,
+        "cv_references": "📞 Referans disponib sou demann.",
+        "team_title": "👥 Ekip nou an",
+        "team_sub": "Rankontre moun talan dèyè GlobalInternet.py – anboche Avril 2026.",
+        "team_members": [
+            {"name": "Gesner Deslandes", "role": "Fondatè ak CEO", "since": "2021"},
+            {"name": "Gesner Junior Deslandes", "role": "Asistan CEO", "since": "Avril 2026"},
+            {"name": "Roosevelt Deslandes", "role": "Pwogramè Python", "since": "Avril 2026"},
+            {"name": "Sebastien Stephane Deslandes", "role": "Pwogramè Python", "since": "Avril 2026"},
+            {"name": "Zendaya Christelle Deslandes", "role": "Sekretè", "since": "Avril 2026"}
+        ],
+        "services_title": "⚙️ Sèvis nou yo",
+        "services": [
+            ("🐍 Devlopman Python pèsonalize", "Script sou miz, otomatizasyon, sistèm backend."),
+            ("🤖 AI ak aprantisaj machin", "Chatbots, modèl prediktif, analiz done."),
+            ("🗳️ Lojisyèl elektoral", "Sekirize, miltilang, rezilta an dirèk – tankou sistèm Ayiti nou an."),
+            ("📊 Tablodbò biznis", "Analitik an tan reyèl ak zouti rapò."),
+            ("🌐 Sit entènèt ak aplikasyon entènèt", "Solisyon full‑stack deplwaye sou entènèt."),
+            ("📦 Livrezon 24 èdtan", "Nou travay vit – resevwa lojisyèl ou an pa imel, pare pou itilize."),
+            ("📢 Piblisite ak maketing", "Kampay dijital, jesyon medya sosyal, sibay ki mache ak AI, rapò pèfòmans. Soti $150 rive $1,200 selon dimansyon an.")
+        ],
+        "projects_title": "🏆 Pwojè ak akonplisman nou yo",
+        "projects_sub": "Solisyon lojisyèl konplè livrezon bay kliyan – pare pou achte oswa pèsonalize.",
+        "project_haiti": "🇭🇹 Lojisyèl vòt sou entènèt Ayiti",
+        "project_haiti_desc": "Sistèm elektoral prezidansyèl konplè ak sipò miltilang (Kreyòl, Franse, Angle, Panyòl), siveyans an dirèk, tablodbò Prezidan CEP (jere kandida, telechaje foto, rapò pwogrè), bilten vòt sekrè, ak modpas ki ka chanje. Itilize pou eleksyon nasyonal.",
+        "project_haiti_price": "$2,000 USD (peman inik)",
+        "project_haiti_status": "✅ Disponib – kòd sous, enstalasyon, ak sipò enkli",
+        "project_haiti_contact": "Kontakte pwopriyetè a pou achte",
+        "project_dashboard": "📊 Tablodbò entèlijans biznis",
+        "project_dashboard_desc": "Tablodbò analitik an tan reyèl pou konpayi. Konekte ak nenpòt baz done (SQL, Excel, CSV) ak visualize KPI, tandans lavant, envantè, ak rapò pèsonalize. Entèaktif totalman ak pèsonalizab.",
+        "project_dashboard_price": "$1,200 USD",
+        "project_dashboard_status": "✅ Disponib",
+        "project_dashboard_contact": "Kontakte pwopriyetè a pou achte",
+        "project_chatbot": "🤖 Chatbot sipò kliyan AI",
+        "project_chatbot_desc": "Chatbot entèlijan ki antrene sou done biznis ou. Reponn kesyon kliyan 24/7, diminye chaj sipò. Entegre ak sit entènèt, WhatsApp, oswa Telegram. Bati ak Python ak NLP modèn.",
+        "project_chatbot_price": "$800 USD (debaz) / $1,500 USD (avanse)",
+        "project_chatbot_status": "✅ Disponib",
+        "project_chatbot_contact": "Kontakte pwopriyetè a pou achte",
+        "project_school": "🏫 Sistèm jesyon lekòl",
+        "project_school_desc": "Platfòm konplè pou lekòl: enskripsyon elèv, jesyon nòt, swivi prezans, portal paran, jenere rapò, ak pèsepsyon frè. Wòl milti‑itilizatè (admin, pwofesè, paran).",
+        "project_school_price": "$1,500 USD",
+        "project_school_status": "✅ Disponib",
+        "project_school_contact": "Kontakte pwopriyetè a pou achte",
+        "project_pos": "📦 Sistèm envantè ak pwen vant",
+        "project_pos_desc": "Jesyon envantè sou entènèt ak pwen vant pou ti biznis. Eskane kòd ba, alèt stock, rapò lavant, jesyon founisè. Travay sou entènèt ak san entènèt.",
+        "project_pos_price": "$1,000 USD",
+        "project_pos_status": "✅ Disponib",
+        "project_pos_contact": "Kontakte pwopriyetè a pou achte",
+        "project_scraper": "📈 Ekstraktè entènèt pèsonalize ak tiyo done",
+        "project_scraper_desc": "Ekstraksyon done otomatik nan nenpòt sit entènèt, netwaye ak livre kòm Excel/JSON/CSV. Planifye kouri chak jou, chak semenn, oswa chak mwa. Pafè pou rechèch mache, siveyans pri, oswa jenerasyon leads.",
+        "project_scraper_price": "$500 – $2,000 (depann sou konpleksite)",
+        "project_scraper_status": "✅ Disponib",
+        "project_scraper_contact": "Kontakte pwopriyetè a pou achte",
+        "project_chess": "♟️ Jwe echèk kont machin nan",
+        "project_chess_desc": "Jwèt echèk edikatif ak opozan AI (3 nivo difikilte). Chak mouvman eksplike – aprann taktik tankou fouchèt, klou, ak echèk dekouvri. Gen ladan mod demosyon, tablodbò mouvman, ak telechajman rapò konplè. Miltilang (Angle, Franse, Panyòl, Kreyòl).",
+        "project_chess_price": "$20 USD (peman inik)",
+        "project_chess_status": "✅ Disponib – aksè pou tout lavi, mizajou gratis",
+        "project_chess_contact": "Kontakte pwopriyetè a pou achte",
+        "project_accountant": "🧮 Kontab Excel avanse AI",
+        "project_accountant_desc": "Gwoup pwofesyonèl kontablite ak jesyon prè. Swivi revni/depans, jere prè (moun k ap prete, dat limit, peman), tablodbò ak balans, ekspòte tout rapò nan Excel ak PDF. Miltilang (Angle, Franse, Panyòl).",
+        "project_accountant_price": "$199 USD (peman inik)",
+        "project_accountant_status": "✅ Disponib – aksè pou tout lavi, mizajou gratis",
+        "project_accountant_contact": "Kontakte pwopriyetè a pou achte",
+        "project_archives": "📜 Baz done Achiv Nasyonal Ayiti",
+        "project_archives_desc": "Baz done konplè achiv nasyonal pou sitwayen Ayisyen. Sere NIF (Matrikil Fiskal), CIN, Paspò, Pèmi Kondwi, istwa vòt, parennaj, ak telechajman dokiman. Validasyon siyati minis, sistèm modpas anyèl, miltilang (Angle, Franse, Panyòl, Kreyòl).",
+        "project_archives_price": "$1,500 USD (peman inik)",
+        "project_archives_status": "✅ Disponib – kòd sous, enstalasyon, ak sipò enkli",
+        "project_archives_contact": "Kontakte pwopriyetè a pou achte",
+        "project_dsm": "🛡️ DSM-2026: SISTÈM SEKIRIZE",
+        "project_dsm_desc": "Radar avanse siveyans stratosfè – swivi avyon, satelit, ak misil an tan reyèl. Ekspozisyon radar simulation ak deteksyon menas, sipò miltilang, ak rapò entèlijans telechajab.",
+        "project_dsm_price": "$299 USD (peman inik)",
+        "project_dsm_status": "✅ Disponib – lisans pou tout lavi, mizajou gratis",
+        "project_dsm_contact": "Kontakte pwopriyetè a pou achte",
+        "project_bi": "📊 Tablodbò entèlijans biznis",
+        "project_bi_desc": "Tablodbò analitik an tan reyèl pou konpayi. Konekte SQL, Excel, CSV – visualize KPI, tandans lavant, envantè, ak pèfòmans rejyonal. Entèaktif totalman ak filt dat ak rapò CSV telechajab. Miltilang (Angle, Franse, Panyòl, Kreyòl).",
+        "project_bi_price": "$1,200 USD (peman inik)",
+        "project_bi_status": "✅ Disponib – aksè pou tout lavi, mizajou gratis",
+        "project_bi_contact": "Kontakte pwopriyetè a pou achte",
+        "project_ai_classifier": "🧠 Klasifikatè imaj AI (MobileNetV2)",
+        "project_ai_classifier_desc": "Telechaje yon imaj epi AI idantifye li nan 1000 kategori (bèt, veyikil, manje, objè chak jou). Sèvi ak TensorFlow MobileNetV2 pre-antrene sou ImageNet. Miltilang, pwoteje pa modpas, demo pare.",
+        "project_ai_classifier_price": "$1,200 USD (peman inik)",
+        "project_ai_classifier_status": "✅ Disponib – kòd sous, enstalasyon, ak sipò enkli",
+        "project_ai_classifier_contact": "Kontakte pwopriyetè a pou achte",
+        "project_task_manager": "🗂️ Tablodbò jesyon travay",
+        "project_task_manager_desc": "Jere travay, swivi pwogrè, ak analize pwodiktivite ak grafik an tan reyèl ak mòd nwa. Enspire pa koòdone ki baze sou eleman React. Miltilang, depo ki pèsiste, tablodbò analitik.",
+        "project_task_manager_price": "$1,200 USD (peman inik)",
+        "project_task_manager_status": "✅ Disponib – aksè pou tout lavi, mizajou gratis",
+        "project_task_manager_contact": "Kontakte pwopriyetè a pou achte",
+        "project_ray": "⚡ Processeurs tèks paralèl Ray",
+        "project_ray_desc": "Trete tèks an paralèl sou plizyè nwayo CPU. Konpare vitès ekzekisyon sekansyèl vs paralèl. Enspire pa fondasyon informatique distribué Ray nan UC Berkeley.",
+        "project_ray_price": "$1,200 USD (peman inik)",
+        "project_ray_status": "✅ Disponib – aksè pou tout lavi, mizajou gratis",
+        "project_ray_contact": "Kontakte pwopriyetè a pou achte",
+        "project_cassandra": "🗄️ Tablodbò done Cassandra",
+        "project_cassandra_desc": "Demostrasyon baz done NoSQL distribye. Ajoute lòd, chèche pa kliyan, ak eksplore analitik an tan reyèl. Modelize daprè Apache Cassandra (Netflix, Instagram).",
+        "project_cassandra_price": "$1,200 USD (peman inik)",
+        "project_cassandra_status": "✅ Disponib – aksè pou tout lavi, mizajou gratis",
+        "project_cassandra_contact": "Kontakte pwopriyetè a pou achte",
+        "project_spark": "🌊 Processeurs done Apache Spark",
+        "project_spark_desc": "Telechaje yon dosye CSV epi kouri agrega ki tankou SQL (group by, sum, avg, count) lè l sèvi avèk Spark. Rezilta ak grafik an tan reyèl. Enspire pa motè big data ke dè milye de konpayi itilize.",
+        "project_spark_price": "$1,200 USD (peman inik)",
+        "project_spark_status": "✅ Disponib – aksè pou tout lavi, mizajou gratis",
+        "project_spark_contact": "Kontakte pwopriyetè a pou achte",
+        "project_drone": "🚁 Kòmandan dron Ayisyen",
+        "project_drone_desc": "Kontwole premye dron ki fèt an Ayiti apati telefòn ou. Mòd simulation, sipò dron reyèl (MAVLink), arme, dekolaj, aterisaj, vole nan kowòdone GPS, télémétrie an dirèk, istwa kòmand. Miltilang, tablodbò pwofesyonèl.",
+        "project_drone_price": "$2,000 USD (peman inik)",
+        "project_drone_status": "✅ Disponib – kòd sous, enstalasyon, ak 1 ane sipò enkli",
+        "project_drone_contact": "Kontakte pwopriyetè a pou achte",
+        "project_english": "🇬🇧 Annou aprann angle ak Gesner",
+        "project_english_desc": "Aplikasyon entèaktif aprantisaj angle. Kouvri vokabilè, gramè, pwononsyasyon, ak pratik konvèsasyon. Koòdone miltilang, swivi pwogrè, kesyon, ak sètifika. Pafè pou débutan ak aprann entèmedyè.",
+        "project_english_price": "$299 USD (peman inik)",
+        "project_english_status": "✅ Disponib – kòd sous, enstalasyon, ak sipò enkli",
+        "project_english_contact": "Kontakte pwopriyetè a pou achte",
+        "project_spanish": "🇪🇸 Annou aprann panyòl ak Gesner",
+        "project_spanish_desc": "Platfòm aprantisaj panyòl konplè. Lesyon sou vokabilè, konjigezon vèb, konpreyansyon oditif, ak nòt kiltirèl. Gen ladan egzèsis entèaktif, rekonesans vokal, ak tablodbò pwogrè.",
+        "project_spanish_price": "$299 USD (peman inik)",
+        "project_spanish_status": "✅ Disponib – kòd sous, enstalasyon, ak sipò enkli",
+        "project_spanish_contact": "Kontakte pwopriyetè a pou achte",
+        "project_portuguese": "🇵🇹 Annou aprann pòtigè ak Gesner",
+        "project_portuguese_desc": "Aplikasyon aprantisaj pòtigè brezilyen ak ewopeyen. Kouvri fraz esansyèl, gramè, tan vèb, ak dyalòg lavi reyèl. Gen ladan fich didaktik, gid pwononsyasyon, ak badj reyalizasyon. Sipò miltilang.",
+        "project_portuguese_price": "$299 USD (peman inik)",
+        "project_portuguese_status": "✅ Disponib – kòd sous, enstalasyon, ak sipò enkli",
+        "project_portuguese_contact": "Kontakte pwopriyetè a pou achte",
+        "project_ai_career": "🚀 Koòch karyè AI – Optimizeur CV",
+        "project_ai_career_desc": "**Optimize CV ou a ak reyisi antrevi ak AI.** Telechaje CV ou ak yon deskripsyon travay – AI nou an analize tou de epi bay: mo kle pou ajoute, amelyorasyon konpetans, sijesyon fòma, ak kesyon antrevi prevwa. Pafè pou moun k ap chèche travay, elèv, ak pwofesyonèl. Kòd sous konplè enkli.",
+        "project_ai_career_price": "$149 USD (peman inik)",
+        "project_ai_career_status": "✅ Disponib – kòd sous konplè enkli",
+        "project_ai_career_contact": "Kontakte pwopriyetè a pou achte",
+        "project_ai_medical": "🧪 Asistan literati medikal ak syantifik AI",
+        "project_ai_medical_desc": "**Poze nenpòt kesyon medikal oswa syantifik – jwenn repons ki baze sou rechèch reyèl.** AI nou an fouye nan PubMed, pi gwo baz done literati medikal, rekipere rezime ki enpòtan, ak jenere repons ki baze sou prèv ak sitasyon ak lyen dirèk. Kòd sous konplè enkli.",
+        "project_ai_medical_price": "$149 USD (peman inik)",
+        "project_ai_medical_status": "✅ Disponib – kòd sous konplè enkli",
+        "project_ai_medical_contact": "Kontakte pwopriyetè a pou achte",
+        "project_music_studio": "🎧 Music Studio Pro – Gwoup konplè pwodiksyon mizik",
+        "project_music_studio_desc": "**Lojisyèl pwodiksyon mizik pwofesyonèl** – anrejistre, melanje, ak kreye rit. Gen ladan anrejistreman vwa, efè estidyo (EQ, COMPRESSOR, reverb, korèksyon ton), kreyatè rit milti‑track, bouk kontinyèl, anrejistreman vwa sou track, korèktè otomatik. Kòd sous konplè enkli.",
+        "project_music_studio_price": "$299 USD (peman inik)",
+        "project_music_studio_status": "✅ Disponib – kòd sous konplè enkli",
+        "project_music_studio_contact": "Kontakte pwopriyetè a pou achte",
+        "project_ai_media": "🎭 Studio medya AI – Editè foto ak videyo k ap pale",
+        "project_ai_media_desc": "**Kreye videyo pwofesyonèl apati foto, odyo, oswa klip videyo.** Kat mòd pwisan: foto + lapawòl, foto + odyo telechaje, foto + mizik anba, videyo + mizik anba. Kòd sous konplè enkli.",
+        "project_ai_media_price": "$149 USD (peman inik)",
+        "project_ai_media_status": "✅ Disponib – kòd sous konplè enkli",
+        "project_ai_media_contact": "Kontakte pwopriyetè a pou achte",
+        "project_chinese": "🇨🇳 Annou aprann Chinwa ak Gesner – Liv 1",
+        "project_chinese_desc": "**Kou konplè mandaren pou débutan.** 20 lesyon entèaktif sou konvèsasyon chak jou, vokabilè, gramè, pwononsyasyon, ak kesyon. Kòd sous konplè enkli.",
+        "project_chinese_price": "$299 USD (peman inik)",
+        "project_chinese_status": "✅ Disponib – kòd sous konplè enkli",
+        "project_chinese_contact": "Kontakte pwopriyetè a pou achte",
+        "project_french": "🇫🇷 Annou aprann Franse ak Gesner – Liv 1",
+        "project_french_desc": "**Kou konplè franse pou débutan.** 20 lesyon entèaktif sou konvèsasyon chak jou, vokabilè, gramè, pwononsyasyon, ak kesyon. Kòd sous konplè enkli.",
+        "project_french_price": "$299 USD (peman inik)",
+        "project_french_status": "✅ Disponib – kòd sous konplè enkli",
+        "project_french_contact": "Kontakte pwopriyetè a pou achte",
+        "project_mathematics": "📐 Annou aprann Matematik ak Gesner – Liv 1",
+        "project_mathematics_desc": "**Kou konplè matematik pou débutan.** 20 lesyon ki kouvri aritmetik debaz, jeyometri, fraksyon, desimal, pousantaj, pwoblèm mo, ak plis ankò. Kòd sous konplè enkli.",
+        "project_mathematics_price": "$299 USD (peman inik)",
+        "project_mathematics_status": "✅ Disponib – kòd sous konplè enkli",
+        "project_mathematics_contact": "Kontakte pwopriyetè a pou achte",
+        "project_ai_course": "🤖 Kou Fondasyon AI ak sètifikasyon",
+        "project_ai_course_desc": "**Kou metrize AI 28 jou – soti débutan rive ekspè sètifye.** Aprann ChatGPT, Gemini, MidJourney, Runway, ElevenLabs, Make.com, ak plis ankò. Kòd sous konplè enkli.",
+        "project_ai_course_price": "$299 USD (peman inik)",
+        "project_ai_course_status": "✅ Disponib – kòd sous konplè enkli",
+        "project_ai_course_contact": "Kontakte pwopriyetè a pou achte",
+        "project_medical_term": "🩺 Liv Tèminoloji Medikal pou Tradiktè",
+        "project_medical_term_desc": "**Fòmasyon entèaktif sou tèminoloji medikal pou entèprèt ak pwofesyonèl sante.** 20 lesyon ki baze sou konvèsasyon reyèl doktè‑pasyan, odyo vwa natif natal, ak pratik tradiksyon. Kòd sous konplè enkli.",
+        "project_medical_term_price": "$299 USD (peman inik)",
+        "project_medical_term_status": "✅ Disponib – kòd sous konplè enkli",
+        "project_medical_term_contact": "Kontakte pwopriyetè a pou achte",
         "project_python_course": "🐍 Annou aprann kode an Python ak Gesner",
-        "project_python_course_desc": "**Kou konplè pwogramasyon Python – soti nan débutan rive nan avanse.** 20 lesyon entèaktif ak kòd demonstrasyon, 5 egzèsis pratik pa lesyon ak sipò odyo. Gen ladan varyab, bouk, fonksyon, Pwogramasyon Oryante Objè, NumPy, Matplotlib, elatriye. Kòd sous konplè enkli.",
+        "project_python_course_desc": "**Kou konplè pwogramasyon Python – soti débutan rive avanse.** 20 lesyon entèaktif ak kòd demonstrasyon, 5 egzèsis pratik pa lesyon ak sipò odyo. Kòd sous konplè enkli.",
         "project_python_course_price": "$299 USD (peman inik)",
         "project_python_course_status": "✅ Disponib – kòd sous konplè enkli",
         "project_python_course_contact": "Kontakte pwopriyetè a pou achte",
         "project_hardware_course": "🔌 Annou aprann konekte lojisyèl ak pyès medam ak Gesner",
-        "project_hardware_course_desc": "**Konekte lojisyèl ak 20 pyès medam – pwojè IoT ak robotik.** 20 lesyon sou kat rezo, Wi‑Fi, Bluetooth, GPS, GPIO, detèktè, motè, ekran, elatriye. Egzanp kòd Python, egzèsis pratik. Kòd sous konplè enkli.",
+        "project_hardware_course_desc": "**Konekte lojisyèl ak 20 pyès medam – pwojè IoT ak robotik.** 20 lesyon sou kat rezo, Wi‑Fi, Bluetooth, GPS, GPIO, detèktè, motè, ekran, elatriye. Kòd sous konplè enkli.",
         "project_hardware_course_price": "$299 USD (peman inik)",
         "project_hardware_course_status": "✅ Disponib – kòd sous konplè enkli",
         "project_hardware_course_contact": "Kontakte pwopriyetè a pou achte",
+        "view_demo": "🎬 Gade demo",
+        "demo_screenshot": "Previsualisation ekran (ranplase ak imaj reyèl)",
+        "live_demo": "🔗 Demo an dirèk",
+        "demo_password_hint": "🔐 Modpas demo: 20082010",
+        "request_info": "Mande enfòmasyon",
+        "buy_now": "💵 Achte kounye a",
+        "donation_title": "💖 Sipòte GlobalInternet.py",
+        "donation_text": "Ede nou grandi epi kontinye bati lojisyèl inovatè pou Ayiti ak lemonn.",
+        "donation_sub": "Donasyon ou a sipòte hosting, zouti devlopman, ak resous gratis pou devlopè lokal yo.",
+        "donation_method": "🇭🇹 Fasil ak rapid – Transfer Prisme nan Moncash (Digicel)",
+        "donation_phone": "📱 (509)-47385663",
+        "donation_limit": "Limit kantite lajan: Jiska 100,000 HTG pou chak tranzaksyon",
+        "donation_instruction": "Sèvi ak fonksyon 'Transfer Prisme' nan aplikasyon Moncash ou a pou voye kontribisyon ou a Gesner Deslandes.",
+        "donation_sendwave_title": "🌍 Veso entènasyonal atravè <span class='blue-text'>SendWave</span>",
+        "donation_sendwave_instruction": "Voye lajan dirèkteman nan nimewo telefòn nou an lè l sèvi avèk aplikasyon SendWave (disponib atravè lemonn).",
+        "donation_sendwave_phone": "Nimewo moun k ap resevwa: (509) 4738-5663 (Gesner Deslandes)",
+        "donation_bank_title": "🏦 Veso labank (Compte UNIBANK US)",
+        "donation_bank_account": "Nimewo kont: 105-2016-16594727",
+        "donation_bank_note": "Pou veso entènasyonal, tanpri sèvi ak kòd SWIFT UNIBANKUS (oswa kontakte nou pou plis detay).",
+        "donation_future": "🔜 Ap vini: Veso labank nan USD ak HTG (entènasyonal ak lokal).",
+        "donation_button": "💸 Mwen voye donasyon mwen an – notifye mwen",
+        "donation_thanks": "Mèsi anpil! N ap konfime resepsyon nan 24 èdtan. Donasyon ou atravè Prisme Transfer, Sendwave, oswa Moncash (Digicel) ale dirèkteman nan Gesner Deslandes nan (509)-47385663. Sipò ou a vle di anpil pou nou! 🇭🇹",
+        "contact_title": "📞 Annou bati yon bagay gwo",
+        "contact_ready": "Pou kòmanse pwojè ou a?",
+        "contact_phone": "📞 Telefòn / WhatsApp: (509)-47385663",
+        "contact_email": "✉️ Imel: deslandes78@gmail.com",
+        "contact_delivery": "Nou livre pakè lojisyèl konplè pa imel – rapid, serye, ak adapte ba ou.",
+        "contact_tagline": "GlobalInternet.py – Patnè Python ou a, soti Ayiti rive nan lemonn.",
+        "footer_rights": "Tout dwa rezève.",
+        "footer_founded": "Fonde pa Gesner Deslandes | Bati ak Streamlit | Hébergé sou GitHub + Streamlit Cloud",
+        "footer_pride": "🇭🇹 Fiyè Ayisyen – sèvi lemonn ak Python ak AI 🇭🇹"
     }
 }
 
@@ -615,7 +1366,7 @@ lang = st.sidebar.selectbox(
     options=["en", "fr", "es", "ht"],
     format_func=lambda x: {"en": "English", "fr": "Français", "es": "Español", "ht": "Kreyòl"}[x]
 )
-t = lang_dict.get(lang, lang_dict["en"])
+t = lang_dict[lang]
 
 # -----------------------------
 # Hero Section (big globe)
@@ -714,7 +1465,6 @@ st.markdown(f"*{t['projects_sub']}*")
 
 # Build the full projects list with all 31 projects
 projects = [
-    # Projects 1-28 (existing, unchanged)
     {"title": t['project_haiti'], "desc": t['project_haiti_desc'], "price": t['project_haiti_price'], "status": t['project_haiti_status'], "contact": t['project_haiti_contact'], "key": "haiti", "demo_url": "https://haiti-online-voting-software-ovcwwwrxbhaxyfcyohappnr.streamlit.app/", "screenshot": "https://via.placeholder.com/800x400?text=Haiti+Voting+Software"},
     {"title": t['project_dashboard'], "desc": t['project_dashboard_desc'], "price": t['project_dashboard_price'], "status": t['project_dashboard_status'], "contact": t['project_dashboard_contact'], "key": "dashboard", "demo_url": None, "screenshot": "https://via.placeholder.com/800x400?text=BI+Dashboard"},
     {"title": t['project_chatbot'], "desc": t['project_chatbot_desc'], "price": t['project_chatbot_price'], "status": t['project_chatbot_status'], "contact": t['project_chatbot_contact'], "key": "chatbot", "demo_url": None, "screenshot": "https://via.placeholder.com/800x400?text=AI+Chatbot"},
@@ -743,11 +1493,8 @@ projects = [
     {"title": t['project_french'], "desc": t['project_french_desc'], "price": t['project_french_price'], "status": t['project_french_status'], "contact": t['project_french_contact'], "key": "french", "demo_url": None, "screenshot": "https://via.placeholder.com/800x400?text=Learn+French+with+Gesner"},
     {"title": t['project_mathematics'], "desc": t['project_mathematics_desc'], "price": t['project_mathematics_price'], "status": t['project_mathematics_status'], "contact": t['project_mathematics_contact'], "key": "mathematics", "demo_url": None, "screenshot": "https://via.placeholder.com/800x400?text=Learn+Mathematics+with+Gesner"},
     {"title": t['project_ai_course'], "desc": t['project_ai_course_desc'], "price": t['project_ai_course_price'], "status": t['project_ai_course_status'], "contact": t['project_ai_course_contact'], "key": "aicourse", "demo_url": None, "screenshot": "https://via.placeholder.com/800x400?text=AI+Foundations+Course"},
-    # Project 29: Medical Terminology Book
     {"title": t['project_medical_term'], "desc": t['project_medical_term_desc'], "price": t['project_medical_term_price'], "status": t['project_medical_term_status'], "contact": t['project_medical_term_contact'], "key": "medicalterm", "demo_url": None, "screenshot": "https://via.placeholder.com/800x400?text=Medical+Terminology+Book"},
-    # NEW Project 30: Python Coding Course
     {"title": t['project_python_course'], "desc": t['project_python_course_desc'], "price": t['project_python_course_price'], "status": t['project_python_course_status'], "contact": t['project_python_course_contact'], "key": "pythoncourse", "demo_url": None, "screenshot": "https://via.placeholder.com/800x400?text=Python+Coding+Course"},
-    # NEW Project 31: Software & Hardware Course
     {"title": t['project_hardware_course'], "desc": t['project_hardware_course_desc'], "price": t['project_hardware_course_price'], "status": t['project_hardware_course_status'], "contact": t['project_hardware_course_contact'], "key": "hardwarecourse", "demo_url": None, "screenshot": "https://via.placeholder.com/800x400?text=Software+and+Hardware+Course"}
 ]
 
