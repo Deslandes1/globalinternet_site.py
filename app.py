@@ -137,7 +137,7 @@ lang_en = {
         {"name": "Gesner Junior Deslandes", "role": "Assistant to CEO", "since": "April 2026", "img": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/dreamina-2026-04-18-6690-Change%20the%20man's%20attire%20to%20a%20professiona....jpeg"},
         {"name": "Roosevelt Deslandes", "role": "Python Programmer", "since": "April 2026", "img": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/Roosevelt%20%20Software%20Builder.jpeg"},
         {"name": "Sebastien Stephane Deslandes", "role": "Python Programmer", "since": "April 2026", "img": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/35372.jpg"},
-        {"name": "Zendaya Christelle Deslandes", "role": "Secretary", "since": "April 2026", "img": ""}
+        {"name": "Zendaya Christelle Deslandes", "role": "Secretary", "since": "April 2026", "img": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/IMG_1411.jpg"}
     ],
     "services_title": "⚙️ Our Services",
     "services": [
@@ -339,9 +339,7 @@ lang_en = {
     "footer_pride": "🇭🇹 Proudly Haitian – serving the world with Python and AI 🇭🇹"
 }
 
-# French (fr) – only the team_members and a few keys are updated; the rest are the same as English.
-# In your actual code, you should have full French translations. For brevity, I will show only the differences.
-# For production, you must include all keys. Here I provide a minimal working example.
+# French (fr) – updated team_members
 lang_fr = lang_en.copy()
 lang_fr.update({
     "hero_sub": "Construisez avec Python. Livrez rapidement. Innovez avec l'IA.",
@@ -353,7 +351,7 @@ lang_fr.update({
         {"name": "Gesner Junior Deslandes", "role": "Assistant du PDG", "since": "Avril 2026", "img": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/dreamina-2026-04-18-6690-Change%20the%20man's%20attire%20to%20a%20professiona....jpeg"},
         {"name": "Roosevelt Deslandes", "role": "Programmeur Python", "since": "Avril 2026", "img": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/Roosevelt%20%20Software%20Builder.jpeg"},
         {"name": "Sebastien Stephane Deslandes", "role": "Programmeur Python", "since": "Avril 2026", "img": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/35372.jpg"},
-        {"name": "Zendaya Christelle Deslandes", "role": "Secrétaire", "since": "Avril 2026", "img": ""}
+        {"name": "Zendaya Christelle Deslandes", "role": "Secrétaire", "since": "Avril 2026", "img": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/IMG_1411.jpg"}
     ],
     "founder": "Fondateur et PDG",
     "cv_title": "📄 À propos du propriétaire – Gesner Deslandes",
@@ -363,7 +361,7 @@ lang_fr.update({
     "footer_pride": "🇭🇹 Fier d'être Haïtien – servant le monde avec Python et l'IA 🇭🇹"
 })
 
-# Spanish (es) – similar minimal update; in production use full translations.
+# Spanish (es) – updated team_members
 lang_es = lang_en.copy()
 lang_es.update({
     "hero_sub": "Construye con Python. Entrega con velocidad. Innova con IA.",
@@ -375,7 +373,7 @@ lang_es.update({
         {"name": "Gesner Junior Deslandes", "role": "Asistente del CEO", "since": "Abril 2026", "img": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/dreamina-2026-04-18-6690-Change%20the%20man's%20attire%20to%20a%20professiona....jpeg"},
         {"name": "Roosevelt Deslandes", "role": "Programador Python", "since": "Abril 2026", "img": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/Roosevelt%20%20Software%20Builder.jpeg"},
         {"name": "Sebastien Stephane Deslandes", "role": "Programador Python", "since": "Abril 2026", "img": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/35372.jpg"},
-        {"name": "Zendaya Christelle Deslandes", "role": "Secretaria", "since": "Abril 2026", "img": ""}
+        {"name": "Zendaya Christelle Deslandes", "role": "Secretaria", "since": "Abril 2026", "img": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/IMG_1411.jpg"}
     ],
     "founder": "Fundador y CEO",
     "cv_title": "📄 Sobre el propietario – Gesner Deslandes",
@@ -385,7 +383,7 @@ lang_es.update({
     "footer_pride": "🇭🇹 Orgullosamente haitiano – sirviendo al mundo con Python e IA 🇭🇹"
 })
 
-# Haitian Creole (ht) – minimal update
+# Haitian Creole (ht) – updated team_members
 lang_ht = lang_en.copy()
 lang_ht.update({
     "hero_sub": "Konstwi avèk Python. Livre vit. Innove avèk AI.",
@@ -397,7 +395,7 @@ lang_ht.update({
         {"name": "Gesner Junior Deslandes", "role": "Asistan CEO", "since": "Avril 2026", "img": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/dreamina-2026-04-18-6690-Change%20the%20man's%20attire%20to%20a%20professiona....jpeg"},
         {"name": "Roosevelt Deslandes", "role": "Pwogramè Python", "since": "Avril 2026", "img": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/Roosevelt%20%20Software%20Builder.jpeg"},
         {"name": "Sebastien Stephane Deslandes", "role": "Pwogramè Python", "since": "Avril 2026", "img": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/35372.jpg"},
-        {"name": "Zendaya Christelle Deslandes", "role": "Sekretè", "since": "Avril 2026", "img": ""}
+        {"name": "Zendaya Christelle Deslandes", "role": "Sekretè", "since": "Avril 2026", "img": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/IMG_1411.jpg"}
     ],
     "founder": "Fondatè ak CEO",
     "cv_title": "📄 Konsènan pwopriyetè a – Gesner Deslandes",
@@ -407,7 +405,7 @@ lang_ht.update({
     "footer_pride": "🇭🇹 Fiyè Ayisyen – sèvi lemonn ak Python ak AI 🇭🇹"
 })
 
-# Chinese (zh) – minimal update
+# Chinese (zh) – updated team_members
 lang_zh = lang_en.copy()
 lang_zh.update({
     "hero_sub": "用 Python 构建。快速交付。用 AI 创新。",
@@ -419,7 +417,7 @@ lang_zh.update({
         {"name": "Gesner Junior Deslandes", "role": "首席执行官助理", "since": "2026年4月", "img": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/dreamina-2026-04-18-6690-Change%20the%20man's%20attire%20to%20a%20professiona....jpeg"},
         {"name": "Roosevelt Deslandes", "role": "Python 程序员", "since": "2026年4月", "img": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/Roosevelt%20%20Software%20Builder.jpeg"},
         {"name": "Sebastien Stephane Deslandes", "role": "Python 程序员", "since": "2026年4月", "img": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/35372.jpg"},
-        {"name": "Zendaya Christelle Deslandes", "role": "秘书", "since": "2026年4月", "img": ""}
+        {"name": "Zendaya Christelle Deslandes", "role": "秘书", "since": "2026年4月", "img": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/IMG_1411.jpg"}
     ],
     "founder": "创始人兼首席执行官",
     "cv_title": "📄 关于所有者 – Gesner Deslandes",
@@ -429,7 +427,7 @@ lang_zh.update({
     "footer_pride": "🇭🇹 自豪的海地人 – 用 Python 和 AI 服务世界 🇭🇹"
 })
 
-# Portuguese (pt) – minimal update
+# Portuguese (pt) – updated team_members
 lang_pt = lang_en.copy()
 lang_pt.update({
     "hero_sub": "Construa com Python. Entregue com velocidade. Inove com IA.",
@@ -441,7 +439,7 @@ lang_pt.update({
         {"name": "Gesner Junior Deslandes", "role": "Assistente do CEO", "since": "Abril 2026", "img": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/dreamina-2026-04-18-6690-Change%20the%20man's%20attire%20to%20a%20professiona....jpeg"},
         {"name": "Roosevelt Deslandes", "role": "Programador Python", "since": "Abril 2026", "img": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/Roosevelt%20%20Software%20Builder.jpeg"},
         {"name": "Sebastien Stephane Deslandes", "role": "Programador Python", "since": "Abril 2026", "img": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/35372.jpg"},
-        {"name": "Zendaya Christelle Deslandes", "role": "Secretária", "since": "Abril 2026", "img": ""}
+        {"name": "Zendaya Christelle Deslandes", "role": "Secretária", "since": "Abril 2026", "img": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/IMG_1411.jpg"}
     ],
     "founder": "Fundador e CEO",
     "cv_title": "📄 Sobre o proprietário – Gesner Deslandes",
@@ -451,7 +449,7 @@ lang_pt.update({
     "footer_pride": "🇭🇹 Orgulhosamente haitiano – servindo o mundo com Python e IA 🇭🇹"
 })
 
-# Combine all languages into one dictionary
+# Combine all languages
 lang_dict = {
     "en": lang_en,
     "fr": lang_fr,
