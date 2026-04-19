@@ -135,7 +135,7 @@ lang_en = {
     "team_members": [
         {"name": "Gesner Deslandes", "role": "Founder & CEO", "since": "2021", "img": ""},
         {"name": "Gesner Junior Deslandes", "role": "Assistant to CEO", "since": "April 2026", "img": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/dreamina-2026-04-18-6690-Change%20the%20man's%20attire%20to%20a%20professiona....jpeg"},
-        {"name": "Roosevelt Deslandes", "role": "Python Programmer", "since": "April 2026", "img": ""},
+        {"name": "Roosevelt Deslandes", "role": "Python Programmer", "since": "April 2026", "img": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/Roosevelt%20%20Software%20Builder.jpeg"},
         {"name": "Sebastien Stephane Deslandes", "role": "Python Programmer", "since": "April 2026", "img": ""},
         {"name": "Zendaya Christelle Deslandes", "role": "Secretary", "since": "April 2026", "img": ""}
     ],
