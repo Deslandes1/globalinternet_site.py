@@ -9,44 +9,45 @@ import os
 from supabase import create_client, Client
 
 # ========== SECURITY: SESSION-BASED RATE LIMITING ==========
-# This works in Streamlit and prevents bot attacks
 from datetime import timedelta
+from collections import defaultdict
+from time import time
 
 def check_rate_limit(max_requests=100, window_seconds=60):
     """Prevents bot attacks by limiting requests per session"""
-    
-    # Initialize session tracking if not exists
     if "request_history" not in st.session_state:
         st.session_state.request_history = []
     
-    # Clean old requests
     now = datetime.now()
     st.session_state.request_history = [
         ts for ts in st.session_state.request_history 
         if now - ts < timedelta(seconds=window_seconds)
     ]
     
-    # Check if over limit
     if len(st.session_state.request_history) >= max_requests:
         st.error("🚫 Security: Too many requests. Please wait 60 seconds.")
         st.stop()
     
-    # Add current request
     st.session_state.request_history.append(now)
 
-# Call the rate limiter
-check_rate_limit(max_requests=100, window_seconds=60)
+# Call rate limiter (will work after app loads)
 # ========== END SECURITY ==========
 
-# ---------- Supabase setup ----------
-SUPABASE_URL = st.secrets["supabase"]["url"]
-SUPABASE_KEY = st.secrets["supabase"]["key"]
-supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
+# ---------- Supabase setup with error handling ----------
+try:
+    SUPABASE_URL = st.secrets["supabase"]["url"]
+    SUPABASE_KEY = st.secrets["supabase"]["key"]
+    supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
+except Exception as e:
+    st.warning("⚠️ Supabase connection not configured. Comments and likes will be disabled.")
+    supabase = None
 
 st.set_page_config(page_title="GlobalInternet.py – Python Software Company", page_icon="🌐", layout="wide")
 
 # ---------- Functions for comments & likes (table "comments") ----------
 def get_comments(project_key):
+    if not supabase:
+        return []
     try:
         response = supabase.table("comments").select("*").eq("project_key", project_key).order("timestamp", desc=False).execute()
         return response.data
@@ -55,6 +56,9 @@ def get_comments(project_key):
         return []
 
 def add_comment(project_key, username, comment, parent_id=0, reply_to_username=""):
+    if not supabase:
+        st.warning("Comments are currently disabled.")
+        return False
     try:
         supabase.table("comments").insert({
             "project_key": project_key,
@@ -71,17 +75,22 @@ def add_comment(project_key, username, comment, parent_id=0, reply_to_username="
         return False
 
 def add_like(comment_id):
+    if not supabase:
+        return
     try:
-        # Try to increment using RPC (requires a function in Supabase)
         supabase.rpc("increment_likes", {"row_id": comment_id}).execute()
     except:
-        # Fallback: read and update
-        current = supabase.table("comments").select("likes").eq("id", comment_id).execute()
-        if current.data:
-            new_likes = current.data[0]["likes"] + 1
-            supabase.table("comments").update({"likes": new_likes}).eq("id", comment_id).execute()
+        try:
+            current = supabase.table("comments").select("likes").eq("id", comment_id).execute()
+            if current.data:
+                new_likes = current.data[0]["likes"] + 1
+                supabase.table("comments").update({"likes": new_likes}).eq("id", comment_id).execute()
+        except:
+            pass
 
 def delete_comment(comment_id, admin_password):
+    if not supabase:
+        return False
     if admin_password == "20082010":
         try:
             supabase.table("comments").delete().eq("id", comment_id).execute()
@@ -90,31 +99,35 @@ def delete_comment(comment_id, admin_password):
             return False
     return False
 
-# ---------- Email notification ----------
+# ---------- Email notification with error handling ----------
 def send_visit_notification():
     try:
-        visitor_ip = requests.get("https://api.ipify.org").text
+        visitor_ip = requests.get("https://api.ipify.org", timeout=5).text
         user_agent = st.context.headers.get("User-Agent", "unknown") if hasattr(st, 'context') else "unknown"
         subject = "🌐 New visitor on GlobalInternet.py website"
         body = f"Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\nIP: {visitor_ip}\nUser Agent: {user_agent}"
-        sender = st.secrets["email"]["sender"]
-        password = st.secrets["email"]["password"]
-        receiver = st.secrets["email"]["receiver"]
-        msg = MIMEMultipart()
-        msg["From"] = sender
-        msg["To"] = receiver
-        msg["Subject"] = subject
-        msg.attach(MIMEText(body, "plain"))
-        context = ssl.create_default_context()
-        with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
-            server.login(sender, password)
-            server.sendmail(sender, receiver, msg.as_string())
+        sender = st.secrets.get("email", {}).get("sender", "")
+        password = st.secrets.get("email", {}).get("password", "")
+        receiver = st.secrets.get("email", {}).get("receiver", "")
+        if sender and password and receiver:
+            msg = MIMEMultipart()
+            msg["From"] = sender
+            msg["To"] = receiver
+            msg["Subject"] = subject
+            msg.attach(MIMEText(body, "plain"))
+            context = ssl.create_default_context()
+            with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
+                server.login(sender, password)
+                server.sendmail(sender, receiver, msg.as_string())
     except:
         pass
 
 if "notification_sent" not in st.session_state:
     send_visit_notification()
     st.session_state.notification_sent = True
+
+# Call rate limiter after initial setup
+check_rate_limit()
 
 # ---------- CSS ----------
 st.markdown("""
@@ -211,7 +224,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# ---------- English dictionary (full) ----------
+# ---------- English dictionary (COMPLETE - all keys present) ----------
 t = {
     "hero_title": "GlobalInternet.py",
     "hero_sub": "Build with Python. Deliver with Speed. Innovate with AI.",
@@ -288,299 +301,6 @@ t = {
     ],
     "projects_title": "🏆 Our Projects & Accomplishments",
     "projects_sub": "Completed software solutions delivered to clients – ready for you to purchase or customize.",
-    "project_haiti": "🇭🇹 Haiti Online Voting Software",
-    "project_haiti_desc": "Complete presidential election system with multi‑language support (Kreyòl, French, English, Spanish), real‑time live monitoring, CEP President dashboard (manage candidates, upload photos, download progress reports), secret ballot, and changeable passwords. Used for national elections.",
-    "project_haiti_price": "$2,000 USD (one‑time fee)",
-    "project_haiti_status": "✅ Available now – includes source code, setup, and support.",
-    "project_haiti_contact": "Contact owner for purchase",
-    "project_dashboard": "📊 Business Intelligence Dashboard",
-    "project_dashboard_desc": "Real‑time analytics dashboard for companies. Connect to any database (SQL, Excel, CSV) and visualize KPIs, sales trends, inventory, and custom reports. Fully interactive and customizable.",
-    "project_dashboard_price": "$1,200 USD",
-    "project_dashboard_status": "✅ Available now",
-    "project_dashboard_contact": "Contact owner for purchase",
-    "project_chatbot": "🤖 AI Customer Support Chatbot",
-    "project_chatbot_desc": "Intelligent chatbot trained on your business data. Answer customer questions 24/7, reduce support workload. Integrates with websites, WhatsApp, or Telegram. Built with Python and modern NLP.",
-    "project_chatbot_price": "$800 USD (basic) / $1,500 USD (advanced)",
-    "project_chatbot_status": "✅ Available now",
-    "project_chatbot_contact": "Contact owner for purchase",
-    "project_school": "🏫 School Management System",
-    "project_school_desc": "Complete platform for schools: student registration, grade management, attendance tracking, parent portal, report card generation, and fee collection. Multi‑user roles (admin, teachers, parents).",
-    "project_school_price": "$1,500 USD",
-    "project_school_status": "✅ Available now",
-    "project_school_contact": "Contact owner for purchase",
-    "project_pos": "📦 Inventory & POS System",
-    "project_pos_desc": "Web‑based inventory management with point‑of‑sale for small businesses. Barcode scanning, stock alerts, sales reports, supplier management. Works online and offline.",
-    "project_pos_price": "$1,000 USD",
-    "project_pos_status": "✅ Available now",
-    "project_pos_contact": "Contact owner for purchase",
-    "project_scraper": "📈 Custom Web Scraper & Data Pipeline",
-    "project_scraper_desc": "Automated data extraction from any website, cleaned and delivered as Excel/JSON/CSV. Schedule daily, weekly, or monthly runs. Perfect for market research, price monitoring, or lead generation.",
-    "project_scraper_price": "$500 – $2,000 (depends on complexity)",
-    "project_scraper_status": "✅ Available now",
-    "project_scraper_contact": "Contact owner for purchase",
-    "project_chess": "♟️ Play Chess Against the Machine",
-    "project_chess_desc": "Educational chess game with AI opponent (3 difficulty levels). Every move is explained – learn tactics like forks, pins, and discovered checks. Includes demo mode, move dashboard, and full game report download. Multi‑language (English, French, Spanish, Kreyòl).",
-    "project_chess_price": "$20 USD (one‑time fee)",
-    "project_chess_status": "✅ Available now – lifetime access, free updates",
-    "project_chess_contact": "Contact owner for purchase",
-    "project_accountant": "🧮 Accountant Excel Advanced AI",
-    "project_accountant_desc": "Professional accounting and loan management suite. Track cash income/expenses, manage loans (borrowers, due dates, payments), dashboard with balance, export all reports to Excel and PDF. Multi‑language (English, French, Spanish).",
-    "project_accountant_price": "$199 USD (one‑time fee)",
-    "project_accountant_status": "✅ Available now – lifetime access, free updates",
-    "project_accountant_contact": "Contact owner for purchase",
-    "project_archives": "📜 Haiti Archives Nationales Database",
-    "project_archives_desc": "Complete national archives database for Haitian citizens. Store NIF (Matricule Fiscale), CIN, Passport, Driver's License, voting history, sponsorships, and document uploads. Minister signature validation, annual password system, multilingual (English, French, Spanish, Kreyòl).",
-    "project_archives_price": "$1,500 USD (one‑time fee)",
-    "project_archives_status": "✅ Available now – includes source code, setup, and support",
-    "project_archives_contact": "Contact owner for purchase",
-    "project_dsm": "🛡️ DSM-2026: SYSTEM SECURED",
-    "project_dsm_desc": "Advanced stratosphere monitoring radar – tracks aircraft, satellites, and missiles in real time. Simulated radar display with threat detection, multi‑language support, and downloadable intelligence reports.",
-    "project_dsm_price": "$299 USD (one‑time fee)",
-    "project_dsm_status": "✅ Available now – lifetime license, free updates",
-    "project_dsm_contact": "Contact owner for purchase",
-    "project_bi": "📊 Business Intelligence Dashboard",
-    "project_bi_desc": "Real‑time analytics dashboard for companies. Connect SQL, Excel, CSV – visualize KPIs, sales trends, inventory, and regional performance. Fully interactive with date filters and downloadable CSV reports. Multi‑language (English, French, Spanish, Kreyòl).",
-    "project_bi_price": "$1,200 USD (one‑time fee)",
-    "project_bi_status": "✅ Available now – lifetime access, free updates",
-    "project_bi_contact": "Contact owner for purchase",
-    "project_ai_classifier": "🧠 AI Image Classifier (MobileNetV2)",
-    "project_ai_classifier_desc": "Upload an image and the AI identifies it from 1000 categories (animals, vehicles, food, everyday objects). Uses TensorFlow MobileNetV2 pre‑trained on ImageNet. Multi‑language, password protected, demo ready.",
-    "project_ai_classifier_price": "$1,200 USD (one‑time fee)",
-    "project_ai_classifier_status": "✅ Available now – includes source code, setup, and support",
-    "project_ai_classifier_contact": "Contact owner for purchase",
-    "project_task_manager": "🗂️ Task Manager Dashboard",
-    "project_task_manager_desc": "Manage tasks, track progress, and analyze productivity with real‑time charts and dark mode. Inspired by React’s component‑based UI. Multi‑language, persistent storage, analytics dashboard.",
-    "project_task_manager_price": "$1,200 USD (one‑time fee)",
-    "project_task_manager_status": "✅ Available now – lifetime access, free updates",
-    "project_task_manager_contact": "Contact owner for purchase",
-    "project_ray": "⚡ Ray Parallel Text Processor",
-    "project_ray_desc": "Process text in parallel across multiple CPU cores. Compare sequential vs. parallel execution speed. Inspired by UC Berkeley’s distributed computing framework Ray.",
-    "project_ray_price": "$1,200 USD (one‑time fee)",
-    "project_ray_status": "✅ Available now – lifetime access, free updates",
-    "project_ray_contact": "Contact owner for purchase",
-    "project_cassandra": "🗄️ Cassandra Data Dashboard",
-    "project_cassandra_desc": "Distributed NoSQL database demo. Add orders, search by customer, and explore real‑time analytics. Modeled after Apache Cassandra (Netflix, Instagram).",
-    "project_cassandra_price": "$1,200 USD (one‑time fee)",
-    "project_cassandra_status": "✅ Available now – lifetime access, free updates",
-    "project_cassandra_contact": "Contact owner for purchase",
-    "project_spark": "🌊 Apache Spark Data Processor",
-    "project_spark_desc": "Upload a CSV file and run SQL‑like aggregations (group by, sum, avg, count) using Spark. Real‑time results and charts. Inspired by the big‑data engine used by thousands of companies.",
-    "project_spark_price": "$1,200 USD (one‑time fee)",
-    "project_spark_status": "✅ Available now – lifetime access, free updates",
-    "project_spark_contact": "Contact owner for purchase",
-    "project_drone": "🚁 Haitian Drone Commander",
-    "project_drone_desc": "Control the first Haitian‑made drone from your phone. Simulation mode, real drone support (MAVLink), arm, takeoff, land, fly to GPS coordinates, live telemetry, command history. Multi‑language, professional dashboard.",
-    "project_drone_price": "$2,000 USD (one‑time fee)",
-    "project_drone_status": "✅ Available now – includes source code, setup, and 1 year support",
-    "project_drone_contact": "Contact owner for purchase",
-    "project_english": "🇬🇧 Let's Learn English with Gesner",
-    "project_english_desc": "Interactive English language learning app. Covers vocabulary, grammar, pronunciation, and conversation practice. Multi‑language interface, progress tracking, quizzes, and certificates. Perfect for beginners to intermediate learners.",
-    "project_english_price": "$299 USD (one‑time fee)",
-    "project_english_status": "✅ Available now – includes source code, setup, and support",
-    "project_english_contact": "Contact owner for purchase",
-    "project_spanish": "🇪🇸 Let's Learn Spanish with Gesner",
-    "project_spanish_desc": "Complete Spanish language learning platform. Lessons on vocabulary, verb conjugations, listening comprehension, and cultural notes. Includes interactive exercises, speech recognition, and progress dashboard.",
-    "project_spanish_price": "$299 USD (one‑time fee)",
-    "project_spanish_status": "✅ Available now – includes source code, setup, and support",
-    "project_spanish_contact": "Contact owner for purchase",
-    "project_portuguese": "🇵🇹 Let's Learn Portuguese with Gesner",
-    "project_portuguese_desc": "Brazilian and European Portuguese learning app. Covers essential phrases, grammar, verb tenses, and real‑life dialogues. Includes flashcards, pronunciation guide, and achievement badges. Multi‑language support.",
-    "project_portuguese_price": "$299 USD (one‑time fee)",
-    "project_portuguese_status": "✅ Available now – includes source code, setup, and support",
-    "project_portuguese_contact": "Contact owner for purchase",
-    "project_ai_career": "🚀 AI Career Coach – Resume Optimizer",
-    "project_ai_career_desc": """
-    **Optimize your resume and ace interviews with AI.**  
-    Upload your CV and a job description – our AI analyzes both and provides:
-    
-    📌 **Keywords to add** – missing terms from the job description  
-    🛠️ **Skill improvements** – what to highlight or add  
-    📄 **Formatting suggestions** – to make your CV stand out  
-    ❓ **Predicted interview questions** – based on your CV and the role
-    
-    Perfect for job seekers, students, and professionals. Works for any industry and language (English, French, Spanish, Kreyòl).  
-    *Full software package includes source code, installation guide, and lifetime updates. Delivered by email.*
-    """,
-    "project_ai_career_price": "$149 USD (one‑time fee)",
-    "project_ai_career_status": "✅ Available now – full source code included",
-    "project_ai_career_contact": "Contact owner for purchase",
-    "project_ai_medical": "🧪 AI Medical & Scientific Literature Assistant",
-    "project_ai_medical_desc": """
-    **Ask any medical or scientific question – get answers backed by real research.**  
-    Our AI searches PubMed, the world's largest database of medical literature, retrieves relevant abstracts, and generates evidence‑based answers with **citations and direct links** to original studies.
-    
-    ✅ **Verifiable** – every claim is sourced from published papers  
-    ✅ **Private** – can run locally, no data leaves your device  
-    ✅ **Up‑to‑date** – searches current literature, not just training data  
-    ✅ **Perfect for** – doctors, nurses, medical students, researchers, hospitals, and clinics
-    
-    Includes full source code, installation guide, and lifetime updates. Delivered by email.
-    """,
-    "project_ai_medical_price": "$149 USD (one‑time fee)",
-    "project_ai_medical_status": "✅ Available now – full source code included",
-    "project_ai_medical_contact": "Contact owner for purchase",
-    "project_music_studio": "🎧 Music Studio Pro – Complete Music Production Suite",
-    "project_music_studio_desc": """
-    **Professional music production software** – record, mix, and create beats. Includes:
-    
-    🎤 **Voice recording** with real‑time preview  
-    🎛️ **Studio effects** – EQ, compressor, reverb, pitch correction  
-    🥁 **Multi‑track beat maker** – 8 drum tracks with 16‑step sequencer  
-    🎹 **Continuous loops** – deep bass and ethereal pad with volume control  
-    🎵 **Sing over tracks** – record voice over any backing track  
-    🔊 **Auto‑Tune Voice Recorder** – professional pitch correction and effects
-    
-    Perfect for musicians, producers, and content creators. Full source code included.
-    """,
-    "project_music_studio_price": "$299 USD (one‑time fee)",
-    "project_music_studio_status": "✅ Available now – full source code included",
-    "project_music_studio_contact": "Contact owner for purchase",
-    "project_ai_media": "🎭 AI Media Studio – Talking Photo & Video Editor",
-    "project_ai_media_desc": """
-    **Create professional videos from photos, audio, or video clips.**  
-    Choose from four powerful modes:
-    
-    📷 **Photo + Speech** – upload a photo, type any text → male voice speaks  
-    📷 **Photo + Uploaded Audio** – add your own voice or sound effect  
-    📷 **Photo + Background Music** – select from 50 tracks or upload your own  
-    🎥 **Video + Background Music** – add music to any video
-    
-    Features custom background (solid color or image), volume control, and instant preview.  
-    Perfect for social media content, presentations, and personal projects.
-    """,
-    "project_ai_media_price": "$149 USD (one‑time fee)",
-    "project_ai_media_status": "✅ Available now – full source code included",
-    "project_ai_media_contact": "Contact owner for purchase",
-    "project_chinese": "🇨🇳 Let's Learn Chinese with Gesner – Book 1",
-    "project_chinese_desc": """
-    **Complete beginner course for Mandarin Chinese.**  
-    20 interactive lessons covering daily conversations, vocabulary, grammar, pronunciation, and quizzes.
-    
-    📘 **What's inside:**
-    - 20 lessons with real‑life dialogues
-    - 100+ vocabulary words with native audio
-    - 10 essential grammar rules with examples
-    - Pronunciation practice with pinyin
-    - Interactive quiz for each lesson
-    - Cardinal and ordinal numbers (1-10)
-    - Common Chinese idioms
-    
-    🎧 **Audio:** Natural Chinese voice (zh-CN-XiaoxiaoNeural) for all text.
-    
-    Perfect for students, teachers, and self‑learners. Full source code included.
-    """,
-    "project_chinese_price": "$299 USD (one‑time fee)",
-    "project_chinese_status": "✅ Available now – full source code included",
-    "project_chinese_contact": "Contact owner for purchase",
-    "project_french": "🇫🇷 Let's Learn French with Gesner – Book 1",
-    "project_french_desc": """
-    **Complete beginner course for French language.**  
-    20 interactive lessons covering daily conversations, vocabulary, grammar, pronunciation, and quizzes.
-    
-    📘 **What's inside:**
-    - 20 lessons with real‑life dialogues
-    - 100+ vocabulary words with native audio
-    - 10 essential grammar rules with examples
-    - Pronunciation practice
-    - Interactive quiz for each lesson
-    - Cardinal and ordinal numbers (1-10)
-    - Common French idioms
-    
-    🎧 **Audio:** Natural French voice (fr-FR-HenriNeural) for all text.
-    
-    Perfect for students, teachers, and self‑learners. Full source code included.
-    """,
-    "project_french_price": "$299 USD (one‑time fee)",
-    "project_french_status": "✅ Available now – full source code included",
-    "project_french_contact": "Contact owner for purchase",
-    "project_mathematics": "📐 Let's Learn Mathematics with Gesner – Book 1",
-    "project_mathematics_desc": """
-    **Complete mathematics course for beginners.**  
-    20 lessons covering basic arithmetic, geometry, fractions, decimals, percentages, word problems, and more.
-    
-    📘 **What's inside:**
-    - 20 lessons with progressive difficulty
-    - Each lesson includes: symbols & tables, 3 demonstration exercises (with audio explanation), 3 interactive exercises
-    - Audio support for all text (natural male voice)
-    - Final quiz with questions from every lesson
-    - Topics: addition, subtraction, multiplication, division, fractions, decimals, geometry (area, perimeter, volume), percentages, angles, mixed operations
-    
-    Perfect for students, teachers, and parents. Full source code included.
-    """,
-    "project_mathematics_price": "$299 USD (one‑time fee)",
-    "project_mathematics_status": "✅ Available now – full source code included",
-    "project_mathematics_contact": "Contact owner for purchase",
-    "project_ai_course": "🤖 AI Foundations & Certification Course",
-    "project_ai_course_desc": """
-    **28‑day AI mastery course – from beginner to certified expert.**  
-    Learn ChatGPT, Gemini, MidJourney, Runway, ElevenLabs, Make.com, and more.
-    
-    📘 **What's inside:**
-    - 28 lessons with audio (English, French, Spanish, Portuguese)
-    - Week 1: AI Foundations & Personal Mentor
-    - Week 2: Creativity & Skill‑Building (MidJourney, Runway, ElevenLabs)
-    - Week 3: Building AI Bots & Automation (Make.com, chatbots)
-    - Week 4: Certification & Career Application
-    - Hands‑on projects & milestone achievements
-    - Official AI Expert Certificate included
-    
-    Perfect for professionals, students, and anyone wanting to master AI. Full source code included.
-    """,
-    "project_ai_course_price": "$299 USD (one‑time fee)",
-    "project_ai_course_status": "✅ Available now – full source code included",
-    "project_ai_course_contact": "Contact owner for purchase",
-    "project_medical_term": "🩺 Medical Terminology Book for Translators",
-    "project_medical_term_desc": """
-    **Interactive medical terminology training for interpreters and healthcare professionals.**  
-    20 lessons covering real doctor‑patient conversations, native voice audio, and translation practice.
-    
-    📘 **What's inside:**
-    - 20 lessons with real medical scenarios
-    - 50+ medical terms, acronyms & abbreviations per lesson
-    - Native voice audio for English, Spanish, and other languages
-    - Built‑in interpreter practice – doctor speaks English, patient speaks their native language, you translate both ways
-    - Quizzes & progress tracking to certify your skills
-    
-    🏥 Perfect for medical interpreters, hospitals, clinics, and telemedicine providers.  
-    Reduces errors, improves patient safety, and builds confidence for certification exams (CCHI, NBCMI).
-    
-    Full source code included. Delivered by email.
-    """,
-    "project_medical_term_price": "$299 USD (one‑time fee)",
-    "project_medical_term_status": "✅ Available now – full source code included",
-    "project_medical_term_contact": "Contact owner for purchase",
-    "project_python_course": "🐍 Let's Learn Coding through Python with Gesner",
-    "project_python_course_desc": """
-    **Complete Python programming course – from beginner to advanced.**  
-    20 interactive lessons with demo code, 5 practice exercises per lesson, and audio support.
-    
-    📘 **What's inside:**
-    - 20 lessons covering variables, loops, functions, OOP, NumPy, Matplotlib, and more
-    - Each lesson includes: explanation with audio, demo code, 5 unique practice exercises with solutions
-    - Audio support for all text (English, Spanish, French, Chinese, Portuguese)
-    - Final project: build a mini calculator
-    
-    Perfect for students, professionals, and anyone wanting to learn Python. Full source code included.
-    """,
-    "project_python_course_price": "$299 USD (one‑time fee)",
-    "project_python_course_status": "✅ Available now – full source code included",
-    "project_python_course_contact": "Contact owner for purchase",
-    "project_hardware_course": "🔌 Let's Learn Software & Hardware with Gesner",
-    "project_hardware_course_desc": """
-    **Connect software with 20 hardware components – build IoT and robotics projects.**  
-    20 lessons covering network cards, Wi‑Fi, Bluetooth, GPS, GPIO, sensors, motors, displays, and more.
-    
-    📘 **What's inside:**
-    - 20 hardware components explained with text, audio, and images
-    - Python code examples for each component
-    - Practice exercises for real hardware interaction
-    - Audio support in English, Spanish, French, Chinese, Portuguese
-    
-    Perfect for engineers, hobbyists, and students learning embedded systems and automation. Full source code included.
-    """,
-    "project_hardware_course_price": "$299 USD (one‑time fee)",
-    "project_hardware_course_status": "✅ Available now – full source code included",
-    "project_hardware_course_contact": "Contact owner for purchase",
     "view_demo": "🎬 View Demo",
     "demo_screenshot": "Screenshot preview (replace with actual image)",
     "live_demo": "🔗 Live Demo",
@@ -614,7 +334,89 @@ t = {
     "footer_pride": "🇭🇹 Proudly Haitian – serving the world with Python and AI 🇭🇹"
 }
 
-# ---------- Sidebar (public, no login) ----------
+# Add all project dictionary entries
+project_titles = {
+    "haiti": "🇭🇹 Haiti Online Voting Software",
+    "dashboard": "📊 Business Intelligence Dashboard",
+    "chatbot": "🤖 AI Customer Support Chatbot",
+    "school": "🏫 School Management System",
+    "pos": "📦 Inventory & POS System",
+    "scraper": "📈 Custom Web Scraper & Data Pipeline",
+    "chess": "♟️ Play Chess Against the Machine",
+    "accountant": "🧮 Accountant Excel Advanced AI",
+    "archives": "📜 Haiti Archives Nationales Database",
+    "dsm": "🛡️ DSM-2026: SYSTEM SECURED",
+    "bi": "📊 Business Intelligence Dashboard",
+    "ai_classifier": "🧠 AI Image Classifier (MobileNetV2)",
+    "task_manager": "🗂️ Task Manager Dashboard",
+    "ray": "⚡ Ray Parallel Text Processor",
+    "cassandra": "🗄️ Cassandra Data Dashboard",
+    "spark": "🌊 Apache Spark Data Processor",
+    "drone": "🚁 Haitian Drone Commander",
+    "english": "🇬🇧 Let's Learn English with Gesner",
+    "spanish": "🇪🇸 Let's Learn Spanish with Gesner",
+    "portuguese": "🇵🇹 Let's Learn Portuguese with Gesner",
+    "ai_career": "🚀 AI Career Coach – Resume Optimizer",
+    "ai_medical": "🧪 AI Medical & Scientific Literature Assistant",
+    "music_studio": "🎧 Music Studio Pro – Complete Music Production Suite",
+    "ai_media": "🎭 AI Media Studio – Talking Photo & Video Editor",
+    "chinese": "🇨🇳 Let's Learn Chinese with Gesner – Book 1",
+    "french": "🇫🇷 Let's Learn French with Gesner – Book 1",
+    "mathematics": "📐 Let's Learn Mathematics with Gesner – Book 1",
+    "ai_course": "🤖 AI Foundations & Certification Course",
+    "medical_term": "🩺 Medical Terminology Book for Translators",
+    "python_course": "🐍 Let's Learn Coding through Python with Gesner",
+    "hardware_course": "🔌 Let's Learn Software & Hardware with Gesner"
+}
+
+project_descs = {
+    "haiti": "Complete presidential election system with multi‑language support (Kreyòl, French, English, Spanish), real‑time live monitoring, CEP President dashboard, secret ballot.",
+    "dashboard": "Real‑time analytics dashboard. Connect to any database and visualize KPIs, sales trends, inventory.",
+    "chatbot": "Intelligent chatbot trained on your business data. Answer customer questions 24/7.",
+    "school": "Complete platform for schools: student registration, grade management, attendance tracking, parent portal.",
+    "pos": "Web‑based inventory management with point‑of‑sale. Barcode scanning, stock alerts, sales reports.",
+    "scraper": "Automated data extraction from any website. Schedule daily, weekly, or monthly runs.",
+    "chess": "Educational chess game with AI opponent. Learn tactics like forks, pins, and discovered checks.",
+    "accountant": "Professional accounting and loan management suite. Track income/expenses, manage loans.",
+    "archives": "National archives database for Haitian citizens. Store NIF, CIN, Passport, Driver's License.",
+    "dsm": "Advanced stratosphere monitoring radar – tracks aircraft, satellites, and missiles in real time.",
+    "bi": "Real‑time analytics dashboard. Connect SQL, Excel, CSV – visualize KPIs and sales trends.",
+    "ai_classifier": "Upload an image and AI identifies it from 1000 categories using TensorFlow MobileNetV2.",
+    "task_manager": "Manage tasks, track progress, and analyze productivity with real‑time charts.",
+    "ray": "Process text in parallel across multiple CPU cores. Compare sequential vs. parallel execution.",
+    "cassandra": "Distributed NoSQL database demo. Add orders, search by customer, real‑time analytics.",
+    "spark": "Upload CSV and run SQL‑like aggregations using Spark. Real‑time results and charts.",
+    "drone": "Control Haitian‑made drone from your phone. Simulation mode, real drone support (MAVLink).",
+    "english": "Interactive English language learning app. Vocabulary, grammar, pronunciation, quizzes.",
+    "spanish": "Complete Spanish learning platform. Vocabulary, verb conjugations, listening comprehension.",
+    "portuguese": "Brazilian and European Portuguese learning app. Essential phrases, grammar, dialogues.",
+    "ai_career": "Upload your CV and job description – AI analyzes both and provides optimization suggestions.",
+    "ai_medical": "Ask medical questions – get answers backed by real research from PubMed with citations.",
+    "music_studio": "Professional music production software. Record, mix, create beats with studio effects.",
+    "ai_media": "Create videos from photos, audio, or video clips. Four powerful modes including text-to-speech.",
+    "chinese": "Complete beginner course for Mandarin Chinese. 20 interactive lessons with native audio.",
+    "french": "Complete beginner course for French language. 20 interactive lessons with native audio.",
+    "mathematics": "Complete mathematics course for beginners. 20 lessons covering arithmetic to geometry.",
+    "ai_course": "28‑day AI mastery course – from beginner to certified expert. Learn ChatGPT, Gemini, MidJourney.",
+    "medical_term": "Interactive medical terminology training for interpreters and healthcare professionals.",
+    "python_course": "Complete Python programming course – from beginner to advanced. 20 lessons with exercises.",
+    "hardware_course": "Connect software with 20 hardware components. Build IoT and robotics projects."
+}
+
+project_prices = {
+    "haiti": "$2,000 USD", "dashboard": "$1,200 USD", "chatbot": "$800 USD", "school": "$1,500 USD",
+    "pos": "$1,000 USD", "scraper": "$500 – $2,000", "chess": "$20 USD", "accountant": "$199 USD",
+    "archives": "$1,500 USD", "dsm": "$299 USD", "bi": "$1,200 USD", "ai_classifier": "$1,200 USD",
+    "task_manager": "$1,200 USD", "ray": "$1,200 USD", "cassandra": "$1,200 USD", "spark": "$1,200 USD",
+    "drone": "$2,000 USD", "english": "$299 USD", "spanish": "$299 USD", "portuguese": "$299 USD",
+    "ai_career": "$149 USD", "ai_medical": "$149 USD", "music_studio": "$299 USD", "ai_media": "$149 USD",
+    "chinese": "$299 USD", "french": "$299 USD", "mathematics": "$299 USD", "ai_course": "$299 USD",
+    "medical_term": "$299 USD", "python_course": "$299 USD", "hardware_course": "$299 USD"
+}
+
+project_status = "✅ Available now – includes source code, setup, and support"
+
+# ---------- Sidebar ----------
 st.sidebar.image("https://flagcdn.com/w320/ht.png", width=60)
 st.sidebar.markdown("🌐 Language: English")
 st.sidebar.markdown("---")
@@ -622,15 +424,11 @@ st.sidebar.markdown("**Founder & Developer:**")
 st.sidebar.markdown("Gesner Deslandes")
 st.sidebar.markdown("📞 WhatsApp: (509) 4738-5663")
 st.sidebar.markdown("📧 Email: deslandes78@gmail.com")
-st.sidebar.markdown("🌐 [Main website](https://globalinternetsitepy-abh7v6tnmskxxnuplrdcgk.streamlit.app/)")
 st.sidebar.markdown("---")
-st.sidebar.markdown("### 💰 Price")
-st.sidebar.markdown("**$299 USD** (full book – 20 lessons, source code, certificate)")
-st.sidebar.markdown("---")
-st.sidebar.markdown("### © 2025 GlobalInternet.py")
+st.sidebar.markdown("### © 2026 GlobalInternet.py")
 st.sidebar.markdown("All rights reserved")
 
-# ---------- Display main content ----------
+# ---------- Hero Section ----------
 st.markdown(f"""
 <div class="hero">
     <span class="big-globe">🌐</span>
@@ -640,6 +438,7 @@ st.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 
+# ---------- About Section ----------
 st.markdown(f"## {t['about_title']}")
 col1, col2 = st.columns([2, 1])
 with col1:
@@ -655,10 +454,12 @@ with col2:
     </div>
     """, unsafe_allow_html=True)
 
+# ---------- Avatar Video ----------
 video_url = "https://github.com/Deslandes1/Gesner-Deslandes-Avatar/blob/main/avatar_video.mp4.mp4?raw=true"
 st.video(video_url, format="video/mp4", start_time=0)
 st.caption(t['office_photo_caption'])
 
+# ---------- CV Section ----------
 st.markdown(f"## {t['cv_title']}")
 col_photo, col_info = st.columns([1, 2])
 with col_photo:
@@ -675,6 +476,7 @@ with st.expander(f"{t['cv_education_title']} (click to view)"):
 st.caption(t['cv_references'])
 st.divider()
 
+# ---------- Team Section ----------
 st.markdown(f"## {t['team_title']}")
 st.markdown(f"*{t['team_sub']}*")
 team = t['team_members']
@@ -708,8 +510,6 @@ with col_caption:
     - 🏠 **Service & Companion Robots** – AI that walks, talks, and assists
     
     👉 Watch how our Python‑powered control systems are bringing humanoid robots to life.
-    
-    🔗 [View the full demo on GitHub](https://github.com/Deslandes1/globalinternet_site.py/blob/main/Robotics.mp4)
     """)
 st.caption("📽️ Demo: Python‑controlled humanoid robot in motion. Our software is evolving from screen to physical AI.")
 st.markdown("---")
@@ -719,12 +519,12 @@ st.markdown("## 🚀 Projects in Perspective")
 st.markdown("*What we are building next – innovations on the horizon.*")
 
 future_projects = [
-    {"icon": "🧠", "title": "Humanoid Robot Control Suite", "description": "Python SDK for controlling humanoid robots (walking, grasping, navigation). Integration with ROS2 and real‑time AI.", "status": "In Development – Q3 2026", "highlight": "VLA models + Python"},
-    {"icon": "🏭", "title": "Industrial Automation OS", "description": "Complete operating system for factories – orchestrating humanoid robots, conveyor belts, and quality inspection AI.", "status": "Planning – Q4 2026", "highlight": "Industry 4.0 ready"},
-    {"icon": "🏠", "title": "Service Robot Companion", "description": "AI‑powered home assistant that can clean, organize, and interact naturally using Python and multimodal models.", "status": "Research Phase – 2027", "highlight": "Natural language + vision"},
-    {"icon": "📦", "title": "Logistics & Warehouse AI", "description": "Autonomous mobile robots (AMRs) for sorting, picking, and delivering packages in warehouses and hospitals.", "status": "Prototype – Q1 2027", "highlight": "Real‑time path planning"},
-    {"icon": "🌾", "title": "Agricultural Humanoid", "description": "Robots for precision farming – planting, monitoring crops, and harvesting using computer vision and AI.", "status": "Concept – 2027", "highlight": "Sustainable agriculture"},
-    {"icon": "🏥", "title": "Medical Assistant Robot", "description": "Humanoid robot for hospitals – delivering supplies, assisting nurses, and patient interaction.", "status": "Early Research – 2027", "highlight": "Healthcare automation"}
+    {"icon": "🧠", "title": "Humanoid Robot Control Suite", "description": "Python SDK for controlling humanoid robots. Integration with ROS2 and real‑time AI.", "status": "In Development – Q3 2026", "highlight": "VLA models + Python"},
+    {"icon": "🏭", "title": "Industrial Automation OS", "description": "Complete operating system for factories – orchestrating humanoid robots and conveyor belts.", "status": "Planning – Q4 2026", "highlight": "Industry 4.0 ready"},
+    {"icon": "🏠", "title": "Service Robot Companion", "description": "AI‑powered home assistant that can clean, organize, and interact naturally.", "status": "Research Phase – 2027", "highlight": "Natural language + vision"},
+    {"icon": "📦", "title": "Logistics & Warehouse AI", "description": "Autonomous mobile robots for sorting, picking, and delivering packages.", "status": "Prototype – Q1 2027", "highlight": "Real‑time path planning"},
+    {"icon": "🌾", "title": "Agricultural Humanoid", "description": "Robots for precision farming – planting, monitoring crops, and harvesting.", "status": "Concept – 2027", "highlight": "Sustainable agriculture"},
+    {"icon": "🏥", "title": "Medical Assistant Robot", "description": "Humanoid robot for hospitals – delivering supplies and assisting nurses.", "status": "Early Research – 2027", "highlight": "Healthcare automation"}
 ]
 
 cols = st.columns(3)
@@ -741,7 +541,7 @@ for idx, project in enumerate(future_projects):
         """, unsafe_allow_html=True)
 
 st.markdown("---")
-st.markdown("📢 *These projects represent our vision for the future. Each will be built with Python, AI, and human‑centered design. Interested in collaborating or investing? Contact us.*")
+st.markdown("📢 *These projects represent our vision for the future. Interested in collaborating or investing? Contact us.*")
 st.markdown("---")
 
 # ---------- Services ----------
@@ -757,7 +557,7 @@ for i, (title, desc) in enumerate(services):
         </div>
         """, unsafe_allow_html=True)
 
-# ---------- Projects (31 products) with comment system ----------
+# ---------- Projects Section ----------
 st.markdown(f"## {t['projects_title']}")
 st.markdown(f"*{t['projects_sub']}*")
 
@@ -768,137 +568,60 @@ project_keys = [
     "ai_media", "chinese", "french", "mathematics", "ai_course", "medical_term", "python_course", "hardware_course"
 ]
 
-projects = []
-for key in project_keys:
-    title_key = f"project_{key}"
-    desc_key = f"project_{key}_desc"
-    price_key = f"project_{key}_price"
-    status_key = f"project_{key}_status"
-    contact_key = f"project_{key}_contact"
-    demo_url = None
-    if key == "haiti":
-        demo_url = "https://haiti-online-voting-software-ovcwwwrxbhaxyfcyohappnr.streamlit.app/"
-    elif key == "chess":
-        demo_url = "https://playchessagainstthemachinemarch2026-hqnjksiy9jemcb4np5pzmp.streamlit.app/"
-    elif key == "accountant":
-        demo_url = "https://kpbhc3s8vhggkeo7yh9gzz.streamlit.app/"
-    elif key == "dsm":
-        demo_url = "https://kbgydmzka2gmk4ubz3pzof.streamlit.app/"
-    elif key == "bi":
-        demo_url = "https://9enktzu34sxzyvtsymghxd.streamlit.app/"
-    elif key == "ai_classifier":
-        demo_url = "https://f9n6ijhw7svgp69ebmtzdw.streamlit.app/"
-    elif key == "task_manager":
-        demo_url = "https://task-manager-dashboard-react-6mktxsbvhgy8qrhbwyjdzs.streamlit.app/"
-    elif key == "ray":
-        demo_url = "https://parallel-text-proceappr-guqq5nfzysxa9kkx9cg9lx.streamlit.app/"
-    elif key == "cassandra":
-        demo_url = "https://apache-cassandra-mcfkzydlc5qgx2wbcacxtu.streamlit.app/"
-    elif key == "spark":
-        demo_url = "https://apache-spark-data-proceappr-4pui6brcjmaxfs6flnwapy.streamlit.app/"
-    elif key == "drone":
-        demo_url = "https://drone-control-software-4lgtsedbmq4efzvpwxb8r7.streamlit.app/"
-    elif key == "english":
-        demo_url = "https://let-s-learn-english-with-gesner-fasbf2hvwsfpkzz9s9oc4f.streamlit.app/"
-    elif key == "spanish":
-        demo_url = "https://let-s-learn-spanish-with-gesner-twe8na7wraihczvq2lhfkl.streamlit.app/"
-    elif key == "portuguese":
-        demo_url = "https://let-s-learn-portuguese-with-gesner-hqz5b8w8ebgvcrhbtuuxe5.streamlit.app/"
-    else:
-        demo_url = None
-    projects.append({
-        "title": t.get(title_key, "Project"),
-        "desc": t.get(desc_key, "Description not available"),
-        "price": t.get(price_key, "Price"),
-        "status": t.get(status_key, "Status"),
-        "contact": t.get(contact_key, "Contact owner"),
-        "key": key,
-        "demo_url": demo_url
-    })
+demo_urls = {
+    "haiti": "https://haiti-online-voting-software-ovcwwwrxbhaxyfcyohappnr.streamlit.app/",
+    "chess": "https://playchessagainstthemachinemarch2026-hqnjksiy9jemcb4np5pzmp.streamlit.app/",
+    "accountant": "https://kpbhc3s8vhggkeo7yh9gzz.streamlit.app/",
+    "dsm": "https://kbgydmzka2gmk4ubz3pzof.streamlit.app/",
+    "bi": "https://9enktzu34sxzyvtsymghxd.streamlit.app/",
+    "ai_classifier": "https://f9n6ijhw7svgp69ebmtzdw.streamlit.app/",
+    "task_manager": "https://task-manager-dashboard-react-6mktxsbvhgy8qrhbwyjdzs.streamlit.app/",
+    "ray": "https://parallel-text-proceappr-guqq5nfzysxa9kkx9cg9lx.streamlit.app/",
+    "cassandra": "https://apache-cassandra-mcfkzydlc5qgx2wbcacxtu.streamlit.app/",
+    "spark": "https://apache-spark-data-proceappr-4pui6brcjmaxfs6flnwapy.streamlit.app/",
+    "drone": "https://drone-control-software-4lgtsedbmq4efzvpwxb8r7.streamlit.app/",
+    "english": "https://let-s-learn-english-with-gesner-fasbf2hvwsfpkzz9s9oc4f.streamlit.app/",
+    "spanish": "https://let-s-learn-spanish-with-gesner-twe8na7wraihczvq2lhfkl.streamlit.app/",
+    "portuguese": "https://let-s-learn-portuguese-with-gesner-hqz5b8w8ebgvcrhbtuuxe5.streamlit.app/"
+}
 
-for i in range(0, len(projects), 2):
+for i in range(0, len(project_keys), 2):
     cols = st.columns(2)
     for j, col in enumerate(cols):
         idx = i + j
-        if idx < len(projects):
-            proj = projects[idx]
+        if idx < len(project_keys):
+            key = project_keys[idx]
+            title = project_titles.get(key, "Project")
+            desc = project_descs.get(key, "Description not available")
+            price = project_prices.get(key, "Contact for price")
+            
             with col:
                 st.markdown(f"""
                 <div class="card">
-                    <h3>{proj['title']}</h3>
-                    <p>{proj['desc']}</p>
-                    <div class="price">{proj['price']}</div>
-                    <p><em>{proj['status']}</em></p>
+                    <h3>{title}</h3>
+                    <p>{desc}</p>
+                    <div class="price">{price}</div>
+                    <p><em>{project_status}</em></p>
                 </div>
                 """, unsafe_allow_html=True)
-                if proj.get("demo_url"):
-                    st.markdown(f"<a href='{proj['demo_url']}' target='_blank'><button style='background-color:#28a745; color:white; border:none; border-radius:30px; padding:0.5rem 1rem; margin-bottom:0.5rem; width:100%; cursor:pointer;'>{t['live_demo']}</button></a>", unsafe_allow_html=True)
+                
+                if key in demo_urls:
+                    st.markdown(f"<a href='{demo_urls[key]}' target='_blank'><button style='background-color:#28a745; color:white; border:none; border-radius:30px; padding:0.5rem 1rem; margin-bottom:0.5rem; width:100%; cursor:pointer;'>{t['live_demo']}</button></a>", unsafe_allow_html=True)
                     st.caption(t['demo_password_hint'])
                 else:
                     st.info("📹 Live demo available upon request. Contact us for a private walkthrough.")
+                
                 col_btn1, col_btn2 = st.columns(2)
                 with col_btn1:
-                    subject = f"Purchase: {proj['title']}"
-                    body = f"Hello Gesner,%0D%0A%0D%0AI am interested in purchasing the software: {proj['title']} at {proj['price']}.%0D%0A%0D%0APlease send me payment instructions and the delivery details.%0D%0A%0D%0AThank you."
+                    subject = f"Purchase: {title}"
+                    body = f"Hello Gesner,%0D%0A%0D%0AI am interested in purchasing the software: {title} at {price}.%0D%0A%0D%0APlease send me payment instructions and the delivery details.%0D%0A%0D%0AThank you."
                     mailto_link = f"mailto:deslandes78@gmail.com?subject={subject}&body={body}"
                     st.markdown(f'<a href="{mailto_link}" target="_blank"><button style="background-color:#28a745; color:white; border:none; border-radius:30px; padding:0.5rem 1rem; width:100%; cursor:pointer;">💵 {t["buy_now"]}</button></a>', unsafe_allow_html=True)
                 with col_btn2:
-                    if st.button(f"{t['request_info']}", key=f"info_{proj['key']}"):
-                        st.info(f"Please contact us at deslandes78@gmail.com or call (509)-47385663 to discuss '{proj['title']}'. Thank you!")
+                    if st.button(f"{t['request_info']}", key=f"info_{key}"):
+                        st.info(f"Please contact us at deslandes78@gmail.com or call (509)-47385663 to discuss '{title}'. Thank you!")
 
-            # ---------- Comment section ----------
-            st.markdown("#### 💬 Comments & Questions")
-            comments = get_comments(proj['key'])
-            for comment in comments:
-                if comment["parent_id"] == 0:
-                    st.markdown(f"""
-                    <div class="comment-box">
-                        <div class="comment-meta">
-                            <strong>{comment['username']}</strong> · {comment['timestamp'][:16]}
-                        </div>
-                        <div>{comment['comment']}</div>
-                    """, unsafe_allow_html=True)
-                    if st.button(f"❤️ {comment['likes']}", key=f"like_{proj['key']}_{comment['id']}"):
-                        add_like(comment['id'])
-                        st.rerun()
-                    if st.button("💬 Reply", key=f"reply_{proj['key']}_{comment['id']}"):
-                        st.session_state[f"reply_to_{comment['id']}"] = True
-                    if st.session_state.get(f"reply_to_{comment['id']}", False):
-                        with st.form(key=f"reply_form_{comment['id']}"):
-                            reply_name = st.text_input("Your name", key=f"reply_name_{comment['id']}")
-                            reply_text = st.text_area("Your reply", key=f"reply_text_{comment['id']}")
-                            if st.form_submit_button("Post Reply"):
-                                if reply_text.strip():
-                                    add_comment(proj['key'], reply_name if reply_name.strip() else "Anonymous", reply_text, parent_id=comment['id'], reply_to_username=comment['username'])
-                                    st.session_state[f"reply_to_{comment['id']}"] = False
-                                    st.rerun()
-                    replies = [c for c in comments if c["parent_id"] == comment["id"]]
-                    for reply in replies:
-                        st.markdown(f"""
-                        <div class="reply-box">
-                            <div class="comment-meta">
-                                <strong>{reply['username']}</strong> (replied to {reply['reply_to_username']}) · {reply['timestamp'][:16]}
-                            </div>
-                            <div>{reply['comment']}</div>
-                        </div>
-                        """, unsafe_allow_html=True)
-                        if st.button(f"❤️ {reply['likes']}", key=f"like_reply_{proj['key']}_{reply['id']}"):
-                            add_like(reply['id'])
-                            st.rerun()
-                    st.markdown("</div>", unsafe_allow_html=True)
-            with st.form(key=f"comment_form_{proj['key']}"):
-                st.markdown("**Leave a comment**")
-                name = st.text_input("Your name (optional)", key=f"name_{proj['key']}")
-                comment_text = st.text_area("Comment", key=f"comment_{proj['key']}")
-                if st.form_submit_button("Post Comment"):
-                    if comment_text.strip():
-                        add_comment(proj['key'], name if name.strip() else "Anonymous", comment_text)
-                        st.rerun()
-                    else:
-                        st.warning("Please enter a comment.")
-            st.markdown("---")
-
-# ---------- Donation section ----------
+# ---------- Donation Section ----------
 st.markdown(f"## {t['donation_title']}")
 st.markdown(f"""
 <div class="donation-box">
@@ -925,7 +648,7 @@ st.markdown(f"""
 if st.button(t['donation_button']):
     st.success(t['donation_thanks'])
 
-# ---------- Contact section ----------
+# ---------- Contact Section ----------
 st.markdown(f"## {t['contact_title']}")
 col1, col2, col3 = st.columns([1, 2, 1])
 with col2:
