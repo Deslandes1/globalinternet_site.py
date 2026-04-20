@@ -9,16 +9,12 @@ import os
 from supabase import create_client, Client
 from datetime import timedelta
 from collections import defaultdict
-import json
 
-# ========== SECURITY: AUTOMATED THREAT DETECTION & IP BLOCKING ==========
-# This automatically blocks ANY IP that shows malicious behavior
+# ========== SECURITY: AUTOMATED THREAT DETECTION (NO IPs PRE-BLOCKED) ==========
+# NO IPs are pre-blocked. Only malicious behavior triggers auto-block.
 
-# Store blocked IPs persistently (will reset on app restart)
-# For permanent blocking, you would need a database
-BLOCKED_IPS = set([
-    "35.185.209.55",  # Previously identified scanner
-])
+# Store blocked IPs (starts empty - only malicious IPs get added)
+BLOCKED_IPS = set([])  # ← EMPTY! Your IP is NOT blocked
 
 # Track suspicious activity per IP
 suspicious_ips = defaultdict(list)
@@ -38,7 +34,7 @@ MALICIOUS_PATHS = [
 ]
 
 SUSPICIOUS_USER_AGENTS = [
-    "unknown", "python-requests", "curl", "wget", "go-http-client",
+    "python-requests", "curl", "wget", "go-http-client",
     "nikto", "nmap", "sqlmap", "burp", "masscan", "zgrab",
 ]
 
@@ -52,7 +48,7 @@ def detect_malicious_activity(ip, path, user_agent):
             reasons.append(f"Suspicious path: {malicious}")
             break
     
-    # Check for suspicious user agents
+    # Check for suspicious user agents (NOT including "unknown" - that could be you)
     for suspicious in SUSPICIOUS_USER_AGENTS:
         if suspicious.lower() in user_agent.lower():
             reasons.append(f"Suspicious User-Agent: {user_agent}")
@@ -63,7 +59,7 @@ def detect_malicious_activity(ip, path, user_agent):
     suspicious_ips[ip] = [ts for ts in suspicious_ips[ip] if now - ts < timedelta(seconds=60)]
     suspicious_ips[ip].append(now)
     
-    if len(suspicious_ips[ip]) > 20:  # More than 20 requests in 60 seconds
+    if len(suspicious_ips[ip]) > 50:  # More than 50 requests in 60 seconds
         reasons.append(f"Rapid requests: {len(suspicious_ips[ip])} in 60 seconds")
     
     return reasons
@@ -79,7 +75,7 @@ def auto_block_ip(ip, reasons):
             with open("blocked_ips.log", "a") as f:
                 f.write(block_log)
         except:
-            pass  # Streamlit Cloud may not allow file writes
+            pass
         
         # Optional: Send email alert
         try:
@@ -114,7 +110,7 @@ def security_check():
             st.error("🚫 ACCESS DENIED: Your IP has been blocked due to suspicious activity.")
             st.stop()
         
-        # Get request path and user agent (from Streamlit context)
+        # Get request path and user agent
         path = st.context.headers.get("X-Forwarded-Path", "/") if hasattr(st, 'context') else "/"
         user_agent = st.context.headers.get("User-Agent", "unknown") if hasattr(st, 'context') else "unknown"
         
@@ -136,8 +132,8 @@ security_check()
 # ========== END SECURITY ==========
 
 # ========== SECURITY: SESSION-BASED RATE LIMITING ==========
-def check_rate_limit(max_requests=100, window_seconds=60):
-    """Prevents bot attacks by limiting requests per session"""
+def check_rate_limit(max_requests=200, window_seconds=60):
+    """Prevents bot attacks by limiting requests per session (higher limit for normal users)"""
     if "request_history" not in st.session_state:
         st.session_state.request_history = []
     
