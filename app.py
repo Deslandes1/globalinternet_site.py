@@ -7,12 +7,135 @@ from email.mime.multipart import MIMEMultipart
 import requests
 import os
 from supabase import create_client, Client
-
-# ========== SECURITY: SESSION-BASED RATE LIMITING ==========
 from datetime import timedelta
 from collections import defaultdict
-from time import time
+import json
 
+# ========== SECURITY: AUTOMATED THREAT DETECTION & IP BLOCKING ==========
+# This automatically blocks ANY IP that shows malicious behavior
+
+# Store blocked IPs persistently (will reset on app restart)
+# For permanent blocking, you would need a database
+BLOCKED_IPS = set([
+    "35.185.209.55",  # Previously identified scanner
+])
+
+# Track suspicious activity per IP
+suspicious_ips = defaultdict(list)
+
+# Malicious patterns to detect
+MALICIOUS_PATHS = [
+    "/wp-admin", "/wp-login.php", "/wordpress",           # WordPress attacks
+    "/admin", "/administrator", "/admin.php",             # Admin panel scans
+    ".env", ".git", ".aws", ".config",                    # Secret file scans
+    "/phpmyadmin", "/mysql", "/pma",                      # Database scans
+    "/api/v1", "/swagger", "/docs",                       # API endpoint scans
+    "/backup", "/dump", "/sql",                           # Backup scans
+    "/shell", "/cmd", "/exec",                            # Command execution
+    "../", "..%2f", "..%252f",                           # Path traversal
+    "' OR '1'='1", "' UNION SELECT",                      # SQL injection patterns
+    "<script", "javascript:", "onerror=",                 # XSS patterns
+]
+
+SUSPICIOUS_USER_AGENTS = [
+    "unknown", "python-requests", "curl", "wget", "go-http-client",
+    "nikto", "nmap", "sqlmap", "burp", "masscan", "zgrab",
+]
+
+def detect_malicious_activity(ip, path, user_agent):
+    """Detect if a request is malicious"""
+    reasons = []
+    
+    # Check for malicious paths
+    for malicious in MALICIOUS_PATHS:
+        if malicious.lower() in path.lower():
+            reasons.append(f"Suspicious path: {malicious}")
+            break
+    
+    # Check for suspicious user agents
+    for suspicious in SUSPICIOUS_USER_AGENTS:
+        if suspicious.lower() in user_agent.lower():
+            reasons.append(f"Suspicious User-Agent: {user_agent}")
+            break
+    
+    # Check for rapid requests (rate limiting breach attempt)
+    now = datetime.now()
+    suspicious_ips[ip] = [ts for ts in suspicious_ips[ip] if now - ts < timedelta(seconds=60)]
+    suspicious_ips[ip].append(now)
+    
+    if len(suspicious_ips[ip]) > 20:  # More than 20 requests in 60 seconds
+        reasons.append(f"Rapid requests: {len(suspicious_ips[ip])} in 60 seconds")
+    
+    return reasons
+
+def auto_block_ip(ip, reasons):
+    """Automatically block an IP and log the reason"""
+    if ip not in BLOCKED_IPS:
+        BLOCKED_IPS.add(ip)
+        
+        # Log the block (you can also email yourself)
+        block_log = f"{datetime.now()} - BLOCKED IP: {ip} - Reasons: {', '.join(reasons)}\n"
+        try:
+            with open("blocked_ips.log", "a") as f:
+                f.write(block_log)
+        except:
+            pass  # Streamlit Cloud may not allow file writes
+        
+        # Optional: Send email alert
+        try:
+            sender = st.secrets.get("email", {}).get("sender", "")
+            password = st.secrets.get("email", {}).get("password", "")
+            receiver = st.secrets.get("email", {}).get("receiver", "")
+            if sender and password and receiver:
+                msg = MIMEMultipart()
+                msg["From"] = sender
+                msg["To"] = receiver
+                msg["Subject"] = f"🚨 SECURITY ALERT: IP {ip} BLOCKED"
+                body = f"Time: {datetime.now()}\nIP: {ip}\nReasons: {', '.join(reasons)}"
+                msg.attach(MIMEText(body, "plain"))
+                context = ssl.create_default_context()
+                with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
+                    server.login(sender, password)
+                    server.sendmail(sender, receiver, msg.as_string())
+        except:
+            pass
+        
+        return True
+    return False
+
+def security_check():
+    """Main security function - runs on every request"""
+    try:
+        # Get visitor IP
+        visitor_ip = requests.get("https://api.ipify.org", timeout=5).text
+        
+        # Check if already blocked
+        if visitor_ip in BLOCKED_IPS:
+            st.error("🚫 ACCESS DENIED: Your IP has been blocked due to suspicious activity.")
+            st.stop()
+        
+        # Get request path and user agent (from Streamlit context)
+        path = st.context.headers.get("X-Forwarded-Path", "/") if hasattr(st, 'context') else "/"
+        user_agent = st.context.headers.get("User-Agent", "unknown") if hasattr(st, 'context') else "unknown"
+        
+        # Detect malicious activity
+        reasons = detect_malicious_activity(visitor_ip, path, user_agent)
+        
+        if reasons:
+            # Auto-block the IP
+            auto_block_ip(visitor_ip, reasons)
+            st.error("🚫 ACCESS DENIED: Suspicious activity detected.")
+            st.stop()
+            
+    except Exception as e:
+        # If security check fails, allow access (don't block everyone)
+        pass
+
+# Run security check FIRST
+security_check()
+# ========== END SECURITY ==========
+
+# ========== SECURITY: SESSION-BASED RATE LIMITING ==========
 def check_rate_limit(max_requests=100, window_seconds=60):
     """Prevents bot attacks by limiting requests per session"""
     if "request_history" not in st.session_state:
@@ -29,9 +152,7 @@ def check_rate_limit(max_requests=100, window_seconds=60):
         st.stop()
     
     st.session_state.request_history.append(now)
-
-# Call rate limiter (will work after app loads)
-# ========== END SECURITY ==========
+# ========== END RATE LIMITING ==========
 
 # ---------- Supabase setup with error handling ----------
 try:
