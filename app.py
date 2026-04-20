@@ -8,37 +8,35 @@ import requests
 import os
 from supabase import create_client, Client
 
-# ========== RATE LIMITING CODE (ADDED FOR SECURITY) ==========
-from collections import defaultdict
-from time import time
+# ========== SECURITY: SESSION-BASED RATE LIMITING ==========
+# This works in Streamlit and prevents bot attacks
+from datetime import timedelta
 
-# Store request counts per IP
-requests_per_ip = defaultdict(list)
+def check_rate_limit(max_requests=100, window_seconds=60):
+    """Prevents bot attacks by limiting requests per session"""
+    
+    # Initialize session tracking if not exists
+    if "request_history" not in st.session_state:
+        st.session_state.request_history = []
+    
+    # Clean old requests
+    now = datetime.now()
+    st.session_state.request_history = [
+        ts for ts in st.session_state.request_history 
+        if now - ts < timedelta(seconds=window_seconds)
+    ]
+    
+    # Check if over limit
+    if len(st.session_state.request_history) >= max_requests:
+        st.error("🚫 Security: Too many requests. Please wait 60 seconds.")
+        st.stop()
+    
+    # Add current request
+    st.session_state.request_history.append(now)
 
-def rate_limit(max_requests=50, window_seconds=60):
-    """Prevent bots and scanners from flooding the website"""
-    def decorator(f):
-        def decorated(*args, **kwargs):
-            # Try to get IP (Streamlit doesn't have direct remote_addr, use session or fallback)
-            try:
-                # Streamlit Cloud provides client IP via context headers
-                ip = st.context.headers.get("X-Forwarded-For", "unknown") if hasattr(st, 'context') else "unknown"
-            except:
-                ip = "unknown"
-            
-            now = time()
-            # Clean old requests outside the window
-            requests_per_ip[ip] = [t for t in requests_per_ip[ip] if now - t < window_seconds]
-            
-            if len(requests_per_ip[ip]) >= max_requests:
-                st.error("⚠️ Too many requests. Please wait a moment and try again.")
-                st.stop()
-            
-            requests_per_ip[ip].append(now)
-            return f(*args, **kwargs)
-        return decorated
-    return decorator
-# ========== END RATE LIMITING CODE ==========
+# Call the rate limiter
+check_rate_limit(max_requests=100, window_seconds=60)
+# ========== END SECURITY ==========
 
 # ---------- Supabase setup ----------
 SUPABASE_URL = st.secrets["supabase"]["url"]
@@ -290,127 +288,106 @@ t = {
     ],
     "projects_title": "🏆 Our Projects & Accomplishments",
     "projects_sub": "Completed software solutions delivered to clients – ready for you to purchase or customize.",
-    # Project 1
     "project_haiti": "🇭🇹 Haiti Online Voting Software",
     "project_haiti_desc": "Complete presidential election system with multi‑language support (Kreyòl, French, English, Spanish), real‑time live monitoring, CEP President dashboard (manage candidates, upload photos, download progress reports), secret ballot, and changeable passwords. Used for national elections.",
     "project_haiti_price": "$2,000 USD (one‑time fee)",
     "project_haiti_status": "✅ Available now – includes source code, setup, and support.",
     "project_haiti_contact": "Contact owner for purchase",
-    # Project 2
     "project_dashboard": "📊 Business Intelligence Dashboard",
     "project_dashboard_desc": "Real‑time analytics dashboard for companies. Connect to any database (SQL, Excel, CSV) and visualize KPIs, sales trends, inventory, and custom reports. Fully interactive and customizable.",
     "project_dashboard_price": "$1,200 USD",
     "project_dashboard_status": "✅ Available now",
     "project_dashboard_contact": "Contact owner for purchase",
-    # Project 3
     "project_chatbot": "🤖 AI Customer Support Chatbot",
     "project_chatbot_desc": "Intelligent chatbot trained on your business data. Answer customer questions 24/7, reduce support workload. Integrates with websites, WhatsApp, or Telegram. Built with Python and modern NLP.",
     "project_chatbot_price": "$800 USD (basic) / $1,500 USD (advanced)",
     "project_chatbot_status": "✅ Available now",
     "project_chatbot_contact": "Contact owner for purchase",
-    # Project 4
     "project_school": "🏫 School Management System",
     "project_school_desc": "Complete platform for schools: student registration, grade management, attendance tracking, parent portal, report card generation, and fee collection. Multi‑user roles (admin, teachers, parents).",
     "project_school_price": "$1,500 USD",
     "project_school_status": "✅ Available now",
     "project_school_contact": "Contact owner for purchase",
-    # Project 5
     "project_pos": "📦 Inventory & POS System",
     "project_pos_desc": "Web‑based inventory management with point‑of‑sale for small businesses. Barcode scanning, stock alerts, sales reports, supplier management. Works online and offline.",
     "project_pos_price": "$1,000 USD",
     "project_pos_status": "✅ Available now",
     "project_pos_contact": "Contact owner for purchase",
-    # Project 6
     "project_scraper": "📈 Custom Web Scraper & Data Pipeline",
     "project_scraper_desc": "Automated data extraction from any website, cleaned and delivered as Excel/JSON/CSV. Schedule daily, weekly, or monthly runs. Perfect for market research, price monitoring, or lead generation.",
     "project_scraper_price": "$500 – $2,000 (depends on complexity)",
     "project_scraper_status": "✅ Available now",
     "project_scraper_contact": "Contact owner for purchase",
-    # Project 7
     "project_chess": "♟️ Play Chess Against the Machine",
     "project_chess_desc": "Educational chess game with AI opponent (3 difficulty levels). Every move is explained – learn tactics like forks, pins, and discovered checks. Includes demo mode, move dashboard, and full game report download. Multi‑language (English, French, Spanish, Kreyòl).",
     "project_chess_price": "$20 USD (one‑time fee)",
     "project_chess_status": "✅ Available now – lifetime access, free updates",
     "project_chess_contact": "Contact owner for purchase",
-    # Project 8
     "project_accountant": "🧮 Accountant Excel Advanced AI",
     "project_accountant_desc": "Professional accounting and loan management suite. Track cash income/expenses, manage loans (borrowers, due dates, payments), dashboard with balance, export all reports to Excel and PDF. Multi‑language (English, French, Spanish).",
     "project_accountant_price": "$199 USD (one‑time fee)",
     "project_accountant_status": "✅ Available now – lifetime access, free updates",
     "project_accountant_contact": "Contact owner for purchase",
-    # Project 9
     "project_archives": "📜 Haiti Archives Nationales Database",
     "project_archives_desc": "Complete national archives database for Haitian citizens. Store NIF (Matricule Fiscale), CIN, Passport, Driver's License, voting history, sponsorships, and document uploads. Minister signature validation, annual password system, multilingual (English, French, Spanish, Kreyòl).",
     "project_archives_price": "$1,500 USD (one‑time fee)",
     "project_archives_status": "✅ Available now – includes source code, setup, and support",
     "project_archives_contact": "Contact owner for purchase",
-    # Project 10
     "project_dsm": "🛡️ DSM-2026: SYSTEM SECURED",
     "project_dsm_desc": "Advanced stratosphere monitoring radar – tracks aircraft, satellites, and missiles in real time. Simulated radar display with threat detection, multi‑language support, and downloadable intelligence reports.",
     "project_dsm_price": "$299 USD (one‑time fee)",
     "project_dsm_status": "✅ Available now – lifetime license, free updates",
     "project_dsm_contact": "Contact owner for purchase",
-    # Project 11
     "project_bi": "📊 Business Intelligence Dashboard",
     "project_bi_desc": "Real‑time analytics dashboard for companies. Connect SQL, Excel, CSV – visualize KPIs, sales trends, inventory, and regional performance. Fully interactive with date filters and downloadable CSV reports. Multi‑language (English, French, Spanish, Kreyòl).",
     "project_bi_price": "$1,200 USD (one‑time fee)",
     "project_bi_status": "✅ Available now – lifetime access, free updates",
     "project_bi_contact": "Contact owner for purchase",
-    # Project 12
     "project_ai_classifier": "🧠 AI Image Classifier (MobileNetV2)",
     "project_ai_classifier_desc": "Upload an image and the AI identifies it from 1000 categories (animals, vehicles, food, everyday objects). Uses TensorFlow MobileNetV2 pre‑trained on ImageNet. Multi‑language, password protected, demo ready.",
     "project_ai_classifier_price": "$1,200 USD (one‑time fee)",
     "project_ai_classifier_status": "✅ Available now – includes source code, setup, and support",
     "project_ai_classifier_contact": "Contact owner for purchase",
-    # Project 13
     "project_task_manager": "🗂️ Task Manager Dashboard",
     "project_task_manager_desc": "Manage tasks, track progress, and analyze productivity with real‑time charts and dark mode. Inspired by React’s component‑based UI. Multi‑language, persistent storage, analytics dashboard.",
     "project_task_manager_price": "$1,200 USD (one‑time fee)",
     "project_task_manager_status": "✅ Available now – lifetime access, free updates",
     "project_task_manager_contact": "Contact owner for purchase",
-    # Project 14
     "project_ray": "⚡ Ray Parallel Text Processor",
     "project_ray_desc": "Process text in parallel across multiple CPU cores. Compare sequential vs. parallel execution speed. Inspired by UC Berkeley’s distributed computing framework Ray.",
     "project_ray_price": "$1,200 USD (one‑time fee)",
     "project_ray_status": "✅ Available now – lifetime access, free updates",
     "project_ray_contact": "Contact owner for purchase",
-    # Project 15
     "project_cassandra": "🗄️ Cassandra Data Dashboard",
     "project_cassandra_desc": "Distributed NoSQL database demo. Add orders, search by customer, and explore real‑time analytics. Modeled after Apache Cassandra (Netflix, Instagram).",
     "project_cassandra_price": "$1,200 USD (one‑time fee)",
     "project_cassandra_status": "✅ Available now – lifetime access, free updates",
     "project_cassandra_contact": "Contact owner for purchase",
-    # Project 16
     "project_spark": "🌊 Apache Spark Data Processor",
     "project_spark_desc": "Upload a CSV file and run SQL‑like aggregations (group by, sum, avg, count) using Spark. Real‑time results and charts. Inspired by the big‑data engine used by thousands of companies.",
     "project_spark_price": "$1,200 USD (one‑time fee)",
     "project_spark_status": "✅ Available now – lifetime access, free updates",
     "project_spark_contact": "Contact owner for purchase",
-    # Project 17
     "project_drone": "🚁 Haitian Drone Commander",
     "project_drone_desc": "Control the first Haitian‑made drone from your phone. Simulation mode, real drone support (MAVLink), arm, takeoff, land, fly to GPS coordinates, live telemetry, command history. Multi‑language, professional dashboard.",
     "project_drone_price": "$2,000 USD (one‑time fee)",
     "project_drone_status": "✅ Available now – includes source code, setup, and 1 year support",
     "project_drone_contact": "Contact owner for purchase",
-    # Project 18
     "project_english": "🇬🇧 Let's Learn English with Gesner",
     "project_english_desc": "Interactive English language learning app. Covers vocabulary, grammar, pronunciation, and conversation practice. Multi‑language interface, progress tracking, quizzes, and certificates. Perfect for beginners to intermediate learners.",
     "project_english_price": "$299 USD (one‑time fee)",
     "project_english_status": "✅ Available now – includes source code, setup, and support",
     "project_english_contact": "Contact owner for purchase",
-    # Project 19
     "project_spanish": "🇪🇸 Let's Learn Spanish with Gesner",
     "project_spanish_desc": "Complete Spanish language learning platform. Lessons on vocabulary, verb conjugations, listening comprehension, and cultural notes. Includes interactive exercises, speech recognition, and progress dashboard.",
     "project_spanish_price": "$299 USD (one‑time fee)",
     "project_spanish_status": "✅ Available now – includes source code, setup, and support",
     "project_spanish_contact": "Contact owner for purchase",
-    # Project 20
     "project_portuguese": "🇵🇹 Let's Learn Portuguese with Gesner",
     "project_portuguese_desc": "Brazilian and European Portuguese learning app. Covers essential phrases, grammar, verb tenses, and real‑life dialogues. Includes flashcards, pronunciation guide, and achievement badges. Multi‑language support.",
     "project_portuguese_price": "$299 USD (one‑time fee)",
     "project_portuguese_status": "✅ Available now – includes source code, setup, and support",
     "project_portuguese_contact": "Contact owner for purchase",
-    # Project 21
     "project_ai_career": "🚀 AI Career Coach – Resume Optimizer",
     "project_ai_career_desc": """
     **Optimize your resume and ace interviews with AI.**  
@@ -427,7 +404,6 @@ t = {
     "project_ai_career_price": "$149 USD (one‑time fee)",
     "project_ai_career_status": "✅ Available now – full source code included",
     "project_ai_career_contact": "Contact owner for purchase",
-    # Project 22
     "project_ai_medical": "🧪 AI Medical & Scientific Literature Assistant",
     "project_ai_medical_desc": """
     **Ask any medical or scientific question – get answers backed by real research.**  
@@ -443,7 +419,6 @@ t = {
     "project_ai_medical_price": "$149 USD (one‑time fee)",
     "project_ai_medical_status": "✅ Available now – full source code included",
     "project_ai_medical_contact": "Contact owner for purchase",
-    # Project 23
     "project_music_studio": "🎧 Music Studio Pro – Complete Music Production Suite",
     "project_music_studio_desc": """
     **Professional music production software** – record, mix, and create beats. Includes:
@@ -460,7 +435,6 @@ t = {
     "project_music_studio_price": "$299 USD (one‑time fee)",
     "project_music_studio_status": "✅ Available now – full source code included",
     "project_music_studio_contact": "Contact owner for purchase",
-    # Project 24
     "project_ai_media": "🎭 AI Media Studio – Talking Photo & Video Editor",
     "project_ai_media_desc": """
     **Create professional videos from photos, audio, or video clips.**  
@@ -477,7 +451,6 @@ t = {
     "project_ai_media_price": "$149 USD (one‑time fee)",
     "project_ai_media_status": "✅ Available now – full source code included",
     "project_ai_media_contact": "Contact owner for purchase",
-    # Project 25
     "project_chinese": "🇨🇳 Let's Learn Chinese with Gesner – Book 1",
     "project_chinese_desc": """
     **Complete beginner course for Mandarin Chinese.**  
@@ -499,7 +472,6 @@ t = {
     "project_chinese_price": "$299 USD (one‑time fee)",
     "project_chinese_status": "✅ Available now – full source code included",
     "project_chinese_contact": "Contact owner for purchase",
-    # Project 26
     "project_french": "🇫🇷 Let's Learn French with Gesner – Book 1",
     "project_french_desc": """
     **Complete beginner course for French language.**  
@@ -521,7 +493,6 @@ t = {
     "project_french_price": "$299 USD (one‑time fee)",
     "project_french_status": "✅ Available now – full source code included",
     "project_french_contact": "Contact owner for purchase",
-    # Project 27
     "project_mathematics": "📐 Let's Learn Mathematics with Gesner – Book 1",
     "project_mathematics_desc": """
     **Complete mathematics course for beginners.**  
@@ -539,7 +510,6 @@ t = {
     "project_mathematics_price": "$299 USD (one‑time fee)",
     "project_mathematics_status": "✅ Available now – full source code included",
     "project_mathematics_contact": "Contact owner for purchase",
-    # Project 28
     "project_ai_course": "🤖 AI Foundations & Certification Course",
     "project_ai_course_desc": """
     **28‑day AI mastery course – from beginner to certified expert.**  
@@ -559,7 +529,6 @@ t = {
     "project_ai_course_price": "$299 USD (one‑time fee)",
     "project_ai_course_status": "✅ Available now – full source code included",
     "project_ai_course_contact": "Contact owner for purchase",
-    # Project 29
     "project_medical_term": "🩺 Medical Terminology Book for Translators",
     "project_medical_term_desc": """
     **Interactive medical terminology training for interpreters and healthcare professionals.**  
@@ -580,7 +549,6 @@ t = {
     "project_medical_term_price": "$299 USD (one‑time fee)",
     "project_medical_term_status": "✅ Available now – full source code included",
     "project_medical_term_contact": "Contact owner for purchase",
-    # Project 30
     "project_python_course": "🐍 Let's Learn Coding through Python with Gesner",
     "project_python_course_desc": """
     **Complete Python programming course – from beginner to advanced.**  
@@ -597,7 +565,6 @@ t = {
     "project_python_course_price": "$299 USD (one‑time fee)",
     "project_python_course_status": "✅ Available now – full source code included",
     "project_python_course_contact": "Contact owner for purchase",
-    # Project 31
     "project_hardware_course": "🔌 Let's Learn Software & Hardware with Gesner",
     "project_hardware_course_desc": """
     **Connect software with 20 hardware components – build IoT and robotics projects.**  
