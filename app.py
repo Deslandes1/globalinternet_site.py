@@ -8,6 +8,38 @@ import requests
 import os
 from supabase import create_client, Client
 
+# ========== RATE LIMITING CODE (ADDED FOR SECURITY) ==========
+from collections import defaultdict
+from time import time
+
+# Store request counts per IP
+requests_per_ip = defaultdict(list)
+
+def rate_limit(max_requests=50, window_seconds=60):
+    """Prevent bots and scanners from flooding the website"""
+    def decorator(f):
+        def decorated(*args, **kwargs):
+            # Try to get IP (Streamlit doesn't have direct remote_addr, use session or fallback)
+            try:
+                # Streamlit Cloud provides client IP via context headers
+                ip = st.context.headers.get("X-Forwarded-For", "unknown") if hasattr(st, 'context') else "unknown"
+            except:
+                ip = "unknown"
+            
+            now = time()
+            # Clean old requests outside the window
+            requests_per_ip[ip] = [t for t in requests_per_ip[ip] if now - t < window_seconds]
+            
+            if len(requests_per_ip[ip]) >= max_requests:
+                st.error("⚠️ Too many requests. Please wait a moment and try again.")
+                st.stop()
+            
+            requests_per_ip[ip].append(now)
+            return f(*args, **kwargs)
+        return decorated
+    return decorator
+# ========== END RATE LIMITING CODE ==========
+
 # ---------- Supabase setup ----------
 SUPABASE_URL = st.secrets["supabase"]["url"]
 SUPABASE_KEY = st.secrets["supabase"]["key"]
