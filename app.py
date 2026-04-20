@@ -178,6 +178,211 @@ if "notification_sent" not in st.session_state:
 
 check_rate_limit()
 
+# ---------- Language Selection ----------
+if "language" not in st.session_state:
+    st.session_state.language = "English"
+
+def set_language():
+    st.session_state.language = st.session_state._language
+
+# ---------- Multi-language Dictionary ----------
+t = {
+    "English": {
+        "hero_title": "GlobalInternet.py",
+        "hero_sub": "Build with Python. Deliver with Speed. Innovate with AI.",
+        "hero_desc": "From Haiti to the world – custom software that works online.",
+        "about_title": "👨‍💻 About the Company",
+        "about_text": "**GlobalInternet.py** was founded by **Gesner Deslandes** – owner, founder, and lead engineer. We build **Python‑based software** on demand for clients worldwide.",
+        "office_photo_caption": "Gesner Deslandes talking avatar – introducing GlobalInternet.py",
+        "founder": "Founder & CEO",
+        "founder_name": "Gesner Deslandes",
+        "founder_title": "Engineer | AI Enthusiast | Python Expert",
+        "cv_title": "📄 About the Owner – Gesner Deslandes",
+        "cv_intro": "Python Software Builder | Web Developer | Technology Coordinator",
+        "cv_summary": "Exceptionally driven leader and manager with a commitment to excellence.",
+        "cv_experience_title": "💼 Professional Experience",
+        "cv_experience": "Technology Coordinator at Be Like Brit Orphanage (2021–Present)",
+        "cv_education_title": "🎓 Education & Training",
+        "cv_education": "Vocational Training School – American English",
+        "cv_references": "📞 References available upon request.",
+        "team_title": "👥 Our Team",
+        "team_sub": "Meet the talented people behind GlobalInternet.py – hired April 2026.",
+        "services_title": "⚙️ Our Services",
+        "services": [
+            ("🐍 Custom Python Development", "Tailored scripts, automation, backend systems."),
+            ("🤖 AI & Machine Learning", "Chatbots, predictive models, data insights."),
+            ("🗳️ Election & Voting Software", "Secure, multi‑language, live results."),
+            ("📊 Business Dashboards", "Real‑time analytics and reporting tools."),
+            ("🌐 Website & Web Apps", "Full‑stack solutions deployed online."),
+            ("📦 24‑Hour Delivery", "We work fast – get your software by email."),
+        ],
+        "projects_title": "🏆 Our Projects & Accomplishments",
+        "projects_sub": "Completed software solutions delivered to clients.",
+        "view_demo": "🎬 View Demo",
+        "live_demo": "🔗 Live Demo",
+        "demo_password_hint": "🔐 Demo password: 20082010",
+        "request_info": "Request Info",
+        "buy_now": "💵 Buy Now",
+        "donation_title": "💖 Support GlobalInternet.py",
+        "donation_text": "Help us grow and continue building innovative software.",
+        "donation_sub": "Your donation supports hosting and development.",
+        "donation_method": "🇭🇹 Prisme transfer to Moncash (Digicel)",
+        "donation_phone": "📱 (509)-47385663",
+        "donation_limit": "Amount limit: Up to 100,000 HTG per transaction",
+        "donation_instruction": "Use 'Prisme transfer' in your Moncash app.",
+        "donation_sendwave_title": "🌍 SendWave",
+        "donation_sendwave_instruction": "Send money via SendWave app.",
+        "donation_sendwave_phone": "(509) 4738-5663",
+        "donation_bank_title": "🏦 Bank Transfer (UNIBANK)",
+        "donation_bank_account": "105-2016-16594727",
+        "donation_bank_note": "SWIFT: UNIBANKUS",
+        "donation_future": "🔜 Coming soon: Bank transfers.",
+        "donation_button": "💸 I've sent my donation",
+        "donation_thanks": "Thank you! We will confirm within 24 hours.",
+        "contact_title": "📞 Let's Build Something Great",
+        "contact_ready": "Ready to start your project?",
+        "contact_phone": "📞 (509)-47385663",
+        "contact_email": "✉️ deslandes78@gmail.com",
+        "contact_delivery": "We deliver full software packages by email.",
+        "contact_tagline": "GlobalInternet.py – Your Python partner.",
+        "footer_rights": "All rights reserved.",
+        "footer_founded": "Founded by Gesner Deslandes | Built with Streamlit",
+        "footer_pride": "🇭🇹 Proudly Haitian – serving the world 🇭🇹",
+        "comment_section": "💬 Comments & Questions",
+        "leave_comment": "Leave a comment",
+        "your_name": "Your name (optional)",
+        "post_comment": "Post Comment",
+        "reply": "💬 Reply",
+        "language_select": "🌐 Language",
+    },
+    "French": {
+        "hero_title": "GlobalInternet.py",
+        "hero_sub": "Construisez avec Python. Livrez rapidement. Innovez avec l'IA.",
+        "hero_desc": "D'Haïti au monde – des logiciels sur mesure qui fonctionnent en ligne.",
+        "about_title": "👨‍💻 À propos de l'entreprise",
+        "about_text": "**GlobalInternet.py** a été fondé par **Gesner Deslandes** – propriétaire, fondateur et ingénieur principal. Nous construisons des logiciels sur mesure pour des clients du monde entier.",
+        "office_photo_caption": "Gesner Deslandes parle – présentant GlobalInternet.py",
+        "founder": "Fondateur & PDG",
+        "founder_name": "Gesner Deslandes",
+        "founder_title": "Ingénieur | Passionné d'IA | Expert Python",
+        "cv_title": "📄 À propos du propriétaire – Gesner Deslandes",
+        "cv_intro": "Développeur Python | Créateur de sites web | Coordinateur technique",
+        "cv_summary": "Leader et gestionnaire exceptionnel engagé envers l'excellence.",
+        "cv_experience_title": "💼 Expérience professionnelle",
+        "cv_experience": "Coordinateur technique à Be Like Brit Orphanage (2021–Présent)",
+        "cv_education_title": "🎓 Éducation et formation",
+        "cv_education": "École de formation professionnelle – Anglais américain",
+        "cv_references": "📞 Références disponibles sur demande.",
+        "team_title": "👥 Notre équipe",
+        "team_sub": "Rencontrez les talents derrière GlobalInternet.py – embauchés avril 2026.",
+        "services_title": "⚙️ Nos services",
+        "services": [
+            ("🐍 Développement Python personnalisé", "Scripts sur mesure, automatisation, systèmes backend."),
+            ("🤖 IA et apprentissage automatique", "Chatbots, modèles prédictifs, analyses de données."),
+            ("🗳️ Logiciel de vote et d'élection", "Sécurisé, multilingue, résultats en direct."),
+            ("📊 Tableaux de bord d'entreprise", "Analytique en temps réel et outils de reporting."),
+            ("🌐 Sites web et applications web", "Solutions full-stack déployées en ligne."),
+            ("📦 Livraison en 24 heures", "Nous travaillons rapidement – recevez votre logiciel par email."),
+        ],
+        "projects_title": "🏆 Nos projets et réalisations",
+        "projects_sub": "Solutions logicielles livrées aux clients.",
+        "view_demo": "🎬 Voir la démo",
+        "live_demo": "🔗 Démo en direct",
+        "demo_password_hint": "🔐 Mot de passe démo: 20082010",
+        "request_info": "Demander des informations",
+        "buy_now": "💵 Acheter maintenant",
+        "donation_title": "💖 Soutenez GlobalInternet.py",
+        "donation_text": "Aidez-nous à grandir et à continuer à développer des logiciels innovants.",
+        "donation_sub": "Votre don soutient l'hébergement et le développement.",
+        "donation_method": "🇭🇹 Transfert Prisme vers Moncash (Digicel)",
+        "donation_phone": "📱 (509)-47385663",
+        "donation_limit": "Limite de montant: Jusqu'à 100 000 HTG par transaction",
+        "donation_instruction": "Utilisez 'Prisme transfer' dans votre application Moncash.",
+        "donation_sendwave_title": "🌍 SendWave",
+        "donation_sendwave_instruction": "Envoyez de l'argent via l'application SendWave.",
+        "donation_sendwave_phone": "(509) 4738-5663",
+        "donation_bank_title": "🏦 Virement bancaire (UNIBANK)",
+        "donation_bank_account": "105-2016-16594727",
+        "donation_bank_note": "SWIFT: UNIBANKUS",
+        "donation_future": "🔜 À venir: Virements bancaires.",
+        "donation_button": "💸 J'ai envoyé mon don",
+        "donation_thanks": "Merci! Nous confirmerons dans les 24 heures.",
+        "contact_title": "📞 Construisons quelque chose de grand",
+        "contact_ready": "Prêt à démarrer votre projet?",
+        "contact_phone": "📞 (509)-47385663",
+        "contact_email": "✉️ deslandes78@gmail.com",
+        "contact_delivery": "Nous livrons des logiciels complets par email.",
+        "contact_tagline": "GlobalInternet.py – Votre partenaire Python.",
+        "footer_rights": "Tous droits réservés.",
+        "footer_founded": "Fondé par Gesner Deslandes | Construit avec Streamlit",
+        "footer_pride": "🇭🇹 Fièrement Haïtien – au service du monde 🇭🇹",
+        "comment_section": "💬 Commentaires et questions",
+        "leave_comment": "Laisser un commentaire",
+        "your_name": "Votre nom (optionnel)",
+        "post_comment": "Publier le commentaire",
+        "reply": "💬 Répondre",
+        "language_select": "🌐 Langue",
+    }
+}
+
+team_members = [
+    {"name": "Gesner Deslandes", "role": "Founder & CEO", "since": "2021", "img": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/Gesner%20Deslandes.JPG"},
+    {"name": "Gesner Junior Deslandes", "role": "Assistant to CEO", "since": "April 2026", "img": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/dreamina-2026-04-18-6690-Change%20the%20man's%20attire%20to%20a%20professiona....jpeg"},
+    {"name": "Roosevelt Deslandes", "role": "Python Programmer", "since": "April 2026", "img": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/Roosevelt%20%20Software%20Builder.jpeg"},
+    {"name": "Sebastien Stephane Deslandes", "role": "Python Programmer", "since": "April 2026", "img": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/35372.jpg"},
+    {"name": "Zendaya Christelle Deslandes", "role": "Secretary", "since": "April 2026", "img": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/IMG_1411.jpg"}
+]
+
+# Project data
+project_titles = {
+    "haiti": "🇭🇹 Haiti Online Voting Software",
+    "chess": "♟️ Play Chess Against the Machine",
+    "accountant": "🧮 Accountant Excel Advanced AI",
+    "dsm": "🛡️ DSM-2026: SYSTEM SECURED",
+    "bi": "📊 Business Intelligence Dashboard",
+    "ai_classifier": "🧠 AI Image Classifier",
+    "drone": "🚁 Haitian Drone Commander",
+    "english": "🇬🇧 Learn English with Gesner",
+    "spanish": "🇪🇸 Learn Spanish with Gesner",
+    "portuguese": "🇵🇹 Learn Portuguese with Gesner",
+}
+
+project_descs = {
+    "haiti": "Complete presidential election system with multi‑language support.",
+    "chess": "Educational chess game with AI opponent. Learn tactics and improve.",
+    "accountant": "Professional accounting and loan management suite.",
+    "dsm": "Advanced stratosphere monitoring radar system.",
+    "bi": "Real‑time analytics dashboard for businesses.",
+    "ai_classifier": "Upload an image and AI identifies it from 1000 categories.",
+    "drone": "Control Haitian‑made drone from your phone.",
+    "english": "Interactive English language learning app.",
+    "spanish": "Complete Spanish learning platform.",
+    "portuguese": "Brazilian and European Portuguese learning app.",
+}
+
+project_prices = {
+    "haiti": "$2,000 USD", "chess": "$20 USD", "accountant": "$199 USD",
+    "dsm": "$299 USD", "bi": "$1,200 USD", "ai_classifier": "$1,200 USD",
+    "drone": "$2,000 USD", "english": "$299 USD", "spanish": "$299 USD", "portuguese": "$299 USD",
+}
+
+project_status = "✅ Available now – includes source code, setup, and support"
+
+demo_urls = {
+    "haiti": "https://haiti-online-voting-software-ovcwwwrxbhaxyfcyohappnr.streamlit.app/",
+    "chess": "https://playchessagainstthemachinemarch2026-hqnjksiy9jemcb4np5pzmp.streamlit.app/",
+    "accountant": "https://kpbhc3s8vhggkeo7yh9gzz.streamlit.app/",
+    "dsm": "https://kbgydmzka2gmk4ubz3pzof.streamlit.app/",
+    "bi": "https://9enktzu34sxzyvtsymghxd.streamlit.app/",
+    "ai_classifier": "https://f9n6ijhw7svgp69ebmtzdw.streamlit.app/",
+    "drone": "https://drone-control-software-4lgtsedbmq4efzvpwxb8r7.streamlit.app/",
+    "english": "https://let-s-learn-english-with-gesner-fasbf2hvwsfpkzz9s9oc4f.streamlit.app/",
+    "spanish": "https://let-s-learn-spanish-with-gesner-twe8na7wraihczvq2lhfkl.streamlit.app/",
+    "portuguese": "https://let-s-learn-portuguese-with-gesner-hqz5b8w8ebgvcrhbtuuxe5.streamlit.app/",
+}
+
+project_keys = ["haiti", "chess", "accountant", "dsm", "bi", "ai_classifier", "drone", "english", "spanish", "portuguese"]
+
 # ---------- CSS ----------
 st.markdown("""
 <style>
@@ -272,130 +477,14 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# ---------- English dictionary ----------
-t = {
-    "hero_title": "GlobalInternet.py",
-    "hero_sub": "Build with Python. Deliver with Speed. Innovate with AI.",
-    "hero_desc": "From Haiti to the world – custom software that works online.",
-    "about_title": "👨‍💻 About the Company",
-    "about_text": "**GlobalInternet.py** was founded by **Gesner Deslandes** – owner, founder, and lead engineer. We build **Python‑based software** on demand for clients worldwide.",
-    "office_photo_caption": "Gesner Deslandes talking avatar – introducing GlobalInternet.py",
-    "founder": "Founder & CEO",
-    "founder_name": "Gesner Deslandes",
-    "founder_title": "Engineer | AI Enthusiast | Python Expert",
-    "cv_title": "📄 About the Owner – Gesner Deslandes",
-    "cv_intro": "Python Software Builder | Web Developer | Technology Coordinator",
-    "cv_summary": "Exceptionally driven leader and manager with a commitment to excellence.",
-    "cv_experience_title": "💼 Professional Experience",
-    "cv_experience": "Technology Coordinator at Be Like Brit Orphanage (2021–Present)",
-    "cv_education_title": "🎓 Education & Training",
-    "cv_education": "Vocational Training School – American English",
-    "cv_references": "📞 References available upon request.",
-    "team_title": "👥 Our Team",
-    "team_sub": "Meet the talented people behind GlobalInternet.py",
-    "team_members": [
-        {"name": "Gesner Deslandes", "role": "Founder & CEO", "since": "2021", "img": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/Gesner%20Deslandes.JPG"},
-        {"name": "Gesner Junior Deslandes", "role": "Assistant to CEO", "since": "April 2026", "img": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/dreamina-2026-04-18-6690-Change%20the%20man's%20attire%20to%20a%20professiona....jpeg"},
-        {"name": "Roosevelt Deslandes", "role": "Python Programmer", "since": "April 2026", "img": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/Roosevelt%20%20Software%20Builder.jpeg"},
-        {"name": "Sebastien Stephane Deslandes", "role": "Python Programmer", "since": "April 2026", "img": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/35372.jpg"},
-        {"name": "Zendaya Christelle Deslandes", "role": "Secretary", "since": "April 2026", "img": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/IMG_1411.jpg"}
-    ],
-    "services_title": "⚙️ Our Services",
-    "services": [
-        ("🐍 Custom Python Development", "Tailored scripts, automation, backend systems."),
-        ("🤖 AI & Machine Learning", "Chatbots, predictive models, data insights."),
-        ("🗳️ Election & Voting Software", "Secure, multi‑language, live results."),
-        ("📊 Business Dashboards", "Real‑time analytics and reporting tools."),
-        ("🌐 Website & Web Apps", "Full‑stack solutions deployed online."),
-        ("📦 24‑Hour Delivery", "We work fast – get your software by email."),
-    ],
-    "projects_title": "🏆 Our Projects & Accomplishments",
-    "projects_sub": "Completed software solutions delivered to clients.",
-    "view_demo": "🎬 View Demo",
-    "live_demo": "🔗 Live Demo",
-    "demo_password_hint": "🔐 Demo password: 20082010",
-    "request_info": "Request Info",
-    "buy_now": "💵 Buy Now",
-    "donation_title": "💖 Support GlobalInternet.py",
-    "donation_text": "Help us grow and continue building innovative software.",
-    "donation_sub": "Your donation supports hosting and development.",
-    "donation_method": "🇭🇹 Prisme transfer to Moncash (Digicel)",
-    "donation_phone": "📱 (509)-47385663",
-    "donation_limit": "Amount limit: Up to 100,000 HTG per transaction",
-    "donation_instruction": "Use 'Prisme transfer' in your Moncash app.",
-    "donation_sendwave_title": "🌍 SendWave",
-    "donation_sendwave_instruction": "Send money via SendWave app.",
-    "donation_sendwave_phone": "(509) 4738-5663",
-    "donation_bank_title": "🏦 Bank Transfer (UNIBANK)",
-    "donation_bank_account": "105-2016-16594727",
-    "donation_bank_note": "SWIFT: UNIBANKUS",
-    "donation_future": "🔜 Coming soon: Bank transfers.",
-    "donation_button": "💸 I've sent my donation",
-    "donation_thanks": "Thank you! We will confirm within 24 hours.",
-    "contact_title": "📞 Let's Build Something Great",
-    "contact_ready": "Ready to start your project?",
-    "contact_phone": "📞 (509)-47385663",
-    "contact_email": "✉️ deslandes78@gmail.com",
-    "contact_delivery": "We deliver full software packages by email.",
-    "contact_tagline": "GlobalInternet.py – Your Python partner.",
-    "footer_rights": "All rights reserved.",
-    "footer_founded": "Founded by Gesner Deslandes | Built with Streamlit",
-    "footer_pride": "🇭🇹 Proudly Haitian – serving the world 🇭🇹"
-}
-
-# Project data
-project_titles = {
-    "haiti": "🇭🇹 Haiti Online Voting Software",
-    "chess": "♟️ Play Chess Against the Machine",
-    "accountant": "🧮 Accountant Excel Advanced AI",
-    "dsm": "🛡️ DSM-2026: SYSTEM SECURED",
-    "bi": "📊 Business Intelligence Dashboard",
-    "ai_classifier": "🧠 AI Image Classifier",
-    "drone": "🚁 Haitian Drone Commander",
-    "english": "🇬🇧 Learn English with Gesner",
-    "spanish": "🇪🇸 Learn Spanish with Gesner",
-    "portuguese": "🇵🇹 Learn Portuguese with Gesner",
-}
-
-project_descs = {
-    "haiti": "Complete presidential election system with multi‑language support.",
-    "chess": "Educational chess game with AI opponent. Learn tactics and improve.",
-    "accountant": "Professional accounting and loan management suite.",
-    "dsm": "Advanced stratosphere monitoring radar system.",
-    "bi": "Real‑time analytics dashboard for businesses.",
-    "ai_classifier": "Upload an image and AI identifies it from 1000 categories.",
-    "drone": "Control Haitian‑made drone from your phone.",
-    "english": "Interactive English language learning app.",
-    "spanish": "Complete Spanish learning platform.",
-    "portuguese": "Brazilian and European Portuguese learning app.",
-}
-
-project_prices = {
-    "haiti": "$2,000 USD", "chess": "$20 USD", "accountant": "$199 USD",
-    "dsm": "$299 USD", "bi": "$1,200 USD", "ai_classifier": "$1,200 USD",
-    "drone": "$2,000 USD", "english": "$299 USD", "spanish": "$299 USD", "portuguese": "$299 USD",
-}
-
-project_status = "✅ Available now – includes source code, setup, and support"
-
-demo_urls = {
-    "haiti": "https://haiti-online-voting-software-ovcwwwrxbhaxyfcyohappnr.streamlit.app/",
-    "chess": "https://playchessagainstthemachinemarch2026-hqnjksiy9jemcb4np5pzmp.streamlit.app/",
-    "accountant": "https://kpbhc3s8vhggkeo7yh9gzz.streamlit.app/",
-    "dsm": "https://kbgydmzka2gmk4ubz3pzof.streamlit.app/",
-    "bi": "https://9enktzu34sxzyvtsymghxd.streamlit.app/",
-    "ai_classifier": "https://f9n6ijhw7svgp69ebmtzdw.streamlit.app/",
-    "drone": "https://drone-control-software-4lgtsedbmq4efzvpwxb8r7.streamlit.app/",
-    "english": "https://let-s-learn-english-with-gesner-fasbf2hvwsfpkzz9s9oc4f.streamlit.app/",
-    "spanish": "https://let-s-learn-spanish-with-gesner-twe8na7wraihczvq2lhfkl.streamlit.app/",
-    "portuguese": "https://let-s-learn-portuguese-with-gesner-hqz5b8w8ebgvcrhbtuuxe5.streamlit.app/",
-}
-
-project_keys = ["haiti", "chess", "accountant", "dsm", "bi", "ai_classifier", "drone", "english", "spanish", "portuguese"]
-
-# ---------- Sidebar ----------
+# ---------- Sidebar with Language Selector ----------
 st.sidebar.image("https://flagcdn.com/w320/ht.png", width=60)
-st.sidebar.markdown("🌐 Language: English")
+st.sidebar.selectbox(
+    t[st.session_state.language]["language_select"],
+    options=["English", "French"],
+    key="_language",
+    on_change=set_language
+)
 st.sidebar.markdown("---")
 st.sidebar.markdown("**Founder & Developer:**")
 st.sidebar.markdown("Gesner Deslandes")
@@ -405,27 +494,30 @@ st.sidebar.markdown("---")
 st.sidebar.markdown("### © 2026 GlobalInternet.py")
 st.sidebar.markdown("All rights reserved")
 
+# Get current language dictionary
+lang = t[st.session_state.language]
+
 # ---------- Hero Section ----------
 st.markdown(f"""
 <div class="hero">
     <span class="big-globe">🌐</span>
-    <h1>{t['hero_title']}</h1>
-    <p>{t['hero_sub']}</p>
-    <p style="font-size:1rem;">{t['hero_desc']}</p>
+    <h1>{lang['hero_title']}</h1>
+    <p>{lang['hero_sub']}</p>
+    <p style="font-size:1rem;">{lang['hero_desc']}</p>
 </div>
 """, unsafe_allow_html=True)
 
 # ---------- About Section ----------
-st.markdown(f"## {t['about_title']}")
+st.markdown(f"## {lang['about_title']}")
 col1, col2 = st.columns([2, 1])
 with col1:
-    st.markdown(t['about_text'])
+    st.markdown(lang['about_text'])
 with col2:
     st.markdown(f"""
     <div class="card">
-        <h3>{t['founder']}</h3>
-        <p><strong>{t['founder_name']}</strong></p>
-        <p>{t['founder_title']}</p>
+        <h3>{lang['founder']}</h3>
+        <p><strong>{lang['founder_name']}</strong></p>
+        <p>{lang['founder_title']}</p>
         <p>📞 (509)-47385663</p>
         <p>✉️ deslandes78@gmail.com</p>
     </div>
@@ -434,31 +526,30 @@ with col2:
 # ---------- Avatar Video ----------
 video_url = "https://github.com/Deslandes1/Gesner-Deslandes-Avatar/blob/main/avatar_video.mp4.mp4?raw=true"
 st.video(video_url, format="video/mp4", start_time=0)
-st.caption(t['office_photo_caption'])
+st.caption(lang['office_photo_caption'])
 
 # ---------- CV Section ----------
-st.markdown(f"## {t['cv_title']}")
+st.markdown(f"## {lang['cv_title']}")
 col_photo, col_info = st.columns([1, 2])
 with col_photo:
     owner_video_url = "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/Gesner%20Deslandes%20The%20Owner%20(1).mp4"
     st.video(owner_video_url)
     st.caption("Gesner Deslandes - Owner & Founder")
 with col_info:
-    st.markdown(f"### {t['cv_intro']}")
-    st.markdown(t['cv_summary'])
-with st.expander(f"{t['cv_experience_title']} (click to view)"):
-    st.markdown(t['cv_experience'])
-with st.expander(f"{t['cv_education_title']} (click to view)"):
-    st.markdown(t['cv_education'])
-st.caption(t['cv_references'])
+    st.markdown(f"### {lang['cv_intro']}")
+    st.markdown(lang['cv_summary'])
+with st.expander(f"{lang['cv_experience_title']} (click to view)"):
+    st.markdown(lang['cv_experience'])
+with st.expander(f"{lang['cv_education_title']} (click to view)"):
+    st.markdown(lang['cv_education'])
+st.caption(lang['cv_references'])
 st.divider()
 
 # ---------- Team Section ----------
-st.markdown(f"## {t['team_title']}")
-st.markdown(f"*{t['team_sub']}*")
-team = t['team_members']
-cols = st.columns(len(team))
-for idx, member in enumerate(team):
+st.markdown(f"## {lang['team_title']}")
+st.markdown(f"*{lang['team_sub']}*")
+cols = st.columns(len(team_members))
+for idx, member in enumerate(team_members):
     with cols[idx]:
         st.markdown(f"""
         <div class="team-card">
@@ -506,8 +597,8 @@ for idx, project in enumerate(future_projects):
 st.markdown("---")
 
 # ---------- Services ----------
-st.markdown(f"## {t['services_title']}")
-services = t['services']
+st.markdown(f"## {lang['services_title']}")
+services = lang['services']
 cols = st.columns(3)
 for i, (title, desc) in enumerate(services):
     with cols[i % 3]:
@@ -519,8 +610,8 @@ for i, (title, desc) in enumerate(services):
         """, unsafe_allow_html=True)
 
 # ---------- Projects Section WITH COMMENTS ----------
-st.markdown(f"## {t['projects_title']}")
-st.markdown(f"*{t['projects_sub']}*")
+st.markdown(f"## {lang['projects_title']}")
+st.markdown(f"*{lang['projects_sub']}*")
 
 for i in range(0, len(project_keys), 2):
     cols = st.columns(2)
@@ -543,8 +634,8 @@ for i in range(0, len(project_keys), 2):
                 """, unsafe_allow_html=True)
                 
                 if key in demo_urls:
-                    st.markdown(f"<a href='{demo_urls[key]}' target='_blank'><button style='background-color:#28a745; color:white; border:none; border-radius:30px; padding:0.5rem 1rem; margin-bottom:0.5rem; width:100%; cursor:pointer;'>{t['live_demo']}</button></a>", unsafe_allow_html=True)
-                    st.caption(t['demo_password_hint'])
+                    st.markdown(f"<a href='{demo_urls[key]}' target='_blank'><button style='background-color:#28a745; color:white; border:none; border-radius:30px; padding:0.5rem 1rem; margin-bottom:0.5rem; width:100%; cursor:pointer;'>{lang['live_demo']}</button></a>", unsafe_allow_html=True)
+                    st.caption(lang['demo_password_hint'])
                 else:
                     st.info("📹 Live demo available upon request.")
                 
@@ -553,16 +644,15 @@ for i in range(0, len(project_keys), 2):
                     subject = f"Purchase: {title}"
                     body = f"Hello Gesner, I am interested in purchasing {title} at {price}."
                     mailto_link = f"mailto:deslandes78@gmail.com?subject={subject}&body={body}"
-                    st.markdown(f'<a href="{mailto_link}" target="_blank"><button style="background-color:#28a745; color:white; border:none; border-radius:30px; padding:0.5rem 1rem; width:100%; cursor:pointer;">💵 {t["buy_now"]}</button></a>', unsafe_allow_html=True)
+                    st.markdown(f'<a href="{mailto_link}" target="_blank"><button style="background-color:#28a745; color:white; border:none; border-radius:30px; padding:0.5rem 1rem; width:100%; cursor:pointer;">💵 {lang["buy_now"]}</button></a>', unsafe_allow_html=True)
                 with col_btn2:
-                    if st.button(f"{t['request_info']}", key=f"info_{key}"):
+                    if st.button(f"{lang['request_info']}", key=f"info_{key}"):
                         st.info(f"Contact us at deslandes78@gmail.com or call (509)-47385663 to discuss '{title}'.")
 
-            # ========== COMMENT SECTION (RESTORED) ==========
-            st.markdown("#### 💬 Comments & Questions")
+            # ========== COMMENT SECTION ==========
+            st.markdown(f"#### {lang['comment_section']}")
             comments = get_comments(key)
             
-            # Display existing comments
             for comment in comments:
                 if comment["parent_id"] == 0:
                     st.markdown(f"""
@@ -573,27 +663,23 @@ for i in range(0, len(project_keys), 2):
                         <div>{comment['comment']}</div>
                     """, unsafe_allow_html=True)
                     
-                    # Like button
                     if st.button(f"❤️ {comment['likes']}", key=f"like_{key}_{comment['id']}"):
                         add_like(comment['id'])
                         st.rerun()
                     
-                    # Reply button
-                    if st.button("💬 Reply", key=f"reply_{key}_{comment['id']}"):
+                    if st.button(lang['reply'], key=f"reply_{key}_{comment['id']}"):
                         st.session_state[f"reply_to_{comment['id']}"] = True
                     
-                    # Reply form
                     if st.session_state.get(f"reply_to_{comment['id']}", False):
                         with st.form(key=f"reply_form_{comment['id']}"):
-                            reply_name = st.text_input("Your name", key=f"reply_name_{comment['id']}")
-                            reply_text = st.text_area("Your reply", key=f"reply_text_{comment['id']}")
-                            if st.form_submit_button("Post Reply"):
+                            reply_name = st.text_input(lang['your_name'], key=f"reply_name_{comment['id']}")
+                            reply_text = st.text_area(lang['leave_comment'], key=f"reply_text_{comment['id']}")
+                            if st.form_submit_button(lang['post_comment']):
                                 if reply_text.strip():
                                     add_comment(key, reply_name if reply_name.strip() else "Anonymous", reply_text, parent_id=comment['id'], reply_to_username=comment['username'])
                                     st.session_state[f"reply_to_{comment['id']}"] = False
                                     st.rerun()
                     
-                    # Display replies
                     replies = [c for c in comments if c["parent_id"] == comment["id"]]
                     for reply in replies:
                         st.markdown(f"""
@@ -609,12 +695,11 @@ for i in range(0, len(project_keys), 2):
                             st.rerun()
                     st.markdown("</div>", unsafe_allow_html=True)
             
-            # New comment form
             with st.form(key=f"comment_form_{key}"):
-                st.markdown("**Leave a comment**")
-                name = st.text_input("Your name (optional)", key=f"name_{key}")
-                comment_text = st.text_area("Comment", key=f"comment_{key}")
-                if st.form_submit_button("Post Comment"):
+                st.markdown(f"**{lang['leave_comment']}**")
+                name = st.text_input(lang['your_name'], key=f"name_{key}")
+                comment_text = st.text_area("", key=f"comment_{key}")
+                if st.form_submit_button(lang['post_comment']):
                     if comment_text.strip():
                         add_comment(key, name if name.strip() else "Anonymous", comment_text)
                         st.rerun()
@@ -624,51 +709,51 @@ for i in range(0, len(project_keys), 2):
             # ========== END COMMENT SECTION ==========
 
 # ---------- Donation Section ----------
-st.markdown(f"## {t['donation_title']}")
+st.markdown(f"## {lang['donation_title']}")
 st.markdown(f"""
 <div class="donation-box">
-    <h3>{t['donation_text']}</h3>
-    <p>{t['donation_sub']}</p>
+    <h3>{lang['donation_text']}</h3>
+    <p>{lang['donation_sub']}</p>
     <br>
-    <p><strong>{t['donation_method']}</strong></p>
-    <p style="font-size:1.5rem; font-weight:bold;">{t['donation_phone']}</p>
-    <p><strong>{t['donation_limit']}</strong></p>
-    <p><em>{t['donation_instruction']}</em></p>
+    <p><strong>{lang['donation_method']}</strong></p>
+    <p style="font-size:1.5rem; font-weight:bold;">{lang['donation_phone']}</p>
+    <p><strong>{lang['donation_limit']}</strong></p>
+    <p><em>{lang['donation_instruction']}</em></p>
     <br>
-    <p><strong>{t['donation_sendwave_title']}</strong></p>
-    <p>{t['donation_sendwave_instruction']}</p>
-    <p style="font-size:1.2rem; font-weight:bold;">{t['donation_sendwave_phone']}</p>
+    <p><strong>{lang['donation_sendwave_title']}</strong></p>
+    <p>{lang['donation_sendwave_instruction']}</p>
+    <p style="font-size:1.2rem; font-weight:bold;">{lang['donation_sendwave_phone']}</p>
     <br>
-    <p><strong>{t['donation_bank_title']}</strong></p>
-    <p style="font-size:1.2rem; font-weight:bold;">{t['donation_bank_account']}</p>
-    <p><em>{t['donation_bank_note']}</em></p>
+    <p><strong>{lang['donation_bank_title']}</strong></p>
+    <p style="font-size:1.2rem; font-weight:bold;">{lang['donation_bank_account']}</p>
+    <p><em>{lang['donation_bank_note']}</em></p>
     <br>
-    <p><strong>{t['donation_future']}</strong></p>
+    <p><strong>{lang['donation_future']}</strong></p>
 </div>
 """, unsafe_allow_html=True)
 
-if st.button(t['donation_button']):
-    st.success(t['donation_thanks'])
+if st.button(lang['donation_button']):
+    st.success(lang['donation_thanks'])
 
 # ---------- Contact Section ----------
-st.markdown(f"## {t['contact_title']}")
+st.markdown(f"## {lang['contact_title']}")
 col1, col2, col3 = st.columns([1, 2, 1])
 with col2:
     st.markdown(f"""
     <div style="text-align: center; background-color: #e9ecef; padding: 2rem; border-radius: 20px;">
-        <h3>{t['contact_ready']}</h3>
-        <p>{t['contact_phone']}</p>
-        <p>{t['contact_email']}</p>
-        <p>{t['contact_delivery']}</p>
-        <p><em>{t['contact_tagline']}</em></p>
+        <h3>{lang['contact_ready']}</h3>
+        <p>{lang['contact_phone']}</p>
+        <p>{lang['contact_email']}</p>
+        <p>{lang['contact_delivery']}</p>
+        <p><em>{lang['contact_tagline']}</em></p>
     </div>
     """, unsafe_allow_html=True)
 
 # ---------- Footer ----------
 st.markdown(f"""
 <div class="footer">
-    <p>© {datetime.now().year} GlobalInternet.py – {t['footer_rights']}</p>
-    <p>{t['footer_founded']}</p>
-    <p>{t['footer_pride']}</p>
+    <p>© {datetime.now().year} GlobalInternet.py – {lang['footer_rights']}</p>
+    <p>{lang['footer_founded']}</p>
+    <p>{lang['footer_pride']}</p>
 </div>
 """, unsafe_allow_html=True)
