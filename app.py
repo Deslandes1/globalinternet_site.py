@@ -156,8 +156,12 @@ def delete_comment(comment_id, admin_password):
             return False
     return False
 
-# ---------- Email notification ----------
+# ---------- Email notification (FIXED - ONLY ONE EMAIL PER SESSION) ----------
 def send_visit_notification():
+    # Only send ONE email per browser session (no more spam from refreshes/clicks)
+    if "email_sent" in st.session_state:
+        return
+    
     try:
         visitor_ip = requests.get("https://api.ipify.org", timeout=5).text
         user_agent = st.context.headers.get("User-Agent", "unknown") if hasattr(st, 'context') else "unknown"
@@ -176,13 +180,12 @@ def send_visit_notification():
             with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
                 server.login(sender, password)
                 server.sendmail(sender, receiver, msg.as_string())
+            st.session_state.email_sent = True  # Mark as sent for this session
     except:
         pass
 
-if "notification_sent" not in st.session_state:
-    send_visit_notification()
-    st.session_state.notification_sent = True
-
+# Send notification only once per session
+send_visit_notification()
 check_rate_limit()
 
 # ---------- Language Selection ----------
