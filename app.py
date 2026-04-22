@@ -13,11 +13,23 @@ SUPABASE_URL = st.secrets["supabase"]["url"]
 SUPABASE_KEY = st.secrets["supabase"]["key"]
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
-# FIXED: removed invalid page_insights parameter
 st.set_page_config(
     page_title="GlobalInternet.py – Python Software Company",
     page_icon="🌐",
     layout="wide"
+)
+
+# ========== ADSENSE VERIFICATION (ADDED) ==========
+st.markdown(
+    '<meta name="google-adsense-account" content="ca-pub-1238061430437782">',
+    unsafe_allow_html=True
+)
+st.markdown(
+    """
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1238061430437782"
+         crossorigin="anonymous"></script>
+    """,
+    unsafe_allow_html=True
 )
 
 # ---------- Comment functions ----------
@@ -67,7 +79,7 @@ def delete_comment(comment_id, admin_password):
 def send_visit_notification():
     try:
         visitor_ip = requests.get("https://api.ipify.org").text
-        # Streamlit does not expose request headers – use fallback
+        # Streamlit does not expose request headers; use a safe fallback
         user_agent = "unknown (Streamlit Cloud)"
         subject = "🌐 New visitor on GlobalInternet.py website"
         body = f"Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\nIP: {visitor_ip}\nUser Agent: {user_agent}"
@@ -93,7 +105,7 @@ if "notification_sent" not in st.session_state:
     send_visit_notification()
     st.session_state.notification_sent = True
 
-# Initialize missing session state for logout button
+# Initialise authentication state (for logout button)
 if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
 
