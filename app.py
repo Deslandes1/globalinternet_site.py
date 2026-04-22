@@ -123,7 +123,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ========== DICTIONARIES (ENGLISH, FRENCH, SPANISH) ==========
-# English (full, with all 37 projects)
+# English (full, with updated Vectra AI)
 lang_en = {
     "hero_title": "GlobalInternet.py",
     "hero_sub": "Build with Python. Deliver with Speed. Innovate with AI.",
@@ -381,11 +381,13 @@ lang_en = {
     "project_haiti_marketplace_price": "$299 USD (one‑time fee)",
     "project_haiti_marketplace_status": "✅ Available now – full source code included",
     "project_haiti_marketplace_contact": "Contact owner for purchase",
+    # ----- UPDATED VECTRA AI -----
     "project_vectra_ai": "🚗 Vectra AI – Self‑Driving Car Simulator",
-    "project_vectra_ai_desc": "**Interactive self‑driving car simulation.** Drive on a winding dust road, avoid oncoming cars, adjust speed limit. Uses 5 sensors and AI to stay in the right lane. Full source code included.",
-    "project_vectra_ai_price": "$299 USD (one‑time fee)",
+    "project_vectra_ai_desc": "**Interactive self‑driving car simulation.** Drive on a winding dust road, avoid oncoming cars, adjust speed limit. Uses 5 sensors and AI to stay in the right lane. Full source code included.\n\n**Fair Market Valuation (B2B Licensing):** $4,500 – $12,000 USD ↑ Per Implementation – Based on real‑time physics engine, AI lane‑discipline logic, and custom heading algorithms.",
+    "project_vectra_ai_price": "$4,500 – $12,000 USD (↑ Per Implementation)",
     "project_vectra_ai_status": "✅ Available now – full source code included",
     "project_vectra_ai_contact": "Contact owner for purchase",
+    # UI elements
     "view_demo": "🎬 View Demo",
     "demo_screenshot": "Screenshot preview (replace with actual image)",
     "live_demo": "🔗 Live Demo",
@@ -419,70 +421,35 @@ lang_en = {
     "footer_pride": "🇭🇹 Proudly Haitian – serving the world with Python and AI 🇭🇹"
 }
 
-# French (simplified – only a few keys shown; full file contains all 37)
+# French dictionary (only the updated Vectra AI entry; you must keep your existing French translations for all other keys)
+# For brevity, we show only the modified part. In your actual file, include the full French dictionary from your previous version.
 lang_fr = {
-    "hero_title": "GlobalInternet.py",
-    "hero_sub": "Construisez avec Python. Livrez rapidement. Innovez avec l'IA.",
-    "hero_desc": "D'Haïti au monde – des logiciels sur mesure qui fonctionnent en ligne.",
-    "about_title": "👨‍💻 À propos de l'entreprise",
-    "about_text": "**GlobalInternet.py** a été fondé par **Gesner Deslandes** – propriétaire, fondateur et ingénieur principal. Nous construisons des **logiciels basés sur Python** à la demande pour des clients du monde entier. Comme la Silicon Valley, mais avec une touche haïtienne et des résultats exceptionnels.\n\n- 🧠 **Solutions alimentées par l'IA** – chatbots, analyse de données, automatisation\n- 🗳️ **Systèmes électoraux complets** – sécurisés, multilingues, en temps réel\n- 🌐 **Applications web** – tableaux de bord, outils internes, plateformes en ligne\n- 📦 **Livraison complète** – nous vous envoyons le code complet par email et vous guidons lors de l'installation\n\nQue vous ayez besoin d'un site web d'entreprise, d'un outil logiciel personnalisé ou d'une plateforme en ligne à grande échelle – nous le construisons, vous le possédez.",
-    "office_photo_caption": "Avatar parlant de Gesner Deslandes – présentation de GlobalInternet.py",
-    "humanoid_photo_caption": "Gesner Humanoid AI – notre représentant numérique de l'innovation et de l'expertise logicielle.",
-    "founder": "Fondateur et PDG",
-    "founder_name": "Gesner Deslandes",
-    "founder_title": "Ingénieur | Passionné d'IA | Expert Python",
-    "cv_title": "📄 À propos du propriétaire – Gesner Deslandes",
-    "cv_intro": "Constructeur de logiciels Python | Développeur web | Coordinateur technologique",
-    "cv_summary": "Leader et gestionnaire exceptionnellement motivé, engagé envers l'excellence et la précision. **Compétences clés :** Leadership, Interprétation (anglais, français, créole haïtien), Orientation mécanique, Gestion, Microsoft Office.",
-    "cv_experience_title": "💼 Expérience professionnelle",
-    "cv_experience": "**Coordinateur technologique** – Orphelinat Be Like Brit (2021–présent)\nConfiguration des réunions Zoom, maintenance des ordinateurs portables/tablettes, support technique quotidien, assurance d'opérations numériques fluides.\n\n**PDG et services d'interprétation** – Tourisme personnalisé pour groupes d'ONG, équipes de mission et particuliers.\n\n**Gestionnaire de parc / répartiteur** – J/P Haitian Relief Organization\nGestion de plus de 20 véhicules, journaux de bord, calendriers de maintenance avec Excel.\n\n**Interprète médical** – International Child Care\nInterprétation médicale précise anglais–français–créole.\n\n**Chef d'équipe et interprète** – Can‑Do NGO\nDirection de projets de reconstruction.\n\n**Professeur d'anglais** – Be Like Brit (préscolaire à NS4)\n\n**Traducteur de documents** – United Kingdom Glossary & United States Work‑Rise Company",
-    "cv_education_title": "🎓 Éducation et formation",
-    "cv_education": "- École de formation professionnelle – Anglais américain\n- Institut Diesel d'Haïti – Mécanicien diesel\n- Certification en bureautique (octobre 2000)\n- Diplômé du secondaire",
-    "cv_references": "📞 Références disponibles sur demande.",
-    "team_title": "👥 Notre équipe",
-    "team_sub": "Rencontrez les talents derrière GlobalInternet.py – embauchés en avril 2026.",
-    "team_members": [
-        {"name": "Gesner Deslandes", "role": "Fondateur et PDG", "since": "2021", "img": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/Gesner%20Deslandes.JPG"},
-        {"name": "Gesner Junior Deslandes", "role": "Assistant du PDG", "since": "Avril 2026", "img": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/dreamina-2026-04-18-6690-Change%20the%20man's%20attire%20to%20a%20professiona....jpeg"},
-        {"name": "Roosevelt Deslandes", "role": "Programmeur Python", "since": "Avril 2026", "img": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/Roosevelt%20%20Software%20Builder.jpeg"},
-        {"name": "Sebastien Stephane Deslandes", "role": "Programmeur Python", "since": "Avril 2026", "img": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/35372.jpg"},
-        {"name": "Zendaya Christelle Deslandes", "role": "Secrétaire", "since": "Avril 2026", "img": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/IMG_1411.jpg"}
-    ],
-    "services_title": "⚙️ Nos services",
-    "services": [
-        ("🐍 Développement Python personnalisé", "Scripts sur mesure, automatisation, systèmes backend."),
-        ("🤖 IA et apprentissage automatique", "Chatbots, modèles prédictifs, analyses de données."),
-        ("🗳️ Logiciel électoral", "Sécurisé, multilingue, résultats en direct – comme notre système Haïti."),
-        ("📊 Tableaux de bord d'entreprise", "Analytique en temps réel et outils de reporting."),
-        ("🌐 Sites web et applications web", "Solutions full‑stack déployées en ligne."),
-        ("📦 Livraison en 24 heures", "Nous travaillons rapidement – recevez votre logiciel par email, prêt à l'emploi."),
-        ("📢 Publicité et marketing", "Campagnes numériques, gestion des réseaux sociaux, ciblage IA, rapports de performance. De 150 $ à 1 200 $ selon la portée.")
-    ],
-    "projects_title": "🏆 Nos projets et réalisations",
-    "projects_sub": "Solutions logicielles complètes livrées aux clients – prêtes à être achetées ou personnalisées.",
-    "project_haiti": "🇭🇹 Logiciel de vote en ligne Haïti",
-    "project_haiti_desc": "Système électoral présidentiel complet avec support multilingue (créole, français, anglais, espagnol), suivi en direct, tableau de bord du président du CEP (gestion des candidats, téléchargement de photos, rapports de progression), scrutin secret et mots de passe modifiables. Utilisé pour les élections nationales.",
-    "project_haiti_price": "2 000 $ USD (paiement unique)",
-    "project_haiti_status": "✅ Disponible – code source, installation et support inclus",
-    # ... (full translations for all 37 projects exist in the complete file)
+    # ... (all your existing French translations) ...
+    "project_vectra_ai": "🚗 Vectra AI – Simulateur de conduite autonome",
+    "project_vectra_ai_desc": "**Simulation de conduite autonome interactive.** Roulez sur une route de terre sinueuse, évitez les voitures venant en sens inverse, réglez la limite de vitesse. Utilise 5 capteurs et une IA pour rester dans la voie de droite. Code source complet inclus.\n\n**Évaluation de marché (licence B2B) :** 4 500 – 12 000 $ USD ↑ par implémentation – Basé sur un moteur physique en temps réel, une logique de maintien de voie par IA et des algorithmes de direction personnalisés.",
+    "project_vectra_ai_price": "4 500 – 12 000 $ USD (↑ par implémentation)",
+    "project_vectra_ai_status": "✅ Disponible – code source complet inclus",
+    "project_vectra_ai_contact": "Contactez le propriétaire pour acheter",
 }
 
-# Spanish (full translations in final file)
+# Spanish dictionary (only the updated Vectra AI entry)
 lang_es = {
-    "hero_title": "GlobalInternet.py",
-    "hero_sub": "Construye con Python. Entrega con velocidad. Innova con IA.",
-    "hero_desc": "De Haití al mundo – software personalizado que funciona en línea.",
-    # ... (full file contains all)
+    # ... (all your existing Spanish translations) ...
+    "project_vectra_ai": "🚗 Vectra AI – Simulador de conducción autónoma",
+    "project_vectra_ai_desc": "**Simulación interactiva de conducción autónoma.** Conduce por un camino de tierra sinuoso, evita coches que vienen en sentido contrario, ajusta el límite de velocidad. Utiliza 5 sensores e IA para mantenerse en el carril derecho. Código fuente completo incluido.\n\n**Valoración de mercado (licencia B2B):** $4,500 – $12,000 USD ↑ por implementación – Basado en motor de física en tiempo real, lógica de disciplina de carril por IA y algoritmos de dirección personalizados.",
+    "project_vectra_ai_price": "$4,500 – $12,000 USD (↑ por implementación)",
+    "project_vectra_ai_status": "✅ Disponible – código fuente completo incluido",
+    "project_vectra_ai_contact": "Contacte al propietario para comprar",
 }
 
-# Combine languages
+# Combine dictionaries (you must include the full lang_fr and lang_es from your original file)
 lang_dict = {
     "en": lang_en,
     "fr": lang_fr,
     "es": lang_es
 }
 
-# ========== SIDEBAR (RESTORED) ==========
+# ========== SIDEBAR ==========
 st.sidebar.image("https://flagcdn.com/w320/ht.png", width=60)
 lang = st.sidebar.selectbox(
     "🌐 Language / Langue / Idioma",
@@ -508,7 +475,7 @@ if st.button("🚪 Logout", use_container_width=True):
     st.session_state.authenticated = False
     st.rerun()
 
-# ========== MAIN WEBSITE CONTENT (same as before) ==========
+# ========== DISPLAY WEBSITE ==========
 st.markdown(f"""
 <div class="hero">
     <span class="big-globe">🌐</span>
@@ -569,7 +536,7 @@ for idx, member in enumerate(team):
         """, unsafe_allow_html=True)
 st.divider()
 
-# ---------- Humanoid Robotics Video ----------
+# ---------- Humanoid Robotics Video Section ----------
 st.markdown("---")
 st.markdown("## 🤖 Leveling Up Our Software: Humanoid Robotics")
 st.markdown("*From Python scripts to embodied AI – the next frontier.*")
@@ -592,7 +559,7 @@ with col_caption:
 st.caption("📽️ Demo: Python‑controlled humanoid robot in motion. Our software is evolving from screen to physical AI.")
 st.markdown("---")
 
-# ---------- Projects in Perspective ----------
+# ---------- Projects in Perspective (Roadmap) ----------
 st.markdown("## 🚀 Projects in Perspective")
 st.markdown("*What we are building next – innovations on the horizon.*")
 
