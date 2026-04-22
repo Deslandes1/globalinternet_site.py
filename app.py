@@ -9,7 +9,7 @@ import requests
 import os
 from supabase import create_client, Client
 
-# ========== FORCE GOOGLE ADSENSE META TAG INTO <HEAD> ==========
+# ========== FORCE GOOGLE ADSENSE META TAG INTO <head> ==========
 components.html(
     """
     <head>
