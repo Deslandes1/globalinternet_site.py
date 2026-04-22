@@ -13,11 +13,11 @@ SUPABASE_URL = st.secrets["supabase"]["url"]
 SUPABASE_KEY = st.secrets["supabase"]["key"]
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
+# FIXED: removed invalid page_insights parameter
 st.set_page_config(
     page_title="GlobalInternet.py – Python Software Company",
     page_icon="🌐",
-    layout="wide",
-    page_insights="Custom Python software, AI tools, election systems, educational apps – delivered by email. Based in Haiti, serving the world."
+    layout="wide"
 )
 
 # ---------- Comment functions ----------
@@ -67,7 +67,8 @@ def delete_comment(comment_id, admin_password):
 def send_visit_notification():
     try:
         visitor_ip = requests.get("https://api.ipify.org").text
-        user_agent = st.context.headers.get("User-Agent", "unknown") if hasattr(st, 'context') else "unknown"
+        # Streamlit does not expose request headers – use fallback
+        user_agent = "unknown (Streamlit Cloud)"
         subject = "🌐 New visitor on GlobalInternet.py website"
         body = f"Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\nIP: {visitor_ip}\nUser Agent: {user_agent}"
         try:
@@ -91,6 +92,10 @@ def send_visit_notification():
 if "notification_sent" not in st.session_state:
     send_visit_notification()
     st.session_state.notification_sent = True
+
+# Initialize missing session state for logout button
+if "authenticated" not in st.session_state:
+    st.session_state.authenticated = False
 
 st.markdown("""
 <style>
