@@ -19,18 +19,8 @@ st.set_page_config(
     layout="wide"
 )
 
-# ========== ADSENSE VERIFICATION (ADDED) ==========
-st.markdown(
-    '<meta name="google-adsense-account" content="ca-pub-1238061430437782">',
-    unsafe_allow_html=True
-)
-st.markdown(
-    """
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1238061430437782"
-         crossorigin="anonymous"></script>
-    """,
-    unsafe_allow_html=True
-)
+# ========== GOOGLE ADSENSE META TAG VERIFICATION ==========
+st.markdown('<meta name="google-adsense-account" content="ca-pub-1238061430437782">', unsafe_allow_html=True)
 
 # ---------- Comment functions ----------
 def get_comments(project_key):
@@ -79,7 +69,6 @@ def delete_comment(comment_id, admin_password):
 def send_visit_notification():
     try:
         visitor_ip = requests.get("https://api.ipify.org").text
-        # Streamlit does not expose request headers; use a safe fallback
         user_agent = "unknown (Streamlit Cloud)"
         subject = "🌐 New visitor on GlobalInternet.py website"
         body = f"Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\nIP: {visitor_ip}\nUser Agent: {user_agent}"
@@ -105,7 +94,6 @@ if "notification_sent" not in st.session_state:
     send_visit_notification()
     st.session_state.notification_sent = True
 
-# Initialise authentication state (for logout button)
 if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
 
