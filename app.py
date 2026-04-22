@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 from datetime import datetime
 import smtplib
 import ssl
@@ -7,6 +8,16 @@ from email.mime.multipart import MIMEMultipart
 import requests
 import os
 from supabase import create_client, Client
+
+# ========== FORCE GOOGLE ADSENSE META TAG INTO <HEAD> ==========
+components.html(
+    """
+    <head>
+        <meta name="google-adsense-account" content="ca-pub-1238061430437782">
+    </head>
+    """,
+    height=0,
+)
 
 # ---------- Supabase setup ----------
 SUPABASE_URL = st.secrets["supabase"]["url"]
@@ -18,9 +29,6 @@ st.set_page_config(
     page_icon="🌐",
     layout="wide"
 )
-
-# ========== GOOGLE ADSENSE META TAG VERIFICATION ==========
-st.markdown('<meta name="google-adsense-account" content="ca-pub-1238061430437782">', unsafe_allow_html=True)
 
 # ---------- Comment functions ----------
 def get_comments(project_key):
