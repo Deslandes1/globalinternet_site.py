@@ -13,7 +13,12 @@ SUPABASE_URL = st.secrets["supabase"]["url"]
 SUPABASE_KEY = st.secrets["supabase"]["key"]
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
-st.set_page_config(page_title="GlobalInternet.py – Python Software Company", page_icon="🌐", layout="wide")
+st.set_page_config(
+    page_title="GlobalInternet.py – Python Software Company",
+    page_icon="🌐",
+    layout="wide",
+    page_insights="Custom Python software, AI tools, election systems, educational apps – delivered by email. Based in Haiti, serving the world."
+)
 
 # ---------- Comment functions ----------
 def get_comments(project_key):
@@ -258,7 +263,7 @@ lang_en = {
     ],
     "projects_title": "🏆 Our Projects & Accomplishments",
     "projects_sub": "Completed software solutions delivered to clients – ready for you to purchase or customize.",
-    # 37 Projects (English)
+    # ----- 37 Projects (English) -----
     "project_haiti": "🇭🇹 Haiti Online Voting Software",
     "project_haiti_desc": "Complete presidential election system with multi‑language support (Kreyòl, French, English, Spanish), real‑time live monitoring, CEP President dashboard (manage candidates, upload photos, download progress reports), secret ballot, and changeable passwords. Used for national elections.",
     "project_haiti_price": "$2,000 USD (one‑time fee)",
@@ -477,23 +482,13 @@ lang_en = {
     "footer_pride": "🇭🇹 Proudly Haitian – serving the world with Python and AI 🇭🇹"
 }
 
-# French dictionary (full translation)
+# French (full – identical structure to English, all 37 projects translated)
 lang_fr = {
     "hero_title": "GlobalInternet.py",
     "hero_sub": "Construisez avec Python. Livrez rapidement. Innovez avec l'IA.",
     "hero_desc": "D'Haïti au monde – des logiciels sur mesure qui fonctionnent en ligne.",
     "about_title": "👨‍💻 À propos de l'entreprise",
-    "about_text": """
-    **GlobalInternet.py** a été fondé par **Gesner Deslandes** – propriétaire, fondateur et ingénieur principal.  
-    Nous construisons des **logiciels basés sur Python** à la demande pour des clients du monde entier. Comme la Silicon Valley, mais avec une touche haïtienne et des résultats exceptionnels.
-    
-    - 🧠 **Solutions alimentées par l'IA** – chatbots, analyse de données, automatisation  
-    - 🗳️ **Systèmes électoraux complets** – sécurisés, multilingues, en temps réel  
-    - 🌐 **Applications web** – tableaux de bord, outils internes, plateformes en ligne  
-    - 📦 **Livraison complète** – nous vous envoyons le code complet par email et vous guidons lors de l'installation
-    
-    Que vous ayez besoin d'un site web d'entreprise, d'un outil logiciel personnalisé ou d'une plateforme en ligne à grande échelle – nous le construisons, vous le possédez.
-    """,
+    "about_text": "**GlobalInternet.py** a été fondé par **Gesner Deslandes** – propriétaire, fondateur et ingénieur principal. Nous construisons des **logiciels basés sur Python** à la demande pour des clients du monde entier. Comme la Silicon Valley, mais avec une touche haïtienne et des résultats exceptionnels.\n\n- 🧠 **Solutions alimentées par l'IA** – chatbots, analyse de données, automatisation\n- 🗳️ **Systèmes électoraux complets** – sécurisés, multilingues, en temps réel\n- 🌐 **Applications web** – tableaux de bord, outils internes, plateformes en ligne\n- 📦 **Livraison complète** – nous vous envoyons le code complet par email et vous guidons lors de l'installation\n\nQue vous ayez besoin d'un site web d'entreprise, d'un outil logiciel personnalisé ou d'une plateforme en ligne à grande échelle – nous le construisons, vous le possédez.",
     "office_photo_caption": "Avatar parlant de Gesner Deslandes – présentation de GlobalInternet.py",
     "humanoid_photo_caption": "Gesner Humanoid AI – notre représentant numérique de l'innovation et de l'expertise logicielle.",
     "founder": "Fondateur et PDG",
@@ -501,37 +496,11 @@ lang_fr = {
     "founder_title": "Ingénieur | Passionné d'IA | Expert Python",
     "cv_title": "📄 À propos du propriétaire – Gesner Deslandes",
     "cv_intro": "Constructeur de logiciels Python | Développeur web | Coordinateur technologique",
-    "cv_summary": """
-    Leader et gestionnaire exceptionnellement motivé, engagé envers l'excellence et la précision.  
-    **Compétences clés :** Leadership, Interprétation (anglais, français, créole haïtien), Orientation mécanique, Gestion, Microsoft Office.
-    """,
+    "cv_summary": "Leader et gestionnaire exceptionnellement motivé, engagé envers l'excellence et la précision. **Compétences clés :** Leadership, Interprétation (anglais, français, créole haïtien), Orientation mécanique, Gestion, Microsoft Office.",
     "cv_experience_title": "💼 Expérience professionnelle",
-    "cv_experience": """
-    **Coordinateur technologique** – Orphelinat Be Like Brit (2021–présent)  
-    Configuration des réunions Zoom, maintenance des ordinateurs portables/tablettes, support technique quotidien, assurance d'opérations numériques fluides.
-
-    **PDG et services d'interprétation** – Tourisme personnalisé pour groupes d'ONG, équipes de mission et particuliers.
-
-    **Gestionnaire de parc / répartiteur** – J/P Haitian Relief Organization  
-    Gestion de plus de 20 véhicules, journaux de bord, calendriers de maintenance avec Excel.
-
-    **Interprète médical** – International Child Care  
-    Interprétation médicale précise anglais–français–créole.
-
-    **Chef d'équipe et interprète** – Can‑Do NGO  
-    Direction de projets de reconstruction.
-
-    **Professeur d'anglais** – Be Like Brit (préscolaire à NS4)
-
-    **Traducteur de documents** – United Kingdom Glossary & United States Work‑Rise Company
-    """,
+    "cv_experience": "**Coordinateur technologique** – Orphelinat Be Like Brit (2021–présent)\nConfiguration des réunions Zoom, maintenance des ordinateurs portables/tablettes, support technique quotidien, assurance d'opérations numériques fluides.\n\n**PDG et services d'interprétation** – Tourisme personnalisé pour groupes d'ONG, équipes de mission et particuliers.\n\n**Gestionnaire de parc / répartiteur** – J/P Haitian Relief Organization\nGestion de plus de 20 véhicules, journaux de bord, calendriers de maintenance avec Excel.\n\n**Interprète médical** – International Child Care\nInterprétation médicale précise anglais–français–créole.\n\n**Chef d'équipe et interprète** – Can‑Do NGO\nDirection de projets de reconstruction.\n\n**Professeur d'anglais** – Be Like Brit (préscolaire à NS4)\n\n**Traducteur de documents** – United Kingdom Glossary & United States Work‑Rise Company",
     "cv_education_title": "🎓 Éducation et formation",
-    "cv_education": """
-    - École de formation professionnelle – Anglais américain  
-    - Institut Diesel d'Haïti – Mécanicien diesel  
-    - Certification en bureautique (octobre 2000)  
-    - Diplômé du secondaire
-    """,
+    "cv_education": "- École de formation professionnelle – Anglais américain\n- Institut Diesel d'Haïti – Mécanicien diesel\n- Certification en bureautique (octobre 2000)\n- Diplômé du secondaire",
     "cv_references": "📞 Références disponibles sur demande.",
     "team_title": "👥 Notre équipe",
     "team_sub": "Rencontrez les talents derrière GlobalInternet.py – embauchés en avril 2026.",
@@ -554,7 +523,7 @@ lang_fr = {
     ],
     "projects_title": "🏆 Nos projets et réalisations",
     "projects_sub": "Solutions logicielles complètes livrées aux clients – prêtes à être achetées ou personnalisées.",
-    # 37 Projects (French)
+    # 37 projects in French (all translated – same keys as English)
     "project_haiti": "🇭🇹 Logiciel de vote en ligne Haïti",
     "project_haiti_desc": "Système électoral présidentiel complet avec support multilingue (créole, français, anglais, espagnol), suivi en direct, tableau de bord du président du CEP (gestion des candidats, téléchargement de photos, rapports de progression), scrutin secret et mots de passe modifiables. Utilisé pour les élections nationales.",
     "project_haiti_price": "2 000 $ USD (paiement unique)",
@@ -773,23 +742,13 @@ lang_fr = {
     "footer_pride": "🇭🇹 Fier d'être Haïtien – servant le monde avec Python et l'IA 🇭🇹"
 }
 
-# Spanish dictionary (full translation)
+# Spanish (full – identical structure, all 37 projects translated)
 lang_es = {
     "hero_title": "GlobalInternet.py",
     "hero_sub": "Construye con Python. Entrega con velocidad. Innova con IA.",
     "hero_desc": "De Haití al mundo – software personalizado que funciona en línea.",
     "about_title": "👨‍💻 Sobre la empresa",
-    "about_text": """
-    **GlobalInternet.py** fue fundada por **Gesner Deslandes** – propietario, fundador e ingeniero principal.  
-    Construimos **software basado en Python** bajo demanda para clientes de todo el mundo. Como Silicon Valley, pero con un toque haitiano y resultados sobresalientes.
-    
-    - 🧠 **Soluciones impulsadas por IA** – chatbots, análisis de datos, automatización  
-    - 🗳️ **Sistemas electorales completos** – seguros, multilingües, en tiempo real  
-    - 🌐 **Aplicaciones web** – paneles, herramientas internas, plataformas en línea  
-    - 📦 **Entrega completa** – le enviamos el código completo por correo electrónico y lo guiamos en la instalación
-    
-    Ya sea que necesite un sitio web corporativo, una herramienta de software personalizada o una plataforma en línea a gran escala – nosotros la construimos, usted la posee.
-    """,
+    "about_text": "**GlobalInternet.py** fue fundada por **Gesner Deslandes** – propietario, fundador e ingeniero principal. Construimos **software basado en Python** bajo demanda para clientes de todo el mundo. Como Silicon Valley, pero con un toque haitiano y resultados sobresalientes.\n\n- 🧠 **Soluciones impulsadas por IA** – chatbots, análisis de datos, automatización\n- 🗳️ **Sistemas electorales completos** – seguros, multilingües, en tiempo real\n- 🌐 **Aplicaciones web** – paneles, herramientas internas, plataformas en línea\n- 📦 **Entrega completa** – le enviamos el código completo por correo electrónico y lo guiamos en la instalación\n\nYa sea que necesite un sitio web corporativo, una herramienta de software personalizada o una plataforma en línea a gran escala – nosotros la construimos, usted la posee.",
     "office_photo_caption": "Avatar parlante de Gesner Deslandes – presentando GlobalInternet.py",
     "humanoid_photo_caption": "Gesner Humanoid AI – nuestro representante digital de innovación y experiencia en software.",
     "founder": "Fundador y CEO",
@@ -797,37 +756,11 @@ lang_es = {
     "founder_title": "Ingeniero | Entusiasta de IA | Experto en Python",
     "cv_title": "📄 Sobre el propietario – Gesner Deslandes",
     "cv_intro": "Constructor de software Python | Desarrollador web | Coordinador de tecnología",
-    "cv_summary": """
-    Líder y gerente excepcionalmente motivado, comprometido con la excelencia y la precisión.  
-    **Competencias principales:** Liderazgo, Interpretación (inglés, francés, criollo haitiano), Orientación mecánica, Gestión, Microsoft Office.
-    """,
+    "cv_summary": "Líder y gerente excepcionalmente motivado, comprometido con la excelencia y la precisión. **Competencias principales:** Liderazgo, Interpretación (inglés, francés, criollo haitiano), Orientación mecánica, Gestión, Microsoft Office.",
     "cv_experience_title": "💼 Experiencia profesional",
-    "cv_experience": """
-    **Coordinador de tecnología** – Orfanato Be Like Brit (2021–presente)  
-    Configuración de reuniones Zoom, mantenimiento de portátiles/tabletas, soporte técnico diario, asegurar operaciones digitales fluidas.
-
-    **CEO y servicios de interpretación** – Turismo personalizado para grupos de ONG, equipos misioneros e individuos.
-
-    **Gerente de flota / Despachador** – J/P Haitian Relief Organization  
-    Gestión de más de 20 vehículos, registros de conductores, calendarios de mantenimiento usando Excel.
-
-    **Intérprete médico** – International Child Care  
-    Interpretación médica precisa inglés–francés–criollo.
-
-    **Líder de equipo e intérprete** – Can‑Do NGO  
-    Liderazgo de proyectos de reconstrucción.
-
-    **Profesor de inglés** – Be Like Brit (preescolar a NS4)
-
-    **Traductor de documentos** – United Kingdom Glossary & United States Work‑Rise Company
-    """,
+    "cv_experience": "**Coordinador de tecnología** – Orfanato Be Like Brit (2021–presente)\nConfiguración de reuniones Zoom, mantenimiento de portátiles/tabletas, soporte técnico diario, asegurar operaciones digitales fluidas.\n\n**CEO y servicios de interpretación** – Turismo personalizado para grupos de ONG, equipos misioneros e individuos.\n\n**Gerente de flota / Despachador** – J/P Haitian Relief Organization\nGestión de más de 20 vehículos, registros de conductores, calendarios de mantenimiento usando Excel.\n\n**Intérprete médico** – International Child Care\nInterpretación médica precisa inglés–francés–criollo.\n\n**Líder de equipo e intérprete** – Can‑Do NGO\nLiderazgo de proyectos de reconstrucción.\n\n**Profesor de inglés** – Be Like Brit (preescolar a NS4)\n\n**Traductor de documentos** – United Kingdom Glossary & United States Work‑Rise Company",
     "cv_education_title": "🎓 Educación y formación",
-    "cv_education": """
-    - Escuela de formación vocacional – Inglés americano  
-    - Instituto Diesel de Haití – Mecánico diesel  
-    - Certificación en ofimática (octubre de 2000)  
-    - Graduado de secundaria
-    """,
+    "cv_education": "- Escuela de formación vocacional – Inglés americano\n- Instituto Diesel de Haití – Mecánico diesel\n- Certificación en ofimática (octubre de 2000)\n- Graduado de secundaria",
     "cv_references": "📞 Referencias disponibles bajo petición.",
     "team_title": "👥 Nuestro equipo",
     "team_sub": "Conozca a los talentos detrás de GlobalInternet.py – contratados en abril de 2026.",
@@ -850,7 +783,7 @@ lang_es = {
     ],
     "projects_title": "🏆 Nuestros proyectos y logros",
     "projects_sub": "Soluciones de software completas entregadas a los clientes – listas para comprar o personalizar.",
-    # 37 Projects (Spanish)
+    # 37 projects in Spanish (all translated – same keys as English)
     "project_haiti": "🇭🇹 Software de votación en línea Haití",
     "project_haiti_desc": "Sistema electoral presidencial completo con soporte multilingüe (criollo, francés, inglés, español), monitoreo en vivo, panel del presidente del CEP (gestión de candidatos, carga de fotos, informes de progreso), voto secreto y contraseñas modificables. Utilizado para elecciones nacionales.",
     "project_haiti_price": "$2,000 USD (pago único)",
@@ -1095,6 +1028,95 @@ st.sidebar.markdown("---")
 st.sidebar.markdown("### 📄 My CV")
 st.sidebar.markdown("[📥 Download / View my CV (Python Developer 2026)](https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/Gesner%20Deslandes%20CV%20Python%202026.docx)")
 st.sidebar.markdown("---")
+
+# ---------- LEGAL PAGES (for AdSense compliance) ----------
+with st.sidebar.expander("📜 Privacy Policy"):
+    st.markdown("""
+    **Privacy Policy for GlobalInternet.py**
+
+    Last updated: April 2026
+
+    We respect your privacy. This policy explains how we collect, use, and protect your personal information when you visit our website or purchase our software.
+
+    **Information we collect:**  
+    - Name, email address, phone number (when you contact us or make a purchase).  
+    - Payment information (processed securely via Moncash, bank transfer, or SendWave – we do not store your payment details).  
+    - Usage data (e.g., pages visited, time spent) to improve our services.
+
+    **How we use your information:**  
+    - To respond to your inquiries and deliver purchased software.  
+    - To send you updates about your software (e.g., new versions, security patches).  
+    - To improve our website and products.
+
+    **Data security:**  
+    We take reasonable measures to protect your data. However, no internet transmission is 100% secure.
+
+    **Third‑party services:**  
+    We use Supabase for comments and likes. Their privacy policy applies to data stored there.
+
+    **Your rights:**  
+    You may request access, correction, or deletion of your personal data by contacting us at deslandes78@gmail.com.
+
+    **Changes to this policy:**  
+    We may update this policy. Changes will be posted here.
+
+    **Contact:**  
+    GlobalInternet.py, Gesner Deslandes – deslandes78@gmail.com, +509 4738-5663
+    """)
+
+with st.sidebar.expander("📜 Terms of Service"):
+    st.markdown("""
+    **Terms of Service for GlobalInternet.py**
+
+    By using our website or purchasing our software, you agree to these terms.
+
+    **Software license:**  
+    When you purchase software, you receive a non‑exclusive, perpetual license to use the software for personal or business purposes. You may not resell, redistribute, or sublicense the source code without our written permission.
+
+    **Delivery:**  
+    Software is delivered by email as a ZIP file containing source code, documentation, and installation instructions. You are responsible for ensuring your system meets the software requirements.
+
+    **Refunds:**  
+    Because software is delivered digitally, we generally do not offer refunds. However, if the software does not work as described, contact us within 7 days for a resolution or refund.
+
+    **Support:**  
+    We provide email support for installation and basic usage. Custom modifications may incur additional fees.
+
+    **Limitation of liability:**  
+    We are not liable for any damages arising from the use or inability to use our software. You assume full responsibility.
+
+    **Governing law:**  
+    These terms are governed by the laws of Haiti.
+
+    **Changes:**  
+    We may update these terms at any time. Continued use of our website constitutes acceptance.
+
+    **Contact:**  
+    deslandes78@gmail.com
+    """)
+
+with st.sidebar.expander("📜 Disclaimer"):
+    st.markdown("""
+    **Disclaimer for GlobalInternet.py**
+
+    The information and software provided on this website are for general informational and business purposes only. While we strive to keep everything up‑to‑date and error‑free, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability of the software or information.
+
+    **No professional advice:**  
+    The content on this website does not constitute legal, financial, or professional advice.
+
+    **External links:**  
+    Our website may contain links to external sites. We are not responsible for the content or privacy practices of those sites.
+
+    **Software use:**  
+    You are responsible for testing the software in your own environment. We are not liable for any data loss or system damage.
+
+    **Affiliate disclosure:**  
+    Some links on this website may be affiliate links (e.g., for hosting or developer tools). If you purchase through those links, we may earn a small commission at no extra cost to you.
+
+    **Contact:**  
+    If you have any questions, contact us at deslandes78@gmail.com.
+    """)
+
 st.sidebar.markdown("### 💰 Price")
 st.sidebar.markdown("**$299 USD** (full book – 20 lessons, source code, certificate)")
 st.sidebar.markdown("---")
