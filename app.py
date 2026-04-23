@@ -1324,7 +1324,7 @@ project_keys = [
     "drone", "english", "spanish", "portuguese", "ai_career", "ai_medical", "music_studio",
     "ai_media", "chinese", "french", "mathematics", "ai_course", "medical_term", "python_course", "hardware_course",
     "medical_vocab_book2", "medical_term_book3", "toefl_course", "french_course", "haiti_marketplace", "vectra_ai",
-    "humanoid_robot"   # NEW: Humanoid Robot Software
+    "humanoid_robot"
 ]
 
 projects = []
@@ -1365,7 +1365,7 @@ for key in project_keys:
         demo_url = "https://let-s-learn-portuguese-with-gesner-hqz5b8w8ebgvcrhbtuuxe5.streamlit.app/"
     elif key == "vectra_ai":
         demo_url = "https://vectra-ai-built-by-gesner-deslandes-dnkhqd57z6vkmiuezujcqu.streamlit.app/"
-    # No demo for humanoid_robot – user must contact owner
+    # No demo for humanoid_robot – contact owner
     projects.append({
         "title": t.get(title_key, "Project"),
         "desc": t.get(desc_key, "Description not available"),
