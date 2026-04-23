@@ -493,13 +493,17 @@ lang_en = {
     "footer_rights": "All rights reserved.",
     "footer_founded": "Founded by Gesner Deslandes | Built with Streamlit | Hosted on GitHub + Streamlit Cloud",
     "footer_pride": "🇭🇹 Proudly Haitian – serving the world with Python and AI 🇭🇹",
-    # ----- NEW Sendwave promo keys (English) -----
+    # ----- Sendwave promo keys (English) -----
     "sendwave_title": "📱 Send Money to Haiti Like a Text – Fast, Fair, and Finally Affordable",
     "sendwave_intro": "For Haitians living abroad, sending money home should be a joy, not a financial burden. That's why we're proud to recommend **Sendwave**, the international transfer service trusted by millions.",
     "sendwave_reasons": "✓ Instant Delivery – Your money arrives in minutes, not days.\n✓ Low to No Fees – Stop losing your hard-earned cash to hidden costs.\n✓ User-Friendly – So simple, it's like sending a text message.\n✓ Secure & Reliable – Real-time tracking and safe processing.",
     "sendwave_cta": "Your siblings and parents will thank you for helping them quickly. Don't wait. Make the switch today.",
     "sendwave_link": "🔗 **For more info and exclusive updates, visit our website:**\nhttps://globalinternetsitepy-abh7v6tnmskxxnuplrdcgk.streamlit.app/",
-    "sendwave_watch_ad": "📺 Watch our ad – Sendwave"
+    "sendwave_watch_ad": "📺 Watch our ad – Sendwave",
+    # ----- Western Union promo keys (English) -----
+    "western_union_title": "✨✨✨ WESTERN UNION – HAITI ✨✨✨",
+    "western_union_text": "💸 Send money fast – anywhere to Haiti\n🔒 Safe, secure, trusted worldwide\n🤝 Cash pickup or direct deposit\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n🌍 At GlobalInternet.py, we promote money transfers to Haiti.\n\n📞 Contact us for your business promotion:\n✉️ Email: deslandes78@gmail.com\n📱 Phone / WhatsApp: (509)-47385663\n🌐 Website: https://globalinternetsitepy-abh7v6tnmskxxnuplrdcgk.streamlit.app\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n🌟 Let’s grow your business together! 🌟",
+    "western_union_watch_ad": "📺 Watch our ad – Western Union"
 }
 
 # French (full – identical structure to English, all 37 projects translated)
@@ -760,13 +764,17 @@ lang_fr = {
     "footer_rights": "Tous droits réservés.",
     "footer_founded": "Fondé par Gesner Deslandes | Construit avec Streamlit | Hébergé sur GitHub + Streamlit Cloud",
     "footer_pride": "🇭🇹 Fier d'être Haïtien – servant le monde avec Python et l'IA 🇭🇹",
-    # ----- NEW Sendwave promo keys (French) -----
+    # ----- Sendwave promo keys (French) -----
     "sendwave_title": "📱 Envoyer de l'argent en Haïti comme un texto – Rapide, juste et enfin abordable",
     "sendwave_intro": "Pour les Haïtiens vivant à l'étranger, envoyer de l'argent à la maison devrait être une joie, pas un fardeau financier. C'est pourquoi nous sommes fiers de recommander **Sendwave**, le service de transfert international approuvé par des millions de personnes.",
     "sendwave_reasons": "✓ Livraison instantanée – Votre argent arrive en minutes, pas en jours.\n✓ Frais faibles ou nuls – Ne perdez plus votre argent durement gagné en frais cachés.\n✓ Facile à utiliser – Aussi simple qu'un texto.\n✓ Sécurisé et fiable – Suivi en temps réel et traitement sécurisé.",
     "sendwave_cta": "Vos frères, sœurs et parents vous remercieront de les aider rapidement. N'attendez plus. Passez à Sendwave dès aujourd'hui.",
     "sendwave_link": "🔗 **Pour plus d'informations et des offres exclusives, visitez notre site Web :**\nhttps://globalinternetsitepy-abh7v6tnmskxxnuplrdcgk.streamlit.app/",
-    "sendwave_watch_ad": "📺 Regardez notre publicité – Sendwave"
+    "sendwave_watch_ad": "📺 Regardez notre publicité – Sendwave",
+    # ----- Western Union promo keys (French) -----
+    "western_union_title": "✨✨✨ WESTERN UNION – HAÏTI ✨✨✨",
+    "western_union_text": "💸 Envoyez de l'argent rapidement – n'importe où en Haïti\n🔒 Sûr, sécurisé, approuvé dans le monde entier\n🤝 Retrait en espèces ou dépôt direct\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n🌍 Chez GlobalInternet.py, nous faisons la promotion des transferts d'argent vers Haïti.\n\n📞 Contactez-nous pour la promotion de votre entreprise :\n✉️ Email : deslandes78@gmail.com\n📱 Téléphone / WhatsApp : (509)-47385663\n🌐 Site Web : https://globalinternetsitepy-abh7v6tnmskxxnuplrdcgk.streamlit.app\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n🌟 Développons votre entreprise ensemble ! 🌟",
+    "western_union_watch_ad": "📺 Regardez notre publicité – Western Union"
 }
 
 # Spanish (full – identical structure, all 37 projects translated)
@@ -1027,13 +1035,17 @@ lang_es = {
     "footer_rights": "Todos los derechos reservados.",
     "footer_founded": "Fundado por Gesner Deslandes | Construido con Streamlit | Alojado en GitHub + Streamlit Cloud",
     "footer_pride": "🇭🇹 Orgullosamente haitiano – sirviendo al mundo con Python e IA 🇭🇹",
-    # ----- NEW Sendwave promo keys (Spanish) -----
+    # ----- Sendwave promo keys (Spanish) -----
     "sendwave_title": "📱 Envía dinero a Haití como un texto – Rápido, justo y finalmente asequible",
     "sendwave_intro": "Para los haitianos que viven en el extranjero, enviar dinero a casa debería ser una alegría, no una carga financiera. Por eso nos enorgullece recomendar **Sendwave**, el servicio de transferencia internacional confiable por millones.",
     "sendwave_reasons": "✓ Entrega instantánea – Tu dinero llega en minutos, no en días.\n✓ Comisiones bajas o nulas – Deja de perder tu dinero en costos ocultos.\n✓ Fácil de usar – Tan simple como enviar un mensaje de texto.\n✓ Seguro y confiable – Seguimiento en tiempo real y procesamiento seguro.",
     "sendwave_cta": "Tus hermanos y padres te agradecerán por ayudarlos rápidamente. No esperes más. Cambia a Sendwave hoy.",
     "sendwave_link": "🔗 **Para más información y ofertas exclusivas, visita nuestro sitio web:**\nhttps://globalinternetsitepy-abh7v6tnmskxxnuplrdcgk.streamlit.app/",
-    "sendwave_watch_ad": "📺 Mira nuestro anuncio – Sendwave"
+    "sendwave_watch_ad": "📺 Mira nuestro anuncio – Sendwave",
+    # ----- Western Union promo keys (Spanish) -----
+    "western_union_title": "✨✨✨ WESTERN UNION – HAITÍ ✨✨✨",
+    "western_union_text": "💸 Envía dinero rápido – a cualquier lugar de Haití\n🔒 Seguro, protegido, confiable en todo el mundo\n🤝 Retiro en efectivo o depósito directo\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n🌍 En GlobalInternet.py, promovemos las transferencias de dinero a Haití.\n\n📞 Contáctanos para la promoción de tu negocio:\n✉️ Correo electrónico: deslandes78@gmail.com\n📱 Teléfono / WhatsApp: (509)-47385663\n🌐 Sitio web: https://globalinternetsitepy-abh7v6tnmskxxnuplrdcgk.streamlit.app\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n🌟 ¡Hagamos crecer tu negocio juntos! 🌟",
+    "western_union_watch_ad": "📺 Mira nuestro anuncio – Western Union"
 }
 
 # Combine languages
@@ -1427,7 +1439,7 @@ for i in range(0, len(projects), 2):
                         st.warning("Please enter a comment.")
             st.markdown("---")
 
-# ========== NEW SENDWAVE PROMOTIONAL SECTION ==========
+# ========== SENDWAVE PROMOTIONAL SECTION ==========
 st.markdown("---")
 st.markdown(f"## {t['sendwave_title']}")
 
@@ -1441,9 +1453,7 @@ with col_promo:
 
 with col_video_ad:
     st.markdown(f"**{t['sendwave_watch_ad']}**")
-    # Direct raw video URL from GitHub
     sendwave_video_url = "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/Sendwave%20marketing%202026.MP4"
-    # HTML video with Intersection Observer for reliable autoplay on scroll
     sendwave_video_html = f"""
     <div id="sendwaveAdContainer" style="width:100%; max-width:500px; margin:0 auto;">
         <video id="sendwaveVideo" 
@@ -1475,6 +1485,51 @@ with col_video_ad:
     </script>
     """
     components.html(sendwave_video_html, height=350)
+
+st.markdown("---")
+
+# ========== WESTERN UNION PROMOTIONAL SECTION ==========
+st.markdown(f"## {t['western_union_title']}")
+
+col_wu_promo, col_wu_video = st.columns([3, 2])
+
+with col_wu_promo:
+    st.markdown(t['western_union_text'])
+
+with col_wu_video:
+    st.markdown(f"**{t['western_union_watch_ad']}**")
+    western_union_video_url = "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/refs/heads/main/WesterUnionPub.MP4"
+    western_union_video_html = f"""
+    <div id="westernUnionAdContainer" style="width:100%; max-width:500px; margin:0 auto;">
+        <video id="westernUnionVideo" 
+               src="{western_union_video_url}" 
+               muted 
+               playsinline 
+               loop 
+               controls 
+               style="width:100%; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.2);">
+            Your browser does not support the video tag.
+        </video>
+        <p style="text-align:center; font-size:0.7rem; color:#666; margin-top:5px;">📢 Western Union ad – Trusted worldwide</p>
+    </div>
+    <script>
+        (function() {{
+            var video = document.getElementById('westernUnionVideo');
+            if (!video) return;
+            var observer = new IntersectionObserver(function(entries) {{
+                entries.forEach(function(entry) {{
+                    if (entry.isIntersecting) {{
+                        video.play().catch(function(e) {{ console.log("Autoplay blocked:", e); }});
+                    }} else {{
+                        video.pause();
+                    }}
+                }});
+            }}, {{ threshold: 0.5 }});
+            observer.observe(video);
+        }})();
+    </script>
+    """
+    components.html(western_union_video_html, height=350)
 
 st.markdown("---")
 
