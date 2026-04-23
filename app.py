@@ -462,6 +462,12 @@ lang_en = {
     "project_vectra_ai_price": "$4,500 – $12,000 USD (↑ Per Implementation)",
     "project_vectra_ai_status": "✅ Available now – full source code included",
     "project_vectra_ai_contact": "Contact owner for purchase",
+    # ----- NEW: Humanoid Robot Software (English) -----
+    "project_humanoid_robot": "🤖 Humanoid Robot Training & Control Software – Built by Gesner Deslandes",
+    "project_humanoid_robot_desc": "Complete software suite to train any humanoid robot to perform real‑world tasks. Includes task programming interface, simulation mode, real‑time telemetry, and API for physical robot integration (ROS2, MAVLink, or custom). Train the robot by demonstration or scripted commands. Full source code, setup guide, and 1 year support included.",
+    "project_humanoid_robot_price": "$17,500 USD (one‑time fee)",
+    "project_humanoid_robot_status": "✅ Available now – full source code included, lifetime updates, 1 year support",
+    "project_humanoid_robot_contact": "Contact owner for purchase",
     "view_demo": "🎬 View Demo",
     "demo_screenshot": "Screenshot preview (replace with actual image)",
     "live_demo": "🔗 Live Demo",
@@ -506,7 +512,7 @@ lang_en = {
     "western_union_watch_ad": "📺 Watch our ad – Western Union"
 }
 
-# French (full – identical structure to English, all 37 projects translated)
+# French (full – identical structure to English, all 37 projects translated + new humanoid robot)
 lang_fr = {
     "hero_title": "GlobalInternet.py",
     "hero_sub": "Construisez avec Python. Livrez rapidement. Innovez avec l'IA.",
@@ -547,7 +553,7 @@ lang_fr = {
     ],
     "projects_title": "🏆 Nos projets et réalisations",
     "projects_sub": "Solutions logicielles complètes livrées aux clients – prêtes à être achetées ou personnalisées.",
-    # 37 projects in French (all translated – same keys as English)
+    # 37 projects in French (all translated – same keys as English) + new humanoid robot
     "project_haiti": "🇭🇹 Logiciel de vote en ligne Haïti",
     "project_haiti_desc": "Système électoral présidentiel complet avec support multilingue (créole, français, anglais, espagnol), suivi en direct, tableau de bord du président du CEP (gestion des candidats, téléchargement de photos, rapports de progression), scrutin secret et mots de passe modifiables. Utilisé pour les élections nationales.",
     "project_haiti_price": "2 000 $ USD (paiement unique)",
@@ -733,6 +739,12 @@ lang_fr = {
     "project_vectra_ai_price": "4 500 – 12 000 $ USD (↑ par implémentation)",
     "project_vectra_ai_status": "✅ Disponible – code source complet inclus",
     "project_vectra_ai_contact": "Contactez le propriétaire pour acheter",
+    # ----- NEW: Humanoid Robot Software (French) -----
+    "project_humanoid_robot": "🤖 Logiciel d'entraînement et de contrôle pour robot humanoïde – Construit par Gesner Deslandes",
+    "project_humanoid_robot_desc": "Suite logicielle complète pour entraîner n'importe quel robot humanoïde à effectuer des tâches du monde réel. Interface de programmation de tâches, mode simulation, télémétrie en temps réel et API pour l'intégration physique (ROS2, MAVLink ou personnalisé). Entraînez le robot par démonstration ou commandes scriptées. Code source complet, guide d'installation et 1 an de support inclus.",
+    "project_humanoid_robot_price": "17 500 $ USD (paiement unique)",
+    "project_humanoid_robot_status": "✅ Disponible – code source complet inclus, mises à jour à vie, 1 an de support",
+    "project_humanoid_robot_contact": "Contactez le propriétaire pour acheter",
     "view_demo": "🎬 Voir la démo",
     "demo_screenshot": "Aperçu de capture d'écran (remplacer par l'image réelle)",
     "live_demo": "🔗 Démo en direct",
@@ -777,7 +789,7 @@ lang_fr = {
     "western_union_watch_ad": "📺 Regardez notre publicité – Western Union"
 }
 
-# Spanish (full – identical structure, all 37 projects translated)
+# Spanish (full – identical structure, all 37 projects translated + new humanoid robot)
 lang_es = {
     "hero_title": "GlobalInternet.py",
     "hero_sub": "Construye con Python. Entrega con velocidad. Innova con IA.",
@@ -818,7 +830,7 @@ lang_es = {
     ],
     "projects_title": "🏆 Nuestros proyectos y logros",
     "projects_sub": "Soluciones de software completas entregadas a los clientes – listas para comprar o personalizar.",
-    # 37 projects in Spanish (all translated – same keys as English)
+    # 37 projects in Spanish (all translated – same keys as English) + new humanoid robot
     "project_haiti": "🇭🇹 Software de votación en línea Haití",
     "project_haiti_desc": "Sistema electoral presidencial completo con soporte multilingüe (criollo, francés, inglés, español), monitoreo en vivo, panel del presidente del CEP (gestión de candidatos, carga de fotos, informes de progreso), voto secreto y contraseñas modificables. Utilizado para elecciones nacionales.",
     "project_haiti_price": "$2,000 USD (pago único)",
@@ -1004,6 +1016,12 @@ lang_es = {
     "project_vectra_ai_price": "$4,500 – $12,000 USD (↑ por implementación)",
     "project_vectra_ai_status": "✅ Disponible – código fuente completo incluido",
     "project_vectra_ai_contact": "Contacte al propietario para comprar",
+    # ----- NEW: Humanoid Robot Software (Spanish) -----
+    "project_humanoid_robot": "🤖 Software de entrenamiento y control para robot humanoide – Construido por Gesner Deslandes",
+    "project_humanoid_robot_desc": "Suite completa de software para entrenar cualquier robot humanoide a realizar tareas del mundo real. Incluye interfaz de programación de tareas, modo simulación, telemetría en tiempo real y API para integración física (ROS2, MAVLink o personalizado). Entrena el robot por demostración o comandos programados. Código fuente completo, guía de instalación y 1 año de soporte incluidos.",
+    "project_humanoid_robot_price": "$17,500 USD (pago único)",
+    "project_humanoid_robot_status": "✅ Disponible – código fuente completo incluido, actualizaciones de por vida, 1 año de soporte",
+    "project_humanoid_robot_contact": "Contacte al propietario para comprar",
     "view_demo": "🎬 Ver demostración",
     "demo_screenshot": "Vista previa de captura de pantalla (reemplazar con imagen real)",
     "live_demo": "🔗 Demostración en vivo",
@@ -1295,16 +1313,18 @@ for i, (title, desc) in enumerate(services):
         </div>
         """, unsafe_allow_html=True)
 
-# ---------- Projects (37 products) with comments ----------
+# ---------- Projects (38 products) with comments – added humanoid_robot ----------
 st.markdown(f"## {t['projects_title']}")
 st.markdown(f"*{t['projects_sub']}*")
 
+# Updated project_keys list with the new humanoid_robot
 project_keys = [
     "haiti", "dashboard", "chatbot", "school", "pos", "scraper", "chess", "accountant",
     "archives", "dsm", "bi", "ai_classifier", "task_manager", "ray", "cassandra", "spark",
     "drone", "english", "spanish", "portuguese", "ai_career", "ai_medical", "music_studio",
     "ai_media", "chinese", "french", "mathematics", "ai_course", "medical_term", "python_course", "hardware_course",
-    "medical_vocab_book2", "medical_term_book3", "toefl_course", "french_course", "haiti_marketplace", "vectra_ai"
+    "medical_vocab_book2", "medical_term_book3", "toefl_course", "french_course", "haiti_marketplace", "vectra_ai",
+    "humanoid_robot"   # NEW: Humanoid Robot Software
 ]
 
 projects = []
@@ -1345,8 +1365,7 @@ for key in project_keys:
         demo_url = "https://let-s-learn-portuguese-with-gesner-hqz5b8w8ebgvcrhbtuuxe5.streamlit.app/"
     elif key == "vectra_ai":
         demo_url = "https://vectra-ai-built-by-gesner-deslandes-dnkhqd57z6vkmiuezujcqu.streamlit.app/"
-    else:
-        demo_url = None
+    # No demo for humanoid_robot – user must contact owner
     projects.append({
         "title": t.get(title_key, "Project"),
         "desc": t.get(desc_key, "Description not available"),
