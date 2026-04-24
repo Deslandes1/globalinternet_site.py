@@ -468,12 +468,21 @@ lang_en = {
     "project_humanoid_robot_price": "$17,500 USD (one‑time fee)",
     "project_humanoid_robot_status": "✅ Available now – full source code included, lifetime updates, 1 year support",
     "project_humanoid_robot_contact": "Contact owner for purchase",
+    
+    # ----- NEW: Hospital Management System Software (English) -----
+    "project_hospital": "🏥 Hospital Management System Software – built by Gesner Deslandes",
+    "project_hospital_desc": "Complete multi‑specialty hospital management platform. Includes EMR/EHR, OPD/IPD workflows, billing & revenue cycle management, pharmacy, laboratory, radiology integration, inventory & financial management, role‑based dashboards, and enterprise reporting. HL7 & FHIR ready. Cloud or on‑premise. Trusted for mid‑size to national tertiary centers.",
+    "project_hospital_price_monthly": "$299 USD / month (subscription)",
+    "project_hospital_status": "✅ Live demo available | Subscribe monthly",
+    "project_hospital_contact": "Click Subscribe to see payment instructions",
+    
     "view_demo": "🎬 View Demo",
     "demo_screenshot": "Screenshot preview (replace with actual image)",
     "live_demo": "🔗 Live Demo",
     "demo_password_hint": "🔐 Demo password: 20082010",
     "request_info": "Request Info",
     "buy_now": "💵 Buy Now",
+    "subscribe_monthly": "💸 Subscribe Monthly",
     "donation_title": "💖 Support GlobalInternet.py",
     "donation_text": "Help us grow and continue building innovative software for Haiti and the world.",
     "donation_sub": "Your donation supports hosting, development tools, and free resources for local developers.",
@@ -512,7 +521,7 @@ lang_en = {
     "western_union_watch_ad": "📺 Watch our ad – Western Union"
 }
 
-# French (full – identical structure to English, all 37 projects translated + new humanoid robot)
+# French (full – identical structure to English, all 37 projects translated + new humanoid + hospital)
 lang_fr = {
     "hero_title": "GlobalInternet.py",
     "hero_sub": "Construisez avec Python. Livrez rapidement. Innovez avec l'IA.",
@@ -553,7 +562,7 @@ lang_fr = {
     ],
     "projects_title": "🏆 Nos projets et réalisations",
     "projects_sub": "Solutions logicielles complètes livrées aux clients – prêtes à être achetées ou personnalisées.",
-    # 37 projects in French (all translated – same keys as English) + new humanoid robot
+    # 37 projects in French (all translated – same keys as English) + new humanoid + hospital
     "project_haiti": "🇭🇹 Logiciel de vote en ligne Haïti",
     "project_haiti_desc": "Système électoral présidentiel complet avec support multilingue (créole, français, anglais, espagnol), suivi en direct, tableau de bord du président du CEP (gestion des candidats, téléchargement de photos, rapports de progression), scrutin secret et mots de passe modifiables. Utilisé pour les élections nationales.",
     "project_haiti_price": "2 000 $ USD (paiement unique)",
@@ -745,12 +754,21 @@ lang_fr = {
     "project_humanoid_robot_price": "17 500 $ USD (paiement unique)",
     "project_humanoid_robot_status": "✅ Disponible – code source complet inclus, mises à jour à vie, 1 an de support",
     "project_humanoid_robot_contact": "Contactez le propriétaire pour acheter",
+    
+    # ----- NEW: Hospital Management System Software (French) -----
+    "project_hospital": "🏥 Logiciel de gestion hospitalière – construit par Gesner Deslandes",
+    "project_hospital_desc": "Plateforme complète multi‑spécialités pour hôpitaux. Comprend DME/EHR, flux OPD/IPD, facturation et gestion du cycle de revenus, intégration pharmacie, laboratoire, radiologie, gestion des stocks et finances, tableaux de bord par rôle et rapports d’entreprise. Interopérabilité HL7 & FHIR. Cloud ou sur site. Pour établissements de taille moyenne jusqu’aux centres tertiaires nationaux.",
+    "project_hospital_price_monthly": "299 $ USD / mois (abonnement)",
+    "project_hospital_status": "✅ Démo en direct disponible | Abonnement mensuel",
+    "project_hospital_contact": "Cliquez sur S’abonner pour voir les instructions de paiement",
+    
     "view_demo": "🎬 Voir la démo",
     "demo_screenshot": "Aperçu de capture d'écran (remplacer par l'image réelle)",
     "live_demo": "🔗 Démo en direct",
     "demo_password_hint": "🔐 Mot de passe démo : 20082010",
     "request_info": "Demander des informations",
     "buy_now": "💵 Acheter maintenant",
+    "subscribe_monthly": "💸 S'abonner mensuellement",
     "donation_title": "💖 Soutenez GlobalInternet.py",
     "donation_text": "Aidez-nous à grandir et à continuer de développer des logiciels innovants pour Haïti et le monde.",
     "donation_sub": "Votre don soutient l'hébergement, les outils de développement et les ressources gratuites pour les développeurs locaux.",
@@ -789,7 +807,7 @@ lang_fr = {
     "western_union_watch_ad": "📺 Regardez notre publicité – Western Union"
 }
 
-# Spanish (full – identical structure, all 37 projects translated + new humanoid robot)
+# Spanish (full – identical structure, all 37 projects translated + new humanoid + hospital)
 lang_es = {
     "hero_title": "GlobalInternet.py",
     "hero_sub": "Construye con Python. Entrega con velocidad. Innova con IA.",
@@ -830,7 +848,7 @@ lang_es = {
     ],
     "projects_title": "🏆 Nuestros proyectos y logros",
     "projects_sub": "Soluciones de software completas entregadas a los clientes – listas para comprar o personalizar.",
-    # 37 projects in Spanish (all translated – same keys as English) + new humanoid robot
+    # 37 projects in Spanish (all translated – same keys as English) + new humanoid + hospital
     "project_haiti": "🇭🇹 Software de votación en línea Haití",
     "project_haiti_desc": "Sistema electoral presidencial completo con soporte multilingüe (criollo, francés, inglés, español), monitoreo en vivo, panel del presidente del CEP (gestión de candidatos, carga de fotos, informes de progreso), voto secreto y contraseñas modificables. Utilizado para elecciones nacionales.",
     "project_haiti_price": "$2,000 USD (pago único)",
@@ -1022,12 +1040,21 @@ lang_es = {
     "project_humanoid_robot_price": "$17,500 USD (pago único)",
     "project_humanoid_robot_status": "✅ Disponible – código fuente completo incluido, actualizaciones de por vida, 1 año de soporte",
     "project_humanoid_robot_contact": "Contacte al propietario para comprar",
+    
+    # ----- NEW: Hospital Management System Software (Spanish) -----
+    "project_hospital": "🏥 Software de gestión hospitalaria – construido por Gesner Deslandes",
+    "project_hospital_desc": "Plataforma hospitalaria completa multi‑especialidad. Incluye DME/EHR, flujos OPD/IPD, facturación y gestión del ciclo de ingresos, integración con farmacia, laboratorio, radiología, gestión de inventario y finanzas, paneles por rol e informes empresariales. Preparado para HL7 y FHIR. Nube o instalación local. Para centros de tamaño medio hasta centros terciarios nacionales.",
+    "project_hospital_price_monthly": "$299 USD / mes (suscripción)",
+    "project_hospital_status": "✅ Demo en vivo disponible | Suscripción mensual",
+    "project_hospital_contact": "Haga clic en Suscribirse para ver instrucciones de pago",
+    
     "view_demo": "🎬 Ver demostración",
     "demo_screenshot": "Vista previa de captura de pantalla (reemplazar con imagen real)",
     "live_demo": "🔗 Demostración en vivo",
     "demo_password_hint": "🔐 Contraseña de demostración: 20082010",
     "request_info": "Solicitar información",
     "buy_now": "💵 Comprar ahora",
+    "subscribe_monthly": "💸 Suscribirse mensualmente",
     "donation_title": "💖 Apoya GlobalInternet.py",
     "donation_text": "Ayúdanos a crecer y a seguir desarrollando software innovador para Haití y el mundo.",
     "donation_sub": "Tu donación apoya el alojamiento, las herramientas de desarrollo y los recursos gratuitos para desarrolladores locales.",
@@ -1313,18 +1340,18 @@ for i, (title, desc) in enumerate(services):
         </div>
         """, unsafe_allow_html=True)
 
-# ---------- Projects (38 products) with comments – added humanoid_robot ----------
+# ---------- Projects (40 products) with comments – added humanoid_robot and hospital ----------
 st.markdown(f"## {t['projects_title']}")
 st.markdown(f"*{t['projects_sub']}*")
 
-# Updated project_keys list with the new humanoid_robot
+# Updated project_keys list with the new hospital management system
 project_keys = [
     "haiti", "dashboard", "chatbot", "school", "pos", "scraper", "chess", "accountant",
     "archives", "dsm", "bi", "ai_classifier", "task_manager", "ray", "cassandra", "spark",
     "drone", "english", "spanish", "portuguese", "ai_career", "ai_medical", "music_studio",
     "ai_media", "chinese", "french", "mathematics", "ai_course", "medical_term", "python_course", "hardware_course",
     "medical_vocab_book2", "medical_term_book3", "toefl_course", "french_course", "haiti_marketplace", "vectra_ai",
-    "humanoid_robot"
+    "humanoid_robot", "hospital"
 ]
 
 projects = []
@@ -1365,7 +1392,8 @@ for key in project_keys:
         demo_url = "https://let-s-learn-portuguese-with-gesner-hqz5b8w8ebgvcrhbtuuxe5.streamlit.app/"
     elif key == "vectra_ai":
         demo_url = "https://vectra-ai-built-by-gesner-deslandes-dnkhqd57z6vkmiuezujcqu.streamlit.app/"
-    # No demo for humanoid_robot – contact owner
+    elif key == "hospital":
+        demo_url = "https://hospital-management-system-software-built-by-gesner-deslandes.streamlit.app/"
     projects.append({
         "title": t.get(title_key, "Project"),
         "desc": t.get(desc_key, "Description not available"),
@@ -1393,7 +1421,21 @@ for i in range(0, len(projects), 2):
                 """, unsafe_allow_html=True)
                 if proj.get("demo_url"):
                     st.markdown(f"<a href='{proj['demo_url']}' target='_blank'><button style='background-color:#28a745; color:white; border:none; border-radius:30px; padding:0.5rem 1rem; margin-bottom:0.5rem; width:100%; cursor:pointer;'>{t['live_demo']}</button></a>", unsafe_allow_html=True)
-                    st.caption(t['demo_password_hint'])
+                    if proj['key'] == "hospital":
+                        st.caption(t['demo_password_hint'])
+                        # Add monthly subscription button and payment instructions
+                        if st.button(t['subscribe_monthly'], key=f"subscribe_{proj['key']}"):
+                            st.info(f"""
+                            **📋 Payment Instructions for Monthly Subscription:**  
+                            1️⃣ Send **$299 USD** via **Moncash (Prisme transfer)** to:  
+                            📱 **+509 4738-5663** (Gesner Deslandes)  
+                            2️⃣ Or send an email to **deslandes78@gmail.com** to request an invoice or bank transfer details.  
+                            3️⃣ After payment, we will activate your subscription within 24 hours.  
+                            
+                            ✅ **Includes:** Full access to the demo + ongoing updates + priority support.  
+                            """)
+                    else:
+                        st.caption(t['demo_password_hint'])
                 else:
                     st.info("📹 Live demo available upon request. Contact us for a private walkthrough.")
                 col_btn1, col_btn2 = st.columns(2)
