@@ -1243,7 +1243,7 @@ with col2:
     </div>
     """, unsafe_allow_html=True)
 
-# ========== GESNER TALKING AVATAR – NOW MEDIUM SIZE & CENTERED ==========
+# ========== GESNER TALKING AVATAR – MEDIUM SIZE & CENTERED ==========
 col1, col2, col3 = st.columns([1,2,1])
 with col2:
     video_url = "https://github.com/Deslandes1/Gesner-Deslandes-Avatar/blob/main/avatar_video.mp4.mp4?raw=true"
@@ -1283,14 +1283,21 @@ for idx, member in enumerate(team):
         """, unsafe_allow_html=True)
 st.divider()
 
-# ---------- Humanoid Robotics Video ----------
+# ---------- Humanoid Robotics Video (UPDATED: CENTERED, MEDIUM-SIZED) ----------
 st.markdown("---")
 st.markdown("## 🤖 Leveling Up Our Software: Humanoid Robotics")
 st.markdown("*From Python scripts to embodied AI – the next frontier.*")
-col_video, col_caption = st.columns([2, 1])
-with col_video:
+
+# Centered, medium-size video
+col_vid1, col_vid2, col_vid3 = st.columns([1,2,1])
+with col_vid2:
     st.video("https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/Robotics.mp4")
-with col_caption:
+
+# Caption and description in two columns below
+col_desc1, col_desc2 = st.columns([1,1])
+with col_desc1:
+    st.caption("📽️ Demo: Python‑controlled humanoid robot in motion. Our software is evolving from screen to physical AI.")
+with col_desc2:
     st.markdown("""
     **🧠 Where we are taking our software:**
     - 🤖 **Humanoid Robotics Integration** – Controlling humanoid robots with Python
@@ -1300,7 +1307,6 @@ with col_caption:
     👉 Watch how our Python‑powered control systems are bringing humanoid robots to life.
     🔗 [View the full demo on GitHub](https://github.com/Deslandes1/globalinternet_site.py/blob/main/Robotics.mp4)
     """)
-st.caption("📽️ Demo: Python‑controlled humanoid robot in motion. Our software is evolving from screen to physical AI.")
 st.markdown("---")
 
 # ---------- Projects in Perspective (Roadmap) ----------
