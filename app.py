@@ -1243,9 +1243,12 @@ with col2:
     </div>
     """, unsafe_allow_html=True)
 
-video_url = "https://github.com/Deslandes1/Gesner-Deslandes-Avatar/blob/main/avatar_video.mp4.mp4?raw=true"
-st.video(video_url, format="video/mp4", start_time=0)
-st.caption(t['office_photo_caption'])
+# ========== GESNER TALKING AVATAR – NOW MEDIUM SIZE & CENTERED ==========
+col1, col2, col3 = st.columns([1,2,1])
+with col2:
+    video_url = "https://github.com/Deslandes1/Gesner-Deslandes-Avatar/blob/main/avatar_video.mp4.mp4?raw=true"
+    st.video(video_url, format="video/mp4", start_time=0)
+    st.caption(t['office_photo_caption'])
 
 st.markdown(f"## {t['cv_title']}")
 col_photo, col_info = st.columns([1, 2])
