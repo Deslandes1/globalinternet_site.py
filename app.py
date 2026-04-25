@@ -305,7 +305,7 @@ lang_en = {
     ],
     "projects_title": "🏆 Our Projects & Accomplishments",
     "projects_sub": "Completed software solutions delivered to clients – ready for you to purchase or customize.",
-    # ----- Projects (English) - existing + 4 new + 2 new today -----
+    # ----- Projects (English) -----
     "project_haiti": "🇭🇹 Haiti Online Voting Software",
     "project_haiti_desc": "Complete presidential election system with multi‑language support (Kreyòl, French, English, Spanish), real‑time live monitoring, CEP President dashboard (manage candidates, upload photos, download progress reports), secret ballot, and changeable passwords. Used for national elections.",
     "project_haiti_full_price": "$15,000 USD (full package – one‑time)",
@@ -481,17 +481,17 @@ lang_en = {
     # NEW: WordPress Development Suite
     "project_wordpress": "📝 WordPress Development Suite – built by Gesner Deslandes",
     "project_wordpress_desc": "A fully interactive portfolio tool that proves custom theme/plugin development, performance optimization, SEO best practices, responsive design, project management, and troubleshooting.",
-    "project_wordpress_full_price": "Contact for pricing",
-    "project_wordpress_status": "✅ Live demo available | Subscribe monthly",
+    "project_wordpress_full_price": "$2,500 USD (full package – one‑time)",
+    "project_wordpress_status": "✅ Live demo (any username/password) | Subscribe monthly",
     # NEW: Building Systems Architect Dashboard
     "project_building_systems": "🏢 Building Systems Architect Dashboard – built by Gesner Deslandes",
     "project_building_systems_desc": "A professional MEP & BMS control suite demonstrating real‑time BMS monitoring, thermal networks (CHW/LTHW), electrical infrastructure, BIM‑ready asset register, decarbonisation tracking, and commissioning reports.",
-    "project_building_systems_full_price": "Contact for pricing",
-    "project_building_systems_status": "✅ Live demo available | Subscribe monthly",
+    "project_building_systems_full_price": "$4,500 USD (full package – one‑time)",
+    "project_building_systems_status": "✅ Live demo (any username/password) | Subscribe monthly",
     # UI common keys
     "view_demo": "🎬 View Demo",
     "live_demo": "🔗 Live Demo",
-    "demo_password_hint": "🔐 Demo password: 20082010",
+    "demo_password_hint": "🔐 Demo password: 20082010 (or any username/password on new demos)",
     "request_info": "Request Info",
     "buy_now": "💵 Buy Full Package",
     "subscribe_monthly": "📅 Subscribe Monthly ($299/mo)",
@@ -748,17 +748,17 @@ lang_fr = {
     # NEW: WordPress Development Suite
     "project_wordpress": "📝 Suite de développement WordPress – construite par Gesner Deslandes",
     "project_wordpress_desc": "Un outil de portfolio interactif qui démontre le développement de thèmes/plugins personnalisés, l'optimisation des performances, les meilleures pratiques SEO, le design responsive, la gestion de projet et le dépannage.",
-    "project_wordpress_full_price": "Contactez-nous pour le prix",
-    "project_wordpress_status": "✅ Démo en direct disponible | Abonnement mensuel",
+    "project_wordpress_full_price": "2 500 $ USD (forfait complet – paiement unique)",
+    "project_wordpress_status": "✅ Démo en direct (n'importe quel nom d'utilisateur/mot de passe) | Abonnement mensuel",
     # NEW: Building Systems Architect Dashboard
     "project_building_systems": "🏢 Tableau de bord d'architecte de systèmes de bâtiment – construit par Gesner Deslandes",
     "project_building_systems_desc": "Une suite de contrôle MEP et BMS professionnelle démontrant la surveillance BMS en temps réel, les réseaux thermiques (CHW/LTHW), l'infrastructure électrique, le registre d'actifs prêt pour le BIM, le suivi de la décarbonation et les rapports de mise en service.",
-    "project_building_systems_full_price": "Contactez-nous pour le prix",
-    "project_building_systems_status": "✅ Démo en direct disponible | Abonnement mensuel",
+    "project_building_systems_full_price": "4 500 $ USD (forfait complet – paiement unique)",
+    "project_building_systems_status": "✅ Démo en direct (n'importe quel nom d'utilisateur/mot de passe) | Abonnement mensuel",
     # UI common keys in French
     "view_demo": "🎬 Voir la démo",
     "live_demo": "🔗 Démo en direct",
-    "demo_password_hint": "🔐 Mot de passe démo : 20082010",
+    "demo_password_hint": "🔐 Mot de passe démo : 20082010 (ou n'importe quel identifiant/mot de passe sur les nouvelles démos)",
     "request_info": "Demander des informations",
     "buy_now": "💵 Acheter le forfait complet",
     "subscribe_monthly": "📅 S'abonner mensuellement (299 $/mois)",
@@ -1015,17 +1015,17 @@ lang_es = {
     # NEW: WordPress Development Suite
     "project_wordpress": "📝 Suite de desarrollo WordPress – construida por Gesner Deslandes",
     "project_wordpress_desc": "Una herramienta de portafolio totalmente interactiva que demuestra el desarrollo de temas/plugins personalizados, optimización de rendimiento, mejores prácticas de SEO, diseño responsivo, gestión de proyectos y resolución de problemas.",
-    "project_wordpress_full_price": "Contacte para precios",
-    "project_wordpress_status": "✅ Demo en vivo disponible | Suscripción mensual",
+    "project_wordpress_full_price": "$2,500 USD (paquete completo – pago único)",
+    "project_wordpress_status": "✅ Demo en vivo (cualquier nombre de usuario/contraseña) | Suscripción mensual",
     # NEW: Building Systems Architect Dashboard
     "project_building_systems": "🏢 Panel de arquitecto de sistemas de edificios – construido por Gesner Deslandes",
     "project_building_systems_desc": "Una suite profesional de control MEP y BMS que demuestra monitoreo BMS en tiempo real, redes térmicas (CHW/LTHW), infraestructura eléctrica, registro de activos listo para BIM, seguimiento de descarbonización e informes de puesta en marcha.",
-    "project_building_systems_full_price": "Contacte para precios",
-    "project_building_systems_status": "✅ Demo en vivo disponible | Suscripción mensual",
+    "project_building_systems_full_price": "$4,500 USD (paquete completo – pago único)",
+    "project_building_systems_status": "✅ Demo en vivo (cualquier nombre de usuario/contraseña) | Suscripción mensual",
     # UI common keys in Spanish
     "view_demo": "🎬 Ver demostración",
     "live_demo": "🔗 Demostración en vivo",
-    "demo_password_hint": "🔐 Contraseña de demostración: 20082010",
+    "demo_password_hint": "🔐 Contraseña de demostración: 20082010 (o cualquier nombre de usuario/contraseña en las nuevas demos)",
     "request_info": "Solicitar información",
     "buy_now": "💵 Comprar paquete completo",
     "subscribe_monthly": "📅 Suscribirse mensualmente ($299/mes)",
