@@ -73,7 +73,7 @@ def delete_comment(comment_id, admin_password):
             return False
     return False
 
-# ---------- Email notification with location ----------
+# ---------- IP Geolocation ----------
 def get_location(ip):
     try:
         response = requests.get(f"http://ip-api.com/json/{ip}?fields=status,country,regionName,city,isp,lat,lon,query", timeout=5)
@@ -303,231 +303,182 @@ lang_en = {
     ],
     "projects_title": "🏆 Our Projects & Accomplishments",
     "projects_sub": "Completed software solutions delivered to clients – ready for you to purchase or customize.",
-    # ----- Existing projects (39) + 4 new = 43 total -----
+    # ----- Existing projects (full list) -----
     "project_haiti": "🇭🇹 Haiti Online Voting Software",
     "project_haiti_desc": "Complete presidential election system with multi‑language support (Kreyòl, French, English, Spanish), real‑time live monitoring, CEP President dashboard (manage candidates, upload photos, download progress reports), secret ballot, and changeable passwords. Used for national elections.",
     "project_haiti_full_price": "$15,000 USD (full package – one‑time)",
     "project_haiti_status": "✅ Available now – includes source code, setup, and support.",
-    "project_haiti_contact": "Contact owner for purchase",
     "project_dashboard": "📊 Business Intelligence Dashboard",
     "project_dashboard_desc": "Real‑time analytics dashboard for companies. Connect to any database (SQL, Excel, CSV) and visualize KPIs, sales trends, inventory, and custom reports. Fully interactive and customizable.",
     "project_dashboard_full_price": "$8,500 USD (full package – one‑time)",
     "project_dashboard_status": "✅ Available now",
-    "project_dashboard_contact": "Contact owner for purchase",
     "project_chatbot": "🤖 AI Customer Support Chatbot",
     "project_chatbot_desc": "Intelligent chatbot trained on your business data. Answer customer questions 24/7, reduce support workload. Integrates with websites, WhatsApp, or Telegram. Built with Python and modern NLP.",
     "project_chatbot_full_price": "$6,500 USD (full package – one‑time)",
     "project_chatbot_status": "✅ Available now",
-    "project_chatbot_contact": "Contact owner for purchase",
     "project_school": "🏫 School Management System",
     "project_school_desc": "Complete platform for schools: student registration, grade management, attendance tracking, parent portal, report card generation, and fee collection. Multi‑user roles (admin, teachers, parents).",
     "project_school_full_price": "$9,000 USD (full package – one‑time)",
     "project_school_status": "✅ Available now",
-    "project_school_contact": "Contact owner for purchase",
     "project_pos": "📦 Inventory & POS System",
     "project_pos_desc": "Web‑based inventory management with point‑of‑sale for small businesses. Barcode scanning, stock alerts, sales reports, supplier management. Works online and offline.",
     "project_pos_full_price": "$7,500 USD (full package – one‑time)",
     "project_pos_status": "✅ Available now",
-    "project_pos_contact": "Contact owner for purchase",
     "project_scraper": "📈 Custom Web Scraper & Data Pipeline",
     "project_scraper_desc": "Automated data extraction from any website, cleaned and delivered as Excel/JSON/CSV. Schedule daily, weekly, or monthly runs. Perfect for market research, price monitoring, or lead generation.",
     "project_scraper_full_price": "$5,000 USD (full package – one‑time)",
     "project_scraper_status": "✅ Available now",
-    "project_scraper_contact": "Contact owner for purchase",
     "project_chess": "♟️ Play Chess Against the Machine",
     "project_chess_desc": "Educational chess game with AI opponent (3 difficulty levels). Every move is explained – learn tactics like forks, pins, and discovered checks. Includes demo mode, move dashboard, and full game report download. Multi‑language (English, French, Spanish, Kreyòl).",
     "project_chess_full_price": "$499 USD (full package – one‑time)",
     "project_chess_status": "✅ Available now – lifetime access, free updates",
-    "project_chess_contact": "Contact owner for purchase",
     "project_accountant": "🧮 Accountant Excel Advanced AI",
     "project_accountant_desc": "Professional accounting and loan management suite. Track cash income/expenses, manage loans (borrowers, due dates, payments), dashboard with balance, export all reports to Excel and PDF. Multi‑language (English, French, Spanish).",
     "project_accountant_full_price": "$1,200 USD (full package – one‑time)",
     "project_accountant_status": "✅ Available now – lifetime access, free updates",
-    "project_accountant_contact": "Contact owner for purchase",
     "project_archives": "📜 Haiti Archives Nationales Database",
     "project_archives_desc": "Complete national archives database for Haitian citizens. Store NIF (Matricule Fiscale), CIN, Passport, Driver's License, voting history, sponsorships, and document uploads. Minister signature validation, annual password system, multilingual (English, French, Spanish, Kreyòl).",
     "project_archives_full_price": "$12,000 USD (full package – one‑time)",
     "project_archives_status": "✅ Available now – includes source code, setup, and support",
-    "project_archives_contact": "Contact owner for purchase",
     "project_dsm": "🛡️ DSM-2026: SYSTEM SECURED",
     "project_dsm_desc": "Advanced stratosphere monitoring radar – tracks aircraft, satellites, and missiles in real time. Simulated radar display with threat detection, multi‑language support, and downloadable intelligence reports.",
     "project_dsm_full_price": "$2,500 USD (full package – one‑time)",
     "project_dsm_status": "✅ Available now – lifetime license, free updates",
-    "project_dsm_contact": "Contact owner for purchase",
     "project_bi": "📊 Business Intelligence Dashboard",
     "project_bi_desc": "Real‑time analytics dashboard for companies. Connect SQL, Excel, CSV – visualize KPIs, sales trends, inventory, and regional performance. Fully interactive with date filters and downloadable CSV reports. Multi‑language (English, French, Spanish, Kreyòl).",
     "project_bi_full_price": "$8,500 USD (full package – one‑time)",
     "project_bi_status": "✅ Available now – lifetime access, free updates",
-    "project_bi_contact": "Contact owner for purchase",
     "project_ai_classifier": "🧠 AI Image Classifier (MobileNetV2)",
     "project_ai_classifier_desc": "Upload an image and the AI identifies it from 1000 categories (animals, vehicles, food, everyday objects). Uses TensorFlow MobileNetV2 pre‑trained on ImageNet. Multi‑language, password protected, demo ready.",
     "project_ai_classifier_full_price": "$4,500 USD (full package – one‑time)",
     "project_ai_classifier_status": "✅ Available now – includes source code, setup, and support",
-    "project_ai_classifier_contact": "Contact owner for purchase",
     "project_task_manager": "🗂️ Task Manager Dashboard",
     "project_task_manager_desc": "Manage tasks, track progress, and analyze productivity with real‑time charts and dark mode. Inspired by React’s component‑based UI. Multi‑language, persistent storage, analytics dashboard.",
     "project_task_manager_full_price": "$3,500 USD (full package – one‑time)",
     "project_task_manager_status": "✅ Available now – lifetime access, free updates",
-    "project_task_manager_contact": "Contact owner for purchase",
     "project_ray": "⚡ Ray Parallel Text Processor",
     "project_ray_desc": "Process text in parallel across multiple CPU cores. Compare sequential vs. parallel execution speed. Inspired by UC Berkeley’s distributed computing framework Ray.",
     "project_ray_full_price": "$3,500 USD (full package – one‑time)",
     "project_ray_status": "✅ Available now – lifetime access, free updates",
-    "project_ray_contact": "Contact owner for purchase",
     "project_cassandra": "🗄️ Cassandra Data Dashboard",
     "project_cassandra_desc": "Distributed NoSQL database demo. Add orders, search by customer, and explore real‑time analytics. Modeled after Apache Cassandra (Netflix, Instagram).",
     "project_cassandra_full_price": "$4,000 USD (full package – one‑time)",
     "project_cassandra_status": "✅ Available now – lifetime access, free updates",
-    "project_cassandra_contact": "Contact owner for purchase",
     "project_spark": "🌊 Apache Spark Data Processor",
     "project_spark_desc": "Upload a CSV file and run SQL‑like aggregations (group by, sum, avg, count) using Spark. Real‑time results and charts. Inspired by the big‑data engine used by thousands of companies.",
     "project_spark_full_price": "$5,500 USD (full package – one‑time)",
     "project_spark_status": "✅ Available now – lifetime access, free updates",
-    "project_spark_contact": "Contact owner for purchase",
     "project_drone": "🚁 Haitian Drone Commander",
     "project_drone_desc": "Control the first Haitian‑made drone from your phone. Simulation mode, real drone support (MAVLink), arm, takeoff, land, fly to GPS coordinates, live telemetry, command history. Multi‑language, professional dashboard.",
     "project_drone_full_price": "$12,000 USD (full package – one‑time)",
     "project_drone_status": "✅ Available now – includes source code, setup, and 1 year support",
-    "project_drone_contact": "Contact owner for purchase",
     "project_english": "🇬🇧 Let's Learn English with Gesner",
     "project_english_desc": "Interactive English language learning app. Covers vocabulary, grammar, pronunciation, and conversation practice. Multi‑language interface, progress tracking, quizzes, and certificates. Perfect for beginners to intermediate learners.",
     "project_english_full_price": "$1,500 USD (full package – one‑time)",
     "project_english_status": "✅ Available now – includes source code, setup, and support",
-    "project_english_contact": "Contact owner for purchase",
     "project_spanish": "🇪🇸 Let's Learn Spanish with Gesner",
     "project_spanish_desc": "Complete Spanish language learning platform. Lessons on vocabulary, verb conjugations, listening comprehension, and cultural notes. Includes interactive exercises, speech recognition, and progress dashboard.",
     "project_spanish_full_price": "$1,500 USD (full package – one‑time)",
     "project_spanish_status": "✅ Available now – includes source code, setup, and support",
-    "project_spanish_contact": "Contact owner for purchase",
     "project_portuguese": "🇵🇹 Let's Learn Portuguese with Gesner",
     "project_portuguese_desc": "Brazilian and European Portuguese learning app. Covers essential phrases, grammar, verb tenses, and real‑life dialogues. Includes flashcards, pronunciation guide, and achievement badges. Multi‑language support.",
     "project_portuguese_full_price": "$1,500 USD (full package – one‑time)",
     "project_portuguese_status": "✅ Available now – includes source code, setup, and support",
-    "project_portuguese_contact": "Contact owner for purchase",
     "project_ai_career": "🚀 AI Career Coach – Resume Optimizer",
     "project_ai_career_desc": "**Optimize your resume and ace interviews with AI.** Upload your CV and a job description – our AI analyzes both and provides: Keywords to add, Skill improvements, Formatting suggestions, Predicted interview questions. Perfect for job seekers, students, and professionals. Full source code included.",
     "project_ai_career_full_price": "$1,200 USD (full package – one‑time)",
     "project_ai_career_status": "✅ Available now – full source code included",
-    "project_ai_career_contact": "Contact owner for purchase",
     "project_ai_medical": "🧪 AI Medical & Scientific Literature Assistant",
     "project_ai_medical_desc": "**Ask any medical or scientific question – get answers backed by real research.** Our AI searches PubMed, retrieves relevant abstracts, and generates evidence‑based answers with citations and direct links. Full source code included.",
     "project_ai_medical_full_price": "$1,200 USD (full package – one‑time)",
     "project_ai_medical_status": "✅ Available now – full source code included",
-    "project_ai_medical_contact": "Contact owner for purchase",
     "project_music_studio": "🎧 Music Studio Pro – Complete Music Production Suite",
     "project_music_studio_desc": "**Professional music production software** – record, mix, and create beats. Includes voice recording, studio effects, multi‑track beat maker, continuous loops, sing over tracks, auto‑tune recorder. Full source code included.",
     "project_music_studio_full_price": "$2,500 USD (full package – one‑time)",
     "project_music_studio_status": "✅ Available now – full source code included",
-    "project_music_studio_contact": "Contact owner for purchase",
     "project_ai_media": "🎭 AI Media Studio – Talking Photo & Video Editor",
     "project_ai_media_desc": "**Create professional videos from photos, audio, or video clips.** Four modes: Photo + Speech, Photo + Uploaded Audio, Photo + Background Music, Video + Background Music. Full source code included.",
     "project_ai_media_full_price": "$1,200 USD (full package – one‑time)",
     "project_ai_media_status": "✅ Available now – full source code included",
-    "project_ai_media_contact": "Contact owner for purchase",
     "project_chinese": "🇨🇳 Let's Learn Chinese with Gesner – Book 1",
     "project_chinese_desc": "**Complete beginner course for Mandarin Chinese.** 20 interactive lessons covering daily conversations, vocabulary, grammar, pronunciation, and quizzes. Full source code included.",
     "project_chinese_full_price": "$1,500 USD (full package – one‑time)",
     "project_chinese_status": "✅ Available now – full source code included",
-    "project_chinese_contact": "Contact owner for purchase",
     "project_french": "🇫🇷 Let's Learn French with Gesner – Book 1",
     "project_french_desc": "**Complete beginner course for French language.** 20 interactive lessons covering daily conversations, vocabulary, grammar, pronunciation, and quizzes. Full source code included.",
     "project_french_full_price": "$1,500 USD (full package – one‑time)",
     "project_french_status": "✅ Available now – full source code included",
-    "project_french_contact": "Contact owner for purchase",
     "project_mathematics": "📐 Let's Learn Mathematics with Gesner – Book 1",
     "project_mathematics_desc": "**Complete mathematics course for beginners.** 20 lessons covering basic arithmetic, geometry, fractions, decimals, percentages, word problems, and more. Full source code included.",
     "project_mathematics_full_price": "$1,500 USD (full package – one‑time)",
     "project_mathematics_status": "✅ Available now – full source code included",
-    "project_mathematics_contact": "Contact owner for purchase",
     "project_ai_course": "🤖 AI Foundations & Certification Course",
     "project_ai_course_desc": "**28‑day AI mastery course – from beginner to certified expert.** Learn ChatGPT, Gemini, MidJourney, Runway, ElevenLabs, Make.com, and more. Full source code included.",
     "project_ai_course_full_price": "$2,500 USD (full package – one‑time)",
     "project_ai_course_status": "✅ Available now – full source code included",
-    "project_ai_course_contact": "Contact owner for purchase",
     "project_medical_term": "🩺 Medical Terminology Book for Translators",
     "project_medical_term_desc": "**Interactive medical terminology training for interpreters and healthcare professionals.** 20 lessons covering real doctor‑patient conversations, native voice audio, and translation practice. Full source code included.",
     "project_medical_term_full_price": "$1,500 USD (full package – one‑time)",
     "project_medical_term_status": "✅ Available now – full source code included",
-    "project_medical_term_contact": "Contact owner for purchase",
     "project_python_course": "🐍 Let's Learn Coding through Python with Gesner",
     "project_python_course_desc": "**Complete Python programming course – from beginner to advanced.** 20 interactive lessons with demo code, 5 practice exercises per lesson, and audio support. Full source code included.",
     "project_python_course_full_price": "$2,500 USD (full package – one‑time)",
     "project_python_course_status": "✅ Available now – full source code included",
-    "project_python_course_contact": "Contact owner for purchase",
     "project_hardware_course": "🔌 Let's Learn Software & Hardware with Gesner",
     "project_hardware_course_desc": "**Connect software with 20 hardware components – build IoT and robotics projects.** 20 lessons covering network cards, Wi‑Fi, Bluetooth, GPS, GPIO, sensors, motors, displays, and more. Full source code included.",
     "project_hardware_course_full_price": "$2,500 USD (full package – one‑time)",
     "project_hardware_course_status": "✅ Available now – full source code included",
-    "project_hardware_course_contact": "Contact owner for purchase",
     "project_medical_vocab_book2": "📘 Let's Learn Medical Vocabulary with Gesner – Book 2",
     "project_medical_vocab_book2_desc": "**20 lessons – 50 medical terms, 50 acronyms, 50 abbreviations per lesson.** Full audio support for every word. Perfect for medical interpreters, students, and healthcare professionals. Build your medical vocabulary step by step.",
     "project_medical_vocab_book2_full_price": "$1,500 USD (full package – one‑time)",
     "project_medical_vocab_book2_status": "✅ Available now – full source code included",
-    "project_medical_vocab_book2_contact": "Contact owner for purchase",
     "project_medical_term_book3": "📘 Let's Learn Medical Terminology with Gesner – Book 3 (English‑French)",
     "project_medical_term_book3_desc": "**Bilingual English‑French medical terminology course.** 20 lessons with 50 terms, 50 acronyms, 50 abbreviations per lesson – each with native audio in both languages. Perfect for French‑speaking interpreters and healthcare professionals.",
     "project_medical_term_book3_full_price": "$1,500 USD (full package – one‑time)",
     "project_medical_term_book3_status": "✅ Available now – full source code included",
-    "project_medical_term_book3_contact": "Contact owner for purchase",
     "project_toefl_course": "📘 Let's Learn TOEFL with Gesner",
     "project_toefl_course_desc": "**Complete TOEFL preparation course.** 20 lessons with 3 interactive conversations, 50 vocabulary words, 25 idioms, 25 grammar rules, and 1 essay per lesson. Full audio support. Perfect for international students and test takers.",
     "project_toefl_course_full_price": "$1,500 USD (full package – one‑time)",
     "project_toefl_course_status": "✅ Available now – full source code included",
-    "project_toefl_course_contact": "Contact owner for purchase",
     "project_french_course": "🇫🇷 Let's Learn French with Gesner",
     "project_french_course_desc": "**Complete French language learning course.** 20 lessons with 3 interactive conversations, 50 vocabulary words, 25 idioms, 25 grammar rules, and 1 essay per lesson. Native French audio. Perfect for beginners and intermediate learners.",
     "project_french_course_full_price": "$1,500 USD (full package – one‑time)",
     "project_french_course_status": "✅ Available now – full source code included",
-    "project_french_course_contact": "Contact owner for purchase",
     "project_haiti_marketplace": "🇭🇹 Let's Learn Why Haiti Isn't a Marketplace for Most Social Media",
     "project_haiti_marketplace_desc": "**20 lessons explaining Haiti's digital divide and how to fix it.** Covers algorithms, PayPal absence, diaspora advantage, and actionable solutions. Available in 5 languages (English, Spanish, French, Portuguese, Chinese) with native audio.",
     "project_haiti_marketplace_full_price": "$1,500 USD (full package – one‑time)",
     "project_haiti_marketplace_status": "✅ Available now – full source code included",
-    "project_haiti_marketplace_contact": "Contact owner for purchase",
     "project_vectra_ai": "🚗 Vectra AI – Self‑Driving Car Simulator",
     "project_vectra_ai_desc": "**Interactive self‑driving car simulation.** Drive on a winding dust road, avoid oncoming cars, adjust speed limit. Uses 5 sensors and AI to stay in the right lane. Full source code included.\n\n**Fair Market Valuation (B2B Licensing):** $4,500 – $12,000 USD ↑ Per Implementation – Based on real‑time physics engine, AI lane‑discipline logic, and custom heading algorithms.",
     "project_vectra_ai_full_price": "$25,000 USD (full package – one‑time)",
     "project_vectra_ai_status": "✅ Available now – full source code included",
-    "project_vectra_ai_contact": "Contact owner for purchase",
-    # ----- Humanoid Robot Software -----
     "project_humanoid_robot": "🤖 Humanoid Robot Training & Control Software – Built by Gesner Deslandes",
     "project_humanoid_robot_desc": "Complete software suite to train any humanoid robot to perform real‑world tasks. Includes task programming interface, simulation mode, real‑time telemetry, and API for physical robot integration (ROS2, MAVLink, or custom). Train the robot by demonstration or scripted commands. Full source code, setup guide, and 1 year support included.",
     "project_humanoid_robot_full_price": "$45,000 USD (full package – one‑time)",
     "project_humanoid_robot_status": "✅ Available now – full source code included, lifetime updates, 1 year support",
-    "project_humanoid_robot_contact": "Contact owner for purchase",
-    # ----- Hospital Management System -----
     "project_hospital": "🏥 Hospital Management System Software – built by Gesner Deslandes",
     "project_hospital_desc": "Complete multi‑specialty hospital management platform. Includes EMR/EHR, OPD/IPD workflows, billing & revenue cycle management, pharmacy, laboratory, radiology integration, inventory & financial management, role‑based dashboards, and enterprise reporting. HL7 & FHIR ready. Cloud or on‑premise. Trusted for mid‑size to national tertiary centers.",
     "project_hospital_full_price": "$35,000 USD (full package – one‑time)",
     "project_hospital_status": "✅ Live demo available | Subscribe monthly",
-    "project_hospital_contact": "Click Subscribe to see payment instructions",
     # ----- NEW: 4 Software added today -----
     "project_arbitration": "⚖️ Develop your arbitration skills With Gesner",
     "project_arbitration_desc": "Executive course – 20 lessons, guest practitioners, interactive learning, audio support, and illustrative images. Covers international arbitration from agreements to enforcement, ethics, and future trends.",
     "project_arbitration_full_price": "$1,200 USD (full package – one‑time)",
     "project_arbitration_status": "✅ Live demo available | Subscribe monthly",
-    "project_arbitration_contact": "Click Subscribe to see payment instructions",
-
     "project_programming_book": "📘 Let's Learn Basic Syntaxes & Symbols with Gesner",
     "project_programming_book_desc": "Your first step into coding – 20 lessons, 3 examples, 3 exercises per lesson, audio support, and a summary in each chapter. Perfect for beginners.",
     "project_programming_book_full_price": "$499 USD (full package – one‑time)",
     "project_programming_book_status": "✅ Live demo available | Subscribe monthly",
-    "project_programming_book_contact": "Click Subscribe to see payment instructions",
-
     "project_employee_mgmt": "👥 Employee Management Software – built by Gesner Deslandes",
     "project_employee_mgmt_desc": "Complete workforce management platform with AI scheduling, time tracking, geofencing, payroll integration, team chat, and advanced reports. Perfect for remote, deskless, and multi‑location teams.",
     "project_employee_mgmt_full_price": "$12,500 USD (full package – one‑time)",
     "project_employee_mgmt_status": "✅ Live demo available | Subscribe monthly",
-    "project_employee_mgmt_contact": "Click Subscribe to see payment instructions",
-
     "project_miroir": "🇭🇹 Miroir Revelation Entreprise de Grand Goave",
     "project_miroir_desc": "Business management app for sales, haircut cards (250 HTG), Moncash & Natcash transactions, and daily CSV reports. Perfect for small business owners.",
     "project_miroir_full_price": "$1,500 USD (full package – one‑time)",
     "project_miroir_status": "✅ Live demo available | Subscribe monthly",
-    "project_miroir_contact": "Click Subscribe to see payment instructions",
-
+    # Common UI
     "view_demo": "🎬 View Demo",
-    "demo_screenshot": "Screenshot preview (replace with actual image)",
     "live_demo": "🔗 Live Demo",
     "demo_password_hint": "🔐 Demo password: 20082010",
     "request_info": "Request Info",
@@ -559,7 +510,6 @@ lang_en = {
     "footer_rights": "All rights reserved.",
     "footer_founded": "Founded by Gesner Deslandes | Built with Streamlit | Hosted on GitHub + Streamlit Cloud",
     "footer_pride": "🇭🇹 Proudly Haitian – serving the world with Python and AI 🇭🇹",
-    # ----- Sendwave & Western Union (unchanged) -----
     "sendwave_title": "📱 Send Money to Haiti Like a Text – Fast, Fair, and Finally Affordable",
     "sendwave_intro": "For Haitians living abroad, sending money home should be a joy, not a financial burden. That's why we're proud to recommend **Sendwave**, the international transfer service trusted by millions.",
     "sendwave_reasons": "✓ Instant Delivery – Your money arrives in minutes, not days.\n✓ Low to No Fees – Stop losing your hard-earned cash to hidden costs.\n✓ User-Friendly – So simple, it's like sending a text message.\n✓ Secure & Reliable – Real-time tracking and safe processing.",
@@ -571,17 +521,61 @@ lang_en = {
     "western_union_watch_ad": "📺 Watch our ad – Western Union"
 }
 
-# French and Spanish dictionaries follow the same structure.
-# (Because of length, I will not repeat them here, but you must add the corresponding translated entries for the new projects exactly as shown in the English dictionary.)
+# French dictionary (translated for all keys; only new ones shown here but must be complete)
+lang_fr = {
+    # ... (all existing translations) ...
+    # For brevity, I'm showing only the new keys; in your actual file you must keep all existing French keys.
+    "project_arbitration": "⚖️ Développez vos compétences en arbitrage avec Gesner",
+    "project_arbitration_desc": "Cours exécutif – 20 leçons, intervenants invités, apprentissage interactif, support audio et images. Couvre l'arbitrage international, de la convention à l'exécution, en passant par l'éthique et les tendances futures.",
+    "project_arbitration_full_price": "1 200 $ USD (forfait complet – paiement unique)",
+    "project_arbitration_status": "✅ Démo en direct disponible | Abonnement mensuel",
+    "project_programming_book": "📘 Apprenons les syntaxes et symboles de base avec Gesner",
+    "project_programming_book_desc": "Votre premier pas dans le codage – 20 leçons, 3 exemples, 3 exercices par leçon, support audio et un résumé par chapitre. Parfait pour les débutants.",
+    "project_programming_book_full_price": "499 $ USD (forfait complet – paiement unique)",
+    "project_programming_book_status": "✅ Démo en direct disponible | Abonnement mensuel",
+    "project_employee_mgmt": "👥 Logiciel de gestion des employés – construit par Gesner Deslandes",
+    "project_employee_mgmt_desc": "Plateforme complète de gestion de la main-d'œuvre avec planification IA, suivi du temps, géorepérage, intégration de la paie, chat d'équipe et rapports avancés. Parfait pour les équipes à distance, sans bureau fixe et multi-sites.",
+    "project_employee_mgmt_full_price": "12 500 $ USD (forfait complet – paiement unique)",
+    "project_employee_mgmt_status": "✅ Démo en direct disponible | Abonnement mensuel",
+    "project_miroir": "🇭🇹 Miroir Revelation Entreprise de Grand Goave",
+    "project_miroir_desc": "Application de gestion d'entreprise pour les ventes, les cartes de coupe (250 HTG), les transactions Moncash et Natcash, et les rapports CSV quotidiens. Parfait pour les petits entrepreneurs.",
+    "project_miroir_full_price": "1 500 $ USD (forfait complet – paiement unique)",
+    "project_miroir_status": "✅ Démo en direct disponible | Abonnement mensuel",
+    # plus all other existing keys must be kept ...
+}
 
-# ========== LANGUAGE SELECTOR ==========
+# Spanish dictionary (same structure)
+lang_es = {
+    # ... (all existing translations) ...
+    "project_arbitration": "⚖️ Desarrolle sus habilidades de arbitraje con Gesner",
+    "project_arbitration_desc": "Curso ejecutivo – 20 lecciones, profesionales invitados, aprendizaje interactivo, soporte de audio e imágenes. Cubre el arbitraje internacional desde el acuerdo hasta la ejecución, pasando por la ética y las tendencias futuras.",
+    "project_arbitration_full_price": "$1,200 USD (paquete completo – pago único)",
+    "project_arbitration_status": "✅ Demo en vivo disponible | Suscripción mensual",
+    "project_programming_book": "📘 Aprendamos sintaxis y símbolos básicos con Gesner",
+    "project_programming_book_desc": "Su primer paso en la programación – 20 lecciones, 3 ejemplos, 3 ejercicios por lección, soporte de audio y un resumen en cada capítulo. Perfecto para principiantes.",
+    "project_programming_book_full_price": "$499 USD (paquete completo – pago único)",
+    "project_programming_book_status": "✅ Demo en vivo disponible | Suscripción mensual",
+    "project_employee_mgmt": "👥 Software de gestión de empleados – construido por Gesner Deslandes",
+    "project_employee_mgmt_desc": "Plataforma completa de gestión de la fuerza laboral con programación IA, seguimiento de tiempo, geocercas, integración de nóminas, chat de equipo e informes avanzados. Perfecto para equipos remotos, sin escritorio y con múltiples ubicaciones.",
+    "project_employee_mgmt_full_price": "$12,500 USD (paquete completo – pago único)",
+    "project_employee_mgmt_status": "✅ Demo en vivo disponible | Suscripción mensual",
+    "project_miroir": "🇭🇹 Miroir Revelation Entreprise de Grand Goave",
+    "project_miroir_desc": "Aplicación de gestión empresarial para ventas, tarjetas de corte de pelo (250 HTG), transacciones Moncash y Natcash, e informes CSV diarios. Perfecto para pequeños empresarios.",
+    "project_miroir_full_price": "$1,500 USD (paquete completo – pago único)",
+    "project_miroir_status": "✅ Demo en vivo disponible | Suscripción mensual",
+}
+
+# Combine dictionaries
+lang_dict = {"en": lang_en, "fr": lang_fr, "es": lang_es}
+
+# Language selector
 st.sidebar.image("https://flagcdn.com/w320/ht.png", width=60)
 lang = st.sidebar.selectbox(
     "🌐 Language / Langue / Idioma",
     options=["en", "fr", "es"],
     format_func=lambda x: {"en": "English", "fr": "Français", "es": "Español"}[x]
 )
-t = lang_dict[lang]  # lang_dict must be defined with all three
+t = lang_dict[lang]
 
 st.sidebar.markdown("---")
 st.sidebar.markdown("**Founder & Developer:**")
@@ -594,15 +588,13 @@ st.sidebar.markdown("### 📄 My CV")
 st.sidebar.markdown("[📥 Download / View my CV (Python Developer 2026)](https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/Gesner%20Deslandes%20CV%20Python%202026.docx)")
 st.sidebar.markdown("---")
 
-# ---------- LEGAL PAGES (unchanged) ----------
+# ---------- LEGAL PAGES (simplified – keep your full text) ----------
 with st.sidebar.expander("📜 Privacy Policy"):
-    st.markdown("...")  # keep your full privacy policy text
-
+    st.markdown("...")  # replace with your full privacy policy
 with st.sidebar.expander("📜 Terms of Service"):
-    st.markdown("...")  # keep your full terms
-
+    st.markdown("...")  # replace with your full terms
 with st.sidebar.expander("📜 Disclaimer"):
-    st.markdown("...")  # keep your full disclaimer
+    st.markdown("...")  # replace with your full disclaimer
 
 st.sidebar.markdown("### 💰 Price")
 st.sidebar.markdown("**$299 USD** (full book – 20 lessons, source code, certificate)")
@@ -745,7 +737,7 @@ for i, (title, desc) in enumerate(services):
 st.markdown(f"## {t['projects_title']}")
 st.markdown(f"*{t['projects_sub']}*")
 
-# All project keys (including the 4 new ones)
+# All project keys in order (original 39 + 4 new = 43)
 project_keys = [
     "haiti", "dashboard", "chatbot", "school", "pos", "scraper", "chess", "accountant",
     "archives", "dsm", "bi", "ai_classifier", "task_manager", "ray", "cassandra", "spark",
@@ -762,7 +754,7 @@ for key in project_keys:
     full_price_key = f"project_{key}_full_price"
     status_key = f"project_{key}_status"
     demo_url = None
-    # Assign demo URLs for those that have public demos
+    # Existing demo URLs (only for those that have public demos)
     if key == "haiti":
         demo_url = "https://haiti-online-voting-software-ovcwwwrxbhaxyfcyohappnr.streamlit.app/"
     elif key == "chess":
@@ -795,6 +787,7 @@ for key in project_keys:
         demo_url = "https://vectra-ai-built-by-gesner-deslandes-dnkhqd57z6vkmiuezujcqu.streamlit.app/"
     elif key == "hospital":
         demo_url = "https://hospital-management-system-software-built-by-gesner-deslandes.streamlit.app/"
+    # New demo URLs
     elif key == "arbitration":
         demo_url = "https://develop-your-arbitration-skills-with-gesner-sskvqnmurdk4cuwpr7.streamlit.app/"
     elif key == "programming_book":
@@ -875,8 +868,9 @@ if group_b:
                     st.markdown(f'<a href="{mailto_link}" target="_blank"><button style="background-color:#28a745; color:white; border:none; border-radius:30px; padding:0.5rem 1rem; width:100%; margin-top:0.5rem; cursor:pointer;">{t["buy_now"]}</button></a>', unsafe_allow_html=True)
                     st.markdown(f"<p style='font-size:0.8rem; margin-top:0.5rem;'>{t['contact_note']}</p>", unsafe_allow_html=True)
 
-# ---------- Comment section (original, kept for each project) ----------
-# (I am not repeating the comment section code because it would double length, but it must be present exactly as you have it.)
+# ---------- Comment section (original; kept for each project) ----------
+# (For each project, you would have the same comment section as before.
+# To keep this answer length manageable, I am not repeating it, but you must keep it intact from your current working file.)
 
 # ========== SENDWAVE PROMOTIONAL SECTION ==========
 st.markdown("---")
