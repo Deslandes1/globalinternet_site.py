@@ -92,12 +92,25 @@ def get_location(ip):
         pass
     return None
 
+# ---------- FIXED: Get real visitor IP using Streamlit context ----------
+def get_real_ip():
+    """Extract the real client IP from Streamlit's context headers (X-Forwarded-For)."""
+    try:
+        headers = st.context.headers
+        forwarded = headers.get("X-Forwarded-For")
+        if forwarded:
+            client_ip = forwarded.split(",")[0].strip()
+            return client_ip
+    except Exception:
+        pass
+    try:
+        return requests.get("https://api.ipify.org", timeout=5).text
+    except:
+        return "Unable to retrieve"
+
 def send_visit_notification():
     try:
-        try:
-            visitor_ip = requests.get("https://api.ipify.org", timeout=5).text
-        except:
-            visitor_ip = "Unable to retrieve"
+        visitor_ip = get_real_ip()
         location = get_location(visitor_ip) if visitor_ip != "Unable to retrieve" else None
         user_agent = "unknown (Streamlit Cloud)"
         subject = "🌐 New visitor on GlobalInternet.py website"
@@ -229,6 +242,7 @@ st.markdown("""
 # ============================================================
 # FULL DICTIONARIES (ENGLISH, FRENCH, SPANISH)
 # ============================================================
+
 lang_en = {
     "hero_title": "GlobalInternet.py",
     "hero_sub": "Build with Python. Deliver with Speed. Innovate with AI.",
@@ -305,7 +319,7 @@ lang_en = {
     ],
     "projects_title": "🏆 Our Projects & Accomplishments",
     "projects_sub": "Completed software solutions delivered to clients – ready for you to purchase or customize.",
-    # ----- Projects (English) -----
+    # All projects (English)
     "project_haiti": "🇭🇹 Haiti Online Voting Software",
     "project_haiti_desc": "Complete presidential election system with multi‑language support (Kreyòl, French, English, Spanish), real‑time live monitoring, CEP President dashboard (manage candidates, upload photos, download progress reports), secret ballot, and changeable passwords. Used for national elections.",
     "project_haiti_full_price": "$15,000 USD (full package – one‑time)",
@@ -478,12 +492,10 @@ lang_en = {
     "project_miroir_desc": "Business management app for sales, haircut cards (250 HTG), Moncash & Natcash transactions, and daily CSV reports. Perfect for small business owners.",
     "project_miroir_full_price": "$1,500 USD (full package – one‑time)",
     "project_miroir_status": "✅ Live demo available | Subscribe monthly",
-    # NEW: WordPress Development Suite
     "project_wordpress": "📝 WordPress Development Suite – built by Gesner Deslandes",
     "project_wordpress_desc": "A fully interactive portfolio tool that proves custom theme/plugin development, performance optimization, SEO best practices, responsive design, project management, and troubleshooting.",
     "project_wordpress_full_price": "$2,500 USD (full package – one‑time)",
     "project_wordpress_status": "✅ Live demo (any username/password) | Subscribe monthly",
-    # NEW: Building Systems Architect Dashboard
     "project_building_systems": "🏢 Building Systems Architect Dashboard – built by Gesner Deslandes",
     "project_building_systems_desc": "A professional MEP & BMS control suite demonstrating real‑time BMS monitoring, thermal networks (CHW/LTHW), electrical infrastructure, BIM‑ready asset register, decarbonisation tracking, and commissioning reports.",
     "project_building_systems_full_price": "$4,500 USD (full package – one‑time)",
@@ -532,7 +544,7 @@ lang_en = {
     "western_union_watch_ad": "📺 Watch our ad – Western Union"
 }
 
-# French dictionary (full – all keys translated, including new ones)
+# ---------- FRENCH (full) ----------
 lang_fr = {
     "hero_title": "GlobalInternet.py",
     "hero_sub": "Construisez avec Python. Livrez rapidement. Innovez avec l'IA.",
@@ -573,6 +585,7 @@ lang_fr = {
     ],
     "projects_title": "🏆 Nos projets et réalisations",
     "projects_sub": "Solutions logicielles complètes livrées aux clients – prêtes à être achetées ou personnalisées.",
+    # French project translations (same as your original, but we include all)
     "project_haiti": "🇭🇹 Logiciel de vote en ligne Haïti",
     "project_haiti_desc": "Système électoral présidentiel complet avec support multilingue (créole, français, anglais, espagnol), suivi en direct, tableau de bord du président du CEP (gestion des candidats, téléchargement de photos, rapports de progression), scrutin secret et mots de passe modifiables. Utilisé pour les élections nationales.",
     "project_haiti_full_price": "15 000 $ USD (forfait complet – paiement unique)",
@@ -745,17 +758,15 @@ lang_fr = {
     "project_miroir_desc": "Application de gestion d'entreprise pour les ventes, les cartes de coupe (250 HTG), les transactions Moncash et Natcash, et les rapports CSV quotidiens. Parfait pour les petits entrepreneurs.",
     "project_miroir_full_price": "1 500 $ USD (forfait complet – paiement unique)",
     "project_miroir_status": "✅ Démo en direct disponible | Abonnement mensuel",
-    # NEW: WordPress Development Suite
     "project_wordpress": "📝 Suite de développement WordPress – construite par Gesner Deslandes",
     "project_wordpress_desc": "Un outil de portfolio interactif qui démontre le développement de thèmes/plugins personnalisés, l'optimisation des performances, les meilleures pratiques SEO, le design responsive, la gestion de projet et le dépannage.",
     "project_wordpress_full_price": "2 500 $ USD (forfait complet – paiement unique)",
     "project_wordpress_status": "✅ Démo en direct (n'importe quel nom d'utilisateur/mot de passe) | Abonnement mensuel",
-    # NEW: Building Systems Architect Dashboard
     "project_building_systems": "🏢 Tableau de bord d'architecte de systèmes de bâtiment – construit par Gesner Deslandes",
     "project_building_systems_desc": "Une suite de contrôle MEP et BMS professionnelle démontrant la surveillance BMS en temps réel, les réseaux thermiques (CHW/LTHW), l'infrastructure électrique, le registre d'actifs prêt pour le BIM, le suivi de la décarbonation et les rapports de mise en service.",
     "project_building_systems_full_price": "4 500 $ USD (forfait complet – paiement unique)",
     "project_building_systems_status": "✅ Démo en direct (n'importe quel nom d'utilisateur/mot de passe) | Abonnement mensuel",
-    # UI common keys in French
+    # UI French keys
     "view_demo": "🎬 Voir la démo",
     "live_demo": "🔗 Démo en direct",
     "demo_password_hint": "🔐 Mot de passe démo : 20082010 (ou n'importe quel identifiant/mot de passe sur les nouvelles démos)",
@@ -799,7 +810,7 @@ lang_fr = {
     "western_union_watch_ad": "📺 Regardez notre publicité – Western Union"
 }
 
-# Spanish dictionary (full – all keys translated, including new ones)
+# ---------- SPANISH (full) ----------
 lang_es = {
     "hero_title": "GlobalInternet.py",
     "hero_sub": "Construye con Python. Entrega con velocidad. Innova con IA.",
@@ -840,6 +851,7 @@ lang_es = {
     ],
     "projects_title": "🏆 Nuestros proyectos y logros",
     "projects_sub": "Soluciones de software completas entregadas a los clientes – listas para comprar o personalizar.",
+    # Spanish project translations (full set)
     "project_haiti": "🇭🇹 Software de votación en línea Haití",
     "project_haiti_desc": "Sistema electoral presidencial completo con soporte multilingüe (criollo, francés, inglés, español), monitoreo en vivo, panel del presidente del CEP (gestión de candidatos, carga de fotos, informes de progreso), voto secreto y contraseñas modificables. Utilizado para elecciones nacionales.",
     "project_haiti_full_price": "$15,000 USD (paquete completo – pago único)",
@@ -1012,17 +1024,15 @@ lang_es = {
     "project_miroir_desc": "Aplicación de gestión empresarial para ventas, tarjetas de corte de pelo (250 HTG), transacciones Moncash y Natcash, e informes CSV diarios. Perfecto para pequeños empresarios.",
     "project_miroir_full_price": "$1,500 USD (paquete completo – pago único)",
     "project_miroir_status": "✅ Demo en vivo disponible | Suscripción mensual",
-    # NEW: WordPress Development Suite
     "project_wordpress": "📝 Suite de desarrollo WordPress – construida por Gesner Deslandes",
     "project_wordpress_desc": "Una herramienta de portafolio totalmente interactiva que demuestra el desarrollo de temas/plugins personalizados, optimización de rendimiento, mejores prácticas de SEO, diseño responsivo, gestión de proyectos y resolución de problemas.",
     "project_wordpress_full_price": "$2,500 USD (paquete completo – pago único)",
     "project_wordpress_status": "✅ Demo en vivo (cualquier nombre de usuario/contraseña) | Suscripción mensual",
-    # NEW: Building Systems Architect Dashboard
     "project_building_systems": "🏢 Panel de arquitecto de sistemas de edificios – construido por Gesner Deslandes",
     "project_building_systems_desc": "Una suite profesional de control MEP y BMS que demuestra monitoreo BMS en tiempo real, redes térmicas (CHW/LTHW), infraestructura eléctrica, registro de activos listo para BIM, seguimiento de descarbonización e informes de puesta en marcha.",
     "project_building_systems_full_price": "$4,500 USD (paquete completo – pago único)",
     "project_building_systems_status": "✅ Demo en vivo (cualquier nombre de usuario/contraseña) | Suscripción mensual",
-    # UI common keys in Spanish
+    # UI Spanish keys
     "view_demo": "🎬 Ver demostración",
     "live_demo": "🔗 Demostración en vivo",
     "demo_password_hint": "🔐 Contraseña de demostración: 20082010 (o cualquier nombre de usuario/contraseña en las nuevas demos)",
@@ -1089,13 +1099,13 @@ st.sidebar.markdown("### 📄 My CV")
 st.sidebar.markdown("[📥 Download / View my CV (Python Developer 2026)](https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/Gesner%20Deslandes%20CV%20Python%202026.docx)")
 st.sidebar.markdown("---")
 
-# ---------- LEGAL PAGES (kept short – replace with your full content) ----------
+# ---------- LEGAL PAGES ----------
 with st.sidebar.expander("📜 Privacy Policy"):
-    st.markdown("...")  # paste your full privacy policy here
+    st.markdown("...")
 with st.sidebar.expander("📜 Terms of Service"):
-    st.markdown("...")  # paste your full terms here
+    st.markdown("...")
 with st.sidebar.expander("📜 Disclaimer"):
-    st.markdown("...")  # paste your full disclaimer here
+    st.markdown("...")
 
 st.sidebar.markdown("### 💰 Price")
 st.sidebar.markdown("**$299 USD** (full book – 20 lessons, source code, certificate)")
@@ -1107,13 +1117,9 @@ if st.button("🚪 Logout", use_container_width=True):
     st.session_state.authenticated = False
     st.rerun()
 
-#
-# ---------- MAIN WEBSITE CONTENT ----------
-# (This is kept exactly as it was – no changes needed here from your original working version.)
-# I will now recreate the main content sections (hero, about, avatar, cv, team, robotics video, roadmap, services, projects, ads, donation, contact, footer).
-# Since they are identical to your working file, I will include them in full.
-#
-
+# ----------------------------------------------------------------------
+# MAIN WEBSITE CONTENT (hero, about, avatar, cv, team, robotics, etc.)
+# ----------------------------------------------------------------------
 st.markdown(f"""
 <div class="hero">
     <span class="big-globe">🌐</span>
@@ -1138,7 +1144,6 @@ with col2:
     </div>
     """, unsafe_allow_html=True)
 
-# Gesner talking avatar
 col_left, col_center, col_right = st.columns([1,2,1])
 with col_center:
     video_url = "https://github.com/Deslandes1/Gesner-Deslandes-Avatar/blob/main/avatar_video.mp4.mp4?raw=true"
@@ -1244,7 +1249,7 @@ for i, (title, desc) in enumerate(services):
 st.markdown(f"## {t['projects_title']}")
 st.markdown(f"*{t['projects_sub']}*")
 
-# All project keys (including 4 new + 2 new today)
+# All project keys (including new ones)
 project_keys = [
     "haiti", "dashboard", "chatbot", "school", "pos", "scraper", "chess", "accountant",
     "archives", "dsm", "bi", "ai_classifier", "task_manager", "ray", "cassandra", "spark",
@@ -1252,7 +1257,7 @@ project_keys = [
     "ai_media", "chinese", "french", "mathematics", "ai_course", "medical_term", "python_course", "hardware_course",
     "medical_vocab_book2", "medical_term_book3", "toefl_course", "french_course", "haiti_marketplace", "vectra_ai",
     "humanoid_robot", "hospital", "arbitration", "programming_book", "employee_mgmt", "miroir",
-    "wordpress", "building_systems"      # <-- added new projects
+    "wordpress", "building_systems"
 ]
 
 projects = []
@@ -1298,9 +1303,9 @@ for key in project_keys:
         demo_url = "https://employee-management-software-by-gesner-deslandes-nbg7cuewryjif.streamlit.app/"
     elif key == "miroir":
         demo_url = "https://miroir-revelation-entreprise-de-grand-groave-built-by-gesner-d.streamlit.app/"
-    elif key == "wordpress":                    # <-- NEW
+    elif key == "wordpress":
         demo_url = "https://aczydtm6hucjpvgpdcqomp.streamlit.app/"
-    elif key == "building_systems":             # <-- NEW
+    elif key == "building_systems":
         demo_url = "https://building-systems-architect-dashboard-software-built-by-gesner.streamlit.app/"
     projects.append({
         "title": t.get(f"project_{key}", "Project"),
@@ -1369,7 +1374,7 @@ if group_b:
                     st.markdown(f'<a href="{mailto_link}" target="_blank"><button style="background-color:#28a745; color:white; border:none; border-radius:30px; padding:0.5rem 1rem; width:100%; margin-top:0.5rem; cursor:pointer;">{t["buy_now"]}</button></a>', unsafe_allow_html=True)
                     st.markdown(f"<p style='font-size:0.8rem; margin-top:0.5rem;'>{t['contact_note']}</p>", unsafe_allow_html=True)
 
-# ========== SENDWAVE PROMOTIONAL SECTION ==========
+# ---------- SENDWAVE PROMOTIONAL SECTION ----------
 st.markdown("---")
 st.markdown(f"## {t['sendwave_title']}")
 col_promo, col_video_ad = st.columns([3, 2])
@@ -1407,7 +1412,7 @@ with col_video_ad:
 
 st.markdown("---")
 
-# ========== WESTERN UNION PROMOTIONAL SECTION ==========
+# ---------- WESTERN UNION PROMOTIONAL SECTION ----------
 st.markdown(f"## {t['western_union_title']}")
 col_wu_promo, col_wu_video = st.columns([3, 2])
 with col_wu_promo:
