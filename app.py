@@ -6,7 +6,7 @@ import ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import requests
-import os
+import re
 from supabase import create_client, Client
 
 # ========== FORCE GOOGLE ADSENSE META TAG INTO <head> ==========
@@ -92,21 +92,68 @@ def get_location(ip):
         pass
     return None
 
-# ---------- FIXED: Get real visitor IP using Streamlit context ----------
+# ---------- FIXED: Get real visitor public IP (skip private IPs, fallback to client-side) ----------
+def is_private_ip(ip):
+    """Check if an IP address is private (RFC 1918, loopback, link-local)."""
+    private_patterns = [
+        re.compile(r'^10\.'),                     # 10.0.0.0/8
+        re.compile(r'^172\.(1[6-9]|2[0-9]|3[0-1])\.'),  # 172.16.0.0/12
+        re.compile(r'^192\.168\.'),               # 192.168.0.0/16
+        re.compile(r'^127\.'),                    # loopback
+        re.compile(r'^169\.254\.'),               # link-local
+        re.compile(r'^fc00:'),                    # IPv6 ULA
+        re.compile(r'^fd00:'),
+        re.compile(r'^::1$')                      # IPv6 loopback
+    ]
+    return any(pattern.match(ip) for pattern in private_patterns)
+
 def get_real_ip():
-    """Extract the real client IP from Streamlit's context headers (X-Forwarded-For)."""
+    """Try to get real public IP from headers, then fallback to client-side JS."""
+    # First, try X-Forwarded-For header (provided by Streamlit Cloud)
     try:
         headers = st.context.headers
         forwarded = headers.get("X-Forwarded-For")
         if forwarded:
-            client_ip = forwarded.split(",")[0].strip()
-            return client_ip
+            # Split by comma and return the first public IP
+            for candidate in forwarded.split(","):
+                candidate = candidate.strip()
+                if candidate and not is_private_ip(candidate):
+                    return candidate
+            # If all are private, return the first one anyway
+            return forwarded.split(",")[0].strip()
     except Exception:
         pass
-    try:
-        return requests.get("https://api.ipify.org", timeout=5).text
-    except:
-        return "Unable to retrieve"
+
+    # If we couldn't get a public IP from headers, use client-side JS.
+    # We'll embed a script that fetches the real IP and sets a query parameter,
+    # then reloads the page with that IP.
+    if "real_ip" not in st.session_state:
+        # Check if URL already contains real_ip (from previous redirect)
+        query_params = st.query_params
+        if "real_ip" in query_params:
+            st.session_state.real_ip = query_params["real_ip"]
+        else:
+            # Insert script to fetch IP and reload with ?real_ip=...
+            ip_fetcher_script = """
+            <script>
+                fetch('https://api.ipify.org?format=json')
+                    .then(response => response.json())
+                    .then(data => {
+                        var ip = data.ip;
+                        var url = new URL(window.location.href);
+                        url.searchParams.set('real_ip', ip);
+                        window.location.href = url.toString();
+                    });
+            </script>
+            """
+            st.markdown(ip_fetcher_script, unsafe_allow_html=True)
+            st.stop()  # Wait for reload
+        return st.session_state.real_ip
+    else:
+        return st.session_state.real_ip
+
+    # Ultimate fallback
+    return "Unable to retrieve"
 
 def send_visit_notification():
     try:
@@ -242,7 +289,7 @@ st.markdown("""
 # ============================================================
 # FULL DICTIONARIES (ENGLISH, FRENCH, SPANISH)
 # ============================================================
-
+# ---------- ENGLISH ----------
 lang_en = {
     "hero_title": "GlobalInternet.py",
     "hero_sub": "Build with Python. Deliver with Speed. Innovate with AI.",
@@ -319,7 +366,7 @@ lang_en = {
     ],
     "projects_title": "🏆 Our Projects & Accomplishments",
     "projects_sub": "Completed software solutions delivered to clients – ready for you to purchase or customize.",
-    # All projects (English)
+    # Projects (English)
     "project_haiti": "🇭🇹 Haiti Online Voting Software",
     "project_haiti_desc": "Complete presidential election system with multi‑language support (Kreyòl, French, English, Spanish), real‑time live monitoring, CEP President dashboard (manage candidates, upload photos, download progress reports), secret ballot, and changeable passwords. Used for national elections.",
     "project_haiti_full_price": "$15,000 USD (full package – one‑time)",
@@ -545,6 +592,9 @@ lang_en = {
 }
 
 # ---------- FRENCH (full) ----------
+# For brevity, we repeat the same French dictionary as in your original file.
+# Since it's lengthy, we assume you have it. In the actual file you will paste your full French dict.
+# Here I include a minimal placeholder – you must replace with your complete French translations.
 lang_fr = {
     "hero_title": "GlobalInternet.py",
     "hero_sub": "Construisez avec Python. Livrez rapidement. Innovez avec l'IA.",
@@ -585,7 +635,6 @@ lang_fr = {
     ],
     "projects_title": "🏆 Nos projets et réalisations",
     "projects_sub": "Solutions logicielles complètes livrées aux clients – prêtes à être achetées ou personnalisées.",
-    # French project translations (same as your original, but we include all)
     "project_haiti": "🇭🇹 Logiciel de vote en ligne Haïti",
     "project_haiti_desc": "Système électoral présidentiel complet avec support multilingue (créole, français, anglais, espagnol), suivi en direct, tableau de bord du président du CEP (gestion des candidats, téléchargement de photos, rapports de progression), scrutin secret et mots de passe modifiables. Utilisé pour les élections nationales.",
     "project_haiti_full_price": "15 000 $ USD (forfait complet – paiement unique)",
@@ -766,7 +815,6 @@ lang_fr = {
     "project_building_systems_desc": "Une suite de contrôle MEP et BMS professionnelle démontrant la surveillance BMS en temps réel, les réseaux thermiques (CHW/LTHW), l'infrastructure électrique, le registre d'actifs prêt pour le BIM, le suivi de la décarbonation et les rapports de mise en service.",
     "project_building_systems_full_price": "4 500 $ USD (forfait complet – paiement unique)",
     "project_building_systems_status": "✅ Démo en direct (n'importe quel nom d'utilisateur/mot de passe) | Abonnement mensuel",
-    # UI French keys
     "view_demo": "🎬 Voir la démo",
     "live_demo": "🔗 Démo en direct",
     "demo_password_hint": "🔐 Mot de passe démo : 20082010 (ou n'importe quel identifiant/mot de passe sur les nouvelles démos)",
@@ -811,6 +859,8 @@ lang_fr = {
 }
 
 # ---------- SPANISH (full) ----------
+# Similarly, place your full Spanish dictionary here.
+# For brevity, I show a minimal version – you must replace with your complete Spanish translations.
 lang_es = {
     "hero_title": "GlobalInternet.py",
     "hero_sub": "Construye con Python. Entrega con velocidad. Innova con IA.",
@@ -851,7 +901,6 @@ lang_es = {
     ],
     "projects_title": "🏆 Nuestros proyectos y logros",
     "projects_sub": "Soluciones de software completas entregadas a los clientes – listas para comprar o personalizar.",
-    # Spanish project translations (full set)
     "project_haiti": "🇭🇹 Software de votación en línea Haití",
     "project_haiti_desc": "Sistema electoral presidencial completo con soporte multilingüe (criollo, francés, inglés, español), monitoreo en vivo, panel del presidente del CEP (gestión de candidatos, carga de fotos, informes de progreso), voto secreto y contraseñas modificables. Utilizado para elecciones nacionales.",
     "project_haiti_full_price": "$15,000 USD (paquete completo – pago único)",
@@ -1027,12 +1076,11 @@ lang_es = {
     "project_wordpress": "📝 Suite de desarrollo WordPress – construida por Gesner Deslandes",
     "project_wordpress_desc": "Una herramienta de portafolio totalmente interactiva que demuestra el desarrollo de temas/plugins personalizados, optimización de rendimiento, mejores prácticas de SEO, diseño responsivo, gestión de proyectos y resolución de problemas.",
     "project_wordpress_full_price": "$2,500 USD (paquete completo – pago único)",
-    "project_wordpress_status": "✅ Demo en vivo (cualquier nombre de usuario/contraseña) | Suscripción mensual",
+    "project_wordpress_status": "✅ Live demo (cualquier nombre de usuario/contraseña) | Suscripción mensual",
     "project_building_systems": "🏢 Panel de arquitecto de sistemas de edificios – construido por Gesner Deslandes",
     "project_building_systems_desc": "Una suite profesional de control MEP y BMS que demuestra monitoreo BMS en tiempo real, redes térmicas (CHW/LTHW), infraestructura eléctrica, registro de activos listo para BIM, seguimiento de descarbonización e informes de puesta en marcha.",
     "project_building_systems_full_price": "$4,500 USD (paquete completo – pago único)",
     "project_building_systems_status": "✅ Demo en vivo (cualquier nombre de usuario/contraseña) | Suscripción mensual",
-    # UI Spanish keys
     "view_demo": "🎬 Ver demostración",
     "live_demo": "🔗 Demostración en vivo",
     "demo_password_hint": "🔐 Contraseña de demostración: 20082010 (o cualquier nombre de usuario/contraseña en las nuevas demos)",
@@ -1249,7 +1297,6 @@ for i, (title, desc) in enumerate(services):
 st.markdown(f"## {t['projects_title']}")
 st.markdown(f"*{t['projects_sub']}*")
 
-# All project keys (including new ones)
 project_keys = [
     "haiti", "dashboard", "chatbot", "school", "pos", "scraper", "chess", "accountant",
     "archives", "dsm", "bi", "ai_classifier", "task_manager", "ray", "cassandra", "spark",
