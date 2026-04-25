@@ -305,7 +305,7 @@ lang_en = {
     ],
     "projects_title": "🏆 Our Projects & Accomplishments",
     "projects_sub": "Completed software solutions delivered to clients – ready for you to purchase or customize.",
-    # ----- Projects (English) - existing + 4 new -----
+    # ----- Projects (English) - existing + 4 new + 2 new today -----
     "project_haiti": "🇭🇹 Haiti Online Voting Software",
     "project_haiti_desc": "Complete presidential election system with multi‑language support (Kreyòl, French, English, Spanish), real‑time live monitoring, CEP President dashboard (manage candidates, upload photos, download progress reports), secret ballot, and changeable passwords. Used for national elections.",
     "project_haiti_full_price": "$15,000 USD (full package – one‑time)",
@@ -462,7 +462,6 @@ lang_en = {
     "project_hospital_desc": "Complete multi‑specialty hospital management platform. Includes EMR/EHR, OPD/IPD workflows, billing & revenue cycle management, pharmacy, laboratory, radiology integration, inventory & financial management, role‑based dashboards, and enterprise reporting. HL7 & FHIR ready. Cloud or on‑premise. Trusted for mid‑size to national tertiary centers.",
     "project_hospital_full_price": "$35,000 USD (full package – one‑time)",
     "project_hospital_status": "✅ Live demo available | Subscribe monthly",
-    # ----- NEW: 4 projects -----
     "project_arbitration": "⚖️ Develop your arbitration skills With Gesner",
     "project_arbitration_desc": "Executive course – 20 lessons, guest practitioners, interactive learning, audio support, and illustrative images. Covers international arbitration from agreements to enforcement, ethics, and future trends.",
     "project_arbitration_full_price": "$1,200 USD (full package – one‑time)",
@@ -479,6 +478,16 @@ lang_en = {
     "project_miroir_desc": "Business management app for sales, haircut cards (250 HTG), Moncash & Natcash transactions, and daily CSV reports. Perfect for small business owners.",
     "project_miroir_full_price": "$1,500 USD (full package – one‑time)",
     "project_miroir_status": "✅ Live demo available | Subscribe monthly",
+    # NEW: WordPress Development Suite
+    "project_wordpress": "📝 WordPress Development Suite – built by Gesner Deslandes",
+    "project_wordpress_desc": "A fully interactive portfolio tool that proves custom theme/plugin development, performance optimization, SEO best practices, responsive design, project management, and troubleshooting.",
+    "project_wordpress_full_price": "Contact for pricing",
+    "project_wordpress_status": "✅ Live demo available | Subscribe monthly",
+    # NEW: Building Systems Architect Dashboard
+    "project_building_systems": "🏢 Building Systems Architect Dashboard – built by Gesner Deslandes",
+    "project_building_systems_desc": "A professional MEP & BMS control suite demonstrating real‑time BMS monitoring, thermal networks (CHW/LTHW), electrical infrastructure, BIM‑ready asset register, decarbonisation tracking, and commissioning reports.",
+    "project_building_systems_full_price": "Contact for pricing",
+    "project_building_systems_status": "✅ Live demo available | Subscribe monthly",
     # UI common keys
     "view_demo": "🎬 View Demo",
     "live_demo": "🔗 Live Demo",
@@ -564,7 +573,6 @@ lang_fr = {
     ],
     "projects_title": "🏆 Nos projets et réalisations",
     "projects_sub": "Solutions logicielles complètes livrées aux clients – prêtes à être achetées ou personnalisées.",
-    # French translations for all projects (only new ones shown here; keep existing ones from your original file)
     "project_haiti": "🇭🇹 Logiciel de vote en ligne Haïti",
     "project_haiti_desc": "Système électoral présidentiel complet avec support multilingue (créole, français, anglais, espagnol), suivi en direct, tableau de bord du président du CEP (gestion des candidats, téléchargement de photos, rapports de progression), scrutin secret et mots de passe modifiables. Utilisé pour les élections nationales.",
     "project_haiti_full_price": "15 000 $ USD (forfait complet – paiement unique)",
@@ -721,7 +729,6 @@ lang_fr = {
     "project_hospital_desc": "Plateforme complète multi‑spécialités pour hôpitaux. Comprend DME/EHR, flux OPD/IPD, facturation et gestion du cycle de revenus, intégration pharmacie, laboratoire, radiologie, gestion des stocks et finances, tableaux de bord par rôle et rapports d’entreprise. Interopérabilité HL7 & FHIR. Cloud ou sur site. Pour établissements de taille moyenne jusqu’aux centres tertiaires nationaux.",
     "project_hospital_full_price": "35 000 $ USD (forfait complet – paiement unique)",
     "project_hospital_status": "✅ Démo en direct disponible | Abonnement mensuel",
-    # New projects in French
     "project_arbitration": "⚖️ Développez vos compétences en arbitrage avec Gesner",
     "project_arbitration_desc": "Cours exécutif – 20 leçons, intervenants invités, apprentissage interactif, support audio et images. Couvre l'arbitrage international, de la convention à l'exécution, en passant par l'éthique et les tendances futures.",
     "project_arbitration_full_price": "1 200 $ USD (forfait complet – paiement unique)",
@@ -738,6 +745,16 @@ lang_fr = {
     "project_miroir_desc": "Application de gestion d'entreprise pour les ventes, les cartes de coupe (250 HTG), les transactions Moncash et Natcash, et les rapports CSV quotidiens. Parfait pour les petits entrepreneurs.",
     "project_miroir_full_price": "1 500 $ USD (forfait complet – paiement unique)",
     "project_miroir_status": "✅ Démo en direct disponible | Abonnement mensuel",
+    # NEW: WordPress Development Suite
+    "project_wordpress": "📝 Suite de développement WordPress – construite par Gesner Deslandes",
+    "project_wordpress_desc": "Un outil de portfolio interactif qui démontre le développement de thèmes/plugins personnalisés, l'optimisation des performances, les meilleures pratiques SEO, le design responsive, la gestion de projet et le dépannage.",
+    "project_wordpress_full_price": "Contactez-nous pour le prix",
+    "project_wordpress_status": "✅ Démo en direct disponible | Abonnement mensuel",
+    # NEW: Building Systems Architect Dashboard
+    "project_building_systems": "🏢 Tableau de bord d'architecte de systèmes de bâtiment – construit par Gesner Deslandes",
+    "project_building_systems_desc": "Une suite de contrôle MEP et BMS professionnelle démontrant la surveillance BMS en temps réel, les réseaux thermiques (CHW/LTHW), l'infrastructure électrique, le registre d'actifs prêt pour le BIM, le suivi de la décarbonation et les rapports de mise en service.",
+    "project_building_systems_full_price": "Contactez-nous pour le prix",
+    "project_building_systems_status": "✅ Démo en direct disponible | Abonnement mensuel",
     # UI common keys in French
     "view_demo": "🎬 Voir la démo",
     "live_demo": "🔗 Démo en direct",
@@ -823,7 +840,6 @@ lang_es = {
     ],
     "projects_title": "🏆 Nuestros proyectos y logros",
     "projects_sub": "Soluciones de software completas entregadas a los clientes – listas para comprar o personalizar.",
-    # Spanish translations for all projects (only new ones shown here; keep existing ones from your original file)
     "project_haiti": "🇭🇹 Software de votación en línea Haití",
     "project_haiti_desc": "Sistema electoral presidencial completo con soporte multilingüe (criollo, francés, inglés, español), monitoreo en vivo, panel del presidente del CEP (gestión de candidatos, carga de fotos, informes de progreso), voto secreto y contraseñas modificables. Utilizado para elecciones nacionales.",
     "project_haiti_full_price": "$15,000 USD (paquete completo – pago único)",
@@ -980,7 +996,6 @@ lang_es = {
     "project_hospital_desc": "Plataforma hospitalaria completa multi‑especialidad. Incluye DME/EHR, flujos OPD/IPD, facturación y gestión del ciclo de ingresos, integración con farmacia, laboratorio, radiología, gestión de inventario y finanzas, paneles por rol e informes empresariales. Preparado para HL7 y FHIR. Nube o instalación local. Para centros de tamaño medio hasta centros terciarios nacionales.",
     "project_hospital_full_price": "$35,000 USD (paquete completo – pago único)",
     "project_hospital_status": "✅ Demo en vivo disponible | Suscripción mensual",
-    # New projects in Spanish
     "project_arbitration": "⚖️ Desarrolle sus habilidades de arbitraje con Gesner",
     "project_arbitration_desc": "Curso ejecutivo – 20 lecciones, profesionales invitados, aprendizaje interactivo, soporte de audio e imágenes. Cubre el arbitraje internacional desde el acuerdo hasta la ejecución, pasando por la ética y las tendencias futuras.",
     "project_arbitration_full_price": "$1,200 USD (paquete completo – pago único)",
@@ -997,6 +1012,16 @@ lang_es = {
     "project_miroir_desc": "Aplicación de gestión empresarial para ventas, tarjetas de corte de pelo (250 HTG), transacciones Moncash y Natcash, e informes CSV diarios. Perfecto para pequeños empresarios.",
     "project_miroir_full_price": "$1,500 USD (paquete completo – pago único)",
     "project_miroir_status": "✅ Demo en vivo disponible | Suscripción mensual",
+    # NEW: WordPress Development Suite
+    "project_wordpress": "📝 Suite de desarrollo WordPress – construida por Gesner Deslandes",
+    "project_wordpress_desc": "Una herramienta de portafolio totalmente interactiva que demuestra el desarrollo de temas/plugins personalizados, optimización de rendimiento, mejores prácticas de SEO, diseño responsivo, gestión de proyectos y resolución de problemas.",
+    "project_wordpress_full_price": "Contacte para precios",
+    "project_wordpress_status": "✅ Demo en vivo disponible | Suscripción mensual",
+    # NEW: Building Systems Architect Dashboard
+    "project_building_systems": "🏢 Panel de arquitecto de sistemas de edificios – construido por Gesner Deslandes",
+    "project_building_systems_desc": "Una suite profesional de control MEP y BMS que demuestra monitoreo BMS en tiempo real, redes térmicas (CHW/LTHW), infraestructura eléctrica, registro de activos listo para BIM, seguimiento de descarbonización e informes de puesta en marcha.",
+    "project_building_systems_full_price": "Contacte para precios",
+    "project_building_systems_status": "✅ Demo en vivo disponible | Suscripción mensual",
     # UI common keys in Spanish
     "view_demo": "🎬 Ver demostración",
     "live_demo": "🔗 Demostración en vivo",
@@ -1219,14 +1244,15 @@ for i, (title, desc) in enumerate(services):
 st.markdown(f"## {t['projects_title']}")
 st.markdown(f"*{t['projects_sub']}*")
 
-# All project keys (including 4 new)
+# All project keys (including 4 new + 2 new today)
 project_keys = [
     "haiti", "dashboard", "chatbot", "school", "pos", "scraper", "chess", "accountant",
     "archives", "dsm", "bi", "ai_classifier", "task_manager", "ray", "cassandra", "spark",
     "drone", "english", "spanish", "portuguese", "ai_career", "ai_medical", "music_studio",
     "ai_media", "chinese", "french", "mathematics", "ai_course", "medical_term", "python_course", "hardware_course",
     "medical_vocab_book2", "medical_term_book3", "toefl_course", "french_course", "haiti_marketplace", "vectra_ai",
-    "humanoid_robot", "hospital", "arbitration", "programming_book", "employee_mgmt", "miroir"
+    "humanoid_robot", "hospital", "arbitration", "programming_book", "employee_mgmt", "miroir",
+    "wordpress", "building_systems"      # <-- added new projects
 ]
 
 projects = []
@@ -1264,7 +1290,6 @@ for key in project_keys:
         demo_url = "https://vectra-ai-built-by-gesner-deslandes-dnkhqd57z6vkmiuezujcqu.streamlit.app/"
     elif key == "hospital":
         demo_url = "https://hospital-management-system-software-built-by-gesner-deslandes.streamlit.app/"
-    # New demos
     elif key == "arbitration":
         demo_url = "https://develop-your-arbitration-skills-with-gesner-sskvqnmurdk4cuwpr7.streamlit.app/"
     elif key == "programming_book":
@@ -1273,6 +1298,10 @@ for key in project_keys:
         demo_url = "https://employee-management-software-by-gesner-deslandes-nbg7cuewryjif.streamlit.app/"
     elif key == "miroir":
         demo_url = "https://miroir-revelation-entreprise-de-grand-groave-built-by-gesner-d.streamlit.app/"
+    elif key == "wordpress":                    # <-- NEW
+        demo_url = "https://aczydtm6hucjpvgpdcqomp.streamlit.app/"
+    elif key == "building_systems":             # <-- NEW
+        demo_url = "https://building-systems-architect-dashboard-software-built-by-gesner.streamlit.app/"
     projects.append({
         "title": t.get(f"project_{key}", "Project"),
         "desc": t.get(f"project_{key}_desc", "Description not available"),
@@ -1339,11 +1368,6 @@ if group_b:
                     mailto_link = f"mailto:deslandes78@gmail.com?subject={subject}&body={body}"
                     st.markdown(f'<a href="{mailto_link}" target="_blank"><button style="background-color:#28a745; color:white; border:none; border-radius:30px; padding:0.5rem 1rem; width:100%; margin-top:0.5rem; cursor:pointer;">{t["buy_now"]}</button></a>', unsafe_allow_html=True)
                     st.markdown(f"<p style='font-size:0.8rem; margin-top:0.5rem;'>{t['contact_note']}</p>", unsafe_allow_html=True)
-
-# ---------- Comment section ----------
-# (We need to keep your original comment loop for each project. I will include a minimal version here.
-# In your actual file, you already have it; I will not repeat it for brevity but you must keep it.
-# It is safe to copy the comment section from your current working app.py.)
 
 # ========== SENDWAVE PROMOTIONAL SECTION ==========
 st.markdown("---")
