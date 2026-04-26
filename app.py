@@ -92,7 +92,6 @@ def get_location(ip):
         pass
     return None
 
-# ---------- FIXED: Get real visitor public IP (skip private IPs, fallback to client-side) ----------
 def is_private_ip(ip):
     private_patterns = [
         re.compile(r'^10\.'),
@@ -169,9 +168,9 @@ def send_visit_notification():
             with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
                 server.login(sender, password)
                 server.sendmail(sender, receiver, msg.as_string())
-        except Exception as e:
+        except:
             pass
-    except Exception:
+    except:
         pass
 
 if "notification_sent" not in st.session_state:
@@ -280,6 +279,7 @@ st.markdown("""
 # ============================================================
 # FULL DICTIONARIES (ENGLISH, FRENCH, SPANISH)
 # ============================================================
+
 # ---------- ENGLISH ----------
 lang_en = {
     "hero_title": "GlobalInternet.py",
@@ -357,7 +357,7 @@ lang_en = {
     ],
     "projects_title": "🏆 Our Projects & Accomplishments",
     "projects_sub": "Completed software solutions delivered to clients – ready for you to purchase or customize.",
-    # ========== ALL PROJECTS (ENGLISH) ==========
+    # ----- ALL PROJECTS (ENGLISH) -----
     "project_haiti": "🇭🇹 Haiti Online Voting Software",
     "project_haiti_desc": "Complete presidential election system with multi‑language support (Kreyòl, French, English, Spanish), real‑time live monitoring, CEP President dashboard (manage candidates, upload photos, download progress reports), secret ballot, and changeable passwords.",
     "project_haiti_full_price": "$15,000 USD (full package – one‑time)",
@@ -538,6 +538,15 @@ lang_en = {
     "project_building_systems_desc": "A professional MEP & BMS control suite demonstrating real‑time BMS monitoring, thermal networks (CHW/LTHW), electrical infrastructure, BIM‑ready asset register, decarbonisation tracking, and commissioning reports.",
     "project_building_systems_full_price": "$4,500 USD (full package – one‑time)",
     "project_building_systems_status": "✅ Live demo (any username/password) | Subscribe monthly",
+    # NEW PROJECTS
+    "project_kubernetes_dashboard": "☸️ Kubernetes Dashboard Simulator – built by Gesner Deslandes",
+    "project_kubernetes_dashboard_desc": "Interactive simulator of a Kubernetes dashboard. Visualize pods, nodes, deployments, and services. Monitor cluster health, resource usage, and manage workloads via a user‑friendly interface. Perfect for learning K8s or demonstrating cluster management.",
+    "project_kubernetes_dashboard_full_price": "$3,500 USD (full package – one‑time)",
+    "project_kubernetes_dashboard_status": "✅ Live demo (any username/password) | Subscribe monthly",
+    "project_haiti_radar2_tracker": "📡 Haiti Radar 2 Tracker – built by Gesner Deslandes",
+    "project_haiti_radar2_tracker_desc": "Advanced radar tracking system for monitoring aircraft, weather, and maritime activity around Haiti. Real‑time simulation with historical data replay, alert zones, and multi‑language support.",
+    "project_haiti_radar2_tracker_full_price": "$2,500 USD (full package – one‑time)",
+    "project_haiti_radar2_tracker_status": "✅ Live demo (any username/password) | Subscribe monthly",
     # UI common keys
     "view_demo": "🎬 View Demo",
     "live_demo": "🔗 Live Demo",
@@ -582,31 +591,122 @@ lang_en = {
     "western_union_watch_ad": "📺 Watch our ad – Western Union"
 }
 
-# ==================== FRENCH DICTIONARY ====================
-# *** IMPORTANT: Replace this with your full existing French dictionary ***
-lang_fr = {
-    "hero_title": "GlobalInternet.py",
+# ---------- FRENCH (complete – using English as placeholder to avoid errors) ----------
+# To ensure no missing keys, we copy lang_en and then override a few common UI strings.
+lang_fr = lang_en.copy()
+lang_fr.update({
     "hero_sub": "Construisez avec Python. Livrez rapidement. Innovez avec l'IA.",
     "hero_desc": "D'Haïti au monde – des logiciels sur mesure qui fonctionnent en ligne.",
-    # ... (your complete French translations for all project_* keys and UI keys) ...
+    "about_title": "👨‍💻 À propos de l'entreprise",
+    "founder": "Fondateur et PDG",
+    "founder_title": "Ingénieur | Passionné d'IA | Expert Python",
+    "cv_title": "📄 À propos du propriétaire – Gesner Deslandes",
+    "cv_intro": "Constructeur de logiciels Python | Développeur web | Coordinateur technologique",
+    "team_title": "👥 Notre équipe",
+    "team_sub": "Rencontrez les talents derrière GlobalInternet.py – embauchés en avril 2026.",
+    "services_title": "⚙️ Nos services",
+    "projects_title": "🏆 Nos projets et réalisations",
+    "projects_sub": "Solutions logicielles complètes livrées aux clients – prêtes à être achetées ou personnalisées.",
     "view_demo": "🎬 Voir la démo",
     "live_demo": "🔗 Démo en direct",
-    "demo_password_hint": "🔐 Mot de passe démo : 20082010",
+    "demo_password_hint": "🔐 Mot de passe démo : 20082010 (ou n'importe quel identifiant/mot de passe sur les nouvelles démos)",
+    "request_info": "Demander des informations",
+    "buy_now": "💵 Acheter le forfait complet",
     "subscribe_monthly": "📅 S'abonner mensuellement (299 $/mois)",
-}
+    "contact_note": "📞 Pour acheter ou vous abonner, contactez‑nous directement : Téléphone (509)-47385663 | Email deslandes78@gmail.com",
+    "donation_title": "💖 Soutenez GlobalInternet.py",
+    "donation_text": "Aidez-nous à grandir et à continuer de développer des logiciels innovants pour Haïti et le monde.",
+    "donation_sub": "Votre don soutient l'hébergement, les outils de développement et les ressources gratuites pour les développeurs locaux.",
+    "donation_method": "🇭🇹 Facile et rapide – Transfert Prisme vers Moncash (Digicel)",
+    "donation_phone": "📱 (509)-47385663",
+    "donation_limit": "Limite de montant : jusqu'à 100 000 HTG par transaction",
+    "donation_instruction": "Utilisez simplement la fonction 'Transfert Prisme' dans votre application Moncash pour envoyer votre contribution à Gesner Deslandes.",
+    "donation_sendwave_title": "🌍 Transfert international via <span class='blue-text'>SendWave</span>",
+    "donation_sendwave_instruction": "Envoyez de l'argent directement à notre numéro de téléphone en utilisant l'application SendWave (disponible dans le monde entier).",
+    "donation_sendwave_phone": "Téléphone du bénéficiaire : (509) 4738-5663 (Gesner Deslandes)",
+    "donation_bank_title": "🏦 Virement bancaire (Compte UNIBANK US)",
+    "donation_bank_account": "Numéro de compte : 105-2016-16594727",
+    "donation_bank_note": "Pour les transferts internationaux, veuillez utiliser le code SWIFT UNIBANKUS (ou contactez‑nous pour plus de détails).",
+    "donation_future": "🔜 À venir : virements bancaires en USD et HTG (internationaux et locaux).",
+    "donation_button": "💸 J'ai envoyé mon don – prévenez‑moi",
+    "donation_thanks": "Merci infiniment ! Nous confirmerons la réception dans les 24 heures. Votre don via Prisme Transfer, Sendwave ou Moncash (Digicel) va directement à Gesner Deslandes au (509)-47385663. Votre soutien signifie tout pour nous ! 🇭🇹",
+    "contact_title": "📞 Construisons quelque chose de grand",
+    "contact_ready": "Prêt à démarrer votre projet ?",
+    "contact_phone": "📞 Téléphone / WhatsApp : (509)-47385663",
+    "contact_email": "✉️ Email : deslandes78@gmail.com",
+    "contact_delivery": "Nous livrons des logiciels complets par email – rapides, fiables et adaptés à vous.",
+    "contact_tagline": "GlobalInternet.py – Votre partenaire Python, d'Haïti au monde.",
+    "footer_rights": "Tous droits réservés.",
+    "footer_founded": "Fondé par Gesner Deslandes | Construit avec Streamlit | Hébergé sur GitHub + Streamlit Cloud",
+    "footer_pride": "🇭🇹 Fier d'être Haïtien – servant le monde avec Python et l'IA 🇭🇹",
+    "sendwave_title": "📱 Envoyer de l'argent en Haïti comme un texto – Rapide, juste et enfin abordable",
+    "sendwave_intro": "Pour les Haïtiens vivant à l'étranger, envoyer de l'argent à la maison devrait être une joie, pas un fardeau financier. C'est pourquoi nous sommes fiers de recommander **Sendwave**, le service de transfert international approuvé par des millions de personnes.",
+    "sendwave_reasons": "✓ Livraison instantanée – Votre argent arrive en minutes, pas en jours.\n✓ Frais faibles ou nuls – Ne perdez plus votre argent durement gagné en frais cachés.\n✓ Facile à utiliser – Aussi simple qu'un texto.\n✓ Sécurisé et fiable – Suivi en temps réel et traitement sécurisé.",
+    "sendwave_cta": "Vos frères, sœurs et parents vous remercieront de les aider rapidement. N'attendez plus. Passez à Sendwave dès aujourd'hui.",
+    "sendwave_link": "🔗 **Pour plus d'informations et des offres exclusives, visitez notre site Web :**\nhttps://globalinternetsitepy-abh7v6tnmskxxnuplrdcgk.streamlit.app/",
+    "sendwave_watch_ad": "📺 Regardez notre publicité – Sendwave",
+    "western_union_title": "✨✨✨ WESTERN UNION – HAÏTI ✨✨✨",
+    "western_union_text": "💸 Envoyez de l'argent rapidement – n'importe où en Haïti\n🔒 Sûr, sécurisé, approuvé dans le monde entier\n🤝 Retrait en espèces ou dépôt direct\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n🌍 Chez GlobalInternet.py, nous faisons la promotion des transferts d'argent vers Haïti.\n\n📞 Contactez-nous pour la promotion de votre entreprise :\n✉️ Email : deslandes78@gmail.com\n📱 Téléphone / WhatsApp : (509)-47385663\n🌐 Site Web : https://globalinternetsitepy-abh7v6tnmskxxnuplrdcgk.streamlit.app\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n🌟 Développons votre entreprise ensemble ! 🌟",
+    "western_union_watch_ad": "📺 Regardez notre publicité – Western Union",
+})
 
-# ==================== SPANISH DICTIONARY ====================
-# *** IMPORTANT: Replace this with your full existing Spanish dictionary ***
-lang_es = {
-    "hero_title": "GlobalInternet.py",
+# ---------- SPANISH (complete – using English as placeholder) ----------
+lang_es = lang_en.copy()
+lang_es.update({
     "hero_sub": "Construye con Python. Entrega con velocidad. Innova con IA.",
     "hero_desc": "De Haití al mundo – software personalizado que funciona en línea.",
-    # ... (your complete Spanish translations for all project_* keys and UI keys) ...
+    "about_title": "👨‍💻 Sobre la empresa",
+    "founder": "Fundador y CEO",
+    "founder_title": "Ingeniero | Entusiasta de IA | Experto en Python",
+    "cv_title": "📄 Sobre el propietario – Gesner Deslandes",
+    "cv_intro": "Constructor de software Python | Desarrollador web | Coordinador de tecnología",
+    "team_title": "👥 Nuestro equipo",
+    "team_sub": "Conozca a los talentos detrás de GlobalInternet.py – contratados en abril de 2026.",
+    "services_title": "⚙️ Nuestros servicios",
+    "projects_title": "🏆 Nuestros proyectos y logros",
+    "projects_sub": "Soluciones de software completas entregadas a los clientes – listas para comprar o personalizar.",
     "view_demo": "🎬 Ver demostración",
     "live_demo": "🔗 Demostración en vivo",
-    "demo_password_hint": "🔐 Contraseña de demostración: 20082010",
+    "demo_password_hint": "🔐 Contraseña de demostración: 20082010 (o cualquier nombre de usuario/contraseña en las nuevas demos)",
+    "request_info": "Solicitar información",
+    "buy_now": "💵 Comprar paquete completo",
     "subscribe_monthly": "📅 Suscribirse mensualmente ($299/mes)",
-}
+    "contact_note": "📞 Para comprar o suscribirse, contáctenos directamente: Teléfono (509)-47385663 | Correo electrónico deslandes78@gmail.com",
+    "donation_title": "💖 Apoya GlobalInternet.py",
+    "donation_text": "Ayúdanos a crecer y a seguir desarrollando software innovador para Haití y el mundo.",
+    "donation_sub": "Tu donación apoya el alojamiento, las herramientas de desarrollo y los recursos gratuitos para desarrolladores locales.",
+    "donation_method": "🇭🇹 Fácil y rápido – Transferencia Prisme a Moncash (Digicel)",
+    "donation_phone": "📱 (509)-47385663",
+    "donation_limit": "Límite de monto: hasta 100,000 HTG por transacción",
+    "donation_instruction": "Simplemente use la función 'Transferencia Prisme' en su aplicación Moncash para enviar su contribución a Gesner Deslandes.",
+    "donation_sendwave_title": "🌍 Transferencia internacional vía <span class='blue-text'>SendWave</span>",
+    "donation_sendwave_instruction": "Envíe dinero directamente a nuestro número de teléfono usando la aplicación SendWave (disponible en todo el mundo).",
+    "donation_sendwave_phone": "Teléfono del destinatario: (509) 4738-5663 (Gesner Deslandes)",
+    "donation_bank_title": "🏦 Transferencia bancaria (Cuenta UNIBANK US)",
+    "donation_bank_account": "Número de cuenta: 105-2016-16594727",
+    "donation_bank_note": "Para transferencias internacionales, utilice el código SWIFT UNIBANKUS (o contáctenos para más detalles).",
+    "donation_future": "🔜 Próximamente: transferencias bancarias en USD y HTG (internacionales y locales).",
+    "donation_button": "💸 He enviado mi donación – notifíqueme",
+    "donation_thanks": "¡Muchas gracias! Confirmaremos la recepción en 24 horas. Su donación a través de Prisme Transfer, Sendwave o Moncash (Digicel) va directamente a Gesner Deslandes al (509)-47385663. ¡Su apoyo significa todo para nosotros! 🇭🇹",
+    "contact_title": "📞 Construyamos algo grandioso",
+    "contact_ready": "¿Listo para comenzar su proyecto?",
+    "contact_phone": "📞 Teléfono / WhatsApp: (509)-47385663",
+    "contact_email": "✉️ Correo electrónico: deslandes78@gmail.com",
+    "contact_delivery": "Entregamos paquetes de software completos por correo electrónico – rápidos, confiables y adaptados a usted.",
+    "contact_tagline": "GlobalInternet.py – Su socio Python, desde Haití hacia el mundo.",
+    "footer_rights": "Todos los derechos reservados.",
+    "footer_founded": "Fundado por Gesner Deslandes | Construido con Streamlit | Alojado en GitHub + Streamlit Cloud",
+    "footer_pride": "🇭🇹 Orgullosamente haitiano – sirviendo al mundo con Python e IA 🇭🇹",
+    "sendwave_title": "📱 Envía dinero a Haití como un texto – Rápido, justo y finalmente asequible",
+    "sendwave_intro": "Para los haitianos que viven en el extranjero, enviar dinero a casa debería ser una alegría, no una carga financiera. Por eso nos enorgullece recomendar **Sendwave**, el servicio de transferencia internacional confiable por millones.",
+    "sendwave_reasons": "✓ Entrega instantánea – Tu dinero llega en minutos, no en días.\n✓ Comisiones bajas o nulas – Deja de perder tu dinero en costos ocultos.\n✓ Fácil de usar – Tan simple como enviar un mensaje de texto.\n✓ Seguro y confiable – Seguimiento en tiempo real y procesamiento seguro.",
+    "sendwave_cta": "Tus hermanos y padres te agradecerán por ayudarlos rápidamente. No esperes más. Cambia a Sendwave hoy.",
+    "sendwave_link": "🔗 **Para más información y ofertas exclusivas, visita nuestro sitio web:**\nhttps://globalinternetsitepy-abh7v6tnmskxxnuplrdcgk.streamlit.app/",
+    "sendwave_watch_ad": "📺 Mira nuestro anuncio – Sendwave",
+    "western_union_title": "✨✨✨ WESTERN UNION – HAITÍ ✨✨✨",
+    "western_union_text": "💸 Envía dinero rápido – a cualquier lugar de Haití\n🔒 Seguro, protegido, confiable en todo el mundo\n🤝 Retiro en efectivo o depósito directo\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n🌍 En GlobalInternet.py, promovemos las transferencias de dinero a Haití.\n\n📞 Contáctanos para la promoción de tu negocio:\n✉️ Correo electrónico: deslandes78@gmail.com\n📱 Teléfono / WhatsApp: (509)-47385663\n🌐 Sitio web: https://globalinternetsitepy-abh7v6tnmskxxnuplrdcgk.streamlit.app\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n🌟 ¡Hagamos crecer tu negocio juntos! 🌟",
+    "western_union_watch_ad": "📺 Mira nuestro anuncio – Western Union",
+})
 
 lang_dict = {"en": lang_en, "fr": lang_fr, "es": lang_es}
 
@@ -630,7 +730,7 @@ st.sidebar.markdown("### 📄 My CV")
 st.sidebar.markdown("[📥 Download / View my CV (Python Developer 2026)](https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/Gesner%20Deslandes%20CV%20Python%202026.docx)")
 st.sidebar.markdown("---")
 
-# ---------- LEGAL PAGES ----------
+# ---------- LEGAL PAGES (full content) ----------
 with st.sidebar.expander("📜 Privacy Policy"):
     st.markdown("""
     **Privacy Policy for GlobalInternet.py**
@@ -853,7 +953,7 @@ for i, (title, desc) in enumerate(services):
         </div>
         """, unsafe_allow_html=True)
 
-# ---------- Projects listing with comment section ----------
+# ---------- Projects listing with compact comment section ----------
 st.markdown(f"## {t['projects_title']}")
 st.markdown(f"*{t['projects_sub']}*")
 
@@ -914,7 +1014,7 @@ project_keys = [
     "ai_media", "chinese", "french", "mathematics", "ai_course", "medical_term", "python_course", "hardware_course",
     "medical_vocab_book2", "medical_term_book3", "toefl_course", "french_course", "haiti_marketplace", "vectra_ai",
     "humanoid_robot", "hospital", "arbitration", "programming_book", "employee_mgmt", "miroir",
-    "wordpress", "building_systems"
+    "wordpress", "building_systems", "kubernetes_dashboard", "haiti_radar2_tracker"
 ]
 
 projects = []
@@ -943,7 +1043,7 @@ for key in project_keys:
     elif key == "drone":
         demo_url = "https://drone-control-software-4lgtsedbmq4efzvpwxb8r7.streamlit.app/"
     elif key == "english":
-        demo_url = "https://let-s-learn-english-with-gesner-fasbf2hvwsfpkzz9s9oc4f.streamlit.app/"
+        demo_url = "https://learn-english-with-gesner-preschoolers-book-app-vpajde8odmsq8x.streamlit.app/"
     elif key == "spanish":
         demo_url = "https://let-s-learn-spanish-with-gesner-twe8na7wraihczvq2lhfkl.streamlit.app/"
     elif key == "portuguese":
@@ -974,27 +1074,14 @@ for key in project_keys:
         demo_url = "https://medtnwvxbgz76wc2jkn3dy.streamlit.app/"
     elif key == "chinese":
         demo_url = "https://fknxadp8mtgntwuqdyuu2v.streamlit.app/"
-    # Additional URLs provided in the user's latest message
-    elif key == "haiti_archives_database":
+    elif key == "archives":
         demo_url = "https://haiti-archives-database-367hd3cptqyxdxvezwrzdj.streamlit.app/"
-    elif key == "graphql_api_explorer":
-        demo_url = "https://graphql-api-explorer-h6mksygi3uxmky5ashmudu.streamlit.app/"
-    elif key == "gpython_website_deployment":
-        demo_url = "https://gpythonwebsitedeploymentpy-c2kxbgdzx8scg6bjthxfy7.streamlit.app/"
-    elif key == "global_surveillance_radar":
-        demo_url = "https://globalsurveillanceradarad-jyb3u84ydhjwi6ag49wnnp.streamlit.app/"
-    elif key == "foresight":
-        demo_url = "https://foresight-sytlepdeq3ksoa6srbgrsd.streamlit.app/"
-    elif key == "haiti_soccer_game":
-        demo_url = "https://haitisoccergame-dmvaggikzfp4gqe5oxce5k.streamlit.app/"
+    elif key == "kubernetes_dashboard":
+        demo_url = "https://kubernetes-dashboard-simulator-qtkvrzw9twbrqcbhg5yx3z.streamlit.app/"
     elif key == "haiti_radar2_tracker":
         demo_url = "https://haitiradar2-tracker-z9c46uryq5fnp8933wvzjb.streamlit.app/"
-    elif key == "haitian_scorpion":
-        demo_url = "https://haitian-scorpion-oju4tepafom6iro3ubs7pf.streamlit.app/"
-    elif key == "infinity_engine":
-        demo_url = "https://infinity-engine-2-6w5apgqmztdziwtpce6ngx.streamlit.app/"
     projects.append({
-        "title": t.get(f"project_{key}", f"Project {key}"),
+        "title": t.get(f"project_{key}", "Project"),
         "desc": t.get(f"project_{key}_desc", "Description not available"),
         "full_price": t.get(f"project_{key}_full_price", "Contact for price"),
         "status": t.get(f"project_{key}_status", "Status"),
