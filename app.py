@@ -538,7 +538,6 @@ lang_en = {
     "project_building_systems_desc": "A professional MEP & BMS control suite demonstrating real‑time BMS monitoring, thermal networks (CHW/LTHW), electrical infrastructure, BIM‑ready asset register, decarbonisation tracking, and commissioning reports.",
     "project_building_systems_full_price": "$4,500 USD (full package – one‑time)",
     "project_building_systems_status": "✅ Live demo (any username/password) | Subscribe monthly",
-    # NEW PROJECTS
     "project_kubernetes_dashboard": "☸️ Kubernetes Dashboard Simulator – built by Gesner Deslandes",
     "project_kubernetes_dashboard_desc": "Interactive simulator of a Kubernetes dashboard. Visualize pods, nodes, deployments, and services. Monitor cluster health, resource usage, and manage workloads via a user‑friendly interface. Perfect for learning K8s or demonstrating cluster management.",
     "project_kubernetes_dashboard_full_price": "$3,500 USD (full package – one‑time)",
@@ -547,6 +546,11 @@ lang_en = {
     "project_haiti_radar2_tracker_desc": "Advanced radar tracking system for monitoring aircraft, weather, and maritime activity around Haiti. Real‑time simulation with historical data replay, alert zones, and multi‑language support.",
     "project_haiti_radar2_tracker_full_price": "$2,500 USD (full package – one‑time)",
     "project_haiti_radar2_tracker_status": "✅ Live demo (any username/password) | Subscribe monthly",
+    # NEW: Let's Learn AI with Gesner
+    "project_learn_ai": "🤖 Let's Learn AI with Gesner",
+    "project_learn_ai_desc": "Complete 20‑lesson AI learning platform with full English/French/Spanish translations, read‑aloud feature (reads full lesson text), sidebar lesson picker, pricing (monthly and one‑time), and password protection. Master ChatGPT, Gemini, DeepSeek, Grok, Claude, Midjourney, and more.",
+    "project_learn_ai_full_price": "$249 USD (full package – one‑time) or $29/month subscription",
+    "project_learn_ai_status": "✅ Available now – includes source code, setup, and support",
     # UI common keys
     "view_demo": "🎬 View Demo",
     "live_demo": "🔗 Live Demo",
@@ -591,8 +595,7 @@ lang_en = {
     "western_union_watch_ad": "📺 Watch our ad – Western Union"
 }
 
-# ---------- FRENCH (complete – using English as placeholder to avoid errors) ----------
-# To ensure no missing keys, we copy lang_en and then override a few common UI strings.
+# ---------- FRENCH (copy English then override specific keys) ----------
 lang_fr = lang_en.copy()
 lang_fr.update({
     "hero_sub": "Construisez avec Python. Livrez rapidement. Innovez avec l'IA.",
@@ -648,9 +651,14 @@ lang_fr.update({
     "western_union_title": "✨✨✨ WESTERN UNION – HAÏTI ✨✨✨",
     "western_union_text": "💸 Envoyez de l'argent rapidement – n'importe où en Haïti\n🔒 Sûr, sécurisé, approuvé dans le monde entier\n🤝 Retrait en espèces ou dépôt direct\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n🌍 Chez GlobalInternet.py, nous faisons la promotion des transferts d'argent vers Haïti.\n\n📞 Contactez-nous pour la promotion de votre entreprise :\n✉️ Email : deslandes78@gmail.com\n📱 Téléphone / WhatsApp : (509)-47385663\n🌐 Site Web : https://globalinternetsitepy-abh7v6tnmskxxnuplrdcgk.streamlit.app\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n🌟 Développons votre entreprise ensemble ! 🌟",
     "western_union_watch_ad": "📺 Regardez notre publicité – Western Union",
+    # New AI project in French
+    "project_learn_ai": "🤖 Apprenons l'IA avec Gesner",
+    "project_learn_ai_desc": "Plateforme complète d'apprentissage de l'IA en 20 leçons avec traductions complètes en anglais, français, espagnol, fonction de lecture à voix haute (lit tout le texte), sélecteur de leçon dans la barre latérale, tarifs (mensuel ou unique) et protection par mot de passe. Maîtrisez ChatGPT, Gemini, DeepSeek, Grok, Claude, Midjourney et plus encore.",
+    "project_learn_ai_full_price": "249 $US (forfait complet – paiement unique) ou abonnement mensuel 29 $US/mois",
+    "project_learn_ai_status": "✅ Disponible maintenant – comprend le code source, l'installation et le support",
 })
 
-# ---------- SPANISH (complete – using English as placeholder) ----------
+# ---------- SPANISH (copy English then override) ----------
 lang_es = lang_en.copy()
 lang_es.update({
     "hero_sub": "Construye con Python. Entrega con velocidad. Innova con IA.",
@@ -706,6 +714,11 @@ lang_es.update({
     "western_union_title": "✨✨✨ WESTERN UNION – HAITÍ ✨✨✨",
     "western_union_text": "💸 Envía dinero rápido – a cualquier lugar de Haití\n🔒 Seguro, protegido, confiable en todo el mundo\n🤝 Retiro en efectivo o depósito directo\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n🌍 En GlobalInternet.py, promovemos las transferencias de dinero a Haití.\n\n📞 Contáctanos para la promoción de tu negocio:\n✉️ Correo electrónico: deslandes78@gmail.com\n📱 Teléfono / WhatsApp: (509)-47385663\n🌐 Sitio web: https://globalinternetsitepy-abh7v6tnmskxxnuplrdcgk.streamlit.app\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n🌟 ¡Hagamos crecer tu negocio juntos! 🌟",
     "western_union_watch_ad": "📺 Mira nuestro anuncio – Western Union",
+    # New AI project in Spanish
+    "project_learn_ai": "🤖 Aprendamos IA con Gesner",
+    "project_learn_ai_desc": "Plataforma completa de aprendizaje de IA con 20 lecciones, traducciones completas al inglés, francés y español, función de lectura en voz alta (lee todo el texto), selector de lección en la barra lateral, precios (único o mensual) y protección con contraseña. Domina ChatGPT, Gemini, DeepSeek, Grok, Claude, Midjourney y más.",
+    "project_learn_ai_full_price": "$249 USD (paquete completo – pago único) o suscripción mensual $29 USD/mes",
+    "project_learn_ai_status": "✅ Disponible ahora – incluye código fuente, instalación y soporte",
 })
 
 lang_dict = {"en": lang_en, "fr": lang_fr, "es": lang_es}
@@ -1014,7 +1027,8 @@ project_keys = [
     "ai_media", "chinese", "french", "mathematics", "ai_course", "medical_term", "python_course", "hardware_course",
     "medical_vocab_book2", "medical_term_book3", "toefl_course", "french_course", "haiti_marketplace", "vectra_ai",
     "humanoid_robot", "hospital", "arbitration", "programming_book", "employee_mgmt", "miroir",
-    "wordpress", "building_systems", "kubernetes_dashboard", "haiti_radar2_tracker"
+    "wordpress", "building_systems", "kubernetes_dashboard", "haiti_radar2_tracker",
+    "learn_ai"  # <-- NEW PROJECT ADDED HERE
 ]
 
 projects = []
@@ -1080,6 +1094,8 @@ for key in project_keys:
         demo_url = "https://kubernetes-dashboard-simulator-qtkvrzw9twbrqcbhg5yx3z.streamlit.app/"
     elif key == "haiti_radar2_tracker":
         demo_url = "https://haitiradar2-tracker-z9c46uryq5fnp8933wvzjb.streamlit.app/"
+    elif key == "learn_ai":
+        demo_url = "https://let-s-learn-ai-with-gesner-wodbaf3gydrkif6gshczq5.streamlit.app/"
     projects.append({
         "title": t.get(f"project_{key}", "Project"),
         "desc": t.get(f"project_{key}_desc", "Description not available"),
