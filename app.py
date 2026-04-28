@@ -9,6 +9,17 @@ import requests
 import re
 from supabase import create_client, Client
 
+# ========== GLOBAL SECURITY SHIELD INTEGRATION ==========
+from shield import WebAppShield, SecurityException
+
+# Initialise the shield with your API key from the dashboard
+shield = WebAppShield(
+    app_name="GlobalInternet.py Main Website",
+    api_key="b-yXubx0KlFJ_uOxnlH3OhbCKigNqiXbL-LVaUQlNoU",
+    dashboard_url="https://global-security-shield-built-by-gesner-deslandes-tul974fmulf5q.streamlit.app/?log="
+)
+# =========================================================
+
 # ========== FORCE GOOGLE ADSENSE META TAG INTO <head> ==========
 components.html(
     """
@@ -30,7 +41,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# ---------- Comment functions ----------
+# ---------- Comment functions (with shield sanitisation) ----------
 def get_comments(project_key):
     try:
         response = supabase.table("comments").select("*").eq("project_key", project_key).order("timestamp", desc=False).execute()
@@ -41,10 +52,26 @@ def get_comments(project_key):
 
 def add_comment(project_key, username, comment, parent_id=0, reply_to_username=""):
     try:
+        # Sanitise the comment text – if malicious, it raises an exception
+        safe_comment = shield.sanitize_input(comment.strip())
+        safe_username = shield.sanitize_input(username.strip() if username else "Anonymous")
+    except SecurityException as e:
+        st.error("Security alert: Your comment was blocked because it contains suspicious content.")
+        # Log the attempt
+        shield.log_threat({
+            "type": "comment_blocked",
+            "project_key": project_key,
+            "username": username,
+            "comment": comment,
+            "error": str(e)
+        })
+        return False
+
+    try:
         supabase.table("comments").insert({
             "project_key": project_key,
-            "username": username.strip() if username else "Anonymous",
-            "comment": comment.strip(),
+            "username": safe_username,
+            "comment": safe_comment,
             "timestamp": datetime.now().isoformat(),
             "likes": 0,
             "parent_id": parent_id,
@@ -179,6 +206,9 @@ if "notification_sent" not in st.session_state:
 
 if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
+
+# ---------- Add shield protection to the sidebar (shows status) ----------
+shield.protect_streamlit()
 
 st.markdown("""
 <style>
@@ -971,7 +1001,6 @@ st.markdown(f"## {t['projects_title']}")
 st.markdown(f"*{t['projects_sub']}*")
 
 def display_comment(comment, level=0, project_key=None):
-    indent = " " * (level * 2)
     st.markdown(f"""
     <div class="comment-box" style="margin-left: {level*20}px;">
         <div class="comment-meta">
@@ -1028,7 +1057,7 @@ project_keys = [
     "medical_vocab_book2", "medical_term_book3", "toefl_course", "french_course", "haiti_marketplace", "vectra_ai",
     "humanoid_robot", "hospital", "arbitration", "programming_book", "employee_mgmt", "miroir",
     "wordpress", "building_systems", "kubernetes_dashboard", "haiti_radar2_tracker",
-    "learn_ai"  # <-- NEW PROJECT ADDED HERE
+    "learn_ai"
 ]
 
 projects = []
