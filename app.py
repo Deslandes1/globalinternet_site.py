@@ -9,16 +9,125 @@ import requests
 import re
 from supabase import create_client, Client
 
-# ========== GLOBAL SECURITY SHIELD INTEGRATION ==========
-from shield import WebAppShield, SecurityException
+# ============================================================
+# GLOBAL SECURITY SHIELD (EMBEDDED)
+# ============================================================
+import json
+from typing import Any, Dict, Optional, Tuple
 
-# Initialise the shield with your API key from the dashboard
+DEFAULT_PATTERNS = {
+    "sql_injection": [
+        r"(\%27)|(\')|(\-\-)|(\%23)|(#)",
+        r"(union.*select)",
+        r"(insert.*into)",
+        r"(delete.*from)",
+        r"(drop.*table)",
+        r"(select.*from.*where)",
+        r"(or\s+1\s*=\s*1)"
+    ],
+    "xss": [
+        r"<script",
+        r"javascript:",
+        r"onload=",
+        r"onerror=",
+        r"onclick=",
+        r"alert\(",
+        r"prompt\("
+    ],
+    "path_traversal": [
+        r"\.\./",
+        r"\.\.\\",
+        r"\.\.%2f"
+    ],
+    "command_injection": [
+        r"(\|)|(\&)|(;)",
+        r"(ping)|(nslookup)|(wget)"
+    ],
+    "malicious_user_agents": [
+        r"sqlmap",
+        r"nikto",
+        r"nmap"
+    ]
+}
+
+class SecurityException(Exception):
+    pass
+
+class WebAppShield:
+    def __init__(self, app_name: str, api_key: str, dashboard_url: Optional[str] = None):
+        self.app_name = app_name
+        self.api_key = api_key
+        self.dashboard_url = dashboard_url or "https://global-security-shield-built-by-gesner-deslandes-tul974fmulf5q.streamlit.app/?log="
+        self.patterns = DEFAULT_PATTERNS.copy()
+        self.custom_patterns = {}
+
+    def add_custom_pattern(self, attack_type: str, pattern: str):
+        if attack_type not in self.custom_patterns:
+            self.custom_patterns[attack_type] = []
+        self.custom_patterns[attack_type].append(pattern)
+
+    def is_malicious(self, text: str) -> Tuple[bool, Optional[str]]:
+        if not isinstance(text, str):
+            return False, None
+        for attack_type, patterns in self.patterns.items():
+            for pat in patterns:
+                if re.search(pat, text, re.IGNORECASE):
+                    return True, attack_type
+        for attack_type, patterns in self.custom_patterns.items():
+            for pat in patterns:
+                if re.search(pat, text, re.IGNORECASE):
+                    return True, attack_type
+        return False, None
+
+    def sanitize_input(self, value: Any) -> Any:
+        if isinstance(value, str):
+            malicious, attack_type = self.is_malicious(value)
+            if malicious:
+                raise SecurityException(f"Blocked: potential {attack_type} attack")
+            return value
+        elif isinstance(value, dict):
+            return {k: self.sanitize_input(v) for k, v in value.items()}
+        elif isinstance(value, list):
+            return [self.sanitize_input(i) for i in value]
+        else:
+            return value
+
+    def log_threat(self, request_data: Dict):
+        try:
+            payload = {
+                "app_name": self.app_name,
+                "api_key": self.api_key,
+                "timestamp": datetime.utcnow().isoformat(),
+                "data": request_data
+            }
+            log_url = f"{self.dashboard_url}{json.dumps(payload)}"
+            requests.get(log_url, timeout=2)
+        except Exception:
+            pass
+
+    def protect_streamlit(self):
+        if hasattr(st, 'query_params') and st.query_params:
+            for key, value in st.query_params.items():
+                try:
+                    self.sanitize_input(value)
+                except SecurityException as e:
+                    st.error("🚨 Security alert: Malicious input detected and blocked.")
+                    self.log_threat({
+                        "type": "query_param",
+                        "key": key,
+                        "value": value,
+                        "error": str(e)
+                    })
+                    st.stop()
+        st.sidebar.markdown("🛡️ **Global Security Shield active**")
+
+# Initialise the shield with your API key
 shield = WebAppShield(
     app_name="GlobalInternet.py Main Website",
     api_key="b-yXubx0KlFJ_uOxnlH3OhbCKigNqiXbL-LVaUQlNoU",
     dashboard_url="https://global-security-shield-built-by-gesner-deslandes-tul974fmulf5q.streamlit.app/?log="
 )
-# =========================================================
+# ============================================================
 
 # ========== FORCE GOOGLE ADSENSE META TAG INTO <head> ==========
 components.html(
@@ -51,13 +160,12 @@ def get_comments(project_key):
         return []
 
 def add_comment(project_key, username, comment, parent_id=0, reply_to_username=""):
+    # Sanitise inputs
     try:
-        # Sanitise the comment text – if malicious, it raises an exception
         safe_comment = shield.sanitize_input(comment.strip())
         safe_username = shield.sanitize_input(username.strip() if username else "Anonymous")
     except SecurityException as e:
         st.error("Security alert: Your comment was blocked because it contains suspicious content.")
-        # Log the attempt
         shield.log_threat({
             "type": "comment_blocked",
             "project_key": project_key,
@@ -207,7 +315,7 @@ if "notification_sent" not in st.session_state:
 if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
 
-# ---------- Add shield protection to the sidebar (shows status) ----------
+# Activate shield protection (checks URL parameters)
 shield.protect_streamlit()
 
 st.markdown("""
@@ -1043,6 +1151,7 @@ def show_comment_section(project_key):
             new_comment = st.text_area("Your comment", key=f"comment_{project_key}", height=100)
             if st.form_submit_button("Post Comment"):
                 if new_comment.strip():
+                    # Shield sanitisation happens inside add_comment
                     add_comment(project_key, username, new_comment)
                     st.session_state[f"comments_{project_key}"] = get_comments(project_key)
                     st.rerun()
