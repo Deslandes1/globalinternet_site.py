@@ -307,7 +307,7 @@ if "authenticated" not in st.session_state:
 shield.protect_streamlit()
 
 # ============================================================
-# BEAUTIFUL STARRY BLUE BACKGROUND (ADDED)
+# STARRY BLUE BACKGROUND (NO DEPRECATED COMPONENTS)
 # ============================================================
 st.markdown("""
 <style>
@@ -317,7 +317,6 @@ st.markdown("""
         position: relative;
         overflow-x: hidden;
     }
-    /* Fixed starfield covering all empty areas */
     .stApp::before {
         content: "";
         position: fixed;
@@ -346,12 +345,10 @@ st.markdown("""
         z-index: -1;
         animation: twinkle 3s infinite alternate;
     }
-    /* Twinkling animation */
     @keyframes twinkle {
         0% { opacity: 0.4; }
         100% { opacity: 1; }
     }
-    /* Additional floating stars using multiple box shadows */
     .stApp::after {
         content: "";
         position: fixed;
@@ -374,12 +371,10 @@ st.markdown("""
         50% { opacity: 1; filter: brightness(1.2); }
         100% { opacity: 0.3; filter: brightness(1); }
     }
-    /* Make content cards slightly transparent to let stars shine through */
     .hero, .card, .team-card, .future-project-card, .donation-box, .footer, .comment-box {
         background-color: rgba(255,255,255,0.95) !important;
         backdrop-filter: blur(0px);
     }
-    /* Sidebar semi-transparent to see stars */
     [data-testid="stSidebar"] {
         background-color: rgba(10, 15, 42, 0.9) !important;
         color: white;
@@ -494,6 +489,18 @@ st.markdown("""
     }
 </style>
 """, unsafe_allow_html=True)
+
+# ============================================================
+# GOOGLE ADSENSE META TAG (no components.html)
+# ============================================================
+st.markdown(
+    """
+    <head>
+        <meta name="google-adsense-account" content="ca-pub-1238061430437782">
+    </head>
+    """,
+    unsafe_allow_html=True
+)
 
 # ============================================================
 # FULL DICTIONARIES (ENGLISH, FRENCH, SPANISH)
@@ -1381,7 +1388,7 @@ if group_b:
                     st.markdown(f"<p style='font-size:0.8rem; margin-top:0.5rem;'>{t['contact_note']}</p>", unsafe_allow_html=True)
                     show_comment_section(proj['key'])
 
-# ---------- SENDWAVE PROMOTIONAL SECTION ----------
+# ---------- SENDWAVE PROMOTIONAL SECTION (no components.html) ----------
 st.markdown("---")
 st.markdown(f"## {t['sendwave_title']}")
 col_promo, col_video_ad = st.columns([3, 2])
@@ -1394,15 +1401,31 @@ with col_video_ad:
     st.markdown(f"**{t['sendwave_watch_ad']}**")
     sendwave_video_html = """
     <div style="width:100%; max-width:500px; margin:0 auto;">
-        <video src="https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/Sendwave%20marketing%202026.MP4" muted playsinline loop controls style="width:100%; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.2);"></video>
+        <video id="sendwaveVideo" src="https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/Sendwave%20marketing%202026.MP4" muted playsinline loop controls style="width:100%; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.2);"></video>
         <p style="text-align:center; font-size:0.7rem; color:#666; margin-top:5px;">📢 Sendwave ad – Less transfer fees, less drama</p>
     </div>
+    <script>
+        (function() {
+            var video = document.getElementById('sendwaveVideo');
+            if (!video) return;
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        video.play().catch(function(e) { console.log("Autoplay blocked:", e); });
+                    } else {
+                        video.pause();
+                    }
+                });
+            }, { threshold: 0.5 });
+            observer.observe(video);
+        })();
+    </script>
     """
     st.markdown(sendwave_video_html, unsafe_allow_html=True)
 
 st.markdown("---")
 
-# ---------- WESTERN UNION PROMOTIONAL SECTION ----------
+# ---------- WESTERN UNION PROMOTIONAL SECTION (no components.html) ----------
 st.markdown(f"## {t['western_union_title']}")
 col_wu_promo, col_wu_video = st.columns([3, 2])
 with col_wu_promo:
@@ -1411,9 +1434,25 @@ with col_wu_video:
     st.markdown(f"**{t['western_union_watch_ad']}**")
     western_union_video_html = """
     <div style="width:100%; max-width:500px; margin:0 auto;">
-        <video src="https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/refs/heads/main/WesterUnionPub.MP4" muted playsinline loop controls style="width:100%; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.2);"></video>
+        <video id="westernUnionVideo" src="https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/refs/heads/main/WesterUnionPub.MP4" muted playsinline loop controls style="width:100%; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.2);"></video>
         <p style="text-align:center; font-size:0.7rem; color:#666; margin-top:5px;">📢 Western Union ad – Trusted worldwide</p>
     </div>
+    <script>
+        (function() {
+            var video = document.getElementById('westernUnionVideo');
+            if (!video) return;
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        video.play().catch(function(e) { console.log("Autoplay blocked:", e); });
+                    } else {
+                        video.pause();
+                    }
+                });
+            }, { threshold: 0.5 });
+            observer.observe(video);
+        })();
+    </script>
     """
     st.markdown(western_union_video_html, unsafe_allow_html=True)
 
