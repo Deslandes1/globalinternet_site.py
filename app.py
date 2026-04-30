@@ -307,77 +307,19 @@ if "authenticated" not in st.session_state:
 shield.protect_streamlit()
 
 # ============================================================
-# STARRY BLUE BACKGROUND (NO DEPRECATED COMPONENTS)
+# LIGHT BLUE BACKGROUND (NO STARS – SIMPLE, CLEAN)
 # ============================================================
 st.markdown("""
 <style>
-    /* Starry background for the whole app */
     .stApp {
-        background: linear-gradient(135deg, #0a0f2a 0%, #0f1a3a 50%, #0a0f2a 100%) !important;
-        position: relative;
-        overflow-x: hidden;
-    }
-    .stApp::before {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: 
-            radial-gradient(2px 2px at 20% 30%, white, rgba(0,0,0,0)),
-            radial-gradient(1px 1px at 60% 70%, white, rgba(0,0,0,0)),
-            radial-gradient(3px 3px at 80% 10%, white, rgba(0,0,0,0)),
-            radial-gradient(1px 1px at 40% 90%, white, rgba(0,0,0,0)),
-            radial-gradient(2px 2px at 95% 45%, white, rgba(0,0,0,0)),
-            radial-gradient(1px 1px at 5% 85%, white, rgba(0,0,0,0)),
-            radial-gradient(2px 2px at 75% 55%, white, rgba(0,0,0,0)),
-            radial-gradient(3px 3px at 30% 15%, white, rgba(0,0,0,0)),
-            radial-gradient(1px 1px at 50% 50%, white, rgba(0,0,0,0)),
-            radial-gradient(2px 2px at 88% 92%, white, rgba(0,0,0,0)),
-            radial-gradient(1px 1px at 12% 22%, white, rgba(0,0,0,0)),
-            radial-gradient(2px 2px at 45% 78%, white, rgba(0,0,0,0)),
-            radial-gradient(3px 3px at 67% 33%, white, rgba(0,0,0,0));
-        background-size: 200px 200px, 250px 250px, 300px 300px, 150px 150px, 220px 220px, 180px 180px, 260px 260px, 280px 280px, 200px 200px, 240px 240px, 190px 190px, 210px 210px, 270px 270px;
-        background-repeat: no-repeat;
-        opacity: 0.8;
-        pointer-events: none;
-        z-index: -1;
-        animation: twinkle 3s infinite alternate;
-    }
-    @keyframes twinkle {
-        0% { opacity: 0.4; }
-        100% { opacity: 1; }
-    }
-    .stApp::after {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        box-shadow: 
-            0px 0px 2px 1px white, 100px 300px 3px 1px white, 250px 50px 2px 0px white,
-            400px 600px 3px 1px white, 550px 150px 2px 0px white, 700px 450px 3px 1px white,
-            850px 200px 2px 0px white, 1000px 700px 4px 1px white, 1200px 350px 2px 0px white,
-            150px 800px 3px 1px white, 350px 950px 2px 0px white, 650px 1100px 4px 1px white;
-        opacity: 0.7;
-        pointer-events: none;
-        z-index: -1;
-        animation: shine 5s infinite ease-in-out;
-    }
-    @keyframes shine {
-        0% { opacity: 0.3; filter: brightness(1); }
-        50% { opacity: 1; filter: brightness(1.2); }
-        100% { opacity: 0.3; filter: brightness(1); }
-    }
-    .hero, .card, .team-card, .future-project-card, .donation-box, .footer, .comment-box {
-        background-color: rgba(255,255,255,0.95) !important;
-        backdrop-filter: blur(0px);
+        background: linear-gradient(135deg, #e0f0ff 0%, #b8d9ff 100%) !important;
     }
     [data-testid="stSidebar"] {
-        background-color: rgba(10, 15, 42, 0.9) !important;
-        color: white;
+        background-color: rgba(200, 220, 250, 0.95) !important;
+    }
+    .hero, .card, .team-card, .future-project-card, .donation-box, .footer, .comment-box {
+        background-color: white !important;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     }
     .stApp .main .block-container {
         background: transparent;
