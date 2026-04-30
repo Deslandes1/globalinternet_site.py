@@ -393,7 +393,16 @@ st.markdown("""
         margin: 2rem 0;
     }
     .blue-text { color: #0000FF; font-weight: bold; }
-    .big-globe { font-size: 120px; display: block; text-align: center; margin-bottom: 0.5rem; }
+    .big-globe {
+        font-size: 120px;
+        display: block;
+        text-align: center;
+        margin-bottom: 0.5rem;
+        animation: spin 8s linear infinite;
+    }
+    @keyframes spin {
+        100% { transform: rotate(360deg); }
+    }
     .future-project-card {
         background-color: #f8f9fa;
         border-radius: 15px;
