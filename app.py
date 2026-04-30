@@ -1,5 +1,4 @@
 import streamlit as st
-import streamlit.components.v1 as components
 from datetime import datetime
 import smtplib
 import ssl
@@ -10,7 +9,7 @@ import re
 from supabase import create_client, Client
 
 # ============================================================
-# GLOBAL SECURITY SHIELD (EMBEDDED)
+# GLOBAL SECURITY SHIELD (EMBEDDED – NO EXTERNAL IMPORT)
 # ============================================================
 import json
 from typing import Any, Dict, Optional, Tuple
@@ -129,16 +128,6 @@ shield = WebAppShield(
 )
 # ============================================================
 
-# ========== FORCE GOOGLE ADSENSE META TAG INTO <head> ==========
-components.html(
-    """
-    <head>
-        <meta name="google-adsense-account" content="ca-pub-1238061430437782">
-    </head>
-    """,
-    height=0,
-)
-
 # ---------- Supabase setup ----------
 SUPABASE_URL = st.secrets["supabase"]["url"]
 SUPABASE_KEY = st.secrets["supabase"]["key"]
@@ -160,7 +149,6 @@ def get_comments(project_key):
         return []
 
 def add_comment(project_key, username, comment, parent_id=0, reply_to_username=""):
-    # Sanitise inputs
     try:
         safe_comment = shield.sanitize_input(comment.strip())
         safe_username = shield.sanitize_input(username.strip() if username else "Anonymous")
@@ -318,91 +306,7 @@ if "authenticated" not in st.session_state:
 # Activate shield protection (checks URL parameters)
 shield.protect_streamlit()
 
-# ============================================================
-# NEW STARRY BLUE BACKGROUND – FILLS ALL EMPTY SPOTS
-# ============================================================
-st.markdown("""
-<style>
-    /* Starry background for the whole app */
-    .stApp {
-        background: linear-gradient(135deg, #0a0f2a 0%, #0f1a3a 50%, #0a0f2a 100%) !important;
-        position: relative;
-        overflow-x: hidden;
-    }
-    /* Fixed starfield covering all empty areas */
-    .stApp::before {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: 
-            radial-gradient(2px 2px at 20% 30%, white, rgba(0,0,0,0)),
-            radial-gradient(1px 1px at 60% 70%, white, rgba(0,0,0,0)),
-            radial-gradient(3px 3px at 80% 10%, white, rgba(0,0,0,0)),
-            radial-gradient(1px 1px at 40% 90%, white, rgba(0,0,0,0)),
-            radial-gradient(2px 2px at 95% 45%, white, rgba(0,0,0,0)),
-            radial-gradient(1px 1px at 5% 85%, white, rgba(0,0,0,0)),
-            radial-gradient(2px 2px at 75% 55%, white, rgba(0,0,0,0)),
-            radial-gradient(3px 3px at 30% 15%, white, rgba(0,0,0,0)),
-            radial-gradient(1px 1px at 50% 50%, white, rgba(0,0,0,0)),
-            radial-gradient(2px 2px at 88% 92%, white, rgba(0,0,0,0)),
-            radial-gradient(1px 1px at 12% 22%, white, rgba(0,0,0,0)),
-            radial-gradient(2px 2px at 45% 78%, white, rgba(0,0,0,0)),
-            radial-gradient(3px 3px at 67% 33%, white, rgba(0,0,0,0));
-        background-size: 200px 200px, 250px 250px, 300px 300px, 150px 150px, 220px 220px, 180px 180px, 260px 260px, 280px 280px, 200px 200px, 240px 240px, 190px 190px, 210px 210px, 270px 270px;
-        background-repeat: no-repeat;
-        opacity: 0.8;
-        pointer-events: none;
-        z-index: -1;
-        animation: twinkle 3s infinite alternate;
-    }
-    /* Twinkling animation */
-    @keyframes twinkle {
-        0% { opacity: 0.4; }
-        100% { opacity: 1; }
-    }
-    /* Additional floating stars using multiple box shadows */
-    .stApp::after {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        box-shadow: 
-            0px 0px 2px 1px white, 100px 300px 3px 1px white, 250px 50px 2px 0px white,
-            400px 600px 3px 1px white, 550px 150px 2px 0px white, 700px 450px 3px 1px white,
-            850px 200px 2px 0px white, 1000px 700px 4px 1px white, 1200px 350px 2px 0px white,
-            150px 800px 3px 1px white, 350px 950px 2px 0px white, 650px 1100px 4px 1px white;
-        opacity: 0.7;
-        pointer-events: none;
-        z-index: -1;
-        animation: shine 5s infinite ease-in-out;
-    }
-    @keyframes shine {
-        0% { opacity: 0.3; filter: brightness(1); }
-        50% { opacity: 1; filter: brightness(1.2); }
-        100% { opacity: 0.3; filter: brightness(1); }
-    }
-    /* Ensure content areas have their own backgrounds so they stand out */
-    .hero, .card, .team-card, .future-project-card, .donation-box, .footer, .comment-box {
-        background-color: rgba(255,255,255,0.95) !important;
-        backdrop-filter: blur(0px);
-    }
-    /* Sidebar also gets semi‑transparent background to let stars shine through? But keep readable */
-    [data-testid="stSidebar"] {
-        background-color: rgba(10, 15, 42, 0.9) !important;
-        color: white;
-    }
-    .stApp .main .block-container {
-        background: transparent;
-    }
-</style>
-""", unsafe_allow_html=True)
-
-# Continue with original CSS from your website (the one you already had)
+# ---------- CSS (unchanged) ----------
 st.markdown("""
 <style>
     .main { padding: 0rem 1rem; }
@@ -496,6 +400,14 @@ st.markdown("""
     .reply-box { margin-left: 1.5rem; border-left: 2px solid #ccc; padding-left: 1rem; margin-top: 0.5rem; }
     .like-button { background: none; border: none; cursor: pointer; font-size: 0.8rem; padding: 0; margin-right: 0.5rem; color: #1e3c72; }
     .delete-button { background: none; border: none; cursor: pointer; font-size: 0.7rem; color: red; padding: 0; margin-left: 0.5rem; }
+    .stApp {
+        margin: 0;
+        padding: 0;
+    }
+    .block-container {
+        padding-top: 1rem;
+        padding-bottom: 0;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -874,7 +786,6 @@ lang_fr.update({
     "western_union_title": "✨✨✨ WESTERN UNION – HAÏTI ✨✨✨",
     "western_union_text": "💸 Envoyez de l'argent rapidement – n'importe où en Haïti\n🔒 Sûr, sécurisé, approuvé dans le monde entier\n🤝 Retrait en espèces ou dépôt direct\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n🌍 Chez GlobalInternet.py, nous faisons la promotion des transferts d'argent vers Haïti.\n\n📞 Contactez-nous pour la promotion de votre entreprise :\n✉️ Email : deslandes78@gmail.com\n📱 Téléphone / WhatsApp : (509)-47385663\n🌐 Site Web : https://globalinternetsitepy-abh7v6tnmskxxnuplrdcgk.streamlit.app\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n🌟 Développons votre entreprise ensemble ! 🌟",
     "western_union_watch_ad": "📺 Regardez notre publicité – Western Union",
-    # New AI project in French
     "project_learn_ai": "🤖 Apprenons l'IA avec Gesner",
     "project_learn_ai_desc": "Plateforme complète d'apprentissage de l'IA en 20 leçons avec traductions complètes en anglais, français, espagnol, fonction de lecture à voix haute (lit tout le texte), sélecteur de leçon dans la barre latérale, tarifs (mensuel ou unique) et protection par mot de passe. Maîtrisez ChatGPT, Gemini, DeepSeek, Grok, Claude, Midjourney et plus encore.",
     "project_learn_ai_full_price": "249 $US (forfait complet – paiement unique) ou abonnement mensuel 29 $US/mois",
@@ -937,7 +848,6 @@ lang_es.update({
     "western_union_title": "✨✨✨ WESTERN UNION – HAITÍ ✨✨✨",
     "western_union_text": "💸 Envía dinero rápido – a cualquier lugar de Haití\n🔒 Seguro, protegido, confiable en todo el mundo\n🤝 Retiro en efectivo o depósito directo\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n🌍 En GlobalInternet.py, promovemos las transferencias de dinero a Haití.\n\n📞 Contáctanos para la promoción de tu negocio:\n✉️ Correo electrónico: deslandes78@gmail.com\n📱 Teléfono / WhatsApp: (509)-47385663\n🌐 Sitio web: https://globalinternetsitepy-abh7v6tnmskxxnuplrdcgk.streamlit.app\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n🌟 ¡Hagamos crecer tu negocio juntos! 🌟",
     "western_union_watch_ad": "📺 Mira nuestro anuncio – Western Union",
-    # New AI project in Spanish
     "project_learn_ai": "🤖 Aprendamos IA con Gesner",
     "project_learn_ai_desc": "Plataforma completa de aprendizaje de IA con 20 lecciones, traducciones completas al inglés, francés y español, función de lectura en voz alta (lee todo el texto), selector de lección en la barra lateral, precios (único o mensual) y protección con contraseña. Domina ChatGPT, Gemini, DeepSeek, Grok, Claude, Midjourney y más.",
     "project_learn_ai_full_price": "$249 USD (paquete completo – pago único) o suscripción mensual $29 USD/mes",
@@ -1236,7 +1146,6 @@ def show_comment_section(project_key):
             new_comment = st.text_area("Your comment", key=f"comment_{project_key}", height=100)
             if st.form_submit_button("Post Comment"):
                 if new_comment.strip():
-                    # Shield sanitisation happens inside add_comment
                     add_comment(project_key, username, new_comment)
                     st.session_state[f"comments_{project_key}"] = get_comments(project_key)
                     st.rerun()
@@ -1399,30 +1308,13 @@ with col_promo:
     st.markdown(t['sendwave_link'])
 with col_video_ad:
     st.markdown(f"**{t['sendwave_watch_ad']}**")
-    sendwave_video_url = "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/Sendwave%20marketing%202026.MP4"
-    sendwave_video_html = f"""
-    <div id="sendwaveAdContainer" style="width:100%; max-width:500px; margin:0 auto;">
-        <video id="sendwaveVideo" src="{sendwave_video_url}" muted playsinline loop controls style="width:100%; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.2);"></video>
+    sendwave_video_html = """
+    <div style="width:100%; max-width:500px; margin:0 auto;">
+        <video src="https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/Sendwave%20marketing%202026.MP4" muted playsinline loop controls style="width:100%; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.2);"></video>
         <p style="text-align:center; font-size:0.7rem; color:#666; margin-top:5px;">📢 Sendwave ad – Less transfer fees, less drama</p>
     </div>
-    <script>
-        (function() {{
-            var video = document.getElementById('sendwaveVideo');
-            if (!video) return;
-            var observer = new IntersectionObserver(function(entries) {{
-                entries.forEach(function(entry) {{
-                    if (entry.isIntersecting) {{
-                        video.play().catch(function(e) {{ console.log("Autoplay blocked:", e); }});
-                    }} else {{
-                        video.pause();
-                    }}
-                }});
-            }}, {{ threshold: 0.5 }});
-            observer.observe(video);
-        }})();
-    </script>
     """
-    components.html(sendwave_video_html, height=350)
+    st.markdown(sendwave_video_html, unsafe_allow_html=True)
 
 st.markdown("---")
 
@@ -1433,30 +1325,13 @@ with col_wu_promo:
     st.markdown(t['western_union_text'])
 with col_wu_video:
     st.markdown(f"**{t['western_union_watch_ad']}**")
-    western_union_video_url = "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/refs/heads/main/WesterUnionPub.MP4"
-    western_union_video_html = f"""
-    <div id="westernUnionAdContainer" style="width:100%; max-width:500px; margin:0 auto;">
-        <video id="westernUnionVideo" src="{western_union_video_url}" muted playsinline loop controls style="width:100%; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.2);"></video>
+    western_union_video_html = """
+    <div style="width:100%; max-width:500px; margin:0 auto;">
+        <video src="https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/refs/heads/main/WesterUnionPub.MP4" muted playsinline loop controls style="width:100%; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.2);"></video>
         <p style="text-align:center; font-size:0.7rem; color:#666; margin-top:5px;">📢 Western Union ad – Trusted worldwide</p>
     </div>
-    <script>
-        (function() {{
-            var video = document.getElementById('westernUnionVideo');
-            if (!video) return;
-            var observer = new IntersectionObserver(function(entries) {{
-                entries.forEach(function(entry) {{
-                    if (entry.isIntersecting) {{
-                        video.play().catch(function(e) {{ console.log("Autoplay blocked:", e); }});
-                    }} else {{
-                        video.pause();
-                    }}
-                }});
-            }}, {{ threshold: 0.5 }});
-            observer.observe(video);
-        }})();
-    </script>
     """
-    components.html(western_union_video_html, height=350)
+    st.markdown(western_union_video_html, unsafe_allow_html=True)
 
 st.markdown("---")
 
