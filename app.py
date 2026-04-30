@@ -311,7 +311,7 @@ shield.protect_streamlit()
 # ============================================================
 st.markdown("""
 <style>
-    /* Starry blue background for the whole app */
+    /* Starry background for the whole app */
     .stApp {
         background: linear-gradient(135deg, #0a0f2a 0%, #0f1a3a 50%, #0a0f2a 100%) !important;
         position: relative;
@@ -1230,7 +1230,6 @@ def show_comment_section(project_key):
             new_comment = st.text_area("Your comment", key=f"comment_{project_key}", height=100)
             if st.form_submit_button("Post Comment"):
                 if new_comment.strip():
-                    # Shield sanitisation happens inside add_comment
                     add_comment(project_key, username, new_comment)
                     st.session_state[f"comments_{project_key}"] = get_comments(project_key)
                     st.rerun()
