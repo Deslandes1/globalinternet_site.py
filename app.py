@@ -120,10 +120,10 @@ class WebAppShield:
                     st.stop()
         st.sidebar.markdown("🛡️ **Global Security Shield active**")
 
-# Initialise the shield with your API key
+# Initialise the shield with your API key (UPDATED)
 shield = WebAppShield(
     app_name="GlobalInternet.py Main Website",
-    api_key="b-yXubx0KlFJ_uOxnlH3OhbCKigNqiXbL-LVaUQlNoU",
+    api_key="gl-MssTDLE9cATE4Iu7_tQkcxaFWcwwMr3e7S_Mdwgg",
     dashboard_url="https://global-security-shield-built-by-gesner-deslandes-tul974fmulf5q.streamlit.app/?log="
 )
 # ============================================================
