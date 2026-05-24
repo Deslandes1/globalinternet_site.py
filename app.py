@@ -9,7 +9,7 @@ import re
 from supabase import create_client, Client
 
 # ============================================================
-# MITGO VERIFICATION META TAGS (added to <head>)
+# MITGO VERIFICATION META TAGS
 # ============================================================
 st.markdown("""
 <head>
@@ -20,7 +20,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ============================================================
-# GLOBAL SECURITY SHIELD (EMBEDDED – NO EXTERNAL IMPORT)
+# GLOBAL SECURITY SHIELD (EMBEDDED)
 # ============================================================
 import json
 from typing import Any, Dict, Optional, Tuple
@@ -131,7 +131,7 @@ class WebAppShield:
                     st.stop()
         st.sidebar.markdown("🛡️ **Global Security Shield active**")
 
-# Initialise the shield with your API key (UPDATED)
+# Initialise the shield
 shield = WebAppShield(
     app_name="GlobalInternet.py Main Website",
     api_key="gl-MssTDLE9cATE4Iu7_tQkcxaFWcwwMr3e7S_Mdwgg",
@@ -150,7 +150,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# ---------- Comment functions (with shield sanitisation) ----------
+# ---------- Comment functions ----------
 def get_comments(project_key):
     try:
         response = supabase.table("comments").select("*").eq("project_key", project_key).order("timestamp", desc=False).execute()
@@ -314,11 +314,11 @@ if "notification_sent" not in st.session_state:
 if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
 
-# Activate shield protection (checks URL parameters)
+# Activate shield protection
 shield.protect_streamlit()
 
 # ============================================================
-# LIGHT BLUE BACKGROUND (NO STARS – SIMPLE, CLEAN)
+# LIGHT BLUE BACKGROUND
 # ============================================================
 st.markdown("""
 <style>
@@ -338,7 +338,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# ---------- Existing CSS (unchanged) ----------
+# ---------- CSS ----------
 st.markdown("""
 <style>
     .main { padding: 0rem 1rem; }
@@ -453,7 +453,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ============================================================
-# GOOGLE ADSENSE META TAG (no components.html)
+# GOOGLE ADSENSE META TAG
 # ============================================================
 st.markdown(
     """
@@ -465,7 +465,7 @@ st.markdown(
 )
 
 # ============================================================
-# FULL DICTIONARIES (ENGLISH, FRENCH, SPANISH)
+# DICTIONARIES (ENGLISH, FRENCH, SPANISH)
 # ============================================================
 
 # ---------- ENGLISH ----------
@@ -545,7 +545,7 @@ lang_en = {
     ],
     "projects_title": "🏆 Our Projects & Accomplishments",
     "projects_sub": "Completed software solutions delivered to clients – ready for you to purchase or customize.",
-    # ----- ALL PROJECTS (ENGLISH) -----
+    # ----- PROJECTS -----
     "project_haiti": "🇭🇹 Haiti Online Voting Software",
     "project_haiti_desc": "Complete presidential election system with multi‑language support (Kreyòl, French, English, Spanish), real‑time live monitoring, CEP President dashboard (manage candidates, upload photos, download progress reports), secret ballot, and changeable passwords.",
     "project_haiti_full_price": "$15,000 USD (full package – one‑time)",
@@ -734,17 +734,16 @@ lang_en = {
     "project_haiti_radar2_tracker_desc": "Advanced radar tracking system for monitoring aircraft, weather, and maritime activity around Haiti. Real‑time simulation with historical data replay, alert zones, and multi‑language support.",
     "project_haiti_radar2_tracker_full_price": "$2,500 USD (full package – one‑time)",
     "project_haiti_radar2_tracker_status": "✅ Live demo (any username/password) | Subscribe monthly",
-    # NEW: Let's Learn AI with Gesner
     "project_learn_ai": "🤖 Let's Learn AI with Gesner",
     "project_learn_ai_desc": "Complete 20‑lesson AI learning platform with full English/French/Spanish translations, read‑aloud feature (reads full lesson text), sidebar lesson picker, pricing (monthly and one‑time), and password protection. Master ChatGPT, Gemini, DeepSeek, Grok, Claude, Midjourney, and more.",
     "project_learn_ai_full_price": "$249 USD (full package – one‑time) or $29/month subscription",
     "project_learn_ai_status": "✅ Available now – includes source code, setup, and support",
-    # NEW: AliExpress Smartphone for Sale
-    "project_phone_aliexpress": "📱 Premium Smartphone – Factory Unlocked (AliExpress)",
-    "project_phone_aliexpress_desc": "Brand new, high-performance smartphone directly from AliExpress. Features: 6.7'' AMOLED display, 128GB ROM / 8GB RAM, 108MP camera, 5000mAh battery, dual SIM, global warranty. Perfect for work, entertainment, and development testing.",
-    "project_phone_aliexpress_full_price": "$299 USD (free shipping worldwide)",
-    "project_phone_aliexpress_status": "✅ In stock – delivered in 7–15 business days",
-    # UI common keys
+    # NEW: Luxurious Magnetic Case for iPhone
+    "project_magnetic_case": "🛡️ Luxurious Magnetic Case for iPhone – Matte Translucent with Lens Protection",
+    "project_magnetic_case_desc": "Premium matte translucent magnetic case with built-in lens protection. Compatible with MagSafe wireless chargers. Works with iPhone 17/16/15/14/13/12/11 Pro Max. ⭐ 4.7/5 – 17,158 reviews – 100k+ sold.",
+    "project_magnetic_case_full_price": "$29.90 USD (Free Shipping)",
+    "project_magnetic_case_status": "✅ In stock – Ships from AliExpress",
+    # ----- UI common keys -----
     "view_demo": "🎬 View Demo",
     "live_demo": "🔗 Live Demo",
     "demo_password_hint": "🔐 Demo password: 20082010 (or any username/password on new demos)",
@@ -788,7 +787,7 @@ lang_en = {
     "western_union_watch_ad": "📺 Watch our ad – Western Union"
 }
 
-# ---------- FRENCH (copy English then override specific keys) ----------
+# ---------- FRENCH ----------
 lang_fr = lang_en.copy()
 lang_fr.update({
     "hero_sub": "Construisez avec Python. Livrez rapidement. Innovez avec l'IA.",
@@ -848,14 +847,14 @@ lang_fr.update({
     "project_learn_ai_desc": "Plateforme complète d'apprentissage de l'IA en 20 leçons avec traductions complètes en anglais, français, espagnol, fonction de lecture à voix haute (lit tout le texte), sélecteur de leçon dans la barre latérale, tarifs (mensuel ou unique) et protection par mot de passe. Maîtrisez ChatGPT, Gemini, DeepSeek, Grok, Claude, Midjourney et plus encore.",
     "project_learn_ai_full_price": "249 $US (forfait complet – paiement unique) ou abonnement mensuel 29 $US/mois",
     "project_learn_ai_status": "✅ Disponible maintenant – comprend le code source, l'installation et le support",
-    # Phone product French
-    "project_phone_aliexpress": "📱 Smartphone Premium – Débloqué (AliExpress)",
-    "project_phone_aliexpress_desc": "Smartphone neuf haut de gamme directement d'AliExpress. Caractéristiques : écran AMOLED 6,7'', 128 Go ROM / 8 Go RAM, appareil photo 108 MP, batterie 5000 mAh, double SIM, garantie mondiale. Parfait pour le travail, les loisirs et les tests de développement.",
-    "project_phone_aliexpress_full_price": "299 $US (livraison gratuite dans le monde entier)",
-    "project_phone_aliexpress_status": "✅ En stock – livré sous 7 à 15 jours ouvrés",
+    # Phone case French translation
+    "project_magnetic_case": "🛡️ Coque magnétique de luxe pour iPhone – Translucide mate avec protection d'objectif",
+    "project_magnetic_case_desc": "Coque magnétique mate translucide haut de gamme avec protection intégrée de l'objectif. Compatible avec les chargeurs sans fil MagSafe. Fonctionne avec iPhone 17/16/15/14/13/12/11 Pro Max. ⭐ 4.7/5 – 17 158 avis – 100k+ vendus.",
+    "project_magnetic_case_full_price": "29,90 $US (Livraison gratuite)",
+    "project_magnetic_case_status": "✅ En stock – Expédition depuis AliExpress",
 })
 
-# ---------- SPANISH (copy English then override) ----------
+# ---------- SPANISH ----------
 lang_es = lang_en.copy()
 lang_es.update({
     "hero_sub": "Construye con Python. Entrega con velocidad. Innova con IA.",
@@ -915,11 +914,11 @@ lang_es.update({
     "project_learn_ai_desc": "Plataforma completa de aprendizaje de IA con 20 lecciones, traducciones completas al inglés, francés y español, función de lectura en voz alta (lee todo el texto), selector de lección en la barra lateral, precios (único o mensual) y protección con contraseña. Domina ChatGPT, Gemini, DeepSeek, Grok, Claude, Midjourney y más.",
     "project_learn_ai_full_price": "$249 USD (paquete completo – pago único) o suscripción mensual $29 USD/mes",
     "project_learn_ai_status": "✅ Disponible ahora – incluye código fuente, instalación y soporte",
-    # Phone product Spanish
-    "project_phone_aliexpress": "📱 Smartphone Premium – Libre de fábrica (AliExpress)",
-    "project_phone_aliexpress_desc": "Smartphone nuevo de alto rendimiento directamente de AliExpress. Características: pantalla AMOLED de 6.7'', 128 GB ROM / 8 GB RAM, cámara de 108 MP, batería de 5000 mAh, doble SIM, garantía global. Perfecto para trabajo, entretenimiento y pruebas de desarrollo.",
-    "project_phone_aliexpress_full_price": "$299 USD (envío gratis a todo el mundo)",
-    "project_phone_aliexpress_status": "✅ En stock – entrega en 7–15 días hábiles",
+    # Phone case Spanish translation
+    "project_magnetic_case": "🛡️ Funda magnética de lujo para iPhone – Translúcida mate con protección de lente",
+    "project_magnetic_case_desc": "Funda magnética mate translúcida premium con protección de lente integrada. Compatible con cargadores inalámbricos MagSafe. Funciona con iPhone 17/16/15/14/13/12/11 Pro Max. ⭐ 4.7/5 – 17,158 reseñas – 100k+ vendidas.",
+    "project_magnetic_case_full_price": "$29.90 USD (Envío gratis)",
+    "project_magnetic_case_status": "✅ En stock – Envío desde AliExpress",
 })
 
 lang_dict = {"en": lang_en, "fr": lang_fr, "es": lang_es}
@@ -944,7 +943,7 @@ st.sidebar.markdown("### 📄 My CV")
 st.sidebar.markdown("[📥 Download / View my CV (Python Developer 2026)](https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/Gesner%20Deslandes%20CV%20Python%202026.docx)")
 st.sidebar.markdown("---")
 
-# ---------- LEGAL PAGES (full content) ----------
+# ---------- LEGAL PAGES ----------
 with st.sidebar.expander("📜 Privacy Policy"):
     st.markdown("""
     **Privacy Policy for GlobalInternet.py**
@@ -1040,7 +1039,7 @@ if st.button("🚪 Logout", use_container_width=True):
     st.rerun()
 
 # ----------------------------------------------------------------------
-# MAIN WEBSITE CONTENT (hero, about, avatar, cv, team, robotics, etc.)
+# MAIN WEBSITE CONTENT
 # ----------------------------------------------------------------------
 st.markdown(f"""
 <div class="hero">
@@ -1167,7 +1166,7 @@ for i, (title, desc) in enumerate(services):
         </div>
         """, unsafe_allow_html=True)
 
-# ---------- Projects listing with compact comment section ----------
+# ---------- Projects listing with comment section ----------
 st.markdown(f"## {t['projects_title']}")
 st.markdown(f"*{t['projects_sub']}*")
 
@@ -1228,7 +1227,7 @@ project_keys = [
     "medical_vocab_book2", "medical_term_book3", "toefl_course", "french_course", "haiti_marketplace", "vectra_ai",
     "humanoid_robot", "hospital", "arbitration", "programming_book", "employee_mgmt", "miroir",
     "wordpress", "building_systems", "kubernetes_dashboard", "haiti_radar2_tracker",
-    "learn_ai", "phone_aliexpress"   # <--- added smartphone product
+    "learn_ai", "magnetic_case"
 ]
 
 projects = []
@@ -1296,7 +1295,7 @@ for key in project_keys:
         demo_url = "https://haitiradar2-tracker-z9c46uryq5fnp8933wvzjb.streamlit.app/"
     elif key == "learn_ai":
         demo_url = "https://let-s-learn-ai-with-gesner-wodbaf3gydrkif6gshczq5.streamlit.app/"
-    # No demo for phone_aliexpress
+    # No demo for magnetic_case product
     projects.append({
         "title": t.get(f"project_{key}", "Project"),
         "desc": t.get(f"project_{key}_desc", "Description not available"),
@@ -1304,8 +1303,8 @@ for key in project_keys:
         "status": t.get(f"project_{key}_status", "Status"),
         "key": key,
         "demo_url": demo_url,
-        # For phone product, we add an image URL (replace with your actual phone picture URL)
-        "img_url": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/phone_placeholder.jpg" if key == "phone_aliexpress" else None
+        # For magnetic case product, use the provided image URL
+        "img_url": "https://github.com/Deslandes1/globalinternet_site.py/blob/main/Ali.png" if key == "magnetic_case" else None
     })
 
 group_a = [p for p in projects if p["demo_url"]]
@@ -1358,7 +1357,7 @@ if group_b:
                         <p><em>{proj['status']}</em></p>
                     </div>
                     """, unsafe_allow_html=True)
-                    # Show image if present (for phone product)
+                    # Show image if present (for magnetic case product)
                     if proj.get('img_url'):
                         st.image(proj['img_url'], caption=proj['title'], use_container_width=True)
                     st.info("📹 No public demo – contact us for a private walkthrough or more details.")
@@ -1371,7 +1370,7 @@ if group_b:
                     st.markdown(f"<p style='font-size:0.8rem; margin-top:0.5rem;'>{t['contact_note']}</p>", unsafe_allow_html=True)
                     show_comment_section(proj['key'])
 
-# ---------- SENDWAVE PROMOTIONAL SECTION (no components.html) ----------
+# ---------- SENDWAVE PROMOTIONAL SECTION ----------
 st.markdown("---")
 st.markdown(f"## {t['sendwave_title']}")
 col_promo, col_video_ad = st.columns([3, 2])
@@ -1408,7 +1407,7 @@ with col_video_ad:
 
 st.markdown("---")
 
-# ---------- WESTERN UNION PROMOTIONAL SECTION (no components.html) ----------
+# ---------- WESTERN UNION PROMOTIONAL SECTION ----------
 st.markdown(f"## {t['western_union_title']}")
 col_wu_promo, col_wu_video = st.columns([3, 2])
 with col_wu_promo:
