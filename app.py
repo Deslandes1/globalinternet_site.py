@@ -545,7 +545,7 @@ lang_en = {
     ],
     "projects_title": "🏆 Our Projects & Accomplishments",
     "projects_sub": "Completed software solutions delivered to clients – ready for you to purchase or customize.",
-    # ----- ALL PROJECTS (ENGLISH) -----
+    # ----- ALL PROJECTS (ENGLISH) - truncated for brevity but all exist -----
     "project_haiti": "🇭🇹 Haiti Online Voting Software",
     "project_haiti_desc": "Complete presidential election system with multi‑language support (Kreyòl, French, English, Spanish), real‑time live monitoring, CEP President dashboard (manage candidates, upload photos, download progress reports), secret ballot, and changeable passwords.",
     "project_haiti_full_price": "$15,000 USD (full package – one‑time)",
@@ -739,7 +739,7 @@ lang_en = {
     "project_learn_ai_desc": "Complete 20‑lesson AI learning platform with full English/French/Spanish translations, read‑aloud feature (reads full lesson text), sidebar lesson picker, pricing (monthly and one‑time), and password protection. Master ChatGPT, Gemini, DeepSeek, Grok, Claude, Midjourney, and more.",
     "project_learn_ai_full_price": "$249 USD (full package – one‑time) or $29/month subscription",
     "project_learn_ai_status": "✅ Available now – includes source code, setup, and support",
-    # NEW: Luxurious Magnetic Case for iPhone (AliExpress) with exact AliExpress price format
+    # NEW: Luxurious Magnetic Case for iPhone (AliExpress) – NO MONTHLY SUBSCRIPTION
     "project_magnetic_case": "🛡️ Luxurious Magnetic Case for iPhone – Matte Translucent with Lens Protection",
     "project_magnetic_case_desc": "Premium matte translucent magnetic case with built-in lens protection. Compatible with MagSafe wireless chargers. Works with iPhone 17/16/15/14/13/12/11 Pro Max. ⭐ 4.7/5 – 17,158 reviews – 100k+ sold.\n\n**HTG526.55 -15% HTG619.47**  \n*Prix hors taxe*  \nHTG116.15 off over HTG1,355.09",
     "project_magnetic_case_full_price": "HTG526.55 ~~HTG619.47~~ (-15%)",
@@ -1307,7 +1307,9 @@ for key in project_keys:
         "key": key,
         "demo_url": demo_url,
         "aliexpress_link": t.get(f"project_{key}_aliexpress_link", None) if key == "magnetic_case" else None,
-        "img_url": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/Ali.png" if key == "magnetic_case" else None
+        "img_url": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/Ali.png" if key == "magnetic_case" else None,
+        # mark this product as physical (no subscription)
+        "is_physical": key == "magnetic_case"
     })
 
 group_a = [p for p in projects if p["demo_url"]]
@@ -1356,20 +1358,23 @@ if group_b:
                         <h3>{proj['title']}</h3>
                         <p>{proj['desc']}</p>
                         <div class="price">💎 Full package: {proj['full_price']}</div>
-                        <div class="price">📅 Monthly subscription: $299 USD / month</div>
+                        {'' if proj.get('is_physical') else '<div class="price">📅 Monthly subscription: $299 USD / month</div>'}
                         <p><em>{proj['status']}</em></p>
                     </div>
                     """, unsafe_allow_html=True)
                     # Show image if present (for magnetic case product)
                     if proj.get('img_url'):
                         st.image(proj['img_url'], caption=proj['title'], width='stretch')
-                    # Show AliExpress button if link exists
+                    # Show AliExpress button if link exists (physical product)
                     if proj.get('aliexpress_link'):
                         st.markdown(f"<a href='{proj['aliexpress_link']}' target='_blank'><button style='background-color:#ff9900; color:white; border:none; border-radius:30px; padding:0.5rem 1rem; margin-bottom:0.5rem; width:100%; cursor:pointer;'>{t['view_on_aliexpress']}</button></a>", unsafe_allow_html=True)
                     else:
                         st.info("📹 No public demo – contact us for a private walkthrough or more details.")
-                    if st.button(t['subscribe_monthly'], key=f"subscribe_{proj['key']}", width='stretch'):
-                        st.info(f"To subscribe for {proj['title']} at $299/month, please contact us directly: 📞 (509)-47385663 or ✉️ deslandes78@gmail.com")
+                    # Only show Subscribe button for non-physical products
+                    if not proj.get('is_physical'):
+                        if st.button(t['subscribe_monthly'], key=f"subscribe_{proj['key']}", width='stretch'):
+                            st.info(f"To subscribe for {proj['title']} at $299/month, please contact us directly: 📞 (509)-47385663 or ✉️ deslandes78@gmail.com")
+                    # Buy button (email) – optional, you can keep or remove
                     subject = f"Purchase: {proj['title']}"
                     body = f"Hello Gesner,%0D%0A%0D%0AI am interested in purchasing the full package of: {proj['title']} at {proj['full_price']}.%0D%0A%0D%0APlease send me payment instructions and the delivery details.%0D%0A%0D%0AThank you."
                     mailto_link = f"mailto:deslandes78@gmail.com?subject={subject}&body={body}"
