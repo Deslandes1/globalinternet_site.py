@@ -9,7 +9,7 @@ import re
 from supabase import create_client, Client
 
 # ============================================================
-# MITGO VERIFICATION META TAGS
+# MITGO VERIFICATION META TAGS (added to <head>)
 # ============================================================
 st.markdown("""
 <head>
@@ -545,7 +545,7 @@ lang_en = {
     ],
     "projects_title": "🏆 Our Projects & Accomplishments",
     "projects_sub": "Completed software solutions delivered to clients – ready for you to purchase or customize.",
-    # ----- PROJECTS -----
+    # ----- PROJECTS (truncated for brevity – all projects same as before) -----
     "project_haiti": "🇭🇹 Haiti Online Voting Software",
     "project_haiti_desc": "Complete presidential election system with multi‑language support (Kreyòl, French, English, Spanish), real‑time live monitoring, CEP President dashboard (manage candidates, upload photos, download progress reports), secret ballot, and changeable passwords.",
     "project_haiti_full_price": "$15,000 USD (full package – one‑time)",
@@ -738,17 +738,19 @@ lang_en = {
     "project_learn_ai_desc": "Complete 20‑lesson AI learning platform with full English/French/Spanish translations, read‑aloud feature (reads full lesson text), sidebar lesson picker, pricing (monthly and one‑time), and password protection. Master ChatGPT, Gemini, DeepSeek, Grok, Claude, Midjourney, and more.",
     "project_learn_ai_full_price": "$249 USD (full package – one‑time) or $29/month subscription",
     "project_learn_ai_status": "✅ Available now – includes source code, setup, and support",
-    # NEW: Luxurious Magnetic Case for iPhone
+    # NEW: Luxurious Magnetic Case for iPhone (AliExpress)
     "project_magnetic_case": "🛡️ Luxurious Magnetic Case for iPhone – Matte Translucent with Lens Protection",
     "project_magnetic_case_desc": "Premium matte translucent magnetic case with built-in lens protection. Compatible with MagSafe wireless chargers. Works with iPhone 17/16/15/14/13/12/11 Pro Max. ⭐ 4.7/5 – 17,158 reviews – 100k+ sold.",
     "project_magnetic_case_full_price": "$29.90 USD (Free Shipping)",
     "project_magnetic_case_status": "✅ In stock – Ships from AliExpress",
-    # ----- UI common keys -----
+    "project_magnetic_case_aliexpress_link": "https://www.aliexpress.com/item/XXXXXXXX.html",  # <-- REPLACE WITH REAL LINK
+    # UI common keys
     "view_demo": "🎬 View Demo",
     "live_demo": "🔗 Live Demo",
     "demo_password_hint": "🔐 Demo password: 20082010 (or any username/password on new demos)",
     "request_info": "Request Info",
     "buy_now": "💵 Buy Full Package",
+    "view_on_aliexpress": "🛒 View on AliExpress",
     "subscribe_monthly": "📅 Subscribe Monthly ($299/mo)",
     "contact_note": "📞 To purchase or subscribe, contact us directly: Phone (509)-47385663 | Email deslandes78@gmail.com",
     "donation_title": "💖 Support GlobalInternet.py",
@@ -787,7 +789,7 @@ lang_en = {
     "western_union_watch_ad": "📺 Watch our ad – Western Union"
 }
 
-# ---------- FRENCH ----------
+# ---------- FRENCH (partial update) ----------
 lang_fr = lang_en.copy()
 lang_fr.update({
     "hero_sub": "Construisez avec Python. Livrez rapidement. Innovez avec l'IA.",
@@ -807,6 +809,7 @@ lang_fr.update({
     "demo_password_hint": "🔐 Mot de passe démo : 20082010 (ou n'importe quel identifiant/mot de passe sur les nouvelles démos)",
     "request_info": "Demander des informations",
     "buy_now": "💵 Acheter le forfait complet",
+    "view_on_aliexpress": "🛒 Voir sur AliExpress",
     "subscribe_monthly": "📅 S'abonner mensuellement (299 $/mois)",
     "contact_note": "📞 Pour acheter ou vous abonner, contactez‑nous directement : Téléphone (509)-47385663 | Email deslandes78@gmail.com",
     "donation_title": "💖 Soutenez GlobalInternet.py",
@@ -847,14 +850,13 @@ lang_fr.update({
     "project_learn_ai_desc": "Plateforme complète d'apprentissage de l'IA en 20 leçons avec traductions complètes en anglais, français, espagnol, fonction de lecture à voix haute (lit tout le texte), sélecteur de leçon dans la barre latérale, tarifs (mensuel ou unique) et protection par mot de passe. Maîtrisez ChatGPT, Gemini, DeepSeek, Grok, Claude, Midjourney et plus encore.",
     "project_learn_ai_full_price": "249 $US (forfait complet – paiement unique) ou abonnement mensuel 29 $US/mois",
     "project_learn_ai_status": "✅ Disponible maintenant – comprend le code source, l'installation et le support",
-    # Phone case French translation
     "project_magnetic_case": "🛡️ Coque magnétique de luxe pour iPhone – Translucide mate avec protection d'objectif",
     "project_magnetic_case_desc": "Coque magnétique mate translucide haut de gamme avec protection intégrée de l'objectif. Compatible avec les chargeurs sans fil MagSafe. Fonctionne avec iPhone 17/16/15/14/13/12/11 Pro Max. ⭐ 4.7/5 – 17 158 avis – 100k+ vendus.",
     "project_magnetic_case_full_price": "29,90 $US (Livraison gratuite)",
     "project_magnetic_case_status": "✅ En stock – Expédition depuis AliExpress",
 })
 
-# ---------- SPANISH ----------
+# ---------- SPANISH (partial update) ----------
 lang_es = lang_en.copy()
 lang_es.update({
     "hero_sub": "Construye con Python. Entrega con velocidad. Innova con IA.",
@@ -874,6 +876,7 @@ lang_es.update({
     "demo_password_hint": "🔐 Contraseña de demostración: 20082010 (o cualquier nombre de usuario/contraseña en las nuevas demos)",
     "request_info": "Solicitar información",
     "buy_now": "💵 Comprar paquete completo",
+    "view_on_aliexpress": "🛒 Ver en AliExpress",
     "subscribe_monthly": "📅 Suscribirse mensualmente ($299/mes)",
     "contact_note": "📞 Para comprar o suscribirse, contáctenos directamente: Teléfono (509)-47385663 | Correo electrónico deslandes78@gmail.com",
     "donation_title": "💖 Apoya GlobalInternet.py",
@@ -914,7 +917,6 @@ lang_es.update({
     "project_learn_ai_desc": "Plataforma completa de aprendizaje de IA con 20 lecciones, traducciones completas al inglés, francés y español, función de lectura en voz alta (lee todo el texto), selector de lección en la barra lateral, precios (único o mensual) y protección con contraseña. Domina ChatGPT, Gemini, DeepSeek, Grok, Claude, Midjourney y más.",
     "project_learn_ai_full_price": "$249 USD (paquete completo – pago único) o suscripción mensual $29 USD/mes",
     "project_learn_ai_status": "✅ Disponible ahora – incluye código fuente, instalación y soporte",
-    # Phone case Spanish translation
     "project_magnetic_case": "🛡️ Funda magnética de lujo para iPhone – Translúcida mate con protección de lente",
     "project_magnetic_case_desc": "Funda magnética mate translúcida premium con protección de lente integrada. Compatible con cargadores inalámbricos MagSafe. Funciona con iPhone 17/16/15/14/13/12/11 Pro Max. ⭐ 4.7/5 – 17,158 reseñas – 100k+ vendidas.",
     "project_magnetic_case_full_price": "$29.90 USD (Envío gratis)",
@@ -1034,12 +1036,12 @@ st.sidebar.markdown("---")
 st.sidebar.markdown("### © 2025 GlobalInternet.py")
 st.sidebar.markdown("All rights reserved")
 st.sidebar.markdown("---")
-if st.button("🚪 Logout", use_container_width=True):
+if st.button("🚪 Logout", width='stretch'):
     st.session_state.authenticated = False
     st.rerun()
 
 # ----------------------------------------------------------------------
-# MAIN WEBSITE CONTENT
+# MAIN WEBSITE CONTENT (hero, about, avatar, cv, team, robotics, etc.)
 # ----------------------------------------------------------------------
 st.markdown(f"""
 <div class="hero">
@@ -1166,7 +1168,7 @@ for i, (title, desc) in enumerate(services):
         </div>
         """, unsafe_allow_html=True)
 
-# ---------- Projects listing with comment section ----------
+# ---------- Projects listing with compact comment section ----------
 st.markdown(f"## {t['projects_title']}")
 st.markdown(f"*{t['projects_sub']}*")
 
@@ -1295,7 +1297,7 @@ for key in project_keys:
         demo_url = "https://haitiradar2-tracker-z9c46uryq5fnp8933wvzjb.streamlit.app/"
     elif key == "learn_ai":
         demo_url = "https://let-s-learn-ai-with-gesner-wodbaf3gydrkif6gshczq5.streamlit.app/"
-    # No demo for magnetic_case product
+    # No demo for magnetic_case
     projects.append({
         "title": t.get(f"project_{key}", "Project"),
         "desc": t.get(f"project_{key}_desc", "Description not available"),
@@ -1303,8 +1305,8 @@ for key in project_keys:
         "status": t.get(f"project_{key}_status", "Status"),
         "key": key,
         "demo_url": demo_url,
-        # For magnetic case product, use the provided image URL
-        "img_url": "https://github.com/Deslandes1/globalinternet_site.py/blob/main/Ali.png" if key == "magnetic_case" else None
+        "aliexpress_link": t.get(f"project_{key}_aliexpress_link", None) if key == "magnetic_case" else None,
+        "img_url": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/Ali.png" if key == "magnetic_case" else None
     })
 
 group_a = [p for p in projects if p["demo_url"]]
@@ -1330,7 +1332,7 @@ if group_a:
                     """, unsafe_allow_html=True)
                     st.markdown(f"<a href='{proj['demo_url']}' target='_blank'><button style='background-color:#28a745; color:white; border:none; border-radius:30px; padding:0.5rem 1rem; margin-bottom:0.5rem; width:100%; cursor:pointer;'>{t['live_demo']}</button></a>", unsafe_allow_html=True)
                     st.caption(t['demo_password_hint'])
-                    if st.button(t['subscribe_monthly'], key=f"subscribe_{proj['key']}"):
+                    if st.button(t['subscribe_monthly'], key=f"subscribe_{proj['key']}", width='stretch'):
                         st.info(f"To subscribe for {proj['title']} at $299/month, please contact us directly: 📞 (509)-47385663 or ✉️ deslandes78@gmail.com")
                     subject = f"Purchase: {proj['title']}"
                     body = f"Hello Gesner,%0D%0A%0D%0AI am interested in purchasing the full package of: {proj['title']} at {proj['full_price']}.%0D%0A%0D%0APlease send me payment instructions and the delivery details.%0D%0A%0D%0AThank you."
@@ -1359,9 +1361,13 @@ if group_b:
                     """, unsafe_allow_html=True)
                     # Show image if present (for magnetic case product)
                     if proj.get('img_url'):
-                        st.image(proj['img_url'], caption=proj['title'], use_container_width=True)
-                    st.info("📹 No public demo – contact us for a private walkthrough or more details.")
-                    if st.button(t['subscribe_monthly'], key=f"subscribe_{proj['key']}"):
+                        st.image(proj['img_url'], caption=proj['title'], width=None)
+                    # Show AliExpress button if link exists
+                    if proj.get('aliexpress_link'):
+                        st.markdown(f"<a href='{proj['aliexpress_link']}' target='_blank'><button style='background-color:#ff9900; color:white; border:none; border-radius:30px; padding:0.5rem 1rem; margin-bottom:0.5rem; width:100%; cursor:pointer;'>{t['view_on_aliexpress']}</button></a>", unsafe_allow_html=True)
+                    else:
+                        st.info("📹 No public demo – contact us for a private walkthrough or more details.")
+                    if st.button(t['subscribe_monthly'], key=f"subscribe_{proj['key']}", width='stretch'):
                         st.info(f"To subscribe for {proj['title']} at $299/month, please contact us directly: 📞 (509)-47385663 or ✉️ deslandes78@gmail.com")
                     subject = f"Purchase: {proj['title']}"
                     body = f"Hello Gesner,%0D%0A%0D%0AI am interested in purchasing the full package of: {proj['title']} at {proj['full_price']}.%0D%0A%0D%0APlease send me payment instructions and the delivery details.%0D%0A%0D%0AThank you."
@@ -1463,7 +1469,7 @@ st.markdown(f"""
     <p><strong>{t['donation_future']}</strong></p>
 </div>
 """, unsafe_allow_html=True)
-if st.button(t['donation_button']):
+if st.button(t['donation_button'], width='stretch'):
     st.success(t['donation_thanks'])
 
 # ---------- Contact ----------
