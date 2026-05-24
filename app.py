@@ -20,7 +20,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ============================================================
-# GLOBAL SECURITY SHIELD (EMBEDDED)
+# GLOBAL SECURITY SHIELD (EMBEDDED – NO EXTERNAL IMPORT)
 # ============================================================
 import json
 from typing import Any, Dict, Optional, Tuple
@@ -131,7 +131,7 @@ class WebAppShield:
                     st.stop()
         st.sidebar.markdown("🛡️ **Global Security Shield active**")
 
-# Initialise the shield
+# Initialise the shield with your API key (UPDATED)
 shield = WebAppShield(
     app_name="GlobalInternet.py Main Website",
     api_key="gl-MssTDLE9cATE4Iu7_tQkcxaFWcwwMr3e7S_Mdwgg",
@@ -150,7 +150,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# ---------- Comment functions ----------
+# ---------- Comment functions (with shield sanitisation) ----------
 def get_comments(project_key):
     try:
         response = supabase.table("comments").select("*").eq("project_key", project_key).order("timestamp", desc=False).execute()
@@ -314,11 +314,11 @@ if "notification_sent" not in st.session_state:
 if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
 
-# Activate shield protection
+# Activate shield protection (checks URL parameters)
 shield.protect_streamlit()
 
 # ============================================================
-# LIGHT BLUE BACKGROUND
+# LIGHT BLUE BACKGROUND (NO STARS – SIMPLE, CLEAN)
 # ============================================================
 st.markdown("""
 <style>
@@ -338,7 +338,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# ---------- CSS ----------
+# ---------- Existing CSS (unchanged) ----------
 st.markdown("""
 <style>
     .main { padding: 0rem 1rem; }
@@ -453,7 +453,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ============================================================
-# GOOGLE ADSENSE META TAG
+# GOOGLE ADSENSE META TAG (no components.html)
 # ============================================================
 st.markdown(
     """
@@ -465,7 +465,7 @@ st.markdown(
 )
 
 # ============================================================
-# DICTIONARIES (ENGLISH, FRENCH, SPANISH)
+# FULL DICTIONARIES (ENGLISH, FRENCH, SPANISH)
 # ============================================================
 
 # ---------- ENGLISH ----------
@@ -545,7 +545,7 @@ lang_en = {
     ],
     "projects_title": "🏆 Our Projects & Accomplishments",
     "projects_sub": "Completed software solutions delivered to clients – ready for you to purchase or customize.",
-    # ----- PROJECTS (truncated for brevity – all projects same as before) -----
+    # ----- ALL PROJECTS (ENGLISH) -----
     "project_haiti": "🇭🇹 Haiti Online Voting Software",
     "project_haiti_desc": "Complete presidential election system with multi‑language support (Kreyòl, French, English, Spanish), real‑time live monitoring, CEP President dashboard (manage candidates, upload photos, download progress reports), secret ballot, and changeable passwords.",
     "project_haiti_full_price": "$15,000 USD (full package – one‑time)",
@@ -734,6 +734,7 @@ lang_en = {
     "project_haiti_radar2_tracker_desc": "Advanced radar tracking system for monitoring aircraft, weather, and maritime activity around Haiti. Real‑time simulation with historical data replay, alert zones, and multi‑language support.",
     "project_haiti_radar2_tracker_full_price": "$2,500 USD (full package – one‑time)",
     "project_haiti_radar2_tracker_status": "✅ Live demo (any username/password) | Subscribe monthly",
+    # NEW: Let's Learn AI with Gesner
     "project_learn_ai": "🤖 Let's Learn AI with Gesner",
     "project_learn_ai_desc": "Complete 20‑lesson AI learning platform with full English/French/Spanish translations, read‑aloud feature (reads full lesson text), sidebar lesson picker, pricing (monthly and one‑time), and password protection. Master ChatGPT, Gemini, DeepSeek, Grok, Claude, Midjourney, and more.",
     "project_learn_ai_full_price": "$249 USD (full package – one‑time) or $29/month subscription",
@@ -743,7 +744,7 @@ lang_en = {
     "project_magnetic_case_desc": "Premium matte translucent magnetic case with built-in lens protection. Compatible with MagSafe wireless chargers. Works with iPhone 17/16/15/14/13/12/11 Pro Max. ⭐ 4.7/5 – 17,158 reviews – 100k+ sold.",
     "project_magnetic_case_full_price": "$29.90 USD (Free Shipping)",
     "project_magnetic_case_status": "✅ In stock – Ships from AliExpress",
-    "project_magnetic_case_aliexpress_link": "https://www.aliexpress.com/item/XXXXXXXX.html",  # <-- REPLACE WITH REAL LINK
+    "project_magnetic_case_aliexpress_link": "https://fr.aliexpress.com/item/1005007502032342.html?spm=oneshop.sub_buy_again.waterfall.1.2d1e7f6bBPweaX&skuId=12000041043858411&pdp_ext_f=%7B%22sku_id%22%3A%2212000041043858411%22%7D&aecmd=true&gatewayAdapt=glo2fra",  # <-- REPLACE WITH YOUR AFFILIATE LINK
     # UI common keys
     "view_demo": "🎬 View Demo",
     "live_demo": "🔗 Live Demo",
@@ -1361,7 +1362,8 @@ if group_b:
                     """, unsafe_allow_html=True)
                     # Show image if present (for magnetic case product)
                     if proj.get('img_url'):
-                        st.image(proj['img_url'], caption=proj['title'], width=None)
+                        # FIXED: replaced 'width=None' with 'width='stretch''
+                        st.image(proj['img_url'], caption=proj['title'], width='stretch')
                     # Show AliExpress button if link exists
                     if proj.get('aliexpress_link'):
                         st.markdown(f"<a href='{proj['aliexpress_link']}' target='_blank'><button style='background-color:#ff9900; color:white; border:none; border-radius:30px; padding:0.5rem 1rem; margin-bottom:0.5rem; width:100%; cursor:pointer;'>{t['view_on_aliexpress']}</button></a>", unsafe_allow_html=True)
