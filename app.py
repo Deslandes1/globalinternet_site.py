@@ -9,6 +9,17 @@ import re
 from supabase import create_client, Client
 
 # ============================================================
+# MITGO VERIFICATION META TAGS (added to <head>)
+# ============================================================
+st.markdown("""
+<head>
+    <meta name="mitgo-verification" content="f264c89d-a0eb-47df-9591-9cd2d09e17d9" />
+    <meta name="mitgo-verification" content="c807768c-7df7-4ebd-95a8-3737a906f92d" />
+    <meta name="mitgo-verification" content="9030315c-9bfb-49af-940b-5526ce5dca6e" />
+</head>
+""", unsafe_allow_html=True)
+
+# ============================================================
 # GLOBAL SECURITY SHIELD (EMBEDDED – NO EXTERNAL IMPORT)
 # ============================================================
 import json
@@ -728,6 +739,11 @@ lang_en = {
     "project_learn_ai_desc": "Complete 20‑lesson AI learning platform with full English/French/Spanish translations, read‑aloud feature (reads full lesson text), sidebar lesson picker, pricing (monthly and one‑time), and password protection. Master ChatGPT, Gemini, DeepSeek, Grok, Claude, Midjourney, and more.",
     "project_learn_ai_full_price": "$249 USD (full package – one‑time) or $29/month subscription",
     "project_learn_ai_status": "✅ Available now – includes source code, setup, and support",
+    # NEW: AliExpress Smartphone for Sale
+    "project_phone_aliexpress": "📱 Premium Smartphone – Factory Unlocked (AliExpress)",
+    "project_phone_aliexpress_desc": "Brand new, high-performance smartphone directly from AliExpress. Features: 6.7'' AMOLED display, 128GB ROM / 8GB RAM, 108MP camera, 5000mAh battery, dual SIM, global warranty. Perfect for work, entertainment, and development testing.",
+    "project_phone_aliexpress_full_price": "$299 USD (free shipping worldwide)",
+    "project_phone_aliexpress_status": "✅ In stock – delivered in 7–15 business days",
     # UI common keys
     "view_demo": "🎬 View Demo",
     "live_demo": "🔗 Live Demo",
@@ -832,6 +848,11 @@ lang_fr.update({
     "project_learn_ai_desc": "Plateforme complète d'apprentissage de l'IA en 20 leçons avec traductions complètes en anglais, français, espagnol, fonction de lecture à voix haute (lit tout le texte), sélecteur de leçon dans la barre latérale, tarifs (mensuel ou unique) et protection par mot de passe. Maîtrisez ChatGPT, Gemini, DeepSeek, Grok, Claude, Midjourney et plus encore.",
     "project_learn_ai_full_price": "249 $US (forfait complet – paiement unique) ou abonnement mensuel 29 $US/mois",
     "project_learn_ai_status": "✅ Disponible maintenant – comprend le code source, l'installation et le support",
+    # Phone product French
+    "project_phone_aliexpress": "📱 Smartphone Premium – Débloqué (AliExpress)",
+    "project_phone_aliexpress_desc": "Smartphone neuf haut de gamme directement d'AliExpress. Caractéristiques : écran AMOLED 6,7'', 128 Go ROM / 8 Go RAM, appareil photo 108 MP, batterie 5000 mAh, double SIM, garantie mondiale. Parfait pour le travail, les loisirs et les tests de développement.",
+    "project_phone_aliexpress_full_price": "299 $US (livraison gratuite dans le monde entier)",
+    "project_phone_aliexpress_status": "✅ En stock – livré sous 7 à 15 jours ouvrés",
 })
 
 # ---------- SPANISH (copy English then override) ----------
@@ -894,6 +915,11 @@ lang_es.update({
     "project_learn_ai_desc": "Plataforma completa de aprendizaje de IA con 20 lecciones, traducciones completas al inglés, francés y español, función de lectura en voz alta (lee todo el texto), selector de lección en la barra lateral, precios (único o mensual) y protección con contraseña. Domina ChatGPT, Gemini, DeepSeek, Grok, Claude, Midjourney y más.",
     "project_learn_ai_full_price": "$249 USD (paquete completo – pago único) o suscripción mensual $29 USD/mes",
     "project_learn_ai_status": "✅ Disponible ahora – incluye código fuente, instalación y soporte",
+    # Phone product Spanish
+    "project_phone_aliexpress": "📱 Smartphone Premium – Libre de fábrica (AliExpress)",
+    "project_phone_aliexpress_desc": "Smartphone nuevo de alto rendimiento directamente de AliExpress. Características: pantalla AMOLED de 6.7'', 128 GB ROM / 8 GB RAM, cámara de 108 MP, batería de 5000 mAh, doble SIM, garantía global. Perfecto para trabajo, entretenimiento y pruebas de desarrollo.",
+    "project_phone_aliexpress_full_price": "$299 USD (envío gratis a todo el mundo)",
+    "project_phone_aliexpress_status": "✅ En stock – entrega en 7–15 días hábiles",
 })
 
 lang_dict = {"en": lang_en, "fr": lang_fr, "es": lang_es}
@@ -1202,7 +1228,7 @@ project_keys = [
     "medical_vocab_book2", "medical_term_book3", "toefl_course", "french_course", "haiti_marketplace", "vectra_ai",
     "humanoid_robot", "hospital", "arbitration", "programming_book", "employee_mgmt", "miroir",
     "wordpress", "building_systems", "kubernetes_dashboard", "haiti_radar2_tracker",
-    "learn_ai"
+    "learn_ai", "phone_aliexpress"   # <--- added smartphone product
 ]
 
 projects = []
@@ -1270,13 +1296,16 @@ for key in project_keys:
         demo_url = "https://haitiradar2-tracker-z9c46uryq5fnp8933wvzjb.streamlit.app/"
     elif key == "learn_ai":
         demo_url = "https://let-s-learn-ai-with-gesner-wodbaf3gydrkif6gshczq5.streamlit.app/"
+    # No demo for phone_aliexpress
     projects.append({
         "title": t.get(f"project_{key}", "Project"),
         "desc": t.get(f"project_{key}_desc", "Description not available"),
         "full_price": t.get(f"project_{key}_full_price", "Contact for price"),
         "status": t.get(f"project_{key}_status", "Status"),
         "key": key,
-        "demo_url": demo_url
+        "demo_url": demo_url,
+        # For phone product, we add an image URL (replace with your actual phone picture URL)
+        "img_url": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/phone_placeholder.jpg" if key == "phone_aliexpress" else None
     })
 
 group_a = [p for p in projects if p["demo_url"]]
@@ -1312,7 +1341,7 @@ if group_a:
                     show_comment_section(proj['key'])
 
 if group_b:
-    st.markdown("### 🛠️ Software Available for Purchase (No Public Demo)")
+    st.markdown("### 🛠️ Software / Products Available for Purchase (No Public Demo)")
     for i in range(0, len(group_b), 2):
         cols = st.columns(2)
         for j, col in enumerate(cols):
@@ -1329,7 +1358,10 @@ if group_b:
                         <p><em>{proj['status']}</em></p>
                     </div>
                     """, unsafe_allow_html=True)
-                    st.info("📹 No public demo – contact us for a private walkthrough.")
+                    # Show image if present (for phone product)
+                    if proj.get('img_url'):
+                        st.image(proj['img_url'], caption=proj['title'], use_container_width=True)
+                    st.info("📹 No public demo – contact us for a private walkthrough or more details.")
                     if st.button(t['subscribe_monthly'], key=f"subscribe_{proj['key']}"):
                         st.info(f"To subscribe for {proj['title']} at $299/month, please contact us directly: 📞 (509)-47385663 or ✉️ deslandes78@gmail.com")
                     subject = f"Purchase: {proj['title']}"
