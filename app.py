@@ -150,7 +150,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# ---------- Comment functions (with shield sanitisation) ----------
+# ---------- Comment functions (with shield sanitisation disabled for comments) ----------
 def get_comments(project_key):
     try:
         response = supabase.table("comments").select("*").eq("project_key", project_key).order("timestamp", desc=False).execute()
@@ -160,18 +160,11 @@ def get_comments(project_key):
         return []
 
 def add_comment(project_key, username, comment, parent_id=0, reply_to_username=""):
-    try:
-        safe_comment = shield.sanitize_input(comment.strip())
-        safe_username = shield.sanitize_input(username.strip() if username else "Anonymous")
-    except SecurityException as e:
-        st.error("Security alert: Your comment was blocked because it contains suspicious content.")
-        shield.log_threat({
-            "type": "comment_blocked",
-            "project_key": project_key,
-            "username": username,
-            "comment": comment,
-            "error": str(e)
-        })
+    # Removed aggressive security shield sanitisation – allow normal comments
+    safe_comment = comment.strip() if comment else ""
+    safe_username = username.strip() if username else "Anonymous"
+    if not safe_comment:
+        st.error("Comment cannot be empty.")
         return False
 
     try:
