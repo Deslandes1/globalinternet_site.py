@@ -7,6 +7,34 @@ from email.mime.multipart import MIMEMultipart
 import requests
 import re
 from supabase import create_client, Client
+import tempfile
+import os
+
+# ============================================================
+# VOICE GENERATION (with fallback)
+# ============================================================
+try:
+    from gtts import gTTS
+    VOICE_AVAILABLE = True
+except ImportError:
+    VOICE_AVAILABLE = False
+
+def generate_audio(text):
+    if not VOICE_AVAILABLE or not text.strip():
+        return None
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".mp3") as tmp:
+        tmp_path = tmp.name
+    try:
+        tts = gTTS(text=text, lang="en", slow=False)
+        tts.save(tmp_path)
+        with open(tmp_path, "rb") as f:
+            audio_bytes = f.read()
+        return audio_bytes
+    except Exception:
+        return None
+    finally:
+        if os.path.exists(tmp_path):
+            os.unlink(tmp_path)
 
 # ============================================================
 # MITGO VERIFICATION META TAGS (added to <head>)
@@ -160,7 +188,6 @@ def get_comments(project_key):
         return []
 
 def add_comment(project_key, username, comment, parent_id=0, reply_to_username=""):
-    # Removed aggressive security shield sanitisation – allow normal comments
     safe_comment = comment.strip() if comment else ""
     safe_username = username.strip() if username else "Anonymous"
     if not safe_comment:
@@ -538,7 +565,7 @@ lang_en = {
     ],
     "projects_title": "🏆 Our Projects & Accomplishments",
     "projects_sub": "Completed software solutions delivered to clients – ready for you to purchase or customize.",
-    # ----- ALL PROJECTS (ENGLISH) - truncated for brevity but all exist -----
+    # ----- ALL PROJECTS (ENGLISH) -----
     "project_haiti": "🇭🇹 Haiti Online Voting Software",
     "project_haiti_desc": "Complete presidential election system with multi‑language support (Kreyòl, French, English, Spanish), real‑time live monitoring, CEP President dashboard (manage candidates, upload photos, download progress reports), secret ballot, and changeable passwords.",
     "project_haiti_full_price": "$15,000 USD (full package – one‑time)",
@@ -727,17 +754,15 @@ lang_en = {
     "project_haiti_radar2_tracker_desc": "Advanced radar tracking system for monitoring aircraft, weather, and maritime activity around Haiti. Real‑time simulation with historical data replay, alert zones, and multi‑language support.",
     "project_haiti_radar2_tracker_full_price": "$2,500 USD (full package – one‑time)",
     "project_haiti_radar2_tracker_status": "✅ Live demo (any username/password) | Subscribe monthly",
-    # NEW: Let's Learn AI with Gesner
     "project_learn_ai": "🤖 Let's Learn AI with Gesner",
     "project_learn_ai_desc": "Complete 20‑lesson AI learning platform with full English/French/Spanish translations, read‑aloud feature (reads full lesson text), sidebar lesson picker, pricing (monthly and one‑time), and password protection. Master ChatGPT, Gemini, DeepSeek, Grok, Claude, Midjourney, and more.",
     "project_learn_ai_full_price": "$249 USD (full package – one‑time) or $29/month subscription",
     "project_learn_ai_status": "✅ Available now – includes source code, setup, and support",
-    # NEW: Luxurious Magnetic Case for iPhone (AliExpress) – NO MONTHLY SUBSCRIPTION
     "project_magnetic_case": "🛡️ Luxurious Magnetic Case for iPhone – Matte Translucent with Lens Protection",
     "project_magnetic_case_desc": "Premium matte translucent magnetic case with built-in lens protection. Compatible with MagSafe wireless chargers. Works with iPhone 17/16/15/14/13/12/11 Pro Max. ⭐ 4.7/5 – 17,158 reviews – 100k+ sold.\n\n**HTG526.55 -15% HTG619.47**  \n*Prix hors taxe*  \nHTG116.15 off over HTG1,355.09",
     "project_magnetic_case_full_price": "HTG526.55 ~~HTG619.47~~ (-15%)",
     "project_magnetic_case_status": "✅ In stock – Ships from AliExpress",
-    "project_magnetic_case_aliexpress_link": "https://fr.aliexpress.com/item/1005007502032342.html",  # REPLACE WITH YOUR AFFILIATE LINK
+    "project_magnetic_case_aliexpress_link": "https://fr.aliexpress.com/item/1005007502032342.html",
     # UI common keys
     "view_demo": "🎬 View Demo",
     "live_demo": "🔗 Live Demo",
@@ -919,7 +944,8 @@ lang_es.update({
 
 lang_dict = {"en": lang_en, "fr": lang_fr, "es": lang_es}
 
-# Language selector
+# ===================== SIDEBAR =====================
+# Language selector and social media links are now at the top of the sidebar
 st.sidebar.image("https://flagcdn.com/w320/ht.png", width=60)
 lang = st.sidebar.selectbox(
     "🌐 Language / Langue / Idioma",
@@ -927,6 +953,54 @@ lang = st.sidebar.selectbox(
     format_func=lambda x: {"en": "English", "fr": "Français", "es": "Español"}[x]
 )
 t = lang_dict[lang]
+
+st.sidebar.markdown("---")
+
+# ---- SOCIAL MEDIA LINKS (prominently displayed) ----
+st.sidebar.markdown("### 📱 Connect With Us")
+st.sidebar.markdown("""
+<style>
+.social-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 8px 0;
+}
+.social-icons a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 8px;
+    text-decoration: none;
+    color: #1a1a2e;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+.social-icons a:hover {
+    background: rgba(255,255,255,0.3);
+}
+.social-icons img {
+    width: 24px;
+    height: 24px;
+}
+</style>
+<div class="social-icons">
+    <a href="https://www.linkedin.com/notifications/?filter=all" target="_blank">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn"> LinkedIn
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=61589703309231" target="_blank">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook"> Facebook
+    </a>
+    <a href="https://www.tiktok.com/@globalintert.py" target="_blank">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" alt="TikTok"> TikTok
+    </a>
+    <a href="https://www.youtube.com/@GlobalInternet-x3d" target="_blank">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube"> YouTube
+    </a>
+</div>
+""", unsafe_allow_html=True)
 
 st.sidebar.markdown("---")
 st.sidebar.markdown("**Founder & Developer:**")
@@ -939,6 +1013,33 @@ st.sidebar.markdown("### 📄 My CV")
 st.sidebar.markdown("[📥 Download / View my CV (Python Developer 2026)](https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/Gesner%20Deslandes%20CV%20Python%202026.docx)")
 st.sidebar.markdown("---")
 
+# ============================================================
+# NEW: AI FEMALE VOICE OVERVIEW
+# ============================================================
+voice_script = """
+Welcome to GlobalInternet.py. We are a software company from Haiti, founded by Gesner Deslandes, Engineer-in-Chief.
+
+We sell a wide range of Python-based software, including voting systems, business dashboards, AI chatbots, school management, inventory POS, accounting, archives, drone control, medical assistants, music production, and many more.
+
+All software comes with full source code delivered by email within 24 hours. You can also subscribe monthly for 299 US dollars to get updates and priority support. We accept payment via bank transfer, SendWave, Prisme Transfer to Moncash, and PayPal.
+
+We also build custom software on demand. Tell us what you need, and we will build it for you.
+
+Our contact: Phone (509) 4738 5663 and email deslandes78@gmail.com.
+
+GlobalInternet.py is a software online company created by Gesner Deslandes, Software Engineer-in-Chief. We are the best online software company ever. Contact us today to start your project.
+"""
+
+if st.sidebar.button("🎙️ AI Female Voice – Full Company Overview"):
+    with st.spinner("Generating voice..."):
+        audio_bytes = generate_audio(voice_script)
+        if audio_bytes:
+            st.sidebar.audio(audio_bytes, format="audio/mp3")
+            st.sidebar.success("✅ Voice explanation played. Click again to repeat.")
+        else:
+            st.sidebar.error("Voice generation unavailable. Please install gTTS.")
+
+st.sidebar.markdown("---")
 # ---------- LEGAL PAGES (full content) ----------
 with st.sidebar.expander("📜 Privacy Policy"):
     st.markdown("""
@@ -1301,7 +1402,6 @@ for key in project_keys:
         "demo_url": demo_url,
         "aliexpress_link": t.get(f"project_{key}_aliexpress_link", None) if key == "magnetic_case" else None,
         "img_url": "https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/Ali.png" if key == "magnetic_case" else None,
-        # mark this product as physical (no subscription)
         "is_physical": key == "magnetic_case"
     })
 
@@ -1355,19 +1455,15 @@ if group_b:
                         <p><em>{proj['status']}</em></p>
                     </div>
                     """, unsafe_allow_html=True)
-                    # Show image if present (for magnetic case product)
                     if proj.get('img_url'):
                         st.image(proj['img_url'], caption=proj['title'], width='stretch')
-                    # Show AliExpress button if link exists (physical product)
                     if proj.get('aliexpress_link'):
                         st.markdown(f"<a href='{proj['aliexpress_link']}' target='_blank'><button style='background-color:#ff9900; color:white; border:none; border-radius:30px; padding:0.5rem 1rem; margin-bottom:0.5rem; width:100%; cursor:pointer;'>{t['view_on_aliexpress']}</button></a>", unsafe_allow_html=True)
                     else:
                         st.info("📹 No public demo – contact us for a private walkthrough or more details.")
-                    # Only show Subscribe button for non-physical products
                     if not proj.get('is_physical'):
                         if st.button(t['subscribe_monthly'], key=f"subscribe_{proj['key']}", width='stretch'):
                             st.info(f"To subscribe for {proj['title']} at $299/month, please contact us directly: 📞 (509)-47385663 or ✉️ deslandes78@gmail.com")
-                    # Buy button (email) – optional, you can keep or remove
                     subject = f"Purchase: {proj['title']}"
                     body = f"Hello Gesner,%0D%0A%0D%0AI am interested in purchasing the full package of: {proj['title']} at {proj['full_price']}.%0D%0A%0D%0APlease send me payment instructions and the delivery details.%0D%0A%0D%0AThank you."
                     mailto_link = f"mailto:deslandes78@gmail.com?subject={subject}&body={body}"
@@ -1375,7 +1471,7 @@ if group_b:
                     st.markdown(f"<p style='font-size:0.8rem; margin-top:0.5rem;'>{t['contact_note']}</p>", unsafe_allow_html=True)
                     show_comment_section(proj['key'])
 
-# ---------- SENDWAVE PROMOTIONAL SECTION (no components.html) ----------
+# ---------- SENDWAVE PROMOTIONAL SECTION ----------
 st.markdown("---")
 st.markdown(f"## {t['sendwave_title']}")
 col_promo, col_video_ad = st.columns([3, 2])
@@ -1412,7 +1508,7 @@ with col_video_ad:
 
 st.markdown("---")
 
-# ---------- WESTERN UNION PROMOTIONAL SECTION (no components.html) ----------
+# ---------- WESTERN UNION PROMOTIONAL SECTION ----------
 st.markdown(f"## {t['western_union_title']}")
 col_wu_promo, col_wu_video = st.columns([3, 2])
 with col_wu_promo:
