@@ -19,13 +19,13 @@ try:
 except ImportError:
     VOICE_AVAILABLE = False
 
-def generate_audio(text):
+def generate_audio(text, lang_code="en"):
     if not VOICE_AVAILABLE or not text.strip():
         return None
     with tempfile.NamedTemporaryFile(delete=False, suffix=".mp3") as tmp:
         tmp_path = tmp.name
     try:
-        tts = gTTS(text=text, lang="en", slow=False)
+        tts = gTTS(text=text, lang=lang_code, slow=False)
         tts.save(tmp_path)
         with open(tmp_path, "rb") as f:
             audio_bytes = f.read()
@@ -35,6 +35,16 @@ def generate_audio(text):
     finally:
         if os.path.exists(tmp_path):
             os.unlink(tmp_path)
+
+# ============================================================
+# VOICE SCRIPTS (translated)
+# ============================================================
+VOICE_SCRIPTS = {
+    "en": "Welcome to GlobalInternet.py. We are a software company from Haiti, founded by Gesner Deslandes, Engineer-in-Chief. We sell a wide range of Python-based software, including voting systems, business dashboards, AI chatbots, school management, inventory POS, accounting, archives, drone control, medical assistants, music production, and many more. All software comes with full source code delivered by email within 24 hours. You can also subscribe monthly for 299 US dollars to get updates and priority support. We accept payment via bank transfer, SendWave, Prisme Transfer to Moncash, and PayPal. We also build custom software on demand. Tell us what you need, and we will build it for you. Our contact: Phone (509) 4738 5663 and email deslandes78@gmail.com. GlobalInternet.py is a software online company created by Gesner Deslandes, Software Engineer-in-Chief. We are the best online software company ever. Contact us today to start your project.",
+    "fr": "Bienvenue chez GlobalInternet.py. Nous sommes une entreprise de logiciels basée en Haïti, fondée par Gesner Deslandes, ingénieur en chef. Nous vendons une large gamme de logiciels en Python, y compris des systèmes de vote, des tableaux de bord d'affaires, des chatbots IA, la gestion scolaire, les systèmes de point de vente et d'inventaire, la comptabilité, les archives, le contrôle de drones, les assistants médicaux, la production musicale, et bien d'autres. Tous les logiciels sont livrés avec le code source complet par email dans les 24 heures. Vous pouvez également vous abonner mensuellement pour 299 dollars américains pour recevoir des mises à jour et un support prioritaire. Nous acceptons les paiements par virement bancaire, SendWave, Prisme Transfer vers Moncash, et PayPal. Nous réalisons également des logiciels sur mesure. Dites-nous ce dont vous avez besoin, et nous le construirons pour vous. Contact : Téléphone (509) 4738 5663 et email deslandes78@gmail.com. GlobalInternet.py est une société de logiciels en ligne créée par Gesner Deslandes, ingénieur en chef. Nous sommes la meilleure société de logiciels en ligne. Contactez-nous dès aujourd'hui pour commencer votre projet.",
+    "es": "Bienvenido a GlobalInternet.py. Somos una empresa de software de Haití, fundada por Gesner Deslandes, ingeniero jefe. Vendemos una amplia gama de software basado en Python, que incluye sistemas de votación, paneles de inteligencia empresarial, chatbots de IA, gestión escolar, sistemas de punto de venta e inventario, contabilidad, archivos, control de drones, asistentes médicos, producción musical, y muchos más. Todo el software viene con el código fuente completo entregado por correo electrónico dentro de las 24 horas. También puede suscribirse mensualmente por 299 dólares estadounidenses para recibir actualizaciones y soporte prioritario. Aceptamos pagos mediante transferencia bancaria, SendWave, Prisme Transfer a Moncash, y PayPal. También desarrollamos software a medida. Díganos lo que necesita y lo construiremos para usted. Contacto: Teléfono (509) 4738 5663 y correo electrónico deslandes78@gmail.com. GlobalInternet.py es una empresa de software en línea creada por Gesner Deslandes, ingeniero jefe. Somos la mejor empresa de software en línea. Contáctenos hoy para comenzar su proyecto.",
+    "zh": "欢迎来到 GlobalInternet.py。我们是一家来自海地的软件公司，由 Gesner Deslandes 创立，他是首席工程师。我们销售各种基于 Python 的软件，包括投票系统、商业智能仪表板、AI 聊天机器人、学校管理、库存 POS、会计、档案、无人机控制、医疗助手、音乐制作等等。所有软件都附带完整的源代码，会在 24 小时内通过电子邮件交付。您也可以每月订阅 299 美元，以获得更新和优先支持。我们接受银行转账、SendWave、Prisme Transfer 到 Moncash 以及 PayPal 付款。我们还按需定制软件。告诉我们需要什么，我们会为您构建。联系方式：电话 (509) 4738 5663 和电子邮件 deslandes78@gmail.com。GlobalInternet.py 是由 Gesner Deslandes 创建的在线软件公司，我们是首席软件工程师。我们是有史以来最好的在线软件公司。今天就联系我们开始您的项目。"
+}
 
 # ============================================================
 # MITGO VERIFICATION META TAGS (added to <head>)
@@ -945,15 +955,23 @@ lang_es.update({
 lang_dict = {"en": lang_en, "fr": lang_fr, "es": lang_es}
 
 # ===================== SIDEBAR =====================
-# Language selector and social media links are now at the top of the sidebar
+# Interface language selector
 st.sidebar.image("https://flagcdn.com/w320/ht.png", width=60)
 lang = st.sidebar.selectbox(
-    "🌐 Language / Langue / Idioma",
+    "🌐 Interface Language",
     options=["en", "fr", "es"],
     format_func=lambda x: {"en": "English", "fr": "Français", "es": "Español"}[x]
 )
 t = lang_dict[lang]
 
+st.sidebar.markdown("---")
+
+# Voice language selector (separate)
+voice_lang = st.sidebar.selectbox(
+    "🎤 Voice Language",
+    options=["en", "fr", "es", "zh"],
+    format_func=lambda x: {"en": "English", "fr": "Français", "es": "Español", "zh": "中文"}[x]
+)
 st.sidebar.markdown("---")
 
 # ---- SOCIAL MEDIA LINKS (prominently displayed) ----
@@ -1014,25 +1032,14 @@ st.sidebar.markdown("[📥 Download / View my CV (Python Developer 2026)](https:
 st.sidebar.markdown("---")
 
 # ============================================================
-# NEW: AI FEMALE VOICE OVERVIEW
+# AI FEMALE VOICE BUTTON (uses the selected voice language)
 # ============================================================
-voice_script = """
-Welcome to GlobalInternet.py. We are a software company from Haiti, founded by Gesner Deslandes, Engineer-in-Chief.
-
-We sell a wide range of Python-based software, including voting systems, business dashboards, AI chatbots, school management, inventory POS, accounting, archives, drone control, medical assistants, music production, and many more.
-
-All software comes with full source code delivered by email within 24 hours. You can also subscribe monthly for 299 US dollars to get updates and priority support. We accept payment via bank transfer, SendWave, Prisme Transfer to Moncash, and PayPal.
-
-We also build custom software on demand. Tell us what you need, and we will build it for you.
-
-Our contact: Phone (509) 4738 5663 and email deslandes78@gmail.com.
-
-GlobalInternet.py is a software online company created by Gesner Deslandes, Software Engineer-in-Chief. We are the best online software company ever. Contact us today to start your project.
-"""
-
 if st.sidebar.button("🎙️ AI Female Voice – Full Company Overview"):
+    script = VOICE_SCRIPTS.get(voice_lang, VOICE_SCRIPTS["en"])
+    # map voice_lang to gTTS language code: 'zh' for Chinese
+    lang_code = voice_lang if voice_lang != "zh" else "zh"
     with st.spinner("Generating voice..."):
-        audio_bytes = generate_audio(voice_script)
+        audio_bytes = generate_audio(script, lang_code)
         if audio_bytes:
             st.sidebar.audio(audio_bytes, format="audio/mp3")
             st.sidebar.success("✅ Voice explanation played. Click again to repeat.")
@@ -1040,6 +1047,7 @@ if st.sidebar.button("🎙️ AI Female Voice – Full Company Overview"):
             st.sidebar.error("Voice generation unavailable. Please install gTTS.")
 
 st.sidebar.markdown("---")
+
 # ---------- LEGAL PAGES (full content) ----------
 with st.sidebar.expander("📜 Privacy Policy"):
     st.markdown("""
