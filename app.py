@@ -175,12 +175,53 @@ shield = WebAppShield(
     api_key="gl-MssTDLE9cATE4Iu7_tQkcxaFWcwwMr3e7S_Mdwgg",
     dashboard_url="https://global-security-shield-built-by-gesner-deslandes-tul974fmulf5q.streamlit.app/?log="
 )
+
 # ============================================================
+# ROBUST SECRET RETRIEVAL – works with nested or flat keys
+# ============================================================
+def get_secret(key_path, default=None):
+    """
+    Retrieve a secret from st.secrets.
+    key_path can be a string like "supabase.url" or a flat "SUPABASE_URL".
+    If nested, use dot notation; if flat, just the key.
+    """
+    keys = key_path.split('.')
+    try:
+        # Try nested
+        value = st.secrets
+        for k in keys:
+            value = value[k]
+        return value
+    except (KeyError, TypeError):
+        # Try flat (uppercase, underscore)
+        flat_key = "_".join(k.upper() for k in keys)
+        try:
+            return st.secrets[flat_key]
+        except KeyError:
+            # Try as given (lowercase)
+            try:
+                return st.secrets[flat_key.lower()]
+            except KeyError:
+                # Fallback to the original dot‐notated key as a single key
+                try:
+                    return st.secrets[key_path.replace('.', '_')]
+                except KeyError:
+                    return default
 
 # ---------- Supabase setup ----------
-SUPABASE_URL = st.secrets["supabase"]["url"]
-SUPABASE_KEY = st.secrets["supabase"]["key"]
-supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
+SUPABASE_URL = get_secret("supabase.url")
+SUPABASE_KEY = get_secret("supabase.key")
+
+if SUPABASE_URL and SUPABASE_KEY:
+    supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
+else:
+    st.error("⚠️ Supabase credentials not found. Please set SUPABASE_URL and SUPABASE_KEY in your secrets.")
+    supabase = None
+
+# Email settings
+EMAIL_SENDER = get_secret("email.sender")
+EMAIL_PASSWORD = get_secret("email.password")
+EMAIL_RECEIVER = get_secret("email.receiver")
 
 st.set_page_config(
     page_title="GlobalInternet.py – Python Software Company",
@@ -190,6 +231,8 @@ st.set_page_config(
 
 # ---------- Comment functions (with shield sanitisation disabled for comments) ----------
 def get_comments(project_key):
+    if supabase is None:
+        return []
     try:
         response = supabase.table("comments").select("*").eq("project_key", project_key).order("timestamp", desc=False).execute()
         return response.data
@@ -198,12 +241,14 @@ def get_comments(project_key):
         return []
 
 def add_comment(project_key, username, comment, parent_id=0, reply_to_username=""):
+    if supabase is None:
+        st.error("Database not available.")
+        return False
     safe_comment = comment.strip() if comment else ""
     safe_username = username.strip() if username else "Anonymous"
     if not safe_comment:
         st.error("Comment cannot be empty.")
         return False
-
     try:
         supabase.table("comments").insert({
             "project_key": project_key,
@@ -220,6 +265,8 @@ def add_comment(project_key, username, comment, parent_id=0, reply_to_username="
         return False
 
 def add_like(comment_id):
+    if supabase is None:
+        return
     try:
         supabase.rpc("increment_likes", {"row_id": comment_id}).execute()
     except:
@@ -229,6 +276,8 @@ def add_like(comment_id):
             supabase.table("comments").update({"likes": new_likes}).eq("id", comment_id).execute()
 
 def delete_comment(comment_id, admin_password):
+    if supabase is None:
+        return False
     if admin_password == "20082010":
         try:
             supabase.table("comments").delete().eq("id", comment_id).execute()
@@ -308,6 +357,8 @@ def get_real_ip():
     return "Unable to retrieve"
 
 def send_visit_notification():
+    if not EMAIL_SENDER or not EMAIL_PASSWORD or not EMAIL_RECEIVER:
+        return  # email secrets not configured
     try:
         visitor_ip = get_real_ip()
         location = get_location(visitor_ip) if visitor_ip != "Unable to retrieve" else None
@@ -319,22 +370,16 @@ def send_visit_notification():
         else:
             body += "📍 Location: Could not determine\n"
         body += f"User Agent: {user_agent}\n"
-        try:
-            sender = st.secrets["email"]["sender"]
-            password = st.secrets["email"]["password"]
-            receiver = st.secrets["email"]["receiver"]
-            msg = MIMEMultipart()
-            msg["From"] = sender
-            msg["To"] = receiver
-            msg["Subject"] = subject
-            msg.attach(MIMEText(body, "plain"))
-            context = ssl.create_default_context()
-            with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
-                server.login(sender, password)
-                server.sendmail(sender, receiver, msg.as_string())
-        except:
-            pass
-    except:
+        msg = MIMEMultipart()
+        msg["From"] = EMAIL_SENDER
+        msg["To"] = EMAIL_RECEIVER
+        msg["Subject"] = subject
+        msg.attach(MIMEText(body, "plain"))
+        context = ssl.create_default_context()
+        with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
+            server.login(EMAIL_SENDER, EMAIL_PASSWORD)
+            server.sendmail(EMAIL_SENDER, EMAIL_RECEIVER, msg.as_string())
+    except Exception:
         pass
 
 if "notification_sent" not in st.session_state:
